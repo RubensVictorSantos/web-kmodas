@@ -1,3 +1,16 @@
+/* Cascading Style Sheets (css)*/
+
+ul, li, h1, h2, p, body {
+  padding: 0px;
+  margin: 0px;
+}
+
+:root{
+--red: #ff1a8a;
+--red-hover: #e60000;
+--red-active: #b30000;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +20,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}

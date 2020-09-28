@@ -1,0 +1,30 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 595 80">
+    <defs>
+        <filter id="f1" x="0"  y="0"  width="200%"  height="200%">
+	        <feDropShadow 
+                stdDeviation="0 0"
+                in="SourceGraphic" 
+                dx="3" dy="3" 
+                flood-color="#000" 
+                x="0%" y="0%" 
+                result="dropShadow1"
+            />
+        
+        </filter>
+    </defs>
+
+    <text x="120"  y="60" 
+        text-anchor="center" 
+        fill="white" 
+        font-size="4.5rem" 
+        letter-spacing="normal" 
+        font-weight="bold" 
+        font-family="Georgia" 
+        filter="url(#f1)"
+        font-style="italic"
+        >
+        
+        K. modas
+    
+    </text>
+</svg>
