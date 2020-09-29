@@ -20,7 +20,7 @@ ul, li, h1, h2, p, body {
 
 @media screen and (min-width:1000px){
 
-	.container-header{
+	/* .container-header{
 		width: 100%;
 		position: relative;
 		background-color: #000;
@@ -54,11 +54,11 @@ ul, li, h1, h2, p, body {
 		justify-content: center;
 		align-items: center;
 		background-color: #000;
-	}
+	} */
 	
 	/* ********************* Navbar ********************* */
 
-    .navbar-mobile{
+    /* .navbar-mobile{
         display: none;
 	}
 
@@ -81,15 +81,15 @@ ul, li, h1, h2, p, body {
 	.item:hover{
 		background-color: #00284d;
 		
-	}
+	} */
 	
 	/* ********************* Conteúdo ********************* */
 
-    .content-body{
+    /* .content-body{
         width: 100%;
 		height: auto;
 		box-sizing: border-box;
-        /* overflow: hidden; */
+
     }
 
     .container-cards{
@@ -109,11 +109,11 @@ ul, li, h1, h2, p, body {
 		padding: 0.2rem;
 		background-color:#003566;
 		
-	}
+	} */
 
 	/* ********************* Card ********************* */
 
-	.card{
+	/* .card{
 		width: 232px;
 		height: auto;
 		border: 1px solid #a79825;
@@ -219,15 +219,15 @@ ul, li, h1, h2, p, body {
 		display: block;
 		margin-top: -371px;
 		margin-left: -1px;
-	}
+	} */
 
 	/* ********************* Footer ********************* */
 
-    .footer{
+    /* .footer{
         width: 100%;
         height: 150px;
         background-color: black;
-    }
+    } */
 
 }
 
@@ -235,7 +235,7 @@ ul, li, h1, h2, p, body {
 
 @media only screen and (max-width: 999px) and (min-width: 681px){
 
-	.container-header{
+	/* .container-header{
 		width: 100%;
 		position: relative;
 		background-color: #000;
@@ -268,11 +268,11 @@ ul, li, h1, h2, p, body {
 		justify-content: center;
 		align-items: center;
 		background-color: #000;
-	}
+	} */
 
 	/* ********************* Navbar ********************* */
 	
-	.navbar-mobile{
+	/* .navbar-mobile{
         display: none;
 	}
 	
@@ -295,11 +295,11 @@ ul, li, h1, h2, p, body {
 	.item:hover{
 		background-color: #00284d;
 		
-	}
+	} */
 
 	/* ********************* Conteúdo ********************* */
 
-	.content-body{
+	/* .content-body{
 		width: 100%;
 		height: auto;
 		box-sizing: border-box;
@@ -323,11 +323,11 @@ ul, li, h1, h2, p, body {
 		padding: 0.2rem;
 		background-color:#003566;
 		
-	}
+	} */
 
 	/* ********************* Card ********************* */
 
-	.card{
+	/* .card{
 		width: 200px;
 		height: auto;
 		border: 1px solid #a79825;
@@ -425,15 +425,15 @@ ul, li, h1, h2, p, body {
 		display: block;
 		margin-top: -316px;
 		margin-left: -1px;
-	}
+	} */
 
 	/* ********************* Footer ********************* */
 
-    footer{
+    /* footer{
         width: 100%;
         height: 150px;
         background-color: black;
-    }
+    } */
 }
 
 /* ##### CSS FOR MOBILE #####  */

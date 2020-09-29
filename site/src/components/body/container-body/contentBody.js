@@ -11,7 +11,7 @@ export class ContentBody extends Component {
 
     componentDidMount(){
         
-        const url = 'http://127.1.1.0:3333/AllProd';
+        const url = 'http://127.1.1.0:3333/prodStatusOn';
 
         $.ajax({
             url: url,
@@ -22,9 +22,9 @@ export class ContentBody extends Component {
 
                 this.setState({ allProd: result })
             },
-            error: (status) => {
+            error: (status, error) => {
 
-                alert(status)
+                console.log(status, error);
 
             }
         })

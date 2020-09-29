@@ -4,7 +4,7 @@ import $ from 'jquery';
 import '../../../css/style.css';
 import imgUser from '../../../ico/ico-user.svg';
 
-export class Navbar extends Component {
+export class Navbar extends Component{
     constructor(){
         super()
     }

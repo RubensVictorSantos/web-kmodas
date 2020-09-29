@@ -23,7 +23,9 @@ export class CardProd extends Component {
 					</p>
                 </div>
                 <picture className="box-img-card">
-                    <img src={this.props.produto.img_prod} id="img-prod" className="img-prod" />
+                    <img src={
+                        this.props.produto.img_prod
+                        } id="img-prod" className="img-prod" />
 
                 </picture>
                 <div className="box-price" id="box-price">
