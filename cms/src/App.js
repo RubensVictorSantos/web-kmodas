@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
+/** */
 import ViewProd from './viewProd';
+import ItemLista from './itemLista';
 
 export class App extends Component {
   constructor(props){
-    super(props)
+    super()
     this.state = { allProd: [] }
-    this.props = {id: [] }
+    this.props = { idProd: [] }
     
   }
   
   componentDidMount() {
     this.tbl();
-    $(".view-p").fadeOut()
+    $(".view-p").fadeOut();
   }
 
   componentDidUpdate(){
@@ -21,6 +23,7 @@ export class App extends Component {
 
     $('.closed').on('click', ()=> {
       $(".view-p").fadeOut()
+      
     })
 
   }
@@ -28,13 +31,14 @@ export class App extends Component {
   // editProd(id){
   //   $('.btnedit').on('click', ()=> {
   //     $(".view-p").fadeIn();
-  //     console.log(id)
+  //     var target = $(this).closest('[data-key]');
+  //     alert(target.data('key'));
   //   })
   // }
 
   newProd(){
     $('#btnnew').on('click', ()=> {
-      $(".view-p").fadeIn()
+      $(".view-p").fadeIn();
     })
   }
 
@@ -49,7 +53,7 @@ export class App extends Component {
       contentType: 'application/json',
       success: (result) => {
 
-        this.setState({ allProd: result })
+        this.setState({ allProd: result });
       },
       error: (status, error) => {
 
@@ -68,7 +72,7 @@ export class App extends Component {
         <div id="view-p" className="view-p">
           <span className="closed" id="closed">&times;&nbsp;&nbsp;</span>
           
-          <ViewProd />
+          <ViewProd id={this.state.allProd}/>
 
         </div>
 
@@ -77,50 +81,9 @@ export class App extends Component {
         </div>
         
         <div className="tbl">
-          <div className="t-title">
-            <div className="t-col">  Código     </div>
-            <div className="t-col">  Nome       </div>
-            <div className="t-col">  Imagem     </div>
-            <div className="t-col">  Descrição  </div>
-            <div className="t-col">  Preço      </div>
-            <div className="t-col">  Status     </div>
-            <div className="t-col">  Opções     </div>
-
-          </div>
-
           {
             produto.map(produto => (
-              
-              <div className="t-row" key={produto.cod_prod}>
-                <div className="t-col" id="idprod">
-                  { produto.cod_prod }
-                
-                </div>
-                <div className="t-col">
-                  { produto.nome_prod }
-
-                </div>
-                <div className="t-col">
-                  { produto.img_prod}
-
-                </div>
-                <div className="t-col">
-                  { produto.descricao_prod }
-
-                </div>
-                <div className="t-col">
-                  R${ produto.preco_prod }
-
-                </div>
-                <div className="t-col">
-                  { produto.status_prod }
-
-                </div>
-                <div className="t-col">
-                  <button type="" className="btnedit" id="btnedit">Visualizar</button>
-                
-                </div>
-              </div>
+                <ItemLista key={produto.cod_prod} produto={ produto }/>
             ))
           }
         </div>
