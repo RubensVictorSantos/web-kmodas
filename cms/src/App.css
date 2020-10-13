@@ -17,6 +17,7 @@
 /* Tabela Produtos ---------------------------------------------> */
 
 .tbl{
+  width: 65%;
   display: grid;
   grid-template-rows: auto;
   margin: 0.5rem;
@@ -24,14 +25,10 @@
 }
 
 .img-list{
-  /* width: 64px; */
-  /* height: 64px; */
   display: flex;
   padding: 3px;
   justify-content: center;
   align-items: center;
-  /* border-radius: 4px; */
-  /* border: 1px solid #dfdfdf; */
   background-position: center;
   overflow: hidden;
 }

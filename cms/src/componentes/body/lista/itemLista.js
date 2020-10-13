@@ -12,8 +12,6 @@ export class ItemLista extends Component {
 
     let produto = props.produto;
 
-    // console.log(produto)
-
     this.state = { produto: produto }
 
   }
@@ -34,11 +32,11 @@ export class ItemLista extends Component {
 
     return (
       <Fragment>
-        <ModalProd produto={this.state.produto} show={this.state.isOpen} onClose={this.toggleModal}/>
+        <ModalProd produto={this.state.produto} show={this.state.isOpen} edit={1} onClose={this.toggleModal}/>
         <div className="t-row" onClick={this.toggleModal}>
           <div className="t-col">
             <div className="img-list">
-              <img src={DOMAIN_IMG + img_prod} alt={"Imagem " + img_prod} width="70px" height="auto" />
+              <img src={DOMAIN_IMG + img_prod} alt={"Imagem " + img_prod} width="120px" height="auto" />
 
             </div>
 

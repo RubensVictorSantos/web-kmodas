@@ -5,9 +5,6 @@ import '../../../css/style.css';
 import imgUser from '../../../ico/ico-user.svg';
 
 export class Navbar extends Component{
-    constructor(){
-        super()
-    }
 
     componentDidMount(){
         this.openMenu()
@@ -47,7 +44,7 @@ export class Navbar extends Component{
                             <li>
                                 <div className="view-user">
                                     <div className="img-user">
-                                        <img src={imgUser} className="img" />
+                                        <img src={imgUser} alt={ 'Imagem ' + imgUser } className="img" />
 
                                     </div>
 

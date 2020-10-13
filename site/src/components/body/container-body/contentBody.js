@@ -4,10 +4,8 @@ import $ from 'jquery';
 import { CardProd } from '../card-prod/cardProd';
 
 export class ContentBody extends Component {
-    constructor() {
-        super()
-        this.state = { allProd: [] }
-    }
+
+    state = { allProd: [] }
 
     componentDidMount(){
         

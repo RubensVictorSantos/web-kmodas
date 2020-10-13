@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-
+import DOMAIN_IMG from '../../../link_config'
 export class CardProd extends Component {
-    constructor(){
+    constructor(props){
         super()
 
 
     }
-
 
     componentDidMount(){
 
@@ -24,14 +23,14 @@ export class CardProd extends Component {
                 </div>
                 <picture className="box-img-card">
                     <img src={
-                        this.props.produto.img_prod
-                        } id="img-prod" className="img-prod" />
+                        DOMAIN_IMG + this.props.produto.img_prod
+                        } alt={ DOMAIN_IMG + this.props.produto.img_prod } id="img-prod" className="img-prod" />
 
                 </picture>
                 <div className="box-price" id="box-price">
                     <p> 
                         {
-                            this.props.produto.preco_prod
+                            'R$' + this.props.produto.preco_prod
                         }
                     </p>
                 </div>
@@ -39,7 +38,7 @@ export class CardProd extends Component {
                     <h3>
                     </h3>
                     <button className="add-cart">
-                        <img src="ico/ico-cart-round.svg" className="ico-cart" />
+                        <img src="ico/ico-cart-round.svg" alt={ "Imagem cart" } className="ico-cart" />
                         <p>COMPRAR </p>
                     </button>
                 </div>

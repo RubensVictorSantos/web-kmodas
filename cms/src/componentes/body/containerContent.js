@@ -8,14 +8,14 @@ export class ContainerContent extends Component {
 
   state = {
     allProd: []
-    
+
   }
 
   componentDidMount() {
     this.visualizarProd();
 
   }
-  
+
   visualizarProd() {
 
     this.setState({ allProd: [] });
@@ -51,7 +51,9 @@ export class ContainerContent extends Component {
       <div className="content">
 
         <div className="t-col">
-          <ModalProd show={this.state.isOpen} onClose={this.toggleModal} />
+          
+          <ModalProd show={this.state.isOpen} status={'salvar'} onClose={this.toggleModal}/>
+
           <button className="btnnew" onClick={this.toggleModal} type="" id="btnnew">Novo</button>
         </div>
 
