@@ -54,7 +54,7 @@ export class ContainerContent extends Component {
           
           <ModalProd show={this.state.isOpen} status={'salvar'} onClose={this.toggleModal}/>
 
-          <button className="btnnew" onClick={this.toggleModal} type="" id="btnnew">Novo</button>
+          <button className="btnnew" onClick={this.toggleModal} type="" id="btnnew"></button>
         </div>
 
         <div className="tbl">

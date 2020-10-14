@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import $ from 'jquery'
+import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
 /** */
 
 export class ModalProd extends Component {
@@ -91,7 +92,9 @@ export class ModalProd extends Component {
             contentType: "application/json",
             success: (result) => {
 
-                alert("Dados alterados com sucesso!");
+                let produto = {...this.state.produto}
+
+                this.clearInput(produto);
 
             }
 
@@ -127,15 +130,7 @@ export class ModalProd extends Component {
                 contentType: "application/json",
                 success: (result) => {
 
-                    // alert('Produto ' + result.nome_prod + ' cadastrado com sucesso!')
-
                     const produto = { ...this.state.produto }
-
-                    produto.nome_prod = "";
-                    produto.img_prod = "";
-                    produto.descricao_prod = "";
-                    produto.preco_prod = "";
-                    produto.status_prod = false;
 
                     this.clearInput(produto);
 
@@ -156,11 +151,13 @@ export class ModalProd extends Component {
         }
     }
 
-    clearInput(arr) {
-        for (let i in arr) {
-
-            console.log(i);
-        }
+    clearInput(produto) {
+        produto.nome_prod = "";
+        produto.img_prod = "";
+        produto.descricao_prod = "";
+        produto.preco_prod = "";
+        produto.status_prod = false;
+        $('#imgprod').attr("src", DOMAIN_IMG_DEFAULT);
     }
 
     render() {
@@ -179,14 +176,13 @@ export class ModalProd extends Component {
                     <div className="modal-prod">
                         <div className="box-img">
                             <input id="selecao-arquivo"
-                                value={''}
                                 onChange={e => this.readURL(e.target)}
                                 name="img_prod"
                                 type="file"
                                 accept="image/png, image/jpeg"
                                 ref={this.fileInput} />
 
-                            <img id="imgprod" alt={img_prod} width="200px" height="250px" />
+                            <img id="imgprod" src={ img_prod !== undefined? DOMAIN_IMG + img_prod : DOMAIN_IMG_DEFAULT } alt={img_prod} width="200px" height="250px" />
                             <label htmlFor="selecao-arquivo" id="lbl_file">Selecionar um arquivo</label>
                         </div>
 
@@ -196,7 +192,7 @@ export class ModalProd extends Component {
                                 <input type="text"
                                     className="inp-modal"
                                     name="nome_prod"
-                                    value={nome_prod}
+                                    value={nome_prod || ''}
                                     onChange={this.handleChange}
                                     placeholder="Nome do Produto"
                                     id="txtnome"
@@ -219,7 +215,7 @@ export class ModalProd extends Component {
                                 <input type="text"
                                     className="inp-modal"
                                     name="preco_prod"
-                                    value={preco_prod}
+                                    value={preco_prod || ''}
                                     onChange={this.handleChange}
                                     placeholder="Preço do Produto"
                                     id="txtpreco"
@@ -235,7 +231,7 @@ export class ModalProd extends Component {
                                         <input
                                             type="checkbox"
                                             name="status_prod"
-                                            checked={status_prod}
+                                            checked={status_prod || false}
                                             onChange={this.handleChange}
                                         />
                                         <span className="slider round"></span>
