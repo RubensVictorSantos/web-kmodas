@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import $ from 'jquery'
-import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
 /** */
+import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
+import urlImg, { editProd, insertProd } from '../modulos';
 
 export class ModalProd extends Component {
     constructor(props) {
         super();
-        this.inserirProd = this.inserirProd.bind(this);
+        this.formProd = this.formProd.bind(this);
         this.fileInput = React.createRef();
 
         // Se existe props ele set o state com o valor do props
@@ -18,137 +19,49 @@ export class ModalProd extends Component {
 
     }
 
-    componentDidMount() {
-
-    }
-
-    componentDidUpdate() {
-
-    }
-
-    readURL(input) {
+    handleChange(e) {
 
         const produto = { ...this.state.produto }
+        const input = e.target
+        const type = input.type;
 
-        let img = $("#imgprod");
+        let value = '';
 
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+        if (type === 'file') {
+            value = urlImg(input, 'imgprod');
 
-            reader.onload = function (e) {
+        } else if (type === 'checkbox') {
+            value = input.checked;
 
-                img.attr("src", e.target.result);
-
-            };
-
-            reader.readAsDataURL(input.files[0]);
-
-            produto[input.name] = input.files[0].name;
-
-            this.setState({
-                produto
-            });
-        }
-        else {
-            var val = input.files[0].name;
-            img.attr("src", val);
+        } else {
+            value = input.value;
 
         }
+
+        produto[input.name] = value;
+
+        this.setState({ produto });
     }
 
-    handleChange(event) {
+    formProd(e) {
+        e.preventDefault();
 
-        const produto = { ...this.state.produto }
+        let produto = {...this.state.produto}
 
-        console.log(this.state.produto)
+        if (this.props.edit === 1) {
+            editProd(produto);
 
-        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-        produto[event.target.name] = value;
+        } else {
+            insertProd(produto);
+
+        }
+
+        produto = this.clearInput(produto);
 
         this.setState({
             produto
         });
-    }
 
-    edtarProd(event) {
-        event.preventDefault();
-
-        const url = "http://127.1.1.0:3333/updateProd";
-        var { cod_prod, nome_prod, img_prod, preco_prod, descricao_prod, status_prod } = this.state.produto;
-
-        $.ajax({
-            url: url,
-            type: "patch",
-            data: JSON.stringify({
-                "cod_prod": cod_prod,
-                "nome_prod": nome_prod,
-                "img_prod": img_prod,
-                "preco_prod": preco_prod,
-                "descricao_prod": descricao_prod,
-                "status_prod": status_prod
-            }),
-            header: "x-access-token",
-            dataType: "json",
-            contentType: "application/json",
-            success: (result) => {
-
-                let produto = {...this.state.produto}
-
-                this.clearInput(produto);
-
-            }
-
-        })
-
-    }
-
-    inserirProd(event) {
-        event.preventDefault();
-
-        if (this.props.edit === 1) {
-            
-
-            this.edtarProd(event)
-
-        } else {
-
-            const url = "http://127.1.1.0:3333/addProd";
-            var { nome_prod, img_prod, preco_prod, descricao_prod, status_prod } = this.state.produto;
-
-            $.ajax({
-                url: url,
-                type: "post",
-                data: JSON.stringify({
-                    "nome_prod": nome_prod,
-                    "img_prod": img_prod,
-                    "preco_prod": preco_prod,
-                    "descricao_prod": descricao_prod,
-                    "status_prod": status_prod
-                }),
-                header: "x-access-token",
-                dataType: "json",
-                contentType: "application/json",
-                success: (result) => {
-
-                    const produto = { ...this.state.produto }
-
-                    this.clearInput(produto);
-
-                    this.setState({
-                        produto
-                    });
-
-
-                },
-                error: (status) => {
-
-                    console.log(status);
-                    console.error(status);
-
-                }
-            })
-
-        }
     }
 
     clearInput(produto) {
@@ -158,6 +71,8 @@ export class ModalProd extends Component {
         produto.preco_prod = "";
         produto.status_prod = false;
         $('#imgprod').attr("src", DOMAIN_IMG_DEFAULT);
+
+        return produto
     }
 
     render() {
@@ -172,17 +87,17 @@ export class ModalProd extends Component {
 
             <div className="view-p" id="view-p">
                 <span className="closed" id="closed" onClick={this.props.onClose}>&times;&nbsp;&nbsp;</span>
-                <form onSubmit={this.inserirProd} id="form">
+                <form onSubmit={this.formProd} id="form">
                     <div className="modal-prod">
                         <div className="box-img">
                             <input id="selecao-arquivo"
-                                onChange={e => this.readURL(e.target)}
+                                onChange={ this.handleChange }
                                 name="img_prod"
                                 type="file"
                                 accept="image/png, image/jpeg"
-                                ref={this.fileInput} />
+                                ref={ this.fileInput } />
 
-                            <img id="imgprod" src={ img_prod !== undefined? DOMAIN_IMG + img_prod : DOMAIN_IMG_DEFAULT } alt={img_prod} width="200px" height="250px" />
+                            <img id="imgprod" src={img_prod === undefined || img_prod === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + img_prod} alt={img_prod} width="200px" height="250px" />
                             <label htmlFor="selecao-arquivo" id="lbl_file">Selecionar um arquivo</label>
                         </div>
 

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+/** */
+import Img_like from './../../../ico/ico-heart.svg'
 import DOMAIN_IMG from '../../../link_config'
 export class CardProd extends Component {
     constructor(props){
@@ -24,9 +26,14 @@ export class CardProd extends Component {
                 <picture className="box-img-card">
                     <img src={
                         DOMAIN_IMG + this.props.produto.img_prod
-                        } alt={ DOMAIN_IMG + this.props.produto.img_prod } id="img-prod" className="img-prod" />
+                        } alt={ DOMAIN_IMG + this.props.produto.img_prod } id="img-prod" className="img-prod">
+                            
+                    </img>
 
                 </picture>
+                {/* <div className="ico-heart">
+                        <img src={Img_like} />
+                    </div> */}
                 <div className="box-price" id="box-price">
                     <p> 
                         {
