@@ -3,37 +3,39 @@ import PropTypes from 'prop-types'
 import $ from 'jquery'
 /** */
 import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
-import urlImg, { editProd, insertProd } from '../modulos';
+import urlImg, { clearInput, editProd, insertProd } from '../modulos';
 
 export class ModalProd extends Component {
     constructor(props) {
         super();
-        this.formProd = this.formProd.bind(this);
-        this.fileInput = React.createRef();
-
-        // Se existe props ele set o state com o valor do props
-
+        // Se existe props.produto ele set o state com o valor do props
         props.produto ? this.state = { produto: props.produto } : this.state = { produto: [] }
 
+        this.formProd = this.formProd.bind(this);
+        this.fileInput = React.createRef();
         this.handleChange = this.handleChange.bind(this);
 
+    }
+
+    componentDidMount(){
     }
 
     handleChange(e) {
 
         const produto = { ...this.state.produto }
         const input = e.target
-        const type = input.type;
-
         let value = '';
 
-        if (type === 'file') {
+        if (input.type === 'file') {
             value = urlImg(input, 'imgprod');
 
-        } else if (type === 'checkbox') {
+        } else if (input.type === 'checkbox') {
             value = input.checked;
 
-        } else {
+        } else if (input.name === 'preco_prod'){
+            value = input.value.replace(/[A-z]/, '');
+
+        }else{
             value = input.value;
 
         }
@@ -46,9 +48,9 @@ export class ModalProd extends Component {
     formProd(e) {
         e.preventDefault();
 
-        let produto = {...this.state.produto}
+        let produto = { ...this.state.produto }
 
-        if (this.props.edit === 1) {
+        if (this.props.status === 'editar') {
             editProd(produto);
 
         } else {
@@ -56,23 +58,12 @@ export class ModalProd extends Component {
 
         }
 
-        produto = this.clearInput(produto);
+        produto = clearInput(produto);
 
         this.setState({
             produto
         });
 
-    }
-
-    clearInput(produto) {
-        produto.nome_prod = "";
-        produto.img_prod = "";
-        produto.descricao_prod = "";
-        produto.preco_prod = "";
-        produto.status_prod = false;
-        $('#imgprod').attr("src", DOMAIN_IMG_DEFAULT);
-
-        return produto
     }
 
     render() {
@@ -91,14 +82,14 @@ export class ModalProd extends Component {
                     <div className="modal-prod">
                         <div className="box-img">
                             <input id="selecao-arquivo"
-                                onChange={ this.handleChange }
+                                onChange={this.handleChange}
                                 name="img_prod"
                                 type="file"
                                 accept="image/png, image/jpeg"
-                                ref={ this.fileInput } />
+                                ref={this.fileInput} />
 
                             <img id="imgprod" src={img_prod === undefined || img_prod === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + img_prod} alt={img_prod} width="200px" height="250px" />
-                            <label htmlFor="selecao-arquivo" id="lbl_file">Selecionar um arquivo</label>
+                            <label tabIndex='0' htmlFor="selecao-arquivo" id="lbl_file">Selecionar um arquivo</label>
                         </div>
 
                         <div className="">
@@ -138,20 +129,22 @@ export class ModalProd extends Component {
 
                             </div>
                             <div className="box-text box-btn">
-                                <button id="btn-salvar" type="submit">Salvar</button>
 
                                 <div>
-                                    Ativar&ensp;
-                                    <label className="switch">
+                                    <label htmlFor="chk" className="switch">
                                         <input
+                                            id="chk"
                                             type="checkbox"
                                             name="status_prod"
-                                            checked={status_prod || false}
+                                            checked={status_prod || 0}
                                             onChange={this.handleChange}
                                         />
                                         <span className="slider round"></span>
                                     </label>
                                 </div>
+
+                                
+                                <button id="btn-salvar" type="submit">Salvar</button>
                             </div>
                         </div>
                     </div>

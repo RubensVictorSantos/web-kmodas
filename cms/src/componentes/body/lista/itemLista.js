@@ -32,7 +32,7 @@ export class ItemLista extends Component {
 
     return (
       <Fragment>
-        <ModalProd produto={this.state.produto} show={this.state.isOpen} edit={1} onClose={this.toggleModal}/>
+        <ModalProd produto={this.state.produto} show={this.state.isOpen} status={'editar'} onClose={this.toggleModal}/>
         <div className="t-row" onClick={this.toggleModal}>
           <div className="t-col">
             <div className="img-list">
@@ -70,13 +70,6 @@ export class ItemLista extends Component {
               alt={status_prod === 1 ? SvgAtivo : SvgInativo}
               width="40px" />
           </div>
-          {/* <div className="t-col">
-          <button type="" className="btnedit" id="btnedit">
-            <img src={ SvgView } 
-              alt={ SvgView } />
-          </button>
-        
-        </div> */}
         </div>
       </Fragment>
     );
