@@ -16,9 +16,18 @@ export class ContainerContent extends Component {
 
   }
 
-  visualizarProd() {
+  componentDidUpdate(){
+
+    let teste = this.toggleModal
+
+    console.log(teste)
+  }
+
+
+  async visualizarProd() {
 
     this.setState({ allProd: [] });
+
     const url = 'http://127.1.1.0:3333/allprod';
 
     $.ajax({
@@ -27,6 +36,7 @@ export class ContainerContent extends Component {
       dataType: 'json',
       contentType: 'application/json',
       success: (result) => {
+
         this.setState({ allProd: result });
 
       },
@@ -37,11 +47,20 @@ export class ContainerContent extends Component {
     })
   }
 
-  toggleModal = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+  toggleModal = (produto) => {
+
+
+
+    // this.setState({
+    //   isOpen: !this.state.isOpen,
+    //   produto: produto
+    // });
+
+    return produto
+    // console.log(produto)
   }
+
+
 
   render() {
 
@@ -52,7 +71,7 @@ export class ContainerContent extends Component {
 
         <div className="t-col">
           
-          <ModalProd show={this.state.isOpen} status={'salvar'} onClose={this.toggleModal}/>
+          <ModalProd show={this.state.isOpen} onClose={this.toggleModal}/>
 
           <button className="btnnew" onClick={this.toggleModal} type="" id="btnnew"></button>
         </div>
@@ -60,7 +79,7 @@ export class ContainerContent extends Component {
         <div className="tbl">
           {
             produto.map(produto => (
-              <ItemLista key={produto.cod_prod} produto={produto} />
+              <ItemLista key={produto.cod_prod} produto={produto} getProd={this.toggleModal}/>
             ))
           }
         </div>

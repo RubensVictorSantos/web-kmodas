@@ -23,7 +23,7 @@ export default function urlImg(input, idimg) {
     }
 }
 
-export function editProd(produto) {
+export const editProd = (produto) => {
 
     const url = "http://127.1.1.0:3333/updateProd";
 
@@ -36,19 +36,19 @@ export function editProd(produto) {
         contentType: "application/json",
         success: (result) => {
             // console.log(' Produto ' + result.nome_prod + ' atualizado com sucesso! ');
-            
+
         }
     })
 }
 
-export function insertProd(produto) {
+export const insertProd = (produto) => {
 
     const url = "http://127.1.1.0:3333/addProd";
 
     $.ajax({
         url: url,
         type: "post",
-        data: JSON.stringify( produto ),
+        data: JSON.stringify(produto),
         header: "x-access-token",
         dataType: "json",
         contentType: "application/json",
@@ -66,24 +66,50 @@ export function insertProd(produto) {
     })
 }
 
-export const clearInput = (produto) => { 
+export const deleteProd = (produto) => {
 
-    for(let i in produto){
+    const url = "http://127.1.1.0:3333/delProd";
 
-        let type = typeof(produto[i]);
+    $.ajax({
+        url: url,
+        type: "delete",
+        data: { "cod_prod": produto.cod_prod },
+        header: "x-access-token",
+        dataType: "json",
+        contentType: "application/json",
+        success: (result) => {
+            // console.log(' Produto ' + result.nome_prod + ' inserido com sucesso! ');
 
-        if(type === 'string'){
-            produto[i] = "";
-        
-        }else
-            if(type === 'number'){
-            produto[i] = 0;
-        
-        }else
-            if(type === 'boolean'){
-            produto[i] = false;
-        
+        },
+        error: (status) => {
+
+            console.log(' Erro ao deletar produto ');
+            console.log(status);
+            console.error(status);
+
         }
+    })
+
+}
+
+export const clearInput = (produto) => {
+
+    for (let i in produto) {
+
+        let type = typeof (produto[i]);
+
+        if (type === 'string') {
+            produto[i] = "";
+
+        } else
+            if (type === 'number') {
+                produto[i] = 0;
+
+            } else
+                if (type === 'boolean') {
+                    produto[i] = false;
+
+                }
     }
 
     $('#imgprod').attr("src", DOMAIN_IMG_DEFAULT);

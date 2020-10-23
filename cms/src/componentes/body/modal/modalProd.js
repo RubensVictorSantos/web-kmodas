@@ -5,6 +5,22 @@ import $ from 'jquery'
 import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
 import urlImg, { clearInput, editProd, insertProd } from '../modulos';
 
+const initialState = {
+    newValue: ''
+};
+
+export const produto = (state = initialState, action) => {
+    switch (action.type) {
+        case CLICK_UPDATE_VALUE:
+            return {
+                ...state,
+                newValue: action.newValue
+            };
+        default:
+            return state;
+    }
+};
+
 export class ModalProd extends Component {
     constructor(props) {
         super();
@@ -17,8 +33,13 @@ export class ModalProd extends Component {
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
+
+        console.log(this.props.onClose);
+
+
     }
+
 
     handleChange(e) {
 
@@ -32,10 +53,10 @@ export class ModalProd extends Component {
         } else if (input.type === 'checkbox') {
             value = input.checked;
 
-        } else if (input.name === 'preco_prod'){
+        } else if (input.name === 'preco_prod') {
             value = input.value.replace(/[A-z]/, '');
 
-        }else{
+        } else {
             value = input.value;
 
         }
@@ -71,7 +92,7 @@ export class ModalProd extends Component {
         var { nome_prod, img_prod, descricao_prod, preco_prod, status_prod } = this.state.produto;
 
         if (!this.props.show) {
-            return null;
+            return false;
         }
 
         return (
@@ -143,8 +164,9 @@ export class ModalProd extends Component {
                                     </label>
                                 </div>
 
-                                
-                                <button id="btn-salvar" type="submit">Salvar</button>
+
+                                <button id="btn-salvar">Salvar</button>
+                                <button id="btn-del" onClick={this.btnDelete}>Excluir</button>
                             </div>
                         </div>
                     </div>
