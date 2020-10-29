@@ -17,12 +17,8 @@ export class ContainerContent extends Component {
   }
 
   componentDidUpdate(){
-
-    let teste = this.toggleModal
-
-    console.log(teste)
+  
   }
-
 
   async visualizarProd() {
 
@@ -49,15 +45,11 @@ export class ContainerContent extends Component {
 
   toggleModal = (produto) => {
 
+    this.setState({
+      isOpen: !this.state.isOpen,
+      produto: produto
 
-
-    // this.setState({
-    //   isOpen: !this.state.isOpen,
-    //   produto: produto
-    // });
-
-    return produto
-    // console.log(produto)
+    });
   }
 
 

@@ -18,7 +18,9 @@ export class ContentBody extends Component {
             contentType: 'application/json',
             success: (result) => {
 
-                this.setState({ allProd: result })
+                this.setState({ allProd: result });
+
+                console.log(result)
             },
             error: (status, error) => {
 

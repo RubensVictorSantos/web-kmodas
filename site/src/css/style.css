@@ -9,6 +9,7 @@ ul, li, h1, h2, p, body {
 	--red: #ff1a1a;
 	--red-hover: #e60000;
 	--red-active: #b30000;
+	--rosa: rgb(255,60,110);
 }
 
 * {
@@ -630,7 +631,6 @@ ul, li, h1, h2, p, body {
 		z-index: 1;
 	}
 
-
 	.title-card{
 		width: 100%;
 		display: flex;
@@ -640,13 +640,10 @@ ul, li, h1, h2, p, body {
 
 	}
 
-
-
 	.card-open .title-card{
 		color: white;
 		
 	}
-
 
 	.xiszinho{
 		background-color: rgba(200,200,200,0.7);
@@ -672,6 +669,7 @@ ul, li, h1, h2, p, body {
 		justify-content: center;
 		align-items: center;
 		overflow: hidden;
+		position: relative;
 		box-sizing: border-box;
 	}
 
@@ -679,8 +677,12 @@ ul, li, h1, h2, p, body {
 		position: absolute;
 		width: 50px;
 		height: 50px;
-		bottom: 0px;
-		right: 20px;
+		bottom: 0;
+		right: 0;
+	}
+
+	svg :active path{
+		fill: var(--rosa);
 	}
 
 	.card-open .box-img-card{
@@ -739,7 +741,6 @@ ul, li, h1, h2, p, body {
 		height: 100vh!important;
 		left: 0;
 		bottom: 0;
-		/* background-color:rgba(0,0,0,0.7); */
 		position: fixed;
 		z-index: 1;
 	}

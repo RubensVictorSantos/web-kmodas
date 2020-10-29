@@ -35,8 +35,6 @@ export class ModalProd extends Component {
 
     componentDidMount() {
 
-        console.log(this.props.onClose);
-
 
     }
 
