@@ -17,8 +17,12 @@ export class ModalProd extends Component {
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
+
+        // console.log(this.props.onClose);
+
     }
+
 
     handleChange(e) {
 
@@ -32,10 +36,10 @@ export class ModalProd extends Component {
         } else if (input.type === 'checkbox') {
             value = input.checked;
 
-        } else if (input.name === 'preco_prod'){
+        } else if (input.name === 'preco_prod') {
             value = input.value.replace(/[A-z]/, '');
 
-        }else{
+        } else {
             value = input.value;
 
         }
@@ -71,7 +75,7 @@ export class ModalProd extends Component {
         var { nome_prod, img_prod, descricao_prod, preco_prod, status_prod } = this.state.produto;
 
         if (!this.props.show) {
-            return null;
+            return false;
         }
 
         return (
@@ -143,8 +147,9 @@ export class ModalProd extends Component {
                                     </label>
                                 </div>
 
-                                
-                                <button id="btn-salvar" type="submit">Salvar</button>
+
+                                <button id="btn-salvar">Salvar</button>
+                                <button id="btn-del" onClick={this.btnDelete}>Excluir</button>
                             </div>
                         </div>
                     </div>
