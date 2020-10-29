@@ -5,26 +5,11 @@ import $ from 'jquery'
 import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
 import urlImg, { clearInput, editProd, insertProd } from '../modulos';
 
-const initialState = {
-    newValue: ''
-};
-
-export const produto = (state = initialState, action) => {
-    switch (action.type) {
-        case CLICK_UPDATE_VALUE:
-            return {
-                ...state,
-                newValue: action.newValue
-            };
-        default:
-            return state;
-    }
-};
-
 export class ModalProd extends Component {
     constructor(props) {
         super();
-        // Se existe props.produto ele set o state com o valor do props
+
+        // Ternario se existe props.produto ele set o state.produto com o valor do props.produto
         props.produto ? this.state = { produto: props.produto } : this.state = { produto: [] }
 
         this.formProd = this.formProd.bind(this);
@@ -32,12 +17,6 @@ export class ModalProd extends Component {
         this.handleChange = this.handleChange.bind(this);
 
     }
-
-    componentDidMount() {
-
-
-    }
-
 
     handleChange(e) {
 
@@ -79,9 +58,7 @@ export class ModalProd extends Component {
 
         produto = clearInput(produto);
 
-        this.setState({
-            produto
-        });
+        this.setState({ produto });
 
     }
 
@@ -96,7 +73,7 @@ export class ModalProd extends Component {
         return (
 
             <div className="view-p" id="view-p">
-                <span className="closed" id="closed" onClick={this.props.onClose}>&times;&nbsp;&nbsp;</span>
+                <span className="closed" id="closed" onClick={this.props.onClose}>&times;</span>
                 <form onSubmit={this.formProd} id="form">
                     <div className="modal-prod">
                         <div className="box-img">
@@ -164,7 +141,7 @@ export class ModalProd extends Component {
 
 
                                 <button id="btn-salvar">Salvar</button>
-                                <button id="btn-del" onClick={this.btnDelete}>Excluir</button>
+                                {/* <button id="btn-del" onClick={this.btnDelete}>Excluir</button> */}
                             </div>
                         </div>
                     </div>

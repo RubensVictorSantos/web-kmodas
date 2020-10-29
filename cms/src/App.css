@@ -114,11 +114,17 @@ textarea::placeholder{
   position: absolute;
   top: 0;
   right: 0;
-  padding: 5px;
+  border-radius: 20px 0px 0px 20px;
+  padding: 0px 15px 5px 10px;
+  margin-right: 0px;
   font-size: 1.5rem;
   cursor: pointer;
   color: #dfdfdf;
   font-weight: bold;
+}
+
+.closed:hover{
+  background-color: var(--red);
 }
 
 .box-text{
@@ -180,6 +186,16 @@ input[type='file'] {
 
 #btn-salvar{
   margin-left: auto;
+  border: none;
+  font-weight: bold;
+  background-color: var(--red);
+  color: white;
+  padding: 3px;
+  border-radius: 4px;
+}
+
+.btndel{
+  display: block;
 }
 
 .btnnew{

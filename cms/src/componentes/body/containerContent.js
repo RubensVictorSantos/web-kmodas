@@ -3,6 +3,8 @@ import $ from 'jquery';
 /** */
 import ItemLista from './lista/itemLista';
 import ModalProd from './modal/modalProd';
+import ContainerBuscar from './containerBuscar/containerBuscar';
+import { visualizarProd } from './modulos';
 
 export class ContainerContent extends Component {
 
@@ -14,45 +16,56 @@ export class ContainerContent extends Component {
   componentDidMount() {
     this.visualizarProd();
 
+    // console.log(visualizarProd())
+
   }
 
-  componentDidUpdate(){
-  
+  componentDidUpdate() {
+
   }
 
-  async visualizarProd() {
+  visualizarProd(id = 0) {
 
-    this.setState({ allProd: [] });
+    console.log(id)
 
-    const url = 'http://127.1.1.0:3333/allprod';
+    // let url = '';
 
-    $.ajax({
-      url: url,
-      type: 'get',
-      dataType: 'json',
-      contentType: 'application/json',
-      success: (result) => {
+    // console.log(id);
 
-        this.setState({ allProd: result });
+    // this.setState({ allProd: []});
 
-      },
-      error: (status, error) => {
-        console.log(status, error);
+    // if( id === 0 ){
 
-      }
-    })
+    //   url = `http://127.1.1.0:3333/pordFirstHundred`;
+    
+    // }else{
+    //   url = `http://127.1.1.0:3333/prodId/${id}`;
+
+    // }
+
+    // $.ajax({
+    //   url: url,
+    //   type: 'get',
+    //   dataType: 'json',
+    //   contentType: 'application/json',
+    //   success: (result) => {
+
+    //     this.setState({ allProd: result });
+
+    //   },
+    //   error: (status, error) => {
+    //     console.log(status, error);
+
+    //   }
+    // })
   }
 
-  toggleModal = (produto) => {
+  toggleModal = () => {
 
     this.setState({
       isOpen: !this.state.isOpen,
-      produto: produto
-
     });
   }
-
-
 
   render() {
 
@@ -60,18 +73,14 @@ export class ContainerContent extends Component {
 
     return (
       <div className="content">
-
-        <div className="t-col">
-          
-          <ModalProd show={this.state.isOpen} onClose={this.toggleModal}/>
-
-          <button className="btnnew" onClick={this.toggleModal} type="" id="btnnew"></button>
-        </div>
+        <ModalProd show={this.state.isOpen} onClose={this.toggleModal} />
+        
+        <ContainerBuscar visualizarProd={this.visualizarProd} onClose={this.toggleModal}/>
 
         <div className="tbl">
           {
             produto.map(produto => (
-              <ItemLista key={produto.cod_prod} produto={produto} getProd={this.toggleModal}/>
+              <ItemLista key={produto.cod_prod} produto={produto} onClose={this.toggleModal} />
             ))
           }
         </div>

@@ -14,23 +14,16 @@ export class ItemLista extends Component {
 
     this.state = { produto: produto }
 
-
-
   }
 
   componentDidMount() {
-
-    // console.log(this.state.produto);
-
-
-
   }
 
-  // toggleModal = () => {
-  //   this.setState({
-  //     isOpen: !this.state.isOpen
-  //   });
-  // }
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 
 
   render() {
@@ -39,8 +32,8 @@ export class ItemLista extends Component {
 
     return (
       <Fragment>
-        {/* <ModalProd produto={this.state.produto} show={this.state.isOpen} status={'editar'} onClose={this.toggleModal}/> */}
-        <div className="t-row" onClick={this.props.getProd(this.state.produto)}>
+        <ModalProd produto={this.state.produto} show={this.state.isOpen} status={'editar'} onClose={this.toggleModal}/>
+        <div className="t-row" onClick={ this.toggleModal }>
           <div className="t-col">
             <div className="img-list">
               <img src={DOMAIN_IMG + img_prod} alt={"Imagem " + img_prod} width="120px" height="auto" />

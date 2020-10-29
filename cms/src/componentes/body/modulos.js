@@ -33,11 +33,7 @@ export const editProd = (produto) => {
         data: JSON.stringify(produto),
         header: "x-access-token",
         dataType: "json",
-        contentType: "application/json",
-        success: (result) => {
-            // console.log(' Produto ' + result.nome_prod + ' atualizado com sucesso! ');
-
-        }
+        contentType: "application/json"
     })
 }
 
@@ -52,10 +48,6 @@ export const insertProd = (produto) => {
         header: "x-access-token",
         dataType: "json",
         contentType: "application/json",
-        success: (result) => {
-            // console.log(' Produto ' + result.nome_prod + ' inserido com sucesso! ');
-
-        },
         error: (status) => {
 
             console.log(' Erro ao inserir produto ');
@@ -66,21 +58,17 @@ export const insertProd = (produto) => {
     })
 }
 
-export const deleteProd = (produto) => {
+export const deleteProd = (id) => {
 
     const url = "http://127.1.1.0:3333/delProd";
 
     $.ajax({
         url: url,
         type: "delete",
-        data: { "cod_prod": produto.cod_prod },
+        data: { "cod_prod": id },
         header: "x-access-token",
         dataType: "json",
         contentType: "application/json",
-        success: (result) => {
-            // console.log(' Produto ' + result.nome_prod + ' inserido com sucesso! ');
-
-        },
         error: (status) => {
 
             console.log(' Erro ao deletar produto ');
@@ -91,6 +79,9 @@ export const deleteProd = (produto) => {
     })
 
 }
+
+
+/** FUNÇÃO PARA LIMPAR CAMPOS */
 
 export const clearInput = (produto) => {
 
@@ -116,3 +107,4 @@ export const clearInput = (produto) => {
 
     return produto
 }
+
