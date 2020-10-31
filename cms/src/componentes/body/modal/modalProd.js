@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import $ from 'jquery'
 /** */
 import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
-import urlImg, { clearInput, editProd, insertProd } from '../modulos';
+import { urlImg, clearInput, editProd, insertProd } from '../modulos';
 
 export class ModalProd extends Component {
     constructor(props) {

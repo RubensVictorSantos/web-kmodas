@@ -2,7 +2,7 @@ import $ from 'jquery';
 /** */
 import { DOMAIN_IMG_DEFAULT } from '../../link_config';
 
-export default function urlImg(input, idimg) {
+export function urlImg(input, idimg) {
 
     let img = document.getElementById(idimg);
 

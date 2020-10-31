@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 /** */
-import './App.css';
+import './recursos/css/App.css';
 import { Routes } from './routes';
 
 export class App extends Component {
