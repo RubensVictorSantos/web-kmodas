@@ -580,6 +580,71 @@ ul, li, h1, h2, p, body {
 		color: white;
     }
 
+	/** Carousel */
+
+	:root{
+	--carousel-width: 360px;
+	/* --carousel-height: 300px; */
+	}
+	
+	body * { -webkit-user-select: none }
+	
+	.wrap {
+	position: relative	;
+	width: var(--carousel-width);
+	height: 300px;
+	margin: 0 auto;
+	}
+	
+	.window {
+	overflow: hidden;
+	position: relative;
+	background: #222;
+	}
+	
+	#carousel {
+	width: 10000px;
+	position: relative;
+	top: 0; left: -450px;
+	}
+	
+	.slide {
+	height: 300px;
+	width: 360px;
+	cursor: pointer;
+	float: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	}
+	
+	.slide#b1 { background: #556270 }
+	.slide#b2 { background: #4ECDC4 }
+	.slide#b3 { background: #9CE462 }
+	.slide#b4 { background: #FF6B6B }
+	.slide#b5 { background: #C44D33 }
+	
+	#prev, #next {
+	cursor: pointer;
+	position: absolute;
+	bottom: -40px;
+	font-size: 14pt;
+	}
+	
+	#prev { 
+		background-color: rgb(255,60,110);
+		left: 0 
+	}
+	
+	#next { 
+		background-color: rgb(255,60,110);
+		right: 0 
+	}
+
+	.transition {
+	transition: .7s;
+	}
+
 	/* ********************* Conteúdo ********************* */
 
     .content-body{

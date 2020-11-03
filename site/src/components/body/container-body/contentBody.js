@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import $ from 'jquery'; 
+import $ from 'jquery';
 /** */
 import { CardProd } from '../card-prod/cardProd';
+import Carousel from '../carousel/carousel';
 
 export class ContentBody extends Component {
 
     state = { allProd: [] }
 
-    componentDidMount(){
-        
+    componentDidMount() {
+
         const url = 'http://127.1.1.0:3333/prodStatusOn';
 
         $.ajax({
@@ -17,10 +18,8 @@ export class ContentBody extends Component {
             dataType: 'json',
             contentType: 'application/json',
             success: (result) => {
-
                 this.setState({ allProd: result });
 
-                console.log(result)
             },
             error: (status, error) => {
 
@@ -34,6 +33,9 @@ export class ContentBody extends Component {
 
         return (
             <div className="content-body">
+                <div>
+                    <Carousel />
+                </div>
                 <section className="container-cards">
                     {
                         this.state.allProd.map(produto => (

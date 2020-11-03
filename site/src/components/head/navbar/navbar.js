@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import $ from 'jquery';
-
+/** */
 import '../../../css/style.css';
 import imgUser from '../../../ico/ico-user.svg';
 
-export class Navbar extends Component{
+export class Navbar extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         this.openMenu()
     }
 
@@ -16,7 +16,7 @@ export class Navbar extends Component{
             $("#modal-menu").removeClass("modal-close");
             $("#modal-menu").addClass("modal-open")
         });
-    
+
         $('#close').on('click', () => {
             $("#modal-menu").removeClass("modal-open");
             $("#modal-menu").addClass("modal-close");
@@ -44,7 +44,7 @@ export class Navbar extends Component{
                             <li>
                                 <div className="view-user">
                                     <div className="img-user">
-                                        <img src={imgUser} alt={ 'Imagem ' + imgUser } className="img" />
+                                        <img src={imgUser} alt={'Imagem ' + imgUser} className="img" />
 
                                     </div>
 
