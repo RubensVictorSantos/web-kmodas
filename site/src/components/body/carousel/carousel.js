@@ -9,7 +9,7 @@ export class Carousel extends Component {
 
         var carousel = $('#carousel');
         var threshold = 150;
-        var slideWidth = 500;
+        var slideWidth = 365;
         var dragStart;
         var dragEnd;
 
@@ -84,8 +84,8 @@ export class Carousel extends Component {
                         <span className="slide" id="b5">SLIDE-5</span>
                     </div>
                 </div>
-                <span id="prev">PREV</span>
-                <span id="next">NEXT</span>
+                <span id="prev"></span>
+                <span id="next"></span>
             </div>
         )
     }
