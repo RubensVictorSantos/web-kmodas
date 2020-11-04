@@ -483,8 +483,8 @@ ul, li, h1, h2, p, body {
     }
 	
 	.btn-menu{
-		width: 40px;
-        height: 40px;
+		width: 35px;
+        height: 35px;
 		background-color: var(--red);
 		background-image: url("../ico/ico-menu-round.svg");
 		background-repeat: no-repeat;
@@ -591,39 +591,36 @@ ul, li, h1, h2, p, body {
 	body * { -webkit-user-select: none }
 	
 	.wrap {
-	
-	position: relative	;
-	width: var(--carousel-width);
-	height: 300px;
-	margin: 0 auto;
-	margin-bottom: 30px;
+		position: relative	;
+		width: var(--carousel-width);
+		height: 300px;
+		margin: 0 auto;
+		margin-bottom: 30px;
 	}
 	
 	.window {
-	overflow: hidden;
-	position: relative;
-	background: #222;
+		overflow: hidden;
+		position: relative;
 	}
 	
 	#carousel {
-	/* display: flex;
-	justify-content: center; */
-	width: 10000px;
-	position: relative;
-	background-color: rgba(0,0,0,0.9);
-	top: 0; left: -365px;
+		width: 10000px;
+		position: relative;
+		top: 0; left: -364px;
 	}
 	
 	.slide {
-	height: 300px;
-	width: 360px;
-	cursor: pointer;
-	float: left;
-	display: flex;
-	text-align: center;
-	flex-direction: column;
-	justify-content: center;
+		height: 300px;
+		width: 360px;
+		cursor: pointer;
+		float: left;
+		color: black;
+		display: flex;
+		text-align: center;
+		flex-direction: column;
+		justify-content: center;
 	}
+	
 	
 	.slide#b1 { background: #556270; }
 	.slide#b2 { background: #4ECDC4; }
@@ -631,25 +628,25 @@ ul, li, h1, h2, p, body {
 	.slide#b4 { background: #FF6B6B; }
 	.slide#b5 { background: #C44D33; }
 	
+
 	#prev, #next {
 	cursor: pointer;
 	width: 20px;
 	height: 20px;
 	border-radius: 50px;
-	border: 1px solid rgb(130,130,130,0.6);
-	background-color: rgba(130,130,130,0.5);
-	/* background-color: salmon; */
+	border: 1px solid rgb(130,130,130,0.1);
+	background-color: rgba(130,130,130,0.3);
 	position: absolute;
 	bottom: -25px;
 	font-size: 14pt;
 	}
 
 	#prev:hover , #next:hover{
-		background-color: rgb(130,130,130,0.7);
+		background-color: rgb(130,130,130,0.4);
 	}
 	
 	#prev:active , #next:active{
-		background-color: rgb(130,130,130,0.7);
+		background-color: rgb(130,130,130,0.5);
 	}
 
 	#prev { 
@@ -662,7 +659,7 @@ ul, li, h1, h2, p, body {
 	}
 
 	.transition {
-	transition: .7s;
+	transition: .5s;
 	}
 
 	/* ********************* Conteúdo ********************* */
