@@ -609,7 +609,7 @@ ul, li, h1, h2, p, body {
 		top: 0; left: -364px;
 	}
 	
-	.slide {
+	.slide:not(.img-c) {
 		height: 300px;
 		width: 360px;
 		cursor: pointer;
@@ -619,14 +619,17 @@ ul, li, h1, h2, p, body {
 		text-align: center;
 		flex-direction: column;
 		justify-content: center;
+		background-position: 'center';
+		filter: blur(30px);
+
 	}
 	
 	
-	.slide#b1 { background: #556270; }
+	/* .slide#b1 { background: #556270; }
 	.slide#b2 { background: #4ECDC4; }
 	.slide#b3 { background: #9CE462; }
 	.slide#b4 { background: #FF6B6B; }
-	.slide#b5 { background: #C44D33; }
+	.slide#b5 { background: #C44D33; } */
 	
 
 	#prev, #next {

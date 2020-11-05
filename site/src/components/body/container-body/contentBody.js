@@ -10,7 +10,8 @@ export class ContentBody extends Component {
 
     componentDidMount() {
 
-        const url = 'http://127.1.1.0:3333/prodStatusOn';
+
+        const url = `http://127.1.1.0:3333/prodAll`;
 
         $.ajax({
             url: url,

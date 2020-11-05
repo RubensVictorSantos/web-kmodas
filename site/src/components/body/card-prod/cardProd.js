@@ -6,7 +6,6 @@ export class CardProd extends Component {
     constructor(props) {
         super()
 
-
     }
 
     componentDidMount() {
