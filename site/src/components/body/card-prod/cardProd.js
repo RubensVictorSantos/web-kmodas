@@ -15,13 +15,6 @@ export class CardProd extends Component {
     render() {
         return (
             <div className="card-closed" id="card-prod">
-                <div className="title-card">
-                    <p>
-                        {
-                            this.props.produto.nome_prod
-                        }
-					</p>
-                </div>
                 <picture className="box-img-card">
                     <img src={
                         DOMAIN_IMG + this.props.produto.img_prod
@@ -39,11 +32,14 @@ export class CardProd extends Component {
 
                     </div>
                 </picture>
+                <div className="title-card">
+                    <p>
+                        {   this.props.produto.nome_prod    }
+					</p>
+                </div>
                 <div className="box-price" id="box-price">
                     <p> 
-                        {
-                            'R$' + this.props.produto.preco_prod
-                        }
+                        R${   this.props.produto.preco_prod    }
                     </p>
                 </div>
                 <div className="view-card">
