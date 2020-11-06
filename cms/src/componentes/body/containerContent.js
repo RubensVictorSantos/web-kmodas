@@ -8,12 +8,13 @@ import ContainerBuscar from './containerBuscar/containerBuscar';
 export class ContainerContent extends Component {
 
   state = {
-    allProd: []
+    allProd: [],
+    limits: undefined
 
   }
 
   componentDidMount() {
-    this.visualizarProd();
+    this.visualizarProd(this.state.limits);
 
   }
 
@@ -21,11 +22,11 @@ export class ContainerContent extends Component {
 
   }
 
-  visualizarProd() {
+  async visualizarProd(num = 20) {
 
     this.setState({ allProd: []});
 
-    let url = `http://127.1.1.0:3333/pordFirstHundred`;
+    let url = `http://127.1.1.0:3333/prod-LimitedNumber/` + num;
 
     $.ajax({
       url: url,
@@ -49,11 +50,13 @@ export class ContainerContent extends Component {
     this.setState({
       isOpen: !this.state.isOpen,
     });
+
+    this.visualizarProd()
   }
 
   render() {
 
-    const produto = this.state.allProd;
+    const allProd = this.state.allProd;
 
     return (
       <div className="content">
@@ -62,11 +65,20 @@ export class ContainerContent extends Component {
         <ContainerBuscar onClose={this.toggleModal}/>
 
         <div className="tbl">
+
+    <p>{ this.state.limits }</p>
+
           {
-            produto.map(produto => (
+            allProd.map(produto => (
               <ItemLista key={produto.cod_prod} produto={produto} onClose={this.toggleModal} />
             ))
           }
+          
+          <div className="t-row">
+            <div className="t-col">
+              <input className="btn-carregar-itens" type='button' value='Carregar +'/>
+            </div>
+          </div>
         </div>
 
       </div>
