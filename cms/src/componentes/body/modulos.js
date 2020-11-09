@@ -25,7 +25,7 @@ export function urlImg(input, idimg) {
 
 export const editProd = (produto) => {
 
-    const url = "http://127.1.1.0:3333/updateProd";
+    const url = "http://127.1.1.0:3333/prodUpdate";
 
     $.ajax({
         url: url,
@@ -33,13 +33,17 @@ export const editProd = (produto) => {
         data: JSON.stringify(produto),
         header: "x-access-token",
         dataType: "json",
-        contentType: "application/json"
+        contentType: "application/json",
+        success(result){
+            console.log(result)
+        }
+
     })
 }
 
 export const insertProd = (produto) => {
 
-    const url = "http://127.1.1.0:3333/addProd";
+    const url = "http://127.1.1.0:3333/prodAdd";
 
     $.ajax({
         url: url,

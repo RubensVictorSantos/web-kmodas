@@ -25,7 +25,7 @@ export class ContainerContent extends Component {
 
     this.setState({ allProd: []});
 
-    let url = `http://127.1.1.0:3333/pordFirstHundred`;
+    let url = `http://127.1.1.0:3333/prodAll`;
 
     $.ajax({
       url: url,

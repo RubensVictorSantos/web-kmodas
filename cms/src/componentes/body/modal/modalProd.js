@@ -47,6 +47,8 @@ export class ModalProd extends Component {
 
         let produto = { ...this.state.produto }
 
+        console.log('Status modal: ' + this.state.status );
+
         if (this.props.status === 'editar') {
             editProd(produto);
 
