@@ -1,0 +1,52 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+    <path d=" 
+        M -54 0 
+        H 154
+        V 100
+        H -54
+        Z" 
+        
+        fill='red' stroke="red" stroke-width="5"/>
+    <!-- <defs>
+        <filter x="0"  y="0" id="f1" width="200%"  height="200%">
+	        <feDropShadow
+                x="-54" y="0"
+                stdDeviation="0 0"
+                in="SourceGraphic" 
+                dx="3" dy="3" 
+                flood-color="#000"  
+                result="dropShadow1"
+            />
+        
+        </filter>
+    </defs> -->
+
+    <defs>
+        <filter x="0"  y="0" id="f1" width="100" fill="rgb(255,200,100,0.5)"  height="100">
+	        <feDropShadow
+                x="-54" y="0"
+                stdDeviation="0 0"
+                in="SourceGraphic" 
+                dx="3" dy="3" 
+                flood-color="#000"  
+                result="dropShadow1"
+            />
+        
+        </filter>
+    </defs>
+
+    <text x="-54"  y="60" 
+        text-anchor="center" 
+        fill="white" 
+        font-size="40" 
+        letter-spacing="normal" 
+        font-weight="bold" 
+        font-family="Georgia" 
+        filter="url(#f1)"
+        font-style="italic"
+        >
+        
+        K. modas
+    
+    </text>
+</svg>
