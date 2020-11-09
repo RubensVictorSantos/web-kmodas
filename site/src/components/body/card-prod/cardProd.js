@@ -34,16 +34,12 @@ export class CardProd extends Component {
                 </picture>
                 <div className="title-card">
                     <p>
-                        {
-                            this.props.produto.nome_prod
-                        }
+                        {   this.props.produto.nome_prod    }
 					</p>
                 </div>
                 <div className="box-price" id="box-price">
                     <p> 
-                        {
-                            'R$' + this.props.produto.preco_prod
-                        }
+                        R${   this.props.produto.preco_prod    }
                     </p>
                 </div>
                 <div className="view-card">
