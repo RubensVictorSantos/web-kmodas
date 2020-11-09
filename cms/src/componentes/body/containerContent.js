@@ -6,10 +6,14 @@ import ModalProd from './modal/modalProd';
 import ContainerBuscar from './containerBuscar/containerBuscar';
 
 export class ContainerContent extends Component {
+  constructor(){
+    super()
 
+    this.carregarItens = this.carregarItens;
+  }
   state = {
     allProd: [],
-    limits: undefined
+    limits: 5
 
   }
 
@@ -22,9 +26,11 @@ export class ContainerContent extends Component {
 
   }
 
-  async visualizarProd(num = 20) {
+  async visualizarProd(num) {
 
-    this.setState({ allProd: []});
+    console.log(num)
+
+    this.setState({ allProd: [] });
 
     let url = `http://127.1.1.0:3333/prod-LimitedNumber/` + num;
 
@@ -54,6 +60,19 @@ export class ContainerContent extends Component {
     this.visualizarProd()
   }
 
+  carregarItens = () => { 
+
+    console.log('Carregar: ' + this.state.limits);
+
+    let num = this.state.limits + 5
+
+    this.setState({
+      limits: num
+    })
+
+    this.visualizarProd(this.state.limits)
+  }
+
   render() {
 
     const allProd = this.state.allProd;
@@ -61,26 +80,23 @@ export class ContainerContent extends Component {
     return (
       <div className="content">
         <ModalProd show={this.state.isOpen} onClose={this.toggleModal} />
-        
-        <ContainerBuscar onClose={this.toggleModal}/>
+
+        <ContainerBuscar onClose={this.toggleModal} />
+
+        {/* teste:
+        <p>{this.state.limits}</p> */}
 
         <div className="tbl">
-
-    <p>{ this.state.limits }</p>
 
           {
             allProd.map(produto => (
               <ItemLista key={produto.cod_prod} produto={produto} onClose={this.toggleModal} />
             ))
           }
-          
-          <div className="t-row">
-            <div className="t-col">
-              <input className="btn-carregar-itens" type='button' value='Carregar +'/>
-            </div>
-          </div>
         </div>
-
+        <div>
+          <input className="btn-carregar-itens" onClick={this.carregarItens} type='button' value='Carregar +20' /><label>Total: { this.state.allProd.length }</label>
+        </div>
       </div>
     )
   }
