@@ -16,7 +16,6 @@ export class ContainerBuscar extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.visualizarProd)
     }
 
     handleChange(e) {
@@ -39,8 +38,6 @@ export class ContainerBuscar extends Component {
         let input = { ...this.state.input }
 
         this.setState({ input })
-
-        console.log(input.txtId);
 
 
         // export const buscarProdId = (id) => {
@@ -84,7 +81,7 @@ export class ContainerBuscar extends Component {
 
                     {/* <button type='submit' className="" id="">Buscar</button> */}
                     <button type='submit' className="" id="">Buscar</button>
-                    <button className="" onClick={this.props.onClose} type="" id="btnnew">Novo</button>
+                    <button className="" onClick={this.props.onClose} type="" id="btn-novo">Novo</button>
                 </form>
             /* </div> */
 

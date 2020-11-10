@@ -4,6 +4,7 @@ import SvgAtivo from '../../../recursos/ico/check-green.svg';
 import SvgInativo from '../../../recursos/ico/check-gray.svg';
 import { DOMAIN_IMG } from '../../../link_config';
 import ModalProd from '../modal/modalProd';
+import './style.css';
 
 export class ItemLista extends Component {
   constructor(props) {

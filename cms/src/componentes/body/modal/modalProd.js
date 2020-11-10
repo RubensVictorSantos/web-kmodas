@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 /** */
 import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
 import { urlImg, clearInput, editProd, insertProd } from '../modulos';
-import ContainerContent from '../containerContent';
+import './style.css' 
+// import ContainerContent from '../containerContent';
 
 export class ModalProd extends Component {
     constructor(props) {
@@ -72,8 +73,8 @@ export class ModalProd extends Component {
 
         return (
 
-            <div className="view-p" id="view-p">
-                <span className="closed" id="closed" onClick={this.props.onClose}>&times;</span>
+            <div className="view-produto" id="view-p">
+                <span className="close" id="closed" onClick={this.props.onClose}>&times;</span>
                 <form onSubmit={this.formProd} id="form">
                     <div className="modal-prod">
                         <div className="box-img">
@@ -85,14 +86,14 @@ export class ModalProd extends Component {
                                 ref={this.fileInput} />
 
                             <img id="imgprod" src={img_prod === undefined || img_prod === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + img_prod} alt={img_prod} width="200px" height="250px" />
-                            <label tabIndex='0' htmlFor="selecao-arquivo" id="lbl_file">Selecionar um arquivo</label>
+                            <label tabIndex='0' htmlFor="selecao-arquivo" id="lbl-file">Selecionar um arquivo</label>
                         </div>
 
                         <div className="">
                             <div className="box-text">
 
                                 <input type="text"
-                                    className="inp-modal"
+                                    className="input-modal"
                                     name="nome_prod"
                                     value={nome_prod || ''}
                                     onChange={this.handleChange}
@@ -103,7 +104,7 @@ export class ModalProd extends Component {
                             </div>
                             <div className="box-text">
                                 <textarea
-                                    className="inp-modal"
+                                    className="input-modal"
                                     value={descricao_prod}
                                     name="descricao_prod"
                                     placeholder="Descrição do Produto"
@@ -115,7 +116,7 @@ export class ModalProd extends Component {
                             </div>
                             <div className="box-text">
                                 <input type="text"
-                                    className="inp-modal"
+                                    className="input-modal"
                                     name="preco_prod"
                                     value={preco_prod || ''}
                                     onChange={this.handleChange}

@@ -6,11 +6,7 @@ import ModalProd from './modal/modalProd';
 import ContainerBuscar from './containerBuscar/containerBuscar';
 
 export class ContainerContent extends Component {
-  constructor(){
-    super()
 
-    this.carregarItens = this.carregarItens;
-  }
   state = {
     allProd: [],
     limits: 5
@@ -26,9 +22,7 @@ export class ContainerContent extends Component {
 
   }
 
-  async visualizarProd(num) {
-
-    console.log(num)
+  visualizarProd(num) {
 
     this.setState({ allProd: [] });
 
@@ -57,20 +51,18 @@ export class ContainerContent extends Component {
       isOpen: !this.state.isOpen,
     });
 
-    this.visualizarProd()
+    this.visualizarProd(this.state.limits)
   }
 
-  carregarItens = () => { 
-
-    console.log('Carregar: ' + this.state.limits);
-
-    let num = this.state.limits + 5
+  carregarItens = () => {
+    
+    let num = this.state.limits + 5;
 
     this.setState({
       limits: num
     })
 
-    this.visualizarProd(this.state.limits)
+    this.visualizarProd(num)
   }
 
   render() {
@@ -82,9 +74,6 @@ export class ContainerContent extends Component {
         <ModalProd show={this.state.isOpen} onClose={this.toggleModal} />
 
         <ContainerBuscar onClose={this.toggleModal} />
-
-        {/* teste:
-        <p>{this.state.limits}</p> */}
 
         <div className="tbl">
 
