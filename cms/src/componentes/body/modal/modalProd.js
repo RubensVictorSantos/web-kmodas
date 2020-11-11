@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 /** */
 import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
 import { urlImg, clearInput, editProd, insertProd } from '../modulos';
-import ContainerContent from '../containerContent';
+// import ContainerContent from '../containerContent';
 
 export class ModalProd extends Component {
     constructor(props) {

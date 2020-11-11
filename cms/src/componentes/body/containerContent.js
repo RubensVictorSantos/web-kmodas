@@ -6,11 +6,12 @@ import ModalProd from './modal/modalProd';
 import ContainerBuscar from './containerBuscar/containerBuscar';
 
 export class ContainerContent extends Component {
-  constructor(){
-    super()
+  // constructor(){
+  //   super()
 
-    this.carregarItens = this.carregarItens;
-  }
+  //   this.carregarItens = this.carregarItens;
+  // }
+  
   state = {
     allProd: [],
     limits: 5
