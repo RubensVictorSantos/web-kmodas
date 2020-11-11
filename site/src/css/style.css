@@ -479,13 +479,14 @@ ul, li, h1, h2, p, body {
 		top: 0;
 		z-index: 1;
 		position: sticky ;
+		/* background: linear-gradient(90deg, var(--red-active) 10%, var(--red) 40%, var(--rosa) 80%); */
         background-color: var(--red);
     }
 	
 	.btn-menu{
 		width: 35px;
         height: 35px;
-		background-color: var(--red);
+		background-color: var(--red-active);
 		background-image: url("../ico/ico-menu-round.svg");
 		background-repeat: no-repeat;
 		background-position: center;

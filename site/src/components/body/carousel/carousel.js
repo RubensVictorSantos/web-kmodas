@@ -87,7 +87,7 @@ export class Carousel extends Component {
 
         this.setState({ produto: [] });
 
-        let url = `http://127.0.0.1:3333/prodLimitedNumber/` + 5
+        let url = `http://127.0.0.1:3333/prod-LimitedNumber/` + 5
 
         $.ajax({
             url: url,
