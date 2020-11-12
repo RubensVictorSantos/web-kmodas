@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import {Link} from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import $ from 'jquery';
 /** */
-// import '../../../css/style.css';
+import logo from '../../../ico/logo.svg';
 import './style.css';
 import imgUser from '../../../ico/ico-user.svg';
 
@@ -15,13 +15,13 @@ export class Navbar extends Component {
     openMenu = () => {
         /** Abrir Menu Mobile*/
         $('.btn-menu').on('click', () => {
-            $("#menu").removeClass("modal-close");
-            $("#menu").addClass("modal-open")
+            $("#sub-menu").removeClass("menu-close");
+            $("#sub-menu").addClass("menu-open")
         });
 
         $('#close').on('click', () => {
-            $("#menu").removeClass("modal-open");
-            $("#menu").addClass("modal-close");
+            $("#sub-menu").removeClass("menu-open");
+            $("#sub-menu").addClass("menu-close");
         });
     }
 
@@ -29,48 +29,48 @@ export class Navbar extends Component {
         return (
             <Fragment>
                 <nav className="navbar">
-                    {/* <button className="btn-menu " id="btn-menu"></button> */}
+                    <ul>
+                        <li>
+                            <ul className="menu">
+                                <li className="item">
+                                    <button className="btn-menu btn-nav" id="btn-menu"></button>
+                                    
+                                </li>
+                                <li className="item">
+                                    <img src={logo} alt={'Imagem ' + logo} className="img" width="100%"/>
+                                    
+                                </li>
+                                <li className="item">
+                                {/* <ul className="sub-menu menu-close" id="sub-menu">
+                                        <li className="sub-item">
+                                            <div className="view-user">
+                                                <div className="img-user">
+                                                    <img src={imgUser} alt={'Imagem ' + imgUser} className="img" />
 
-                    <ul className="menu">
-                        <li className="item">HOME</li>
-                        <li className="item">PRODUTOS</li>
-                        <li className="item">GALERIAS</li>
-                        <li className="item">CONTATOS</li>
+                                                </div>
 
+                                                <div>
+                                                    <label>Olá, visitante!</label>
+                                                </div>
+                                            </div>
+                                            <span className="close" id="close">&times;&nbsp;&nbsp;</span>
+                                        </li>
+                                        <li className="sub-item">HOME</li>
+                                        <li className="sub-item">PRODUTOS</li>
+                                        <li className="sub-item">GALERIAS</li>
+                                        <li className="sub-item">CONTATOS</li>
+                                    </ul>
+                                 */}
+                                </li>
+                                <li className="item">
+                                    <button className="btn-cart btn-nav" id="btn-cart"></button>
+                                </li>
+                            </ul>
+                        </li>
+                        <li style={{height: '40px'}}>
+                            <input className="inp-search" placeholder="O que você procura?" type="text"></input>
+                        </li>
                     </ul>
-
-                    {/* <span className="close" id="close">&times;&nbsp;&nbsp;</span> */}
-                </nav>
-
-                <nav className="navbar-mobile ">
-                    <button className="btn-menu " id="btn-menu"></button>
-
-                    {/* <div className="modal-close" id="modal-menu"> */}
-                        <ul className="menu modal-close" id="menu">
-                            <li className="">
-                                <div className="view-user">
-                                    <div className="img-user">
-                                        <img src={imgUser} alt={'Imagem ' + imgUser} className="img" />
-
-                                    </div>
-
-                                    <div>
-                                        <label>Olá, visitante!</label>
-                                        
-                                        {/* <Link to="#">Logar</Link> */}
-                                        <Link></Link>
-                                    </div>
-                                </div>
-                                <span className="close" id="close">&times;&nbsp;&nbsp;</span>
-
-                            </li>
-                            <li className="item">HOME</li>
-                            <li className="item">PRODUTOS</li>
-                            <li className="item">GALERIAS</li>
-                            <li className="item">CONTATOS</li>
-                        </ul>
-                    {/* </div> */}
-
                 </nav>
             </Fragment>
         )

@@ -4,8 +4,8 @@
 	        <feDropShadow 
                 stdDeviation="0 0"
                 in="SourceGraphic" 
-                dx="3" dy="3" 
-                flood-color="#000" 
+                dx="0" dy="0" 
+                flood-color="#000"
                 x="0%" y="0%" 
                 result="dropShadow1"
             />
@@ -24,7 +24,7 @@
         font-style="italic"
         >
         
-        K. modas
+        K. Modas
     
     </text>
 </svg>
