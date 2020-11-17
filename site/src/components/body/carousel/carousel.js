@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
-import './../../../css/style.css'
+import './style.css'
 import DOMAIN_IMG from '../../../link_config';
 
 export class Carousel extends Component {
@@ -119,7 +119,9 @@ export class Carousel extends Component {
                         {
                             this.state.produto.map( produto =>(
                                 <div key={produto.cod_prod} style={{backgroundImage: `url(${DOMAIN_IMG + produto.img_prod})`}} className="slide" id={`b`+ produto.cod_prod}>
-                                    <img src={DOMAIN_IMG + produto.img_prod} width='220px' height='305px' style={{position: 'relative', margin: '0 auto'}} className='img-c'/>
+                                    <div style={{backgroundColor: 'rgba(255,255,255, 0.9)'}}>
+                                        <img src={DOMAIN_IMG + produto.img_prod} width='220px' height='305px' style={{position: 'relative', margin: '0 auto'}} className='img-c'/>
+                                    </div>
                                 </div>
                             ))
                         }

@@ -235,7 +235,8 @@
         outline: none;
         text-align: center;
         margin: auto;
-    }
+        caret-color: red;
+     }
 
     .inp-search::placeholder{
         font-style: normal;

@@ -68,7 +68,7 @@ export class Navbar extends Component {
                             </ul>
                         </li>
                         <li style={{height: '40px'}}>
-                            <input className="inp-search" placeholder="O que você procura?" type="text"></input>
+                            <input className="inp-search" type="search" placeholder="O que você procura?" type="text"></input>
                         </li>
                     </ul>
                 </nav>
