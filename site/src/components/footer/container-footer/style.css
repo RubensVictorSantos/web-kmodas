@@ -1,0 +1,11 @@
+.main-footer{
+    display: flex;
+    background-color: var(--red);
+    position: relative;
+    color: white;
+    bottom: 0;
+    width: 100vw;
+}
+
+.main-footer ul{
+}

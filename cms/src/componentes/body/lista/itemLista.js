@@ -49,26 +49,26 @@ export class ItemLista extends Component {
                 </h4>
               </div>
 
-              <div className="t-col">
+              <div className="t-col desc-item">
                 <p>
                   {descricao_prod}
                 </p>
               </div>
 
-              <div className="t-col ">
-                R${preco_prod}
+              <div className="t-col preco-item">
+                R${preco_prod} 
 
               </div>
 
             </div>
           </div>
-          <div className="t-col">
-            {
-              status_prod === 1 ? "Ativado" : "Desativado"
-            }
+          <div className="t-col status-item">
             <img src={status_prod === 1 ? SvgAtivo : SvgInativo}
               alt={status_prod === 1 ? SvgAtivo : SvgInativo}
               width="40px" />
+            {
+              status_prod === 1 ? "Ativado" : "Desativado"
+            }
           </div>
         </div>
       </Fragment>

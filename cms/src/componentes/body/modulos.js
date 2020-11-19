@@ -80,7 +80,6 @@ export const deleteProd = (id) => {
 
 }
 
-
 /** FUNÇÃO PARA LIMPAR CAMPOS */
 
 export const clearInput = (produto) => {

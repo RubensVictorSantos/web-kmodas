@@ -1,14 +1,15 @@
 /* CSS Itens Produtos */
 
 .t-row{
-    display: grid;
-    grid-template-columns: 1fr 10fr 1fr ;
-    padding: 0.3rem;
-    border: var(--b-row);
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr ;
+  padding: 0.3rem;
+  border: var(--b-row);
 }
 
 .t-row:hover{
   background-color: #f0f0f0;
+  cursor: pointer;
 }
 
 .t-row:active{
@@ -24,6 +25,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .img-list{
@@ -33,6 +35,7 @@
     align-items: center;
     background-position: center;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .t-title{
@@ -40,4 +43,18 @@
     grid-template-columns: 1fr 1fr 7fr 1fr 1fr 0.3fr 1fr 1fr;
     font-weight: bold;
     text-align: center;
+}
+
+.status-item{
+  font-size: 0.9rem;
+  color: rgb(200,225,200);
+}
+
+.preco-item{
+  font-weight: bold;
+  color: rgb(0,200,10);
+}
+
+.desc-item{
+  color: rgb(150,150,150)
 }

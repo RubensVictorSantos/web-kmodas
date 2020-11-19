@@ -41,7 +41,7 @@ export class Navbar extends Component {
                                     
                                 </li>
                                 <li className="item">
-                                {/* <ul className="sub-menu menu-close" id="sub-menu">
+                                <ul className="sub-menu menu-close" id="sub-menu">
                                         <li className="sub-item">
                                             <div className="view-user">
                                                 <div className="img-user">
@@ -60,7 +60,7 @@ export class Navbar extends Component {
                                         <li className="sub-item">GALERIAS</li>
                                         <li className="sub-item">CONTATOS</li>
                                     </ul>
-                                 */}
+                                
                                 </li>
                                 <li className="item">
                                     <button className="btn-cart btn-nav" id="btn-cart"></button>
