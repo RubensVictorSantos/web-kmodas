@@ -1,5 +1,11 @@
 import React, { Component, Fragment } from 'react';
 /** */
+import logo from '../../../ico/logo.svg';
+import youtube from '../../../ico/yout.png';
+import pin from '../../../ico/pin.png';
+import twitter from '../../../ico/twitter-1722376-1466162.webp';
+// import youtube from '../../../ico/yout.png';
+
 import './style.css'
 
 export class ContentFooter extends Component{
@@ -7,7 +13,8 @@ export class ContentFooter extends Component{
         return(
             <Fragment>
                 <div className="main-footer">
-                    <ul>
+                    <img src={logo} alt={'Imagem ' + logo} className="" width="50%"/>
+                    {/* <ul>
                         <li>
                             <h5>Contato:</h5>
                         </li>
@@ -56,7 +63,18 @@ export class ContentFooter extends Component{
                         <li>Twitter</li>
                         <li>Youtube</li>
                         
-                    </ul>
+                    </ul> */}
+                    <div class="redes">
+                        <img src={youtube} alt={{}} width="64px" height="64px"></img>
+                        <img src={pin}     alt={{}} width="40px" height="40px"></img>
+                        <img src={twitter} alt={{}} width="64px" height="64px"></img>
+                        {/* <img src={youtube} alt={{}} width="64px" height="64px"></img> */}
+
+                    </div>
+                    <selection>
+                        <h3>FORMAS DE PAGAMENTO</h3>
+                    </selection>
+                    Site developed by Rubens Victor
                 </div>
             </Fragment>
         )

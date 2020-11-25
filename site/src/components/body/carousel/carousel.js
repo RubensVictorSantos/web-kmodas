@@ -5,7 +5,7 @@ import './style.css'
 import DOMAIN_IMG from '../../../link_config';
 
 export class Carousel extends Component {
-    constructor() {
+    constructor(props) {
         super()
 
     }
@@ -16,7 +16,7 @@ export class Carousel extends Component {
 
     componentDidMount() {
 
-        this.chargeCarousel()
+        this.chargeCarousel(this.props.itensCarousel)
 
         var carousel = $('#carousel');
         var threshold = 150;
@@ -83,11 +83,11 @@ export class Carousel extends Component {
         }
     }
 
-    chargeCarousel() {
+    chargeCarousel(itensCarousel) {
 
         this.setState({ produto: [] });
 
-        let url = `http://127.0.0.1:3333/prod-LimitedNumber/` + 5
+        let url = `http://127.0.0.1:3333/prod-LimitedNumber/` + itensCarousel
 
         $.ajax({
             url: url,
@@ -96,8 +96,6 @@ export class Carousel extends Component {
             contentType: 'application/json',
             success: (result) => {
                 this.setState({ produto: result });
-
-                console.log(result)
 
             },
             error: (status, error) => {
@@ -110,27 +108,19 @@ export class Carousel extends Component {
 
     render() {
 
-        // console.log(this.state.produto)
-
         return (
             <div className="wrap">
                 <div className="window">
                     <div id="carousel">
                         {
                             this.state.produto.map( produto =>(
-                                <div key={produto.cod_prod} style={{backgroundImage: `url(${DOMAIN_IMG + produto.img_prod})`}} className="slide" id={`b`+ produto.cod_prod}>
+                                <div key={produto.cod_prod} className="slide" id={`b`+ produto.cod_prod}>
                                     <div style={{backgroundColor: 'rgba(255,255,255, 0.9)'}}>
                                         <img src={DOMAIN_IMG + produto.img_prod} width='220px' height='305px' style={{position: 'relative', margin: '0 auto'}} className='img-c'/>
                                     </div>
                                 </div>
                             ))
                         }
-
-                        {/* <span className="slide" id="b1"></span>
-                        <span className="slide" id="b2"></span>
-                        <span className="slide" id="b3"></span>
-                        <span className="slide" id="b4"></span>
-                        <span className="slide" id="b5"></span> */}
                     </div>
                 </div>
                 <span id="prev"></span>

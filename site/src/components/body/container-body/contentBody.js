@@ -34,7 +34,7 @@ export class ContentBody extends Component {
         return (
             <div className="content-body">
                 <div style={{marginBottom: '30px'}}>
-                    <Carousel />
+                    <Carousel itensCarousel={5}/>
                 </div>
                 <section className="container-cards">
                     {
