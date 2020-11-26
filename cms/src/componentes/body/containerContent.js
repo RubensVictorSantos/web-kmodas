@@ -56,7 +56,7 @@ export class ContainerContent extends Component {
 
   carregarItens = () => {
     
-    let num = this.state.limits + 5;
+    let num = this.state.limits + 20;
 
     this.setState({
       limits: num

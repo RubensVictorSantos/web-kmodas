@@ -1,0 +1,78 @@
+	/** Carousel */
+
+@media screen and (min-width: 1000px){
+
+}
+    
+@media only screen and (max-width: 999px) and (min-width: 681px){
+
+}
+    
+@media screen and (max-width: 680px){
+
+	.wrap {
+		position: relative	;
+		width: var(--carousel-width);
+		height: 300px;
+		margin: 0 auto;
+		margin-bottom: 30px;
+	}
+	
+	.window {
+		overflow: hidden;
+		position: relative;
+	}
+	
+	#carousel {
+		width: 10000px;
+		position: relative;
+		top: 0; left: -364px;
+	}
+	
+	.slide:not(.img-c) {
+		height: 300px;
+		width: 360px;
+		cursor: pointer;
+		float: left;
+		color: black;
+		display: flex;
+		text-align: center;
+		flex-direction: column;
+		justify-content: center;
+		background-position: 'center';
+
+	}
+
+	#prev, #next {
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	border-radius: 50px;
+	border: 1px solid rgb(130,130,130,0.1);
+	background-color: rgba(130,130,130,0.3);
+	position: absolute;
+	bottom: -25px;
+	font-size: 14pt;
+	}
+
+	#prev:hover , #next:hover{
+		background-color: rgb(130,130,130,0.4);
+	}
+	
+	#prev:active , #next:active{
+		background-color: rgb(130,130,130,0.5);
+	}
+
+	#prev { 
+		left: 40%
+		 
+	}
+	
+	#next { 
+		right: 40% 
+	}
+
+	.transition {
+	transition: .5s;
+    }
+}

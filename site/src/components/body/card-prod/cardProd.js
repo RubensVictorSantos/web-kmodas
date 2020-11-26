@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 /** */
 import Img_like from './../../../ico/ico-heart.svg'
+import './style.css'
 import DOMAIN_IMG from '../../../link_config'
 export class CardProd extends Component {
     constructor(props) {
