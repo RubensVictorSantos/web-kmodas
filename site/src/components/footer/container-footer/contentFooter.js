@@ -64,7 +64,7 @@ export class ContentFooter extends Component{
                         <li>Youtube</li>
                         
                     </ul> */}
-                    <div class="redes">
+                    <div className="redes">
                         <img src={youtube} alt={{}} width="64px" height="64px"></img>
                         <img src={pin}     alt={{}} width="40px" height="40px"></img>
                         <img src={twitter} alt={{}} width="64px" height="64px"></img>
