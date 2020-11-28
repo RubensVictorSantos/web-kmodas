@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 /** */
 import logo from '../../../ico/logo.svg';
-import youtube from '../../../ico/yout.png';
-import pin from '../../../ico/pin.png';
-import twitter from '../../../ico/twitter-1722376-1466162.webp';
+import youtube from '../../../ico/yout.svg';
+import pin from '../../../ico/insta.svg';
+import twitter from '../../../ico/twitter.svg';
 // import youtube from '../../../ico/yout.png';
 
 import './style.css'
@@ -66,10 +66,9 @@ export class ContentFooter extends Component{
                     </ul> */}
                     <div className="redes">
                         <img src={youtube} alt={{}} width="64px" height="64px"></img>
-                        <img src={pin}     alt={{}} width="40px" height="40px"></img>
+                        <img src={pin}     alt={{}} width="64px" height="64px"></img>
                         <img src={twitter} alt={{}} width="64px" height="64px"></img>
-                        {/* <img src={youtube} alt={{}} width="64px" height="64px"></img> */}
-
+                        
                     </div>
                     <selection>
                         <h3>FORMAS DE PAGAMENTO</h3>

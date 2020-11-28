@@ -12,24 +12,23 @@
 
 	.wrap {
 		position: relative	;
-		width: 100%;
+		width: 100vw;
 		height: 300px;
-		margin: 10px auto 10px auto;
-		border: 1px solid khaki;
+		margin: 0 auto 20px auto;
+		/* border: 1px solid khaki; */
 	}
 	
 	.window {
 		overflow: hidden;
 		position: relative;
-		border: 1px solid blue;
+		/* border: 1px solid blue; */
 	}
 	
 	#carousel {
 		width: 10000px;
 		position: relative;
 		top: 0; left: -360px;
-
-		border: 1px solid red;
+		/* border: 1px solid red; */
 	}
 	
 	.slide{
@@ -42,8 +41,16 @@
 		text-align: center;
 		flex-direction: column;
 		justify-content: center;
+		/* border: 1px solid tomato; */
 		background-position: 'center';
 
+	}
+
+	.img-c{
+		width: 220px;
+		height: auto;
+		position: relative;
+		margin: 0 auto;
 	}
 
 	#prev, #next {
@@ -54,7 +61,7 @@
 		border: 1px solid rgb(130,130,130,0.1);
 		background-color: rgba(130,130,130,0.3);
 		position: absolute;
-		bottom: -25px;
+		/* bottom: -25px; */
 		font-size: 14pt;
 	}
 

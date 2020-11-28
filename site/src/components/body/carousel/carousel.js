@@ -88,12 +88,11 @@ export class Carousel extends Component {
             <div className="wrap">
                 <div className="window">
                     <div id="carousel">
-                        <p>Rubens</p>
                         {
                             this.state.produto.map(produto => (
-                                <div key={produto.cod_prod} className="slide" style={{border: '1px solid green'}} id={`slide-` + produto.cod_prod}>
+                                <div key={produto.cod_prod} className="slide" id={`slide-` + produto.cod_prod}>
                                     <div>
-                                        <img src={DOMAIN_IMG + produto.img_prod} alt={produto.img_prod} style={{ width: '220px', height: '305px', position: 'relative', margin: '0 auto' }} className='img-c' />
+                                        <img src={DOMAIN_IMG + produto.img_prod} alt={produto.img_prod} className='img-c' />
                                     </div>
                                 </div>
                             ))

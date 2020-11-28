@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
-// import { CardProd } from '../card-prod/cardProd';
+import { CardProd } from '../card-prod/cardProd';
 import Carousel from '../carousel/carousel';
 
 export class ContentBody extends Component {
@@ -39,11 +39,11 @@ export class ContentBody extends Component {
                     <Carousel itensCarousel={5}/>
                 </div>
                 <section className="container-cards">
-                    {/* {
+                    {
                         this.state.allProd.map(produto => (
                             <CardProd key={produto.cod_prod} produto={produto} />
                         ))
-                    } */}
+                    }
                 </section>
             </div>
         )

@@ -1,0 +1,21 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+    <rect x="2" y="16.9" rx="20" ry="15" style="width: 96px; height: 66.2px; 
+        fill: #555;
+        stroke: red; 
+        stroke-width: 0;" />
+
+    <path style="
+        fill: white ;
+        stroke: red; 
+        stroke-width: 0;"
+        
+        d="M 37.5 36.8
+            L 37.5 62.2
+            65 50
+            z 
+        "
+        />
+
+</svg> 
+
+<!-- by Rubens Victor -->
