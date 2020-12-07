@@ -83,7 +83,7 @@
         padding: 0.2rem;
         top: 0;
         z-index: 1;
-        position: sticky ;
+        /* position: sticky ; */
         background-color: var(--red);
     }
 
@@ -106,7 +106,7 @@
     }
      
     .btn-menu{
-        background-image: url("../../../ico/ico-menu-round.svg");
+        background-image: url("../../../ico/menu-round.svg");
         
     }
 
@@ -128,12 +128,12 @@
     }
 
     .btn-user{
-        background-image: url("../../../ico/ico-user-white.svg");
+        background-image: url("../../../ico/user-white.svg");
     }
 
     .btn-cart{
         /* width: 30px!important; */
-        background-image: url("../../../ico/ico-cart-round.svg");
+        background-image: url("../../../ico/cart-round.svg");
 
     }
  

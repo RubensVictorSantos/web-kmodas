@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 /** */
-import Img_like from './../../../ico/ico-heart.svg'
+import Img_like from './../../../ico/heart.svg'
 import './style.css'
 import DOMAIN_IMG from '../../../link_config'
 export class CardProd extends Component {
@@ -24,7 +24,7 @@ export class CardProd extends Component {
                     </img>
                     <div className="ico-heart">
                         
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <svg version="1.1" viewBox="0 0 100 100">
                             <g fill="transparent" stroke="rgba(255,0,0,0.9)" strokeLinejoin="round" strokeWidth="0" >
                                 <path d=" M 70 50  A 10 10, 10, 0 0, 50 35  A 10 10, 10, 0 0, 30 50 C 30 50 29 50 50 70C 50 70 50 70 70 50Z " fill="rgba(255,50,100,0.3)"/>
                             </g>

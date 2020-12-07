@@ -5,6 +5,10 @@ ul, li, h1, h2, p, body {
     margin: 0px;
 }
 
+body{
+	box-sizing: border-box;
+}
+
 :root{
 	--red: #ff1a1a;
 	--red-hover: #e60000;

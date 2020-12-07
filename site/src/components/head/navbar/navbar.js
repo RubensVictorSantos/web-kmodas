@@ -4,7 +4,7 @@ import $ from 'jquery';
 /** */
 import logo from '../../../ico/logo.svg';
 import './style.css';
-import imgUser from '../../../ico/ico-user.svg';
+import imgUser from '../../../ico/user.svg';
 
 export class Navbar extends Component {
 

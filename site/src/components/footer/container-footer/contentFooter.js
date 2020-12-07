@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 /** */
-import logo from '../../../ico/logo.svg';
-import youtube from '../../../ico/yout.svg';
+import logo from '../../../ico/logo-footer.svg';
+import youtube from '../../../ico/yout-round.svg';
 import pin from '../../../ico/insta.svg';
 import twitter from '../../../ico/twitter.svg';
-// import youtube from '../../../ico/yout.png';
+import whats from '../../../ico/whats.svg';
 
 import './style.css'
 
@@ -13,61 +13,13 @@ export class ContentFooter extends Component{
         return(
             <Fragment>
                 <div className="main-footer">
-                    <img src={logo} alt={'Imagem ' + logo} className="" width="50%"/>
-                    {/* <ul>
-                        <li>
-                            <h5>Contato:</h5>
-                        </li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                        <li>Twitter</li>
-                        <li>Youtube</li>
-                        
-                    </ul>
-                    <ul>
-                        <li>
-                            <h5>Contato:</h5>
-                        </li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                        <li>Twitter</li>
-                        <li>Youtube</li>
-                        
-                    </ul>
-                    <ul>
-                        <li>
-                            <h5>Contato:</h5>
-                        </li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                        <li>Twitter</li>
-                        <li>Youtube</li>
-                        
-                    </ul>
-                    <ul>
-                        <li>
-                            <h5>Contato:</h5>
-                        </li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                        <li>Twitter</li>
-                        <li>Youtube</li>
-                        
-                    </ul>
-                    <ul>
-                        <li>
-                            <h5>Contato:</h5>
-                        </li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                        <li>Twitter</li>
-                        <li>Youtube</li>
-                        
-                    </ul> */}
+                    <img src={logo} alt={'Imagem ' + logo} className="logo-footer" width="50%"/>
+
                     <div className="redes">
-                        <img src={youtube} alt={{}} width="64px" height="64px"></img>
-                        <img src={pin}     alt={{}} width="64px" height="64px"></img>
-                        <img src={twitter} alt={{}} width="64px" height="64px"></img>
+                        <input type='image' src={youtube}   alt={{}}/>
+                        <input type='image' src={pin}       alt={{}}/>
+                        <input type='image' src={twitter}   alt={{}}/>
+                        <input type='image' src={whats}     alt={{}}/>
                         
                     </div>
                     <selection>

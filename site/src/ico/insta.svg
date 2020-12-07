@@ -1,14 +1,15 @@
 <svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <circle cx="50" cy="50" r="45" style="fill: #555;"/>
-    <circle cx="50" cy="50" r="15" style="stroke: white;
+    <circle cx="50" cy="50" r="47" style="fill: #959595;"/>
+
+    <circle cx="50" cy="50" r="15" style="stroke: #dedede;
         stroke-width: 5;
         fill: transparent"/>
 
-    <circle cx="67.5" cy="33" r="4" style="stroke: white;
-        fill: white;"/>
+    <circle cx="67.5" cy="33" r="4" style="stroke: #dedede;
+        fill: #dedede;"/>
 
     <rect x="21" y="21" rx='15' style="width: 58; height: 58;
-        stroke: white;
+        stroke: #dedede;
         stroke-width: 5;
         fill: transparent;
         "/>
