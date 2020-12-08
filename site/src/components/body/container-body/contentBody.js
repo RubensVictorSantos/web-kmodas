@@ -45,6 +45,9 @@ export class ContentBody extends Component {
                         ))
                     }
                 </section>
+                <div>
+                    
+                </div>
             </div>
         )
     }
