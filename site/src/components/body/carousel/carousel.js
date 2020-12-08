@@ -5,7 +5,7 @@ import './style.css'
 import DOMAIN_IMG from '../../../link_config';
 
 export class Carousel extends Component {
-    constructor() {
+    constructor(props) {
         super()
 
     }
@@ -15,51 +15,21 @@ export class Carousel extends Component {
     }
 
     componentDidMount() {
+        this.mountCarousel();
 
-        this.chargeCarousel()
+    }
 
+    mountCarousel() {
         var carousel = $('#carousel');
-        var threshold = 150;
-        var slideWidth = 365;
-        var dragStart;
-        var dragEnd;
+        var slideWidth = 360;
 
-        $('#next').on('click', function () { shiftSlide(-1) })
-        $('#prev').on('click', function () { shiftSlide(1) })
+        this.chargeImgCarousel(this.props.itensCarousel);
 
-        carousel.on('mousedown', function (event) {
-            if (carousel.hasClass('transition')) return;
-
-            dragStart = event.pageX;
-
-            $(this).on('mousemove', function (event) {
-                dragEnd = event.pageX;
-                $(this).css('transform', 'translateX(' + dragPos() + 'px)')
-            })
-
-            $(document).on('mouseup', function () {
-                if (dragPos() > threshold) {
-                    return shiftSlide(1)
-
-                }
-
-                if (dragPos() < -threshold) {
-                    return shiftSlide(-1)
-
-                }
-
-                shiftSlide(0);
-            })
-        });
-
-        function dragPos() {
-            return dragEnd - dragStart;
-        }
+        $('#next').on('click', () => { shiftSlide(-1) })
+        $('#prev').on('click', () => { shiftSlide(1) })
 
         function shiftSlide(direction) {
             if (carousel.hasClass('transition')) return;
-
-            dragEnd = dragStart;
 
             $(document).off('mouseup')
 
@@ -67,7 +37,7 @@ export class Carousel extends Component {
                 .addClass('transition')
                 .css('transform', 'translateX(' + (direction * slideWidth) + 'px)');
 
-            setTimeout(function () {
+            setTimeout(() => {
                 if (direction === 1) {
                     $('.slide:first').before($('.slide:last'));
 
@@ -79,15 +49,21 @@ export class Carousel extends Component {
                 carousel.removeClass('transition')
                 carousel.css('transform', 'translateX(0px)');
 
-            }, 600)
+            }, 700);
         }
+
+        setInterval(() => {
+            shiftSlide(-1);
+
+        }, 10000);
+
     }
 
-    chargeCarousel() {
+    chargeImgCarousel(itensCarousel) {
 
         this.setState({ produto: [] });
 
-        let url = `http://127.0.0.1:3333/prod-LimitedNumber/` + 5
+        let url = `http://127.0.0.1:3333/prod-LimitedNumber/` + itensCarousel
 
         $.ajax({
             url: url,
@@ -96,8 +72,6 @@ export class Carousel extends Component {
             contentType: 'application/json',
             success: (result) => {
                 this.setState({ produto: result });
-
-                console.log(result)
 
             },
             error: (status, error) => {
@@ -110,27 +84,19 @@ export class Carousel extends Component {
 
     render() {
 
-        // console.log(this.state.produto)
-
         return (
             <div className="wrap">
                 <div className="window">
                     <div id="carousel">
                         {
-                            this.state.produto.map( produto =>(
-                                <div key={produto.cod_prod} style={{backgroundImage: `url(${DOMAIN_IMG + produto.img_prod})`}} className="slide" id={`b`+ produto.cod_prod}>
-                                    <div style={{backgroundColor: 'rgba(255,255,255, 0.9)'}}>
-                                        <img src={DOMAIN_IMG + produto.img_prod} width='220px' height='305px' style={{position: 'relative', margin: '0 auto'}} className='img-c'/>
+                            this.state.produto.map(produto => (
+                                <div key={produto.cod_prod} className="slide" id={`slide-` + produto.cod_prod}>
+                                    <div>
+                                        <img src={DOMAIN_IMG + produto.img_prod} alt={produto.img_prod} className='img-c' />
                                     </div>
                                 </div>
                             ))
                         }
-
-                        {/* <span className="slide" id="b1"></span>
-                        <span className="slide" id="b2"></span>
-                        <span className="slide" id="b3"></span>
-                        <span className="slide" id="b4"></span>
-                        <span className="slide" id="b5"></span> */}
                     </div>
                 </div>
                 <span id="prev"></span>

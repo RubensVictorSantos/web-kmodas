@@ -1,5 +1,11 @@
 import React, { Component, Fragment } from 'react';
 /** */
+import logo from '../../../ico/logo-footer.svg';
+import youtube from '../../../ico/yout-round.svg';
+import pin from '../../../ico/insta.svg';
+import twitter from '../../../ico/twitter.svg';
+import whats from '../../../ico/whats.svg';
+
 import './style.css'
 
 export class ContentFooter extends Component{
@@ -7,56 +13,19 @@ export class ContentFooter extends Component{
         return(
             <Fragment>
                 <div className="main-footer">
-                    <ul>
-                        <li>
-                            <h5>Contato:</h5>
-                        </li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                        <li>Twitter</li>
-                        <li>Youtube</li>
+                    <img src={logo} alt={'Imagem ' + logo} className="logo-footer" width="50%"/>
+
+                    <div className="redes">
+                        <input type='image' src={youtube}   alt={{}}/>
+                        <input type='image' src={pin}       alt={{}}/>
+                        <input type='image' src={twitter}   alt={{}}/>
+                        <input type='image' src={whats}     alt={{}}/>
                         
-                    </ul>
-                    <ul>
-                        <li>
-                            <h5>Contato:</h5>
-                        </li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                        <li>Twitter</li>
-                        <li>Youtube</li>
-                        
-                    </ul>
-                    <ul>
-                        <li>
-                            <h5>Contato:</h5>
-                        </li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                        <li>Twitter</li>
-                        <li>Youtube</li>
-                        
-                    </ul>
-                    <ul>
-                        <li>
-                            <h5>Contato:</h5>
-                        </li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                        <li>Twitter</li>
-                        <li>Youtube</li>
-                        
-                    </ul>
-                    <ul>
-                        <li>
-                            <h5>Contato:</h5>
-                        </li>
-                        <li>Facebook</li>
-                        <li>Instagram</li>
-                        <li>Twitter</li>
-                        <li>Youtube</li>
-                        
-                    </ul>
+                    </div>
+                    <selection>
+                        <h3>FORMAS DE PAGAMENTO</h3>
+                    </selection>
+                    Site developed by Rubens Victor
                 </div>
             </Fragment>
         )

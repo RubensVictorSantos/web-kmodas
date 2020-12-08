@@ -1,0 +1,30 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+    <path style="fill: #959595;
+        stroke: #0099ff;
+        fill-rule: evenodd;
+        stroke-width: 0;
+        stroke-linecap: round;
+        stroke-linejoin: round;" 
+    
+        d=" M 27 32
+        C 39 45, 50 43.8, 50.4 43.8 
+        C 47.5 36 59 24 69.5 33.5 
+        C 73 33.1 75 31.9 76.5 30.80 
+        C 76 34 72 37 71.5 37 
+        C 73 37 76 36.5 78 35.5 
+        C 76.5 38 73.5 40.5 72.3 41 
+        C 73 75 36.5 80 23.6 69.3
+        C 33 70 38 66.5 40.5 64.5 
+        C 30 65 29 55 29.5 57
+        C 31 57.3 33 57.5 34.5 56.5 
+        C 26.5 55 25 47.5 25.5 45.5
+        C 27 47 30 47 30.5 46.7 
+        C 24.5 44.7 25 34 27 32
+        Z
+
+        M 90 49.99
+        A 45 45 0 10 90 50"
+    />
+</svg>
+
+<!-- by Rubens Victor -->

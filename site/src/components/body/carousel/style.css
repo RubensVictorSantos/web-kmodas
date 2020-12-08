@@ -12,24 +12,26 @@
 
 	.wrap {
 		position: relative	;
-		width: var(--carousel-width);
+		width: 100vw;
 		height: 300px;
-		margin: 0 auto;
-		margin-bottom: 30px;
+		margin: 0 auto 20px auto;
+		/* border: 1px solid khaki; */
 	}
 	
 	.window {
 		overflow: hidden;
 		position: relative;
+		/* border: 1px solid blue; */
 	}
 	
 	#carousel {
 		width: 10000px;
 		position: relative;
-		top: 0; left: -364px;
+		top: 0; left: -360px;
+		/* border: 1px solid red; */
 	}
 	
-	.slide:not(.img-c) {
+	.slide{
 		height: 300px;
 		width: 360px;
 		cursor: pointer;
@@ -39,20 +41,28 @@
 		text-align: center;
 		flex-direction: column;
 		justify-content: center;
+		/* border: 1px solid tomato; */
 		background-position: 'center';
 
 	}
 
+	.img-c{
+		width: 220px;
+		height: auto;
+		position: relative;
+		margin: 0 auto;
+	}
+
 	#prev, #next {
-	cursor: pointer;
-	width: 20px;
-	height: 20px;
-	border-radius: 50px;
-	border: 1px solid rgb(130,130,130,0.1);
-	background-color: rgba(130,130,130,0.3);
-	position: absolute;
-	bottom: -25px;
-	font-size: 14pt;
+		cursor: pointer;
+		width: 20px;
+		height: 20px;
+		border-radius: 50px;
+		border: 1px solid rgb(130,130,130,0.1);
+		background-color: rgba(130,130,130,0.3);
+		position: absolute;
+		/* bottom: -25px; */
+		font-size: 14pt;
 	}
 
 	#prev:hover , #next:hover{
@@ -73,6 +83,6 @@
 	}
 
 	.transition {
-	transition: .5s;
+		transition: 0.5s;
     }
 }

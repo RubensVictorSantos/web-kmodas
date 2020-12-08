@@ -1,8 +1,36 @@
+.main-footer, img{
+    margin: 0 auto;
+}
+
 .main-footer{
     display: flex;
-    background-color: var(--red);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #dedede;
     position: relative;
-    color: white;
+    color: #959595;
     bottom: 0;
     width: 100vw;
+}
+
+
+.redes{
+    width: 70%;
+    height: 46px;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-around;
+}
+
+input[type='image']{
+    height: 100%;
+
+}
+
+.logo-footer{
+    margin: 5px 0 20px 0;
 }

@@ -15,7 +15,7 @@
 
     <text x="120"  y="60" 
         text-anchor="center" 
-        fill="#ffffff" 
+        fill="#959595" 
         font-size="4.5rem" 
         letter-spacing="normal" 
         font-weight="bold" 

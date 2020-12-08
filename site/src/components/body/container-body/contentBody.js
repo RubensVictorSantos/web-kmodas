@@ -31,10 +31,12 @@ export class ContentBody extends Component {
 
     render() {
 
+        let test = new Carousel();
+        console.log(test)
         return (
             <div className="content-body">
-                <div style={{marginBottom: '30px'}}>
-                    <Carousel />
+                <div>
+                    <Carousel itensCarousel={5}/>
                 </div>
                 <section className="container-cards">
                     {
