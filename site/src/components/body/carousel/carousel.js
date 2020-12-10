@@ -92,7 +92,7 @@ export class Carousel extends Component {
                             this.state.produto.map(produto => (
                                 <div key={produto.cod_prod} className="slide" id={`slide-` + produto.cod_prod}>
                                     <div>
-                                        <img src={DOMAIN_IMG + produto.img_prod} alt={produto.img_prod} className='img-c' />
+                                        {/* <img src={DOMAIN_IMG + produto.img_prod} alt={produto.img_prod} className='img-c' /> */}
                                     </div>
                                 </div>
                             ))

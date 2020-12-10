@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { CardProd } from '../card-prod/cardProd';
 import Carousel from '../carousel/carousel';
 
-export class ContentBody extends Component {
+export class MainBodyContent extends Component {
 
     state = { allProd: [] }
 
@@ -30,9 +30,6 @@ export class ContentBody extends Component {
     }
 
     render() {
-
-        let test = new Carousel();
-        console.log(test)
         return (
             <div className="content-body">
                 <div>
@@ -50,4 +47,4 @@ export class ContentBody extends Component {
     }
 }
 
-export default ContentBody;
+export default MainBodyContent;
