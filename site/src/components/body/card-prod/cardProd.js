@@ -17,11 +17,11 @@ export class CardProd extends Component {
         return (
             <div className="card-closed" id="card-prod">
                 <picture className="box-img-card">
-                    {/* <img src={
+                    <img src={
                         DOMAIN_IMG + this.props.produto.img_prod
                         } alt={ DOMAIN_IMG + this.props.produto.img_prod } id="img-prod" className="img-prod">
                             
-                    </img> */}
+                    </img>
                     <div className="ico-heart">
                         
                         <svg version="1.1" viewBox="0 0 100 100">
