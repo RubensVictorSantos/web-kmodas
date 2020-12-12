@@ -1,22 +1,11 @@
 @media screen and (max-width: 680px){
 
     #container {
-        margin: 0 auto;
-        text-align: center;
+        /* margin: 0 auto; */
+        /* text-align: center; */
         width: 100vw;
         box-sizing: border-box;
         position: relative;
-    }
-
-    a,
-    a:visited {
-        color: #0196e3;
-        text-decoration: none;
-        outline: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
     }
 
     #slider {
@@ -25,18 +14,21 @@
     }
 
     #slides {
-        width: 900px;
-        height: 240px;
+        /* width: 900px; */
+        height: 300px;
         display: flex;
         justify-content: space-around;
         padding: 0 0 0 0;
+        margin: 0;
         overflow: hidden;
         /* margin: 0; */
         /* padding: 20px 0 0 0; */
     }
 
-    .slide{
+    .slide-prod{
         /* float: left !important; */
+        /* background-color: coral; */
+        /* height: 100px; */
     }
 
     #menu {
