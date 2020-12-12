@@ -1,0 +1,88 @@
+@media screen and (max-width: 680px){
+
+    #container {
+        margin: 0 auto;
+        text-align: center;
+        width: 100vw;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    a,
+    a:visited {
+        color: #0196e3;
+        text-decoration: none;
+        outline: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    #slider {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #slides {
+        width: 900px;
+        height: 240px;
+        display: flex;
+        justify-content: space-around;
+        padding: 0 0 0 0;
+        overflow: hidden;
+        /* margin: 0; */
+        /* padding: 20px 0 0 0; */
+    }
+
+    .slide{
+        /* float: left !important; */
+    }
+
+    #menu {
+        display: flex;
+        justify-content: center;
+        /* background-color: tomato; */
+        height: 60px;
+    }
+
+    #menu ul {
+        margin: 0;
+        padding: 10;
+    }
+
+    #menu li {
+        width: 60px;
+        margin-left: -4px;
+        display: inline-block;
+        list-style: none;
+        height: 45px;
+        overflow: hidden;
+    }
+
+    #menu li.active,
+    #menu li.active:hover {
+        background: url('http://timivey.com/external/codepen/thumbslider/active_bg.png') no-repeat;
+    }
+
+    #menu li.active {
+        cursor: default;
+    }
+
+    #menu .sep {
+        width: 2px;
+        background: url('http://timivey.com/external/codepen/thumbslider/seperator.png') no-repeat right;
+        margin-right: -2px;
+    }
+
+    #menu li a {
+        display: block;
+        background: url('http://timivey.com/external/codepen/thumbslider/seperator.png') no-repeat right;
+        height: 35px;
+        padding-top: 10px;
+    }
+
+    #menu a img {
+        border: none;
+    }
+}
