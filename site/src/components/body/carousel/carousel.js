@@ -21,7 +21,6 @@ export class Carousel extends Component {
 
     mountCarousel() {
         var carousel = $('#carousel');
-        var slideWidth = 360;
 
         this.chargeImgCarousel(this.props.itensCarousel);
 
@@ -29,13 +28,8 @@ export class Carousel extends Component {
         $('#prev').on('click', () => { shiftSlide(1) })
 
         function shiftSlide(direction) {
-            if (carousel.hasClass('transition')) return;
-
-            $(document).off('mouseup')
-
-            carousel.off('mousemove')
-                .addClass('transition')
-                .css('transform', 'translateX(' + (direction * slideWidth) + 'px)');
+            carousel.addClass('transition')
+                .css('transform', 'translateX(' + (direction * 360) + 'px)');
 
             setTimeout(() => {
                 if (direction === 1) {
@@ -92,7 +86,8 @@ export class Carousel extends Component {
                             this.state.produto.map(produto => (
                                 <div key={produto.cod_prod} className="slide" id={`slide-` + produto.cod_prod}>
                                     <div>
-                                        {/* <img src={DOMAIN_IMG + produto.img_prod} alt={produto.img_prod} className='img-c' /> */}
+                                        <img src={DOMAIN_IMG + produto.img_prod} 
+                                        alt={produto.img_prod} className='img-c' />
                                     </div>
                                 </div>
                             ))
