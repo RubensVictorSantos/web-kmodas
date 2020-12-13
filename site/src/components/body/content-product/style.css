@@ -6,13 +6,11 @@
         width: 100vw;
         box-sizing: border-box;
         position: relative;
-        background-color: salmon;
     }
 
     #slider {
         width: 100%;
         overflow: hidden;
-        background-color: transparent;
     }
 
     #slides {
@@ -25,15 +23,13 @@
         overflow: hidden;
         /* margin: 0; */
         /* padding: 20px 0 0 0; */
-        background-color: skyblue;
     }
 
-    .slide-prod{
-
+    /* .slide-prod{ */
         /* float: left !important; */
         /* background-color: coral; */
         /* height: 100px; */
-    }
+    /* } */
 
     #menu {
         display: flex;
