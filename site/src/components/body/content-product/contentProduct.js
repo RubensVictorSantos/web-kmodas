@@ -14,20 +14,24 @@ export class ContentProduct extends Component {
 
         var totalWidth = 0;
         var positions = [];
+        // var dez = [1,2,3,4,5,6,7,8,9,10];
+        
+        $( '.product' ).each(function( index ) {
+            console.log( index + ": " + $( this ).text() );
+        });
 
-        $('#slides .slide-prod').each(function (i) {
+        $('#slides .slide-prod').each(( i ) => {
 
             // Get slider widths
             positions[i] = totalWidth;
-            console.log(positions[i]);
 
             totalWidth += $(this).width();
 
             // check widths
-            // if( !$(this).width() ) {
-            //     alert('Please make sure all images have widths!');
-            //     return false;
-            // }
+            if( !$(this).width() ) {
+                console.log('Please make sure all images have widths!');
+                return false;
+            }
         });
 
         // set width
@@ -80,83 +84,44 @@ export class ContentProduct extends Component {
         });
     }
 
+    async widthSlide(){
+
+    }
+
     render() {
+        let prod = this.state.produto
+
         return (
             <div id="container">
                 <div id="slider">
                     <div id="slides">
-                        rubens victor
                         {
-                            // console.log(this.state.produto)
-                            this.state.produto.map(produto => (
-                                <div key={produto.cod_prod} className="slide-prod" style={{backgroundColor: ` rgb(20${produto.cod_prod},2${produto.cod_prod}0,${produto.cod_prod})`}}
-                                    >
-                                    <img src={DOMAIN_IMG + produto.img_prod} alt={produto.img_prod} width="300px" height="200px" 
-                                    />
-    
+                            prod.map(produto => (
+                                <div className="slide-prod" key={produto.cod_prod}>
+                                    <img src={DOMAIN_IMG + produto.img_prod} 
+                                        alt={produto.img_prod}
+                                        width="300px" height="200px" />
                                 </div>
                             ))
                         }
-
-                        {/* <div className="slide-prod">
-                            <img src="./bgcolorido/bg_03.png" width="300" height="200" />
-
-                        </div>
-
-                        <div className="slide-prod">
-                            <img src="./bgcolorido/bg_04.png" width="300" height="200" />
-
-                        </div>
-
-                        <div className="slide-prod">
-                            <img src="./bgcolorido/bg_05.png" width="300" height="200" />
-
-                        </div> */}
 
                     </div>
 
                     <nav id="menu">
                         <ul>
                             <li className="sep"></li>
-
                             {
-                            // console.log(this.state.produto)
-                            this.state.produto.map(produto => (
-                                <li className="product">
-                                    <div key={produto.cod_prod}>
-                                        <img src={DOMAIN_IMG + produto.img_prod} 
-                                            alt={produto.img_prod}
-                                            width="100%" height="100%" />
-        
-                                    </div>
-                                </li>
-                            ))
-                        }
-
-
-                            {/* <li className="product">
-                                <div>
-                                    <img src="./bgcolorido/bg_02.png" alt="thumbnail" width="100%" height="100%" />
-                                </div>
-                            </li>
-
-                            <li className="product">
-                                <div>
-                                    <img src="./bgcolorido/bg_03.png" alt="thumbnail" width="100%" height="100%" />
-                                </div>
-                            </li>
-
-                            <li className="product">
-                                <div>
-                                    <img src="./bgcolorido/bg_04.png" alt="thumbnail" width="100%" height="100%" />
-                                </div>
-                            </li>
-
-                            <li className="product">
-                                <div>
-                                    <img src="./bgcolorido/bg_05.png" alt="thumbnail" width="100%" height="100%" />
-                                </div>
-                            </li> */}
+                                prod.map(produto => (
+                                    <li key={produto.cod_prod} className="product">
+                                        <div key={produto.cod_prod}>
+                                            {/* <img src={DOMAIN_IMG + produto.img_prod} 
+                                                alt={produto.img_prod}
+                                                width="100%" height="100%" /> */}
+            
+                                        </div>
+                                    </li>
+                                ))
+                            }
                         </ul>
                     </nav>
                 </div>

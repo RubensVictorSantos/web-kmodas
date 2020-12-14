@@ -14,7 +14,7 @@
     }
 
     #slides {
-        /* width: 900px; */
+        width: 900px;
         height: 300px;
         display: flex;
         justify-content: space-around;
@@ -25,11 +25,9 @@
         /* padding: 20px 0 0 0; */
     }
 
-    /* .slide-prod{ */
-        /* float: left !important; */
-        /* background-color: coral; */
-        /* height: 100px; */
-    /* } */
+    /* .slide-prod{
+
+    } */
 
     #menu {
         display: flex;

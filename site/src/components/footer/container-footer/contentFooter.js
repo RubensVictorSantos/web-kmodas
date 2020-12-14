@@ -22,9 +22,9 @@ export class ContentFooter extends Component{
                         <input type='image' src={whats}     alt={{}}/>
                         
                     </div>
-                    <selection>
+                    <section>
                         <h3>FORMAS DE PAGAMENTO</h3>
-                    </selection>
+                    </section>
                     Site developed by Rubens Victor
                 </div>
             </Fragment>
