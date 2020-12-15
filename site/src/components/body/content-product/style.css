@@ -14,7 +14,7 @@
     }
 
     #slides {
-        width: 900px;
+        /* width: 900px; */
         height: 300px;
         display: flex;
         justify-content: space-around;
@@ -50,10 +50,10 @@
         overflow: hidden;
     }
 
-    #menu li.active,
+    /* #menu li.active,
     #menu li.active:hover {
-        background: url('http://timivey.com/external/codepen/thumbslider/active_bg.png') no-repeat;
-    }
+
+    } */
 
     #menu li.active {
         cursor: default;
@@ -61,13 +61,11 @@
 
     #menu .sep {
         width: 2px;
-        background: url('http://timivey.com/external/codepen/thumbslider/seperator.png') no-repeat right;
         margin-right: -2px;
     }
 
     #menu li a {
         display: block;
-        background: url('http://timivey.com/external/codepen/thumbslider/seperator.png') no-repeat right;
         height: 35px;
         padding-top: 10px;
     }
