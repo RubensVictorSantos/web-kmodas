@@ -9,7 +9,6 @@ export class ContentProduct extends Component {
     state = { produto: []}
 
     componentDidMount() {
-
         this.chargeImgCarousel(5);
 
     }
@@ -17,6 +16,13 @@ export class ContentProduct extends Component {
     slideWidth() {
         var totalWidth = 0;
         var positions = [];
+        let wdt = window.screen.width;
+        let wdtSlide = $('.slide-sprod').width();
+        let paddingSld = (wdt - wdtSlide)/2;
+        let teste = (100 / wdt)* 95 
+
+        $('#slides-sprod').css({"paddingLeft": paddingSld});
+        $('.slide-sprod').css({'width': teste});
 
         $('#slides-sprod .slide-sprod').each(function (i) {
 
@@ -46,7 +52,7 @@ export class ContentProduct extends Component {
 
             var pos = $(this).parent().prevAll('.product-sprod').length;
 
-            $('#slides-sprod').stop().animate({ marginLeft: -positions[pos] + 'px' }, 450);
+            $('#slides-sprod').stop().animate({ marginLeft: -positions[pos] + 'px' }, 600);
 
             // Prevent default
             e.preventDefault();
@@ -55,12 +61,6 @@ export class ContentProduct extends Component {
         // Make first image active.
         $('.product-sprod').first().addClass('active').siblings().addClass('inactive');
     }
-
-    menuItemClickHandler(e) {
-
-
-    }
-
 
     chargeImgCarousel(itensCarousel) {
 
@@ -87,7 +87,6 @@ export class ContentProduct extends Component {
 
     render() {
         let prod = this.state.produto
-
         return (
             <div id="container-sprod">
                 <div id="slider-sprod">
@@ -96,8 +95,7 @@ export class ContentProduct extends Component {
                             prod.map(produto => (
                                 <div className="slide-sprod" key={produto.cod_prod}>
                                     <img src={DOMAIN_IMG + produto.img_prod}
-                                        alt={produto.img_prod}
-                                        width="300px" height="200px" />
+                                        alt={produto.img_prod}/>
                                 </div>
                             ))
                         }
