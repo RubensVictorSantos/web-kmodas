@@ -6,16 +6,19 @@ import DOMAIN_IMG from '../../../link_config';
 
 export class ContentProduct extends Component {
 
-    state = { produto:[] }
+    state = { produto: []}
 
     componentDidMount() {
 
         this.chargeImgCarousel(5);
 
+    }
+
+    slideWidth() {
         var totalWidth = 0;
         var positions = [];
 
-        $('#slides .slide-prod').each(function(i)  {
+        $('#slides-sprod .slide-sprod').each(function (i) {
 
             // Get slider widths
             positions[i] = totalWidth;
@@ -23,38 +26,41 @@ export class ContentProduct extends Component {
             totalWidth += $(this).width();
 
             // check widths
-            if( !$(this).width() ) {
+            if (!$(this).width()) {
                 console.log('Please make sure all images have widths!');
                 return false;
             }
         });
 
         // set width
-        $('#slides').width(totalWidth);
+        $('#slides-sprod').width(totalWidth);
 
         // menu item click handler
-        $('#menu ul li div').on('click', function (e) {
-
+        $('#menu-sprod ul li div').on('click', function(e, keepScroll) {
+            
             // remove active calls and add inactive
-            $('li.product').removeClass('active').addClass('inactive');
+            $('li .product-sprod').removeClass('active').addClass('inactive');
 
             // Add active class to the partent
             $(this).parent().addClass('active');
 
-            var pos = $(this).parent().prevAll('.product').length;
+            var pos = $(this).parent().prevAll('.product-sprod').length;
 
-            $('#slides').stop().animate({ marginLeft: -positions[pos] + 'px' }, 450);
+            $('#slides-sprod').stop().animate({ marginLeft: -positions[pos] + 'px' }, 450);
 
             // Prevent default
             e.preventDefault();
-
         });
 
         // Make first image active.
-        $('.product').first().addClass('active').siblings().addClass('inactive');
+        $('.product-sprod').first().addClass('active').siblings().addClass('inactive');
+    }
+
+    menuItemClickHandler(e) {
 
 
     }
+
 
     chargeImgCarousel(itensCarousel) {
 
@@ -69,7 +75,7 @@ export class ContentProduct extends Component {
             contentType: 'application/json',
             success: (result) => {
                 this.setState({ produto: result });
-
+                this.slideWidth()
             },
             error: (status, error) => {
 
@@ -83,13 +89,13 @@ export class ContentProduct extends Component {
         let prod = this.state.produto
 
         return (
-            <div id="container">
-                <div id="slider">
-                    <div id="slides">
+            <div id="container-sprod">
+                <div id="slider-sprod">
+                    <div id="slides-sprod">
                         {
                             prod.map(produto => (
-                                <div className="slide-prod" key={produto.cod_prod}>
-                                    <img src={DOMAIN_IMG + produto.img_prod} 
+                                <div className="slide-sprod" key={produto.cod_prod}>
+                                    <img src={DOMAIN_IMG + produto.img_prod}
                                         alt={produto.img_prod}
                                         width="300px" height="200px" />
                                 </div>
@@ -98,17 +104,17 @@ export class ContentProduct extends Component {
 
                     </div>
 
-                    <nav id="menu">
+                    <nav id="menu-sprod">
                         <ul>
                             <li className="sep"></li>
                             {
                                 prod.map(produto => (
-                                    <li key={produto.cod_prod} className="product">
+                                    <li key={produto.cod_prod} className="product-sprod">
                                         <div key={produto.cod_prod}>
-                                            {/* <img src={DOMAIN_IMG + produto.img_prod} 
+                                            <img src={DOMAIN_IMG + produto.img_prod}
                                                 alt={produto.img_prod}
-                                                width="100%" height="100%" /> */}
-            
+                                                width="100%" height="100%" />
+
                                         </div>
                                     </li>
                                 ))

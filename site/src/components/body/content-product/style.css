@@ -1,6 +1,6 @@
 @media screen and (max-width: 680px){
 
-    #container {
+    #container-sprod {
         /* margin: 0 auto; */
         /* text-align: center; */
         width: 100vw;
@@ -8,12 +8,12 @@
         position: relative;
     }
 
-    #slider {
+    #slider-sprod {
         width: 100%;
         overflow: hidden;
     }
 
-    #slides {
+    #slides-sprod {
         /* width: 900px; */
         height: 300px;
         display: flex;
@@ -29,19 +29,19 @@
 
     } */
 
-    #menu {
+    #menu-sprod {
         display: flex;
         justify-content: center;
         /* background-color: tomato; */
         height: 60px;
     }
 
-    #menu ul {
+    #menu-sprod ul {
         margin: 0;
         padding: 10;
     }
 
-    #menu li {
+    #menu-sprod li {
         width: 60px;
         margin-left: -4px;
         display: inline-block;
@@ -55,22 +55,22 @@
 
     } */
 
-    #menu li.active {
+    #menu-sprod li.active {
         cursor: default;
     }
 
-    #menu .sep {
+    #menu-sprod .sep {
         width: 2px;
         margin-right: -2px;
     }
 
-    #menu li a {
+    #menu-sprod li div {
         display: block;
         height: 35px;
         padding-top: 10px;
     }
 
-    #menu a img {
+    #menu-sprod div img {
         border: none;
     }
 }

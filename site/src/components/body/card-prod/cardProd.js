@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 /** */
-// import Img_like from './../../../ico/heart.svg'
 import './style.css'
 import DOMAIN_IMG from '../../../link_config'
 
 export class CardProd extends Component {
-    constructor(props) {
-        super()
-
-    }
 
     componentDidMount() {
 
@@ -57,3 +52,5 @@ export class CardProd extends Component {
         )
     }
 }
+
+export default CardProd;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
-import { CardProd } from '../card-prod/cardProd';
+import CardProd from '../card-prod/cardProd';
 import Carousel from '../carousel/carousel';
 
 export class MainBodyContent extends Component {
