@@ -16,19 +16,18 @@ export class ContentProduct extends Component {
     slideWidth() {
         var totalWidth = 0;
         var positions = [];
-        let wdt = window.screen.width;
-        let wdtSlide = $('.slide-sprod').width();
-        let paddingSld = (wdt - wdtSlide)/2;
-        let teste = (100 / wdt)* 95 
+        let wdtScreen = window.screen.width;
+        let wdtImg = (wdtScreen/100)* 95 
+        let paddingSld = (wdtScreen - wdtImg);
 
-        $('#slides-sprod').css({"paddingLeft": paddingSld});
-        $('.slide-sprod').css({'width': teste});
+        $('.slide-sprod')    .css({'width': wdtScreen});
+        $('.slide-sprod img').css({"paddingLeft": paddingSld});
+        $('.slide-sprod img').css({'width': wdtImg});
 
         $('#slides-sprod .slide-sprod').each(function (i) {
 
             // Get slider widths
             positions[i] = totalWidth;
-
             totalWidth += $(this).width();
 
             // check widths
@@ -45,21 +44,25 @@ export class ContentProduct extends Component {
         $('#menu-sprod ul li div').on('click', function(e, keepScroll) {
             
             // remove active calls and add inactive
-            $('li .product-sprod').removeClass('active').addClass('inactive');
+            $('li.product-sprod').removeClass('active').addClass('inactive');
 
             // Add active class to the partent
-            $(this).parent().addClass('active');
+            $(this).parent().addClass('active').removeClass('inactive');
 
             var pos = $(this).parent().prevAll('.product-sprod').length;
 
-            $('#slides-sprod').stop().animate({ marginLeft: -positions[pos] + 'px' }, 600);
+            $('#slides-sprod').stop().animate({ marginLeft: -positions[pos] + 'px' }, 450);
 
             // Prevent default
             e.preventDefault();
         });
 
         // Make first image active.
-        $('.product-sprod').first().addClass('active').siblings().addClass('inactive');
+        $('.product-sprod')
+            .first()
+            .addClass('active')
+            .siblings()
+            .addClass('inactive');
     }
 
     chargeImgCarousel(itensCarousel) {
@@ -106,16 +109,16 @@ export class ContentProduct extends Component {
                         <ul>
                             <li className="sep"></li>
                             {
-                                prod.map(produto => (
-                                    <li key={produto.cod_prod} className="product-sprod">
-                                        <div key={produto.cod_prod}>
-                                            <img src={DOMAIN_IMG + produto.img_prod}
-                                                alt={produto.img_prod}
-                                                width="100%" height="100%" />
+                            prod.map(produto => (
+                                <li key={produto.cod_prod} className="product-sprod">
+                                    <div key={produto.cod_prod}>
+                                        <img src={DOMAIN_IMG + produto.img_prod}
+                                            alt={produto.img_prod}
+                                            width="100%" height="100%" />
 
-                                        </div>
-                                    </li>
-                                ))
+                                    </div>
+                                </li>
+                            ))
                             }
                         </ul>
                     </nav>
