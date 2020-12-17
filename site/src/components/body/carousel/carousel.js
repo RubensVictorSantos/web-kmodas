@@ -5,10 +5,6 @@ import './style.css'
 import DOMAIN_IMG from '../../../link_config';
 
 export class Carousel extends Component {
-    constructor(props) {
-        super()
-
-    }
 
     state = {
         produto: []

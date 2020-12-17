@@ -6,54 +6,62 @@ import DOMAIN_IMG from '../../../link_config';
 
 export class ContentProduct extends Component {
 
-    state = { produto:[] }
+    state = { produto: []}
 
     componentDidMount() {
-
         this.chargeImgCarousel(5);
 
+    }
+
+    slideWidth() {
         var totalWidth = 0;
         var positions = [];
+        let wdtScreen = window.screen.width;
+        let wdtImg = (wdtScreen/100)* 95 
+        let paddingSld = (wdtScreen - wdtImg);
 
-        $('#slides .slide-prod').each(( i ) => {
+        $('.slide-sprod')    .css({'width': wdtScreen});
+        $('.slide-sprod img').css({"paddingLeft": paddingSld});
+        $('.slide-sprod img').css({'width': wdtImg});
+        $('#slides-sprod .slide-sprod').each(function (i) {
 
             // Get slider widths
             positions[i] = totalWidth;
-
             totalWidth += $(this).width();
 
             // check widths
-            if( !$(this).width() ) {
+            if (!$(this).width()) {
                 console.log('Please make sure all images have widths!');
                 return false;
             }
         });
 
         // set width
-        $('#slides').width(totalWidth);
+        $('#slides-sprod').width(totalWidth);
 
         // menu item click handler
-        $('#menu ul li div').on('click', function (e) {
-
+        $('#menu-sprod ul li div').on('click', function(e, keepScroll) {
+            
             // remove active calls and add inactive
-            $('li.product').removeClass('active').addClass('inactive');
+            $('li.product-sprod').removeClass('active').addClass('inactive');
 
             // Add active class to the partent
-            $(this).parent().addClass('active');
+            $(this).parent().addClass('active').removeClass('inactive');
 
-            var pos = $(this).parent().prevAll('.product').length;
+            var pos = $(this).parent().prevAll('.product-sprod').length;
 
-            $('#slides').stop().animate({ marginLeft: -positions[pos] + 'px' }, 450);
+            $('#slides-sprod').stop().animate({ marginLeft: -positions[pos] + 'px' }, 450);
 
             // Prevent default
             e.preventDefault();
-
         });
 
         // Make first image active.
-        $('.product').first().addClass('active').siblings().addClass('inactive');
-
-
+        $('.product-sprod')
+            .first()
+            .addClass('active')
+            .siblings()
+            .addClass('inactive');
     }
 
     chargeImgCarousel(itensCarousel) {
@@ -69,7 +77,7 @@ export class ContentProduct extends Component {
             contentType: 'application/json',
             success: (result) => {
                 this.setState({ produto: result });
-
+                this.slideWidth()
             },
             error: (status, error) => {
 
@@ -79,43 +87,37 @@ export class ContentProduct extends Component {
         });
     }
 
-    async widthSlide(){
-
-    }
-
     render() {
         let prod = this.state.produto
-
         return (
-            <div id="container">
-                <div id="slider">
-                    <div id="slides">
+            <div id="container-sprod">
+                <div id="slider-sprod">
+                    <div id="slides-sprod">
                         {
                             prod.map(produto => (
-                                <div className="slide-prod" key={produto.cod_prod}>
-                                    <img src={DOMAIN_IMG + produto.img_prod} 
-                                        alt={produto.img_prod}
-                                        width="300px" height="200px" />
+                                <div className="slide-sprod" key={produto.cod_prod}>
+                                    <img src={DOMAIN_IMG + produto.img_prod}
+                                        alt={produto.img_prod}/>
                                 </div>
                             ))
                         }
 
                     </div>
 
-                    <nav id="menu">
+                    <nav id="menu-sprod">
                         <ul>
                             <li className="sep"></li>
                             {
-                                prod.map(produto => (
-                                    <li key={produto.cod_prod} className="product">
-                                        <div key={produto.cod_prod}>
-                                            {/* <img src={DOMAIN_IMG + produto.img_prod} 
-                                                alt={produto.img_prod}
-                                                width="100%" height="100%" /> */}
-            
-                                        </div>
-                                    </li>
-                                ))
+                            prod.map(produto => (
+                                <li key={produto.cod_prod} className="product-sprod">
+                                    <div key={produto.cod_prod}>
+                                        <img src={DOMAIN_IMG + produto.img_prod}
+                                            alt={produto.img_prod}
+                                            width="100%" height="100%" />
+
+                                    </div>
+                                </li>
+                            ))
                             }
                         </ul>
                     </nav>

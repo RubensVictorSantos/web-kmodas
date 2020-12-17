@@ -1,78 +1,92 @@
 @media screen and (max-width: 680px){
 
-    #container {
+    #container-sprod {
         /* margin: 0 auto; */
         /* text-align: center; */
         width: 100vw;
         box-sizing: border-box;
         position: relative;
+        /* background-color: tomato; */
     }
 
-    #slider {
+    #slider-sprod {
         width: 100%;
         overflow: hidden;
+        /* background-color: teal; */
     }
 
-    #slides {
-        width: 900px;
-        height: 300px;
+    #slides-sprod {
+        /* width: 900px; */
+        /* height: 300px; */
         display: flex;
-        justify-content: space-around;
-        padding: 0 0 0 0;
-        margin: 0;
+        /* align-items: center; */
+        /* justify-content: space-around; */
+        /* background-color: thistle; */
         overflow: hidden;
-        /* margin: 0; */
-        /* padding: 20px 0 0 0; */
+        box-sizing: unset;
     }
 
-    /* .slide-prod{
+    .slide-sprod{
+
+        /* background-color: lightpink; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slide-sprod img{
+        height: auto;
+    }
+
+    #menu-sprod {
+        height: 60px;
+        display: flex;
+        /* background-color: khaki; */
+        margin-top: 0.5rem;
+        justify-content: center;
+        /* background-color: rgba(0,0,0,0.5); */
+    }
+
+    #menu-sprod ul {
+        /* background-color: lawngreen; */
+        margin: 0 auto;
+        /* padding: 10px; */
+    }
+
+    #menu-sprod li {
+        width: 60px;
+        height: 60px;
+        /* background-color: lightcoral; */
+        /* padding: 2px; */
+        display: inline-block;
+        list-style: none;
+        overflow: hidden;
+    }
+
+    /* #menu li.active,
+    #menu li.active:hover {
 
     } */
 
-    #menu {
-        display: flex;
-        justify-content: center;
-        /* background-color: tomato; */
-        height: 60px;
-    }
-
-    #menu ul {
-        margin: 0;
-        padding: 10;
-    }
-
-    #menu li {
-        width: 60px;
-        margin-left: -4px;
-        display: inline-block;
-        list-style: none;
-        height: 45px;
-        overflow: hidden;
-    }
-
-    #menu li.active,
-    #menu li.active:hover {
-        background: url('http://timivey.com/external/codepen/thumbslider/active_bg.png') no-repeat;
-    }
-
-    #menu li.active {
+    #menu-sprod li .active {
         cursor: default;
     }
 
-    #menu .sep {
+    #menu-sprod .sep {
         width: 2px;
-        background: url('http://timivey.com/external/codepen/thumbslider/seperator.png') no-repeat right;
         margin-right: -2px;
     }
 
-    #menu li a {
-        display: block;
-        background: url('http://timivey.com/external/codepen/thumbslider/seperator.png') no-repeat right;
-        height: 35px;
-        padding-top: 10px;
+    #menu-sprod li div {
+        width: 100%;
+        height: 100%;
+        /* border-radius: 5px; */
+        /* box-shadow: 4px 4px 4px 5px rgba(0,0,0,0.2); */
+        /* background-color: lightpink; */
+        overflow: hidden;
     }
 
-    #menu a img {
+    #menu-sprod div img {
         border: none;
     }
 }

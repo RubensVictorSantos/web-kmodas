@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from 'react';
 /** */
-import logo from '../../../ico/logo-footer.svg';
-import youtube from '../../../ico/yout-round.svg';
-import pin from '../../../ico/insta.svg';
-import twitter from '../../../ico/twitter.svg';
-import whats from '../../../ico/whats.svg';
-
+import logo from '../../../recursos/ico/logo-footer.svg';
+import youtube from '../../../recursos/ico/yout-round.svg';
+import pin from '../../../recursos/ico/insta.svg';
+import twitter from '../../../recursos/ico/twitter.svg';
+import whats from '../../../recursos/ico/whats.svg';
 import './style.css'
 
 export class ContentFooter extends Component{
