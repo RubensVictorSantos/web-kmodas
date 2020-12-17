@@ -14,11 +14,6 @@ export class ContentProduct extends Component {
 
         var totalWidth = 0;
         var positions = [];
-        // var dez = [1,2,3,4,5,6,7,8,9,10];
-        
-        $( '.product' ).each(function( index ) {
-            console.log( index + ": " + $( this ).text() );
-        });
 
         $('#slides .slide-prod').each(( i ) => {
 
