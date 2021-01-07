@@ -24,7 +24,7 @@ export class ContentFooter extends Component{
                     <section>
                         <h3>FORMAS DE PAGAMENTO</h3>
                     </section>
-                    Site developed by Rubens Victor
+                    K. MODAS 2020 © ALL RIGHTS RESERVED
                 </div>
             </Fragment>
         )

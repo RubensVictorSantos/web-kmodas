@@ -1,3 +1,4 @@
+/* ##### CSS FOR DESKTOP #####  */
 
 @media screen and (min-width:1000px){
 
@@ -40,6 +41,8 @@
 
 }
 
+/* ##### CSS FOR TABLET #####  */
+
 @media only screen and (max-width: 999px) and (min-width: 681px){
 
     .navbar{
@@ -76,6 +79,8 @@
 	}
 }
 
+/* ##### CSS FOR MOBILE #####  */
+
 @media screen and (max-width:680px){
 
     .navbar{
@@ -83,31 +88,23 @@
         padding: 0.2rem;
         top: 0;
         z-index: 1;
-        /* position: sticky ; */
         background-color: var(--red);
     }
 
     .navbar ul li{
         display: flex;
+        align-items: center;
         justify-content: center;
     }
     
     .menu{
         width: 100%;
         display: flex;
-        padding: 0.1rem;
         justify-content: space-between;
-        /* background-color: khaki; */
-    }
-
-    .menu li{
-        list-style: none;
-
     }
      
     .btn-menu{
         background-image: url("../../../recursos/ico/menu-round.svg");
-        
     }
 
     .sub-item:first-child:not(hover){
@@ -127,14 +124,16 @@
         text-align: left;
     }
 
+    .item img{
+        width: 100%;
+    }
+
     .btn-user{
         background-image: url("../../../recursos/ico/user-white.svg");
     }
 
     .btn-cart{
-        /* width: 30px!important; */
         background-image: url("../../../recursos/ico/cart-round.svg");
-
     }
  
     .btn-nav{
@@ -171,38 +170,37 @@
         z-index: 0;
     }
  
-     .view-user{
-         width: 70%;
-         /* height: 100%; */
-         display: flex;
-         flex-direction: row;
-         justify-content: space-around;
-         align-items: center;
-         background-color: var(--red-hover);
-         padding: 0.5rem;
-         float: left;
-         box-sizing: border-box;
-     }
- 
-     .img-user{
-         width: 50px;
-         height: 50px;
-         background-color: white;
-         border-radius: 50%;
-     }
- 
-     .view-user label{
-         font-size: 1rem;
-         color: white;
-         font-weight: bold;
-     }
- 
-     .view-user a{
-         font-size: 1rem;
-         color: white;
-         font-weight: bold;
-     }
- 
+    .view-user{
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        background-color: var(--red-hover);
+        padding: 0.5rem;
+        float: left;
+        box-sizing: border-box;
+    }
+
+    .img-user{
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border-radius: 50%;
+    }
+
+    .view-user label{
+        font-size: 1rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .view-user a{
+        font-size: 1rem;
+        color: white;
+        font-weight: bold;
+    }
+
     .close{
         /* margin-right: auto; */
         text-align: right;
@@ -226,19 +224,22 @@
          color: white;
     }
 
+    .container-search{
+        display: flex;
+        height: 40px;
+    }
 
-    .inp-search{
+    .container-search input{
         width: 90%;
         height: 30px;
         border: none;
         border-radius: 50px;
         outline: none;
         text-align: center;
-        margin: auto;
-        caret-color: red;
-     }
+        caret-color: var(--red);
+    }
 
-    .inp-search::placeholder{
+    .container-search input::placeholder{
         font-style: normal;
         font-variant-ligatures: normal;
         font-variant-caps: normal;
@@ -246,7 +247,7 @@
         font-variant-east-asian: normal;
         font-weight: 600;
         font-stretch: normal;
-        color: rgb(180,180,180);
+        color: rgb(180,180,180, 0.5);
         font-size: 13.3333px;
         line-height: normal;
         font-family: Arial;
