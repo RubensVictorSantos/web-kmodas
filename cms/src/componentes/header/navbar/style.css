@@ -1,0 +1,59 @@
+.navbar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 1px 5px 1px rgba( 100, 100, 100, 0.2);
+}
+
+.container-nav{
+    width: 75%;
+    display: flex;
+    align-items: center;
+}
+
+.link-logo{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-style: italic;
+    color: black;
+}
+
+.field-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    color: rgb(100,100,100);
+}
+
+.ico-logo{
+    width: 32px;
+    margin-right: 0.5rem;
+}
+
+nav ul{
+    display: flex;
+}
+
+nav ul *{
+    padding: 0.2rem;
+    text-decoration: none;
+    list-style: none;
+    color: rgb(100,100,100); 
+}
+
+nav ul li:active{
+    color: red;
+    /* font-weight: bold; */
+}
+
+nav ul li a:hover{
+    /* color: black; */
+    border-bottom: 2px solid red;
+}
+
+.ico-user{
+    width: 35px;
+    margin-right: 0.1rem;
+}

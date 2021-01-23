@@ -1,0 +1,25 @@
+#formBuscar a{
+    color: white;
+    font-weight: bold;
+    background-color: rgb(50,225,100);
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: bold;
+    font-stretch: normal;
+    font-size: 13.3333px;
+    line-height: normal;
+    font-family: Arial;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    padding: 3px 6px;
+}

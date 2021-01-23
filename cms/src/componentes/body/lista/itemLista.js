@@ -66,9 +66,9 @@ export class ItemLista extends Component {
             <img src={status_prod === 1 ? SvgAtivo : SvgInativo}
               alt={status_prod === 1 ? SvgAtivo : SvgInativo}
               width="40px" />
-            {
-              status_prod === 1 ? "Ativado" : "Desativado"
-            }
+             
+             {status_prod === 1 ? "Ativado" : "Desativado"}
+          
           </div>
         </div>
       </Fragment>

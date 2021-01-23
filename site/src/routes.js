@@ -14,9 +14,9 @@ export class Routes extends Component {
                     <Route path="/" render={({ match: { url } }) => (
                         <Fragment>
                             <Navbar/>
-                            {/* <Route path="/" exact component={MainBodyContent} />
+                            <Route path="/" exact component={MainBodyContent} />
                             <Route path={`${url}produto`} component={ContentProduct} />
-                            <ContentFooter/> */}
+                            <ContentFooter/>
                         </Fragment>
                     )}/>
                 </Switch>
