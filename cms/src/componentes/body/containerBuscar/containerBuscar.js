@@ -80,7 +80,7 @@ export class ContainerBuscar extends Component {
 
                 <button type='submit' className="" id="btn">Buscar</button>
                 {/* <button className="" onClick={this.props.onClose} type="" id="btn-novo">Novo</button> */}
-                <Link to='Cadastrar_Produto' id="btn-novo">Novo</Link>
+                <Link to='Produto/Cadastrar_Produto' id="btn-novo">Novo</Link>
 
             </form>
         )
