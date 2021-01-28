@@ -38,10 +38,15 @@
     display: flex;
     justify-content: space-around ;
     align-items: center;
+    flex-direction: column;
     padding: 1rem;
     /* background-color: darkslategray; */
     background-color: white;
     border-radius: 5px;
+}
+
+.container-modal{
+    display: flex;
 }
 
 .img-modal{
@@ -78,6 +83,7 @@
 .title-modal{
     width: 100%;
     padding: 0.2rem;
+    text-align: center;
     /* background-color: firebrick; */
 }
 

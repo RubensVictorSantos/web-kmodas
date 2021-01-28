@@ -1,12 +1,35 @@
 import React from 'react'
 import { Component } from 'react'
 import { Link } from 'react-router-dom'
+import $ from 'jquery'
 /** */
 import './style.css'
 import NavLogo from '../../../recursos/ico/logo-kmodas.png'
 import UserImg from '../../../recursos/ico/user-circle-fill.png'
 
 export class Navbar extends Component {
+    constructor(props){
+        super()
+    }
+
+    logOut(){
+
+        const url = `http://127.1.1.0:3333/logout`
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            success: (result) => {
+
+                localStorage.clear();
+
+                return window.location.replace('http://localhost:3000/');
+
+            }
+        })
+    }
 
     render() {
         return (
@@ -26,7 +49,7 @@ export class Navbar extends Component {
                     <div className="field-login">
                         <img className='ico-user' src={UserImg} alt={'Imagem ' + UserImg}></img>
                         Rubens Victor 
-                        <button type='submit'>Logout</button>    
+                        <button type='submit' onClick={this.logOut}></button>    
                     </div>
                 </div>
 

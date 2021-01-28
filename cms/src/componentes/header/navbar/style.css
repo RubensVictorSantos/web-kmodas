@@ -57,3 +57,13 @@ nav ul li a:hover{
     width: 35px;
     margin-right: 0.1rem;
 }
+
+.field-login button{
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../../recursos/ico/logout1.svg');
+}

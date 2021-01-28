@@ -60,7 +60,7 @@ export class Login extends Component {
             contentType: 'application/json',
             success: function (result) {
 
-                if (result.token != undefined){
+                if (result.token !== undefined){
 
                     const { usuario, token, auth} = result
 
@@ -71,7 +71,7 @@ export class Login extends Component {
                     window.location.replace('http://localhost:3000/Produto');
 
                 } else {
-                    window.location.replace('http://localhost:3000/login');
+                    window.location.replace('http://localhost:3000/');
 
                 }
             },
@@ -103,7 +103,7 @@ export class Login extends Component {
                         <div className="chk-login">
                             <input id="chkLogin" type="checkbox" /><label for="chkLogin">Remember me</label>
 
-                            <Link to="/Login">Forgot password?</Link>
+                            <Link to="/">Forgot password?</Link>
                         </div>
 
                         <button type="submit">Entrar</button>

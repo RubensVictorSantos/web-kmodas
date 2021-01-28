@@ -1,5 +1,5 @@
 /* Modal -------------------------------------------------> */
-
+/* 
 .view-produto{
     width: 100vmax;
     height: 100%;
@@ -12,11 +12,11 @@
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
     bottom: 0;
-}
+} */
 
 /* Close Modal---------------->*/
 
-.close{
+/* .close{
     position: absolute;
     top: 0;
     right: 0;
@@ -27,19 +27,23 @@
     cursor: pointer;
     color: #dfdfdf;
     font-weight: bold;
-}
+} */
   
-.close:hover{
+/* .close:hover{
     background-color: var(--red);
-}
+} */
 
-.modal-prod{
-    display: flex;
+.modal-prod1{
+    width: 75%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
     justify-content: space-around ;
     align-items: center;
     padding: 1rem;
-    background-color: white;
+    /* background-color:thistle; */
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .input-modal {

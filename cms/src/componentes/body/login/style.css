@@ -47,7 +47,9 @@
     color: #777;
 }
 
-.input-login input[type='password'], [type='e-mail'], [type='text']{
+.input-login input[type='password'],
+.input-login input[type='e-mail'], 
+.input-login input[type='text']{
     padding: 0.3rem;
     margin-bottom: 0.5rem;
     border-width: 0px 0px 0.1rem 0px;
@@ -66,7 +68,7 @@
     margin-left: 50px;
 }
 
-.input-login  button{
+.input-login button{
     background-color: var(--red);
     border: none;
     border-radius: 5px;

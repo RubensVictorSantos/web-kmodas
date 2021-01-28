@@ -32,34 +32,37 @@ export class ModalProd extends Component {
             <div className="view-prod" id="view-p">
                 <span className="close" id="closed" onClick={this.props.onClose}>&times;</span>
                 <div className="modal-prod">
-                    <div className="img-modal">
-                        <img id="imgprod" src={img_prod === undefined || img_prod === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + img_prod} alt={img_prod} />
+                    <div className="title-modal">
+                        <h2>{nome_prod}</h2>
 
                     </div>
-                    <div className="info-prod">
-                        <div className="title-modal">
-                            <h2>{nome_prod}</h2>
+                    <div className="container-modal">
+                        <div className="img-modal">
+                            <img id="imgprod" src={img_prod === undefined || img_prod === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + img_prod} alt={img_prod} />
 
                         </div>
-                        <div className="content-modal">
-                            <p>{descricao_prod}
-                                asdasdasdas dasdasdasdasdasd asdasdasdasda asdasdasd
-                                asdasdasdasdasd asdasdasdasdasdasd asda sdasdasdasdasd
-                                asdasdasdasdasdasdas dasdasdasdasdasdasdasd asdasdasd
-                                asdasdas dasdasdasdasdasdasdasdasd
+                        <div className="info-prod">
+                            <div className="content-modal">
+                                <p>{descricao_prod}
+                                    asdasdasdas dasdasdasdasdasd asdasdasdasda asdasdasd
+                                    asdasdasdasdasd asdasdasdasdasdasd asda sdasdasdasdasd
+                                    asdasdasdasdasdasdas dasdasdasdasdasdasdasd asdasdasd
+                                    asdasdas dasdasdasdasdasdasdasdasd
 
-                            </p>
+                                </p>
 
-                        </div>
-                        <div className="cost-modal">
-                            <p>R${preco_prod}</p>
+                            </div>
+                            <div className="cost-modal">
+                                <p>R${preco_prod}</p>
 
+                            </div>
+                            <div className="box-btn-edit">
+                                <p>{status_prod === 0 ? 'Desativado' : 'Ativado'}</p>
+                                {/* <input type="button" onClick={this.mudarPg} value="Mudar"/> */}
+                                <Link onClick={this.mudarPg} to='Editar_Produto' className="link-edit-modal">Editar</Link>
+                            </div>
                         </div>
-                        <div className="box-btn-edit">
-                            <p>{status_prod == 0 ? 'Desativado' : 'Ativado'}</p>
-                            {/* <input type="button" onClick={this.mudarPg} value="Mudar"/> */}
-                            <Link onClick={this.mudarPg} to='Editar_Produto' className="link-edit-modal">Editar</Link>
-                        </div>
+
                     </div>
                 </div>
             </div>

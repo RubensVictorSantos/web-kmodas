@@ -78,7 +78,7 @@ export class ContainerBuscar extends Component {
                     onChange={this.handleChange}
                 />
 
-                <button type='submit' className="" id="btn">Buscar</button>
+                <button type='submit' className="" id="btnSearch">Buscar</button>
                 {/* <button className="" onClick={this.props.onClose} type="" id="btn-novo">Novo</button> */}
                 <Link to='Produto/Cadastrar_Produto' id="btn-novo">Novo</Link>
 

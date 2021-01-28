@@ -3,7 +3,7 @@ import { Fragment } from "react";
 /** */
 import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
 import { urlImg, clearInput, editProd, insertProd } from '../modulos';
-// import './style.css';
+import './style.css';
 
 export class ContainerAddProd extends Component {
     constructor(props) {
@@ -73,8 +73,9 @@ export class ContainerAddProd extends Component {
 
         return (
             <Fragment>
+                <h2>Novo produto</h2>
                 <form onSubmit={this.formProd} id="form_add_prod">
-                    <div className="modal-prod">
+                    <div className="modal-prod1">
                         <div className="box-img">
                             <input id="selecao-arquivo"
                                 onChange={this.handleChange}

@@ -36,7 +36,7 @@ export class ItemLista extends Component {
         <div className="t-row" onClick={ this.toggleModal }>
           <div className="t-col">
             <div className="img-list">
-              <img src={DOMAIN_IMG + img_prod} alt={"Imagem " + img_prod} width="120px" height="auto" />
+              <img src={DOMAIN_IMG + img_prod} alt={"Imagem " + img_prod} width="64px" height="auto" />
 
             </div>
 
