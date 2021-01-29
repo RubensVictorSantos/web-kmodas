@@ -33,34 +33,73 @@
     background-color: var(--red);
 } */
 
-.modal-prod1{
+.modal-prod1 {
     width: 75%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 50% 50%;
-    justify-content: space-around ;
-    align-items: center;
+    grid-template-columns: auto auto auto;
+    background-color: brown;
     padding: 1rem;
-    /* background-color:thistle; */
-    border-radius: 5px;
+    border-radius: 4px;
     box-sizing: border-box;
 }
 
-.input-modal {
+.box-image-modal {
+    width: 100%;
+    /* height: 290px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:burlywood;
+    align-items: center;
+    padding: 0.5rem;
+    box-sizing: border-box;
+
+}
+
+/* File Modal---------------->*/
+  
+.box-image-modal input[type='file'] {
+    display: none;
+}
+  
+.box-image-modal label {
+    background-color: var(--red);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500 ;
+    margin-top: 0.5rem;
+    box-shadow: 1px 1px 10px rgb(255,0,0,0.8);
+    padding: 6px 19px;
+}
+
+.box-image-modal img:not(.slide-prod img) {
     width: 200px;
-    height: 20px;
+    height: 250px;
+}
+
+.box-input-modal {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    /* background-color: cadetblue; */
+}
+
+.box-input-modal textarea, .box-input-modal input {
+    margin: 0.5rem;
+    height: 25px;
     border-radius: 4px;
     border: 1px solid #afafaf;
     padding: 0.2em;
     text-align: center;
 }
   
-textarea {
+.box-input-modal textarea {
     resize: none;
     min-height: 70px!important;
 }
   
-textarea::placeholder{
+.box-input-modal textarea::placeholder{
     font-style: normal;
     font-variant-ligatures: normal;
     font-variant-caps: normal;
@@ -71,61 +110,6 @@ textarea::placeholder{
     font-size: 13.3333px;
     line-height: normal;
     font-family: Arial;
-}
-  
-.box-text{
-    padding: 0.2rem;
-}
-  
-.box-img{
-    width: 220px;
-    height: 290px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    box-sizing: border-box;
-
-}
-
-/* File Modal---------------->*/
-  
-input[type='file'] {
-    display: none;
-}
-  
-#lbl-file {
-    background-color: var(--red);
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 500 ;
-    margin-top: 0.5rem;
-    padding: 6px 19px;
-}
-
-/* Button Modal---------------->*/
-
-.box-btn{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-#btn-salvar{
-    margin-left: auto;
-    border: none;
-    font-weight: bold;
-    background-color: var(--red);
-    color: white;
-    cursor: pointer;
-    padding: 3px;
-    border-radius: 4px;
-}
-  
-.btn-del{
-    display: block;
 }
 
 /* Checkbox Modal---------------->*/
@@ -190,4 +174,29 @@ input:checked + .slider:before {
   
 .slider.round:before {
     border-radius: 50%;
+}
+
+/* Button Modal---------------->*/
+
+.box-btn{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#btn-salvar{
+    margin-left: auto;
+    border: none;
+    font-weight: bold;
+    background-color: var(--red);
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px rgb(255,0,0,0.8);
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+  
+.btn-del{
+    display: block;
 }
