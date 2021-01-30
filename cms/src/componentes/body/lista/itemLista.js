@@ -36,7 +36,7 @@ export class ItemLista extends Component {
         <div className="t-row" onClick={ this.toggleModal }>
           <div className="t-col">
             <div className="img-list">
-              <img src={DOMAIN_IMG + img_prod} alt={"Imagem " + img_prod} width="120px" height="auto" />
+              <img src={DOMAIN_IMG + img_prod} alt={"Imagem " + img_prod} width="64px" height="auto" />
 
             </div>
 
@@ -66,9 +66,9 @@ export class ItemLista extends Component {
             <img src={status_prod === 1 ? SvgAtivo : SvgInativo}
               alt={status_prod === 1 ? SvgAtivo : SvgInativo}
               width="40px" />
-            {
-              status_prod === 1 ? "Ativado" : "Desativado"
-            }
+             
+             {status_prod === 1 ? "Ativado" : "Desativado"}
+          
           </div>
         </div>
       </Fragment>

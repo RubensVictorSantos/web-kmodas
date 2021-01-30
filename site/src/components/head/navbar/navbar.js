@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import $ from 'jquery';
 /** */
 import logo from '../../../recursos/ico/logo.svg';
@@ -37,15 +37,16 @@ export class Navbar extends Component {
                                     
                                 </li>
                                 <li className="item">
-                                    <img src={logo} alt={'Imagem ' + logo} className="img" width="100%"/>
-                                    
+                                    <Link to="/">
+                                        <img className="img" src={logo} alt={'Logo K. Modas'} />
+                                    </Link>                                    
                                 </li>
                                 <li className="item">
-                                <ul className="sub-menu menu-close" id="sub-menu">
+                                    <ul className="sub-menu menu-close" id="sub-menu">
                                         <li className="sub-item">
                                             <div className="view-user">
                                                 <div className="img-user">
-                                                    <img src={imgUser} alt={'Imagem ' + imgUser} className="img" />
+                                                    <img className="img" src={imgUser} alt={'Imagem ' + imgUser}/>
 
                                                 </div>
 
@@ -67,8 +68,8 @@ export class Navbar extends Component {
                                 </li>
                             </ul>
                         </li>
-                        <li style={{height: '40px'}}>
-                            <input className="inp-search" type="search" placeholder="O que você procura?"/>
+                        <li className="container-search">
+                            <input type="search" placeholder="O que você procura?"/>
                         </li>
                     </ul>
                 </nav>

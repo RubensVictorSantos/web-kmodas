@@ -83,8 +83,9 @@ export class ContainerContent extends Component {
             ))
           }
         </div>
-        <div>
-          <input className="btn-carregar-itens" onClick={this.carregarItens} type='button' value='Carregar +20' /><label>Total: { this.state.allProd.length }</label>
+        <div style={{display: 'flex', justifyContent: 'center', position: 'relative', width:'65%'}}>
+            <input className="btn-carregar-itens" onClick={this.carregarItens} type='button' value='Carregar +20' /> 
+            <label style={{position: 'absolute', right:'0', color: '#aaa', fontSize: '1rem'}}>{ this.state.allProd.length } Itens</label>
         </div>
       </div>
     )

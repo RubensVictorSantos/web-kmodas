@@ -48,8 +48,8 @@ body {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgba(200, 200, 200); 
-  /* border-radius: 10px; */
+  background: rgba(220, 220, 220); 
+  border-radius: 10px;
 }
 
 /* Handle on hover */
@@ -63,8 +63,20 @@ body {
   background-color: rgb(50,225,100);
   border: none;
   padding: 10px;
-  margin: 5px auto;
+  /* margin: 5px auto; */
   border-radius: 50px;
+  outline: none ;
+  cursor: pointer;
+}
+
+.btn-carregar-itens:hover{
+  background-color: rgb(30, 205, 80);
+
+}
+
+.btn-carregar-itens:active{
+  background-color: rgb(8, 146, 59);
+
 }
 
 .btnnew{
@@ -87,6 +99,26 @@ body {
   justify-content: space-around;
 }
 
+#formBuscar button{
+  color: white;
+  font-weight: bold;
+  background-color: rgb(50,225,100);
+  border: none;
+  border-radius: 4px;
+}
+
 .numBuscar{
   width: 50px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

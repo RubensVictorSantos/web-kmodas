@@ -1,14 +1,16 @@
-@media screen and (max-width: 680px){
+/* @media screen and (max-width: 680px){ */
 
     #container-sprod {
-        width: 100vw;
+        width: 100%;
         box-sizing: border-box;
+        background-color: chartreuse;
         position: relative;
     }
 
     #slider-sprod {
-        width: 100%;
+        width: 50%;
         overflow: hidden;
+        background-color: chocolate;
     }
 
     #slides-sprod {
@@ -24,6 +26,7 @@
     }
 
     .slide-sprod img{
+        width: 280px;
         height: auto;
     }
 
@@ -64,4 +67,4 @@
     #menu-sprod div img {
         border: none;
     }
-}
+/* } */

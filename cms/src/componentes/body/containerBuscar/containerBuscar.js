@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
 import './../../../recursos/css/App.css'
+import { Link } from 'react-router-dom';
+import './style.css';
 // import { buscarProdId } from '../modulos';
 
 export class ContainerBuscar extends Component {
-    constructor(props) {
+    constructor() {
         super()
 
         this.formProd = this.formProd.bind(this);
@@ -56,12 +58,11 @@ export class ContainerBuscar extends Component {
     formProd(e) {
         e.preventDefault();
 
-
     }
 
     render() {
         return (
-            <form className="formBuscar" onSubmit={this.formProd}>
+            <form className="formBuscar" onSubmit={this.formProd} id="formBuscar">
                 <div>
                     <label>ID: </label>
                     <input className="numBuscar"
@@ -77,8 +78,10 @@ export class ContainerBuscar extends Component {
                     onChange={this.handleChange}
                 />
 
-                <button type='submit' className="" id="">Buscar</button>
-                <button className="" onClick={this.props.onClose} type="" id="btn-novo">Novo</button>
+                <button type='submit' className="" id="btnSearch">Buscar</button>
+                {/* <button className="" onClick={this.props.onClose} type="" id="btn-novo">Novo</button> */}
+                <Link to='Produto/Cadastrar_Produto' id="btn-novo">Novo</Link>
+
             </form>
         )
     }

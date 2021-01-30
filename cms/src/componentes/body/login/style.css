@@ -1,0 +1,78 @@
+.container-login{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-login{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    flex-direction: column;
+    padding: 0.9rem;
+    border-radius: 5px;
+
+
+}
+
+.box-login img{
+    width: 128px;
+    height: auto;
+    margin-top: 2rem;
+}
+
+.box-login h1{
+    margin: 0;
+    padding: 0;
+    color: var(--red);
+    text-align: center;
+    font-style: italic;
+}
+
+.input-login{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 85% ;
+    padding: 1rem;
+}
+
+.input-login label{
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.input-login input[type='password'],
+.input-login input[type='e-mail'], 
+.input-login input[type='text']{
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+    border-width: 0px 0px 0.1rem 0px;
+    border-color: #ccc;
+}
+
+.chk-login{
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 0.7rem;
+}
+
+.chk-login a{
+    color: var(--red);
+    text-decoration: none;
+    margin-left: 50px;
+}
+
+.input-login button{
+    background-color: var(--red);
+    border: none;
+    border-radius: 5px;
+    padding: 0.7rem;
+    color: white;
+    font-weight: bold;
+}

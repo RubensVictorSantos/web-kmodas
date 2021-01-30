@@ -2,11 +2,11 @@
 
 ul, li, h1, h2, p, body {
     padding: 0px;
-    margin: 0px;
+	margin: 0px;
 }
 
-body{
-	box-sizing: border-box;
+ul, li{
+	list-style: none;
 }
 
 :root{
@@ -14,11 +14,13 @@ body{
 	--red-hover: #e60000;
 	--red-active: #b30000;
 	--rosa: rgb(255,60,110);
+	--carousel-width: 360px;
 }
 
-* {
+body * {
 	font-family:arial;
 	box-sizing: border-box;
+	-webkit-user-select: none;
 }
 
 /* ##### CSS FOR DESKTOP #####  */
@@ -62,33 +64,8 @@ body{
 	} */
 	
 	/* ********************* Navbar ********************* */
-
-    /* .navbar-mobile{
-        display: none;
-	}
-
-    .menu{
-		width: 80%;
-		height: 100%;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-    }
-
-    .item{
-        list-style: none;
-        color: #fff;
-		font-size: 1.8rem;
-		text-align: center;
-		padding:0.5rem;
-    }
 	
-	.item:hover{
-		background-color: #00284d;
-		
-	} */
-	
-	/* ********************* Conteúdo ********************* */
+	/* ********************* Conteúdo ******************* */
 
     /* .content-body{
         width: 100%;
@@ -236,7 +213,7 @@ body{
 
 }
 
-/* ##### CSS FOR TABLET #####  */
+/* ##### CSS FOR TABLET ######  */
 
 @media only screen and (max-width: 999px) and (min-width: 681px){
 
@@ -276,33 +253,8 @@ body{
 	} */
 
 	/* ********************* Navbar ********************* */
-	
-	/* .navbar-mobile{
-        display: none;
-	}
-	
-	.menu{
-		width: 75%;
-		height: 100%;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-    }
 
-    .item{
-        list-style: none;
-        color: #fff;
-		font-size: 1.8rem;
-		text-align: center;
-		padding:0.4rem;
-    }
-	
-	.item:hover{
-		background-color: #00284d;
-		
-	} */
-
-	/* ********************* Conteúdo ********************* */
+	/* ********************* Conteúdo ******************* */
 
 	/* .content-body{
 		width: 100%;
@@ -441,7 +393,7 @@ body{
     } */
 }
 
-/* ##### CSS FOR MOBILE #####  */
+/* ##### CSS FOR MOBILE ######  */
 
 @media screen and (max-width:680px){
 
@@ -586,14 +538,6 @@ body{
     } */
 
 	/** Carousel */
-
-	:root{
-	--carousel-width: 360px;
-	/* --carousel-width: 360px; */
-	/* --carousel-height: 300px; */
-	}
-	
-	body * { -webkit-user-select: none }
 	
 	.wrap {
 		position: relative	;
