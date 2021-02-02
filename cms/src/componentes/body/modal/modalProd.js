@@ -11,8 +11,8 @@ export class ModalProd extends Component {
 
         // Ternario se existe props.produto ele set o state.produto com o valor do props.produto
         props.produto ? this.state = { produto: props.produto } : this.state = { produto: [] }
-    }
 
+    }
 
     mudarPg(){
         console.log(this.state.produto)
@@ -44,11 +44,6 @@ export class ModalProd extends Component {
                         <div className="info-prod">
                             <div className="content-modal">
                                 <p>{descricao_prod}
-                                    asdasdasdas dasdasdasdasdasd asdasdasdasda asdasdasd
-                                    asdasdasdasdasd asdasdasdasdasdasd asda sdasdasdasdasd
-                                    asdasdasdasdasdasdas dasdasdasdasdasdasdasd asdasdasd
-                                    asdasdas dasdasdasdasdasdasdasdasd
-
                                 </p>
 
                             </div>
