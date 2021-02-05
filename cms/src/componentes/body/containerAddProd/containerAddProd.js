@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Fragment } from "react";
 /** */
-import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
+import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT, DOMAIN_API } from '../../../link_config';
 import SelectImgProd from "../content-product/contentProduct";
 import { urlImg, clearInput, editProd, insertProd } from '../modulos';
 import './style.css';

@@ -10,7 +10,7 @@ export class MainBodyContent extends Component {
 
     componentDidMount() {
 
-        const url = `http://127.1.1.0:3333/prod-LimitedNumberOn/`+5;
+        const url = `http://192.168.1.224:3333/prod-LimitedNumberOn/`+5;
 
         $.ajax({
             url: url,

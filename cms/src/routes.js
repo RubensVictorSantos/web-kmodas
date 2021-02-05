@@ -4,14 +4,16 @@ import ContainerAddProd from './componentes/body/containerAddProd/containerAddPr
 import ContainerContent from './componentes/body/containerContent';
 import { Login } from './componentes/body/login/login';
 import { Navbar } from './componentes/header/navbar/menu';
+import PropTypes from "prop-types";
 
-export const estaAutenticado = () => localStorage.getItem("token") != null;
+/** Verificar se token é autentico */
+export const isAuth = () => localStorage.getItem("token") != null;
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
         render={props =>
-            estaAutenticado() ? (
+            isAuth() ? (
                 <Component {...props} />
             ) : (
                     <Redirect to={{ pathname: "/", state: { from: props.location } }} />
@@ -21,6 +23,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 export class Routes extends Component {
+
+    static propTypes = {
+        match: PropTypes.object.isRequired,
+        location: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired
+    };
+
     render() {
         return (
             <BrowserRouter>

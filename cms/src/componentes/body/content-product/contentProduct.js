@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
 import './style.css';
-import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
+import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT, DOMAIN_API } from '../../../link_config';
 
 export class SelectImgProd extends Component {
 
@@ -65,7 +65,7 @@ export class SelectImgProd extends Component {
 
         this.setState({ produto: [] });
 
-        let url = `http://127.0.0.1:3333/prod-LimitedNumber/` + itensCarousel
+        let url = `${ DOMAIN_API }/prod-LimitedNumber/${itensCarousel}`
 
         $.ajax({
             url: url,

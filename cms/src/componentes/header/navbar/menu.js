@@ -1,11 +1,11 @@
-import React from 'react'
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import $ from 'jquery'
 /** */
 import './style.css'
 import NavLogo from '../../../recursos/ico/logo-kmodas.png'
 import UserImg from '../../../recursos/ico/user-circle-fill.png'
+import { DOMAIN_API } from '../../../link_config.js'
 
 export class Navbar extends Component {
     constructor(props){
@@ -14,7 +14,7 @@ export class Navbar extends Component {
 
     logOut(){
 
-        const url = `http://127.1.1.0:3333/logout`
+        const url = `${DOMAIN_API}/logout`
 
         $.ajax({
             url: url,

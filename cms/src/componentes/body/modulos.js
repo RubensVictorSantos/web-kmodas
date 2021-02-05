@@ -1,6 +1,6 @@
 import $ from 'jquery';
 /** */
-import { DOMAIN_IMG_DEFAULT } from '../../link_config';
+import { DOMAIN_IMG_DEFAULT, DOMAIN_API } from '../../link_config';
 
 export function urlImg(input, idimg) {
 
@@ -25,7 +25,7 @@ export function urlImg(input, idimg) {
 
 export const editProd = (produto) => {
 
-    const url = "http://127.1.1.0:3333/prod-Update";
+    const url = `${DOMAIN_API}/prod-Update`;
 
     $.ajax({
         url: url,
