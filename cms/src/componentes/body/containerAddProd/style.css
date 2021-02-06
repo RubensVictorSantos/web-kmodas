@@ -36,21 +36,20 @@
 .modal-prod1 {
     width: 75%;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    background-color: brown;
+    /* display: flex; */
+    justify-content: center;
+    /* background-color: brown; */
     padding: 1rem;
     border-radius: 4px;
-    box-sizing: border-box;
 }
 
 .box-image-modal {
-    width: 100%;
-    /* height: 290px; */
+    width: 82%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color:burlywood;
+    /* background-color:burlywood; */
     align-items: center;
     padding: 0.5rem;
     box-sizing: border-box;
@@ -74,13 +73,15 @@
     padding: 6px 19px;
 }
 
-.box-image-modal img:not(.slide-prod img) {
+/* .box-image-modal img, .slide-prod:not(img){
     width: 200px;
     height: 250px;
-}
+} */
 
 .box-input-modal {
     display: grid;
+    width: 80%;
+    margin: 0 auto;
     grid-template-rows: auto auto auto auto;
     /* background-color: cadetblue; */
 }

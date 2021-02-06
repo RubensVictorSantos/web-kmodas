@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
 import './style.css';
-import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
+import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT, DOMAIN_API } from '../../../link_config';
 
-export class ContentProduct extends Component {
+export class SelectImgProd extends Component {
 
     state = { produto: []}
 
@@ -17,12 +17,8 @@ export class ContentProduct extends Component {
         var totalWidth = 0;
         var positions = [];
         let wdtScreen = '';
-        // let wdtImg = (wdtScreen/100)* 95;
-        // let paddingSld = (wdtScreen - wdtImg);
 
-        $('.slide-sprod')    .css({'width': wdtScreen});
-        // $('.slide-sprod img').css({"paddingLeft": paddingSld});
-        // $('.slide-sprod img').css({'width': wdtImg});
+        $('.slide-sprod').css({'width': wdtScreen});
 
         $('#slides-sprod .slide-sprod').each(function (i) {
 
@@ -69,7 +65,7 @@ export class ContentProduct extends Component {
 
         this.setState({ produto: [] });
 
-        let url = `http://127.0.0.1:3333/prod-LimitedNumber/` + itensCarousel
+        let url = `${ DOMAIN_API }/prod-LimitedNumber/${itensCarousel}`
 
         $.ajax({
             url: url,
@@ -91,7 +87,7 @@ export class ContentProduct extends Component {
     render() {
         let prod = this.state.produto
         return (
-            <div id="container-sprod">
+            <>
                 <div id="slider-sprod">
                     <div id="slides-sprod">
                         {
@@ -100,36 +96,32 @@ export class ContentProduct extends Component {
                                     <img src={DOMAIN_IMG + produto.img_prod}
                                         alt={produto.img_prod} />
                                     
-                                    {/* <div>
-                                        <h1>Slide - { produto.cod_prod }</h1>
-                                    </div> */}
                                 </div>
                             ))
                         }
 
                     </div>
-
-                    {/* <nav id="menu-sprod">
-                        <ul>
-                            <li className="sep"></li>
-                            {
-                            prod.map(produto => (
-                                <li key={produto.cod_prod} className="product-sprod">
-                                    <div key={produto.cod_prod}>
-                                        <img src={DOMAIN_IMG + produto.img_prod}
-                                            alt={produto.img_prod}
-                                            width="100%" height="100%" />
-
-                                    </div>
-                                </li>
-                            ))
-                            }
-                        </ul>
-                    </nav> */}
                 </div>
-            </div>
+                                    <nav id="menu-sprod">
+                                    <ul>
+                                        <li className="sep"></li>
+                                        {
+                                        prod.map(produto => (
+                                            <li key={produto.cod_prod} className="product-sprod">
+                                                <div key={produto.cod_prod}>
+                                                    <img src={DOMAIN_IMG + produto.img_prod}
+                                                        alt={produto.img_prod}
+                                                        width="100%" height="100%" />
+            
+                                                </div>
+                                            </li>
+                                        ))
+                                        }
+                                    </ul>
+                                </nav>
+                                </>
         )
     }
 }
 
-export default ContentProduct;
+export default SelectImgProd;

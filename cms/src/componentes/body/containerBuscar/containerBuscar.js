@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
+import { DOMAIN_API } from '../../../link_config';
 import './../../../recursos/css/App.css'
 import { Link } from 'react-router-dom';
 import './style.css';
@@ -38,7 +39,7 @@ export class ContainerBuscar extends Component {
     
     buscarProdId = (id) => {
 
-        const url = `http://127.1.1.0:3333/prodId/${id}`;
+        const url = `${DOMAIN_API}/prodId/${id}`;
 
         $.ajax({
             url: url,

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import $ from 'jquery';
 /** */
 import Imglogo from '../../../recursos/ico/logo-kmodas.png'
+import { DOMAIN_API } from '../../../link_config';
 import './style.css'
 
 //ARMAZENA OS ESTADOS INICIAIS
@@ -48,7 +49,7 @@ export class Login extends Component {
 
         e.preventDefault();
 
-        const url = `http://127.1.1.0:3333/login`
+        const url = `${ DOMAIN_API }/login`
         const { email, senha } = { ...this.state.user }
 
         $.ajax({
@@ -68,10 +69,11 @@ export class Login extends Component {
                     localStorage.setItem('token', JSON.stringify(token));
                     localStorage.setItem('auth', JSON.stringify(auth));
     
-                    window.location.replace('http://localhost:3000/Produto');
+                    this.props.history.push("/Produto");
+                    // window.location.replace('http://localhost:3000/Produto');
 
                 } else {
-                    window.location.replace('http://localhost:3000/');
+                    alert('Login e/ou senha incorreto')
 
                 }
             },

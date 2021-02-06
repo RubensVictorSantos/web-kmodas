@@ -68,7 +68,7 @@ export class ContentProduct extends Component {
 
         this.setState({ produto: [] });
 
-        let url = `http://127.0.0.1:3333/prod-LimitedNumber/` + itensCarousel
+        let url = `http://192.168.1.224:3333/prod-LimitedNumber/` + itensCarousel
 
         $.ajax({
             url: url,

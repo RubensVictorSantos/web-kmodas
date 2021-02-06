@@ -4,6 +4,7 @@ import $ from 'jquery';
 import ItemLista from './lista/itemLista';
 import ModalProd from './modal/modalProd';
 import ContainerBuscar from './containerBuscar/containerBuscar';
+import { DOMAIN_API } from '../../link_config';
 
 export class ContainerContent extends Component {
 
@@ -26,7 +27,7 @@ export class ContainerContent extends Component {
 
     this.setState({ allProd: [] });
 
-    let url = `http://127.1.1.0:3333/prod-LimitedNumber/` + num;
+    let url = `${DOMAIN_API}/prod-LimitedNumber/${num}`;
 
     $.ajax({
       url: url,
@@ -55,7 +56,7 @@ export class ContainerContent extends Component {
   }
 
   carregarItens = () => {
-    
+
     let num = this.state.limits + 20;
 
     this.setState({
@@ -83,9 +84,9 @@ export class ContainerContent extends Component {
             ))
           }
         </div>
-        <div style={{display: 'flex', justifyContent: 'center', position: 'relative', width:'65%'}}>
-            <input className="btn-carregar-itens" onClick={this.carregarItens} type='button' value='Carregar +20' /> 
-            <label style={{position: 'absolute', right:'0', color: '#aaa', fontSize: '1rem'}}>{ this.state.allProd.length } Itens</label>
+        <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', width: '65%' }}>
+          <input className="btn-carregar-itens" onClick={this.carregarItens} type='button' value='Carregar +20' />
+          <label style={{ position: 'absolute', right: '0', color: '#aaa', fontSize: '1rem' }}>{this.state.allProd.length} Itens</label>
         </div>
       </div>
     )

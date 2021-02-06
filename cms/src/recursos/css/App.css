@@ -15,6 +15,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+div{
+  box-sizing: border-box;
+}
 .content{
   display: flex;
   justify-content: center;

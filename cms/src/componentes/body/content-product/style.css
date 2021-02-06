@@ -2,15 +2,18 @@
 
     #container-sprod {
         width: 100%;
+        height: auto;
         box-sizing: border-box;
-        background-color: chartreuse;
+        /* background-color: chartreuse; */
         position: relative;
     }
 
     #slider-sprod {
-        width: 50%;
+        width: 100%;
         overflow: hidden;
-        background-color: chocolate;
+        padding-left: 262px;
+        /* background-color: chocolate; */
+        box-sizing: border-box;
     }
 
     #slides-sprod {
@@ -26,14 +29,19 @@
     }
 
     .slide-sprod img{
-        width: 280px;
+        width: 300px;
         height: auto;
+        margin: 0.5rem 2rem;
+        box-shadow: 1px 1px 5px 1px rgba( 100, 100, 100, 0.7);
     }
 
     #menu-sprod {
         height: 60px;
         display: flex;
-        margin-top: 0.5rem;
+        left: 0;
+        /* position: absolute;
+        margin: 0 auto; */
+        margin-bottom: 1rem;
         justify-content: center;
     }
 

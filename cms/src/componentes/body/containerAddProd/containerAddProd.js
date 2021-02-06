@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Fragment } from "react";
 /** */
-import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
-import ContentProduct from "../content-product/contentProduct";
+import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT, DOMAIN_API } from '../../../link_config';
+import SelectImgProd from "../content-product/contentProduct";
 import { urlImg, clearInput, editProd, insertProd } from '../modulos';
 import './style.css';
 
@@ -77,12 +77,8 @@ export class ContainerAddProd extends Component {
                 <h2>Novo produto</h2>
                 <form onSubmit={this.formProd} id="form_add_prod">
                     <div className="modal-prod1">
-                        <div style={{ gridColumnStart: 2}}>
+                        <div style={{ gridColumnStart: 2 }}>
                             <div className="box-image-modal">
-                                
-                                <div className="slide-prod">
-                                    <ContentProduct/>
-                                </div>
 
                                 <input id="selecao-arquivo"
                                     onChange={this.handleChange}
@@ -92,58 +88,61 @@ export class ContainerAddProd extends Component {
                                     ref={this.fileInput}
                                 />
 
+                                <div id="container-sprod">
+                                    <SelectImgProd />
+                                </div>
+
                                 {/* <img id="imgprod" 
                                     src={img_prod === undefined || img_prod === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + img_prod} 
                                     alt={img_prod} 
-                                />
- */}
-                                <label tabIndex='0' htmlFor="selecao-arquivo" id="lbl-file">Selecionar um arquivo</label>
+                                /> */}
+
+                                <label tabIndex='0' htmlFor="selecao-arquivo" id="lbl-file">Selecionar Imagens</label>
                             </div>
 
                             <div className="box-input-modal">
 
-                            <input type="text"
-                                name="nome_prod"
-                                value={nome_prod || ''}
-                                onChange={this.handleChange}
-                                placeholder="Nome do Produto"
-                                id="txtnome"
-                            />
+                                <input type="text"
+                                    name="nome_prod"
+                                    value={nome_prod || ''}
+                                    onChange={this.handleChange}
+                                    placeholder="Nome do Produto"
+                                    id="txtnome"
+                                />
 
-                            <textarea
-                                value={descricao_prod}
-                                name="descricao_prod"
-                                placeholder="Descrição do Produto"
-                                maxLength="400"
-                                onChange={this.handleChange}
-                            >
-                            </textarea>
+                                <textarea
+                                    value={descricao_prod}
+                                    name="descricao_prod"
+                                    placeholder="Descrição do Produto"
+                                    maxLength="400"
+                                    onChange={this.handleChange}
+                                >
+                                </textarea>
 
-                            <input type="text"
-                                name="preco_prod"
-                                value={preco_prod || ''}
-                                onChange={this.handleChange}
-                                placeholder="Preço do Produto"
-                                id="txtpreco"
-                            />
-                            
-                            <div className="box-btn">
+                                <input type="text"
+                                    name="preco_prod"
+                                    value={preco_prod || ''}
+                                    onChange={this.handleChange}
+                                    placeholder="Preço do Produto"
+                                    id="txtpreco"
+                                />
 
-                                <label htmlFor="chk" className="switch">
-                                    <input
-                                        id="chk"
-                                        type="checkbox"
-                                        name="status_prod"
-                                        checked={status_prod || 0}
-                                        onChange={this.handleChange}
-                                    />
-                                    <span className="slider round"></span>
-                                </label>
+                                <div className="box-btn">
 
-                                <button id="btn-salvar">Salvar</button>
-                                {/* <button id="btn-del" onClick={this.btnDelete}>Excluir</button> */}
+                                    <label htmlFor="chk" className="switch">
+                                        <input
+                                            id="chk"
+                                            type="checkbox"
+                                            name="status_prod"
+                                            checked={status_prod || 0}
+                                            onChange={this.handleChange}
+                                        />
+                                        <span className="slider round"></span>
+                                    </label>
+
+                                    <button id="btn-salvar">Salvar</button>
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </form>
