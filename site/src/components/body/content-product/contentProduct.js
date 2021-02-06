@@ -20,7 +20,7 @@ export class ContentProduct extends Component {
         let wdtImg = (wdtScreen/100)* 95 
         let paddingSld = (wdtScreen - wdtImg);
 
-        $('.slide-sprod')    .css({'width': wdtScreen});
+        $('.slide-sprod').css({'width': wdtScreen});
         $('.slide-sprod img').css({"paddingLeft": paddingSld});
         $('.slide-sprod img').css({'width': wdtImg});
         $('#slides-sprod .slide-sprod').each(function (i) {
