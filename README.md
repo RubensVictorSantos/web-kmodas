@@ -1,4 +1,4 @@
-<img src="https://drive.google.com/file/d/1W1FmBQzJDyOZMXlq3IZdzjYJsvYfDVWM/view?usp=sharing"/>
+<img src="https://docs.google.com/uc?id=1W1FmBQzJDyOZMXlq3IZdzjYJsvYfDVWM" width="100"/>
 
 # Web-kmodas #
 Site K modas
