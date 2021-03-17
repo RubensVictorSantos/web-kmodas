@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
 import './style.css'
-import DOMAIN_IMG from '../../../link_config';
+import { DOMAIN_IMG, DOMAIN_API } from '../../../link_config';
 
 export class Carousel extends Component {
 
@@ -53,7 +53,7 @@ export class Carousel extends Component {
 
         this.setState({ produto: [] });
 
-        let url = `http://192.168.1.224:3333/prod-LimitedNumber/` + itensCarousel
+        let url = `${DOMAIN_API}prod-LimitedNumber/` + itensCarousel
 
         $.ajax({
             url: url,
