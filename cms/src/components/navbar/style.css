@@ -65,5 +65,5 @@ nav ul li a:hover{
     border: none;
     background-position: center;
     background-size: cover;
-    background-image: url('../../../recursos/ico/logout1.svg');
+    background-image: url('../../../resources/ico/logout1.svg');
 }

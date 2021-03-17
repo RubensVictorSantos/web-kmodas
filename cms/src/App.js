@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from "prop-types";
 import { Routes } from './routes';
 /** */
-import './recursos/css/App.css';
+import './resources/css/App.css';
 
 export class App extends Component {
 

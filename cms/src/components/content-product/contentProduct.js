@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
 import './style.css';
-import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT, DOMAIN_API } from '../../../link_config';
+import { DOMAIN_IMG, DOMAIN_API } from '../../link_config';
 
 export class SelectImgProd extends Component {
 
-    state = { produto: []}
+    state = { produto: [] }
 
     componentDidMount() {
         this.chargeImgCarousel(5);
@@ -18,7 +18,7 @@ export class SelectImgProd extends Component {
         var positions = [];
         let wdtScreen = '';
 
-        $('.slide-sprod').css({'width': wdtScreen});
+        $('.slide-sprod').css({ 'width': wdtScreen });
 
         $('#slides-sprod .slide-sprod').each(function (i) {
 
@@ -37,8 +37,8 @@ export class SelectImgProd extends Component {
         $('#slides-sprod').width(totalWidth);
 
         // menu item click handler
-        $('#menu-sprod ul li div').on('click', function(e, keepScroll) {
-            
+        $('#menu-sprod ul li div').on('click', function (e, keepScroll) {
+
             // remove active calls and add inactive
             $('li.product-sprod').removeClass('active').addClass('inactive');
 
@@ -65,7 +65,7 @@ export class SelectImgProd extends Component {
 
         this.setState({ produto: [] });
 
-        let url = `${ DOMAIN_API }/prod-LimitedNumber/${itensCarousel}`
+        let url = `${DOMAIN_API}/prod-LimitedNumber/${itensCarousel}`
 
         $.ajax({
             url: url,
@@ -95,31 +95,31 @@ export class SelectImgProd extends Component {
                                 <div className="slide-sprod" key={produto.cod_prod}>
                                     <img src={DOMAIN_IMG + produto.img_prod}
                                         alt={produto.img_prod} />
-                                    
+
                                 </div>
                             ))
                         }
 
                     </div>
                 </div>
-                                    <nav id="menu-sprod">
-                                    <ul>
-                                        <li className="sep"></li>
-                                        {
-                                        prod.map(produto => (
-                                            <li key={produto.cod_prod} className="product-sprod">
-                                                <div key={produto.cod_prod}>
-                                                    <img src={DOMAIN_IMG + produto.img_prod}
-                                                        alt={produto.img_prod}
-                                                        width="100%" height="100%" />
-            
-                                                </div>
-                                            </li>
-                                        ))
-                                        }
-                                    </ul>
-                                </nav>
-                                </>
+                <nav id="menu-sprod">
+                    <ul>
+                        <li className="sep"></li>
+                        {
+                            prod.map(produto => (
+                                <li key={produto.cod_prod} className="product-sprod">
+                                    <div key={produto.cod_prod}>
+                                        <img src={DOMAIN_IMG + produto.img_prod}
+                                            alt={produto.img_prod}
+                                            width="100%" height="100%" />
+
+                                    </div>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </nav>
+            </>
         )
     }
 }

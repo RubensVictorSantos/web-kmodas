@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import $ from 'jquery'
 /** */
 import './style.css'
-import NavLogo from '../../../recursos/ico/logo-kmodas.png'
-import UserImg from '../../../recursos/ico/user-circle-fill.png'
+import NavLogo from '../../../resources/ico/logo-kmodas.png'
+import UserImg from '../../../resources/ico/user-circle-fill.png'
 import { DOMAIN_API } from '../../../link_config.js'
 
 export class Navbar extends Component {
@@ -25,7 +25,7 @@ export class Navbar extends Component {
 
                 localStorage.clear();
 
-                return window.location.replace('http://localhost:3000/');
+                return window.location.replace('http://localhost:3001');
 
             }
         })
@@ -35,13 +35,13 @@ export class Navbar extends Component {
         return (
             <nav className="navbar">
                 <div className="container-nav">
-                    <Link to='/' className="link-logo">
+                    <Link to='/home' className="link-logo">
                         <img className="ico-logo" src={NavLogo} alt={'Imagem ' + NavLogo} />
                         K. Modas
                     </Link>
 
                     <ul>
-                        <li><Link to='/Produto'>Produtos</Link></li>
+                        <li><Link to='/products'>Produtos</Link></li>
                         {/* <li><Link to='/Produto'>Produtos</Link></li>
                         <li><Link to='/Produto'>Produtos</Link></li> */}
                     </ul>

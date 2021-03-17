@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 /** */
-import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
+import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../link_config';
 import './style.css';
 
 export class ModalProd extends Component {
