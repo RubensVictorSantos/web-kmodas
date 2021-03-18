@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import ContainerAddProd from '../containers/containerAddProd';
 import ContainerContent from '../containers/containerContent';
-import Navbar from '../components/header/navbar/menu';
+import Navbar from '../components/navbar/menu';
 
 const ProductsPage = ({ match }) => (
     <div className="">

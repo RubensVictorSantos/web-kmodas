@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import Navbar from '../components/header/navbar/menu';
+import Navbar from '../components/navbar/menu';
 
 const HomePage = ({ match }) => (
 

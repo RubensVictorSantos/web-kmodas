@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import $ from 'jquery'
 /** */
 import './style.css'
-import NavLogo from '../../../resources/ico/logo-kmodas.png'
-import UserImg from '../../../resources/ico/user-circle-fill.png'
-import { DOMAIN_API } from '../../../link_config.js'
+import NavLogo from '../../resources/ico/logo-kmodas.png'
+import UserImg from '../../resources/ico/user-circle-fill.png'
+import { DOMAIN_API } from '../../link_config.js'
 
 export class Navbar extends Component {
     constructor(props){

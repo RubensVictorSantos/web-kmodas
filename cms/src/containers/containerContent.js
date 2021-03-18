@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import { Link } from 'react-router-dom';
 /** */
-import ItemLista from '../components/lista/itemLista';
+// import ItemLista from '../components/lista/itemLista';
 import { DOMAIN_API } from '../link_config';
+import List from '../components/lista/list';
 
 export class ContainerContent extends Component {
   constructor() {
@@ -15,45 +16,13 @@ export class ContainerContent extends Component {
   state = {
     allProd: [],
     limits: 5,
-    input: [],
-    error: null,
-    isLoaded: false,
-    items: [],
-  }
-
-  componentDidMount() {
-    this.loadList(this.state.limits);
-  }
-
-  loadList(num) {
-
-    fetch(`${DOMAIN_API}/prod-LimitedNumber/${num}`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            allProd: result
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
+    input: []
   }
 
   carregarItens = () => {
-
-    let num = this.state.limits + 20;
-
     this.setState({
-      limits: num
+      limits: this.state.limits + 20
     })
-
-    this.loadList(num)
   }
 
   handleChange(e) {
@@ -89,8 +58,6 @@ export class ContainerContent extends Component {
 
   render() {
 
-    const allProd = this.state.allProd;
-
     return (
       <div className="content">
 
@@ -120,18 +87,8 @@ export class ContainerContent extends Component {
 
         {/** TABELA */}
 
-        <div className="tbl">
+        <List limits={this.state.limits}/>
 
-          {
-            allProd.map(produto => (
-              <ItemLista key={produto.cod_prod} produto={produto} onClose={this.toggleModal} />
-            ))
-          }
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', width: '65%' }}>
-          <input className="btn-carregar-itens" onClick={this.carregarItens} type='button' value='Carregar +20' />
-          <label style={{ position: 'absolute', right: '0', color: '#aaa', fontSize: '1rem' }}>{this.state.allProd.length} Itens</label>
-        </div>
       </div>
     )
   }

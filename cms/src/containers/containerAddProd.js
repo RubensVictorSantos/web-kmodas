@@ -73,7 +73,6 @@ export class ContainerAddProd extends Component {
 
         return (
             <Fragment>
-                <h2>Novo produto</h2>
                 <form onSubmit={this.formProd} id="form_add_prod">
                     <div className="modal-prod1">
                         <div style={{ gridColumnStart: 2 }}>
