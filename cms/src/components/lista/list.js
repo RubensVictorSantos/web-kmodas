@@ -8,7 +8,7 @@ const List = (props) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
-    const [count, setCount] = useState('a');
+    const [count, setCount] = useState(5);
 
     useEffect(() => {
         fetch(`${DOMAIN_API}/prod-LimitedNumber/${count}`)
@@ -23,17 +23,15 @@ const List = (props) => {
                     setError(error)
                 }
             )
-    }, [])
+    },[])
 
     if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
         return (
-            <div className="main-spinner">
-                <div className="spinner">
-
-                </div>
-                <h1>Loading...</h1>
+            <div>
+                <div className="spinner"></div> 
+                <h1 className="txt-loading">Loading...</h1>
             </div>
         );
     } else {

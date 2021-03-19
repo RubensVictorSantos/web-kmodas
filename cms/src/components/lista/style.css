@@ -59,28 +59,3 @@
 .desc-item{
   color: rgb(150,150,150)
 }
-
-.main-spinner{
-  display: Flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 5rem;
-}
-
-.spinner{
-  width: 70px;
-  height: 70px;
-  background-color: white;
-  /* border: 8px solid rgb(240, 240, 240); */
-  border-top: 8px solid lawngreen;
-  border-radius: 50%;
-  animation: spin 0.5s linear infinite;
-}
-
-
-@keyframes spin {
-  100% { 
-    transform: rotate(360deg);
-  }
-}
