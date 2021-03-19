@@ -3,6 +3,7 @@ import $ from 'jquery';
 /** */
 import CardProd from '../card-prod/cardProd';
 import Carousel from '../carousel/carousel';
+import { DOMAIN_API } from '../../../link_config'
 
 export class MainBodyContent extends Component {
 
@@ -10,7 +11,7 @@ export class MainBodyContent extends Component {
 
     componentDidMount() {
 
-        const url = `http://192.168.1.224:3333/prod-LimitedNumberOn/`+5;
+        const url = `${DOMAIN_API}prod-LimitedNumberOn/${5}`;
 
         $.ajax({
             url: url,
@@ -33,7 +34,7 @@ export class MainBodyContent extends Component {
         return (
             <div className="content-body">
                 <div>
-                    <Carousel itensCarousel={5}/>
+                    <Carousel itensCarousel={5} />
                 </div>
                 <section className="container-cards">
                     {

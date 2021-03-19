@@ -1,6 +1,6 @@
 import $ from 'jquery';
 /** */
-import { DOMAIN_IMG_DEFAULT, DOMAIN_API } from '../../link_config';
+import { DOMAIN_IMG_DEFAULT, DOMAIN_API } from '../link_config';
 
 export function urlImg(input, idimg) {
 

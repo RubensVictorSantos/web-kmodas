@@ -3,8 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from "prop-types";
 import $ from 'jquery';
 /** */
-import Imglogo from '../../../recursos/ico/logo-kmodas.png'
-import { DOMAIN_API } from '../../../link_config';
+import Imglogo from '../../resources/ico/logo-kmodas.png'
+import { DOMAIN_API } from '../../link_config';
 import './style.css'
 
 //ARMAZENA OS ESTADOS INICIAIS
@@ -33,6 +33,7 @@ export class Login extends Component {
         match: PropTypes.object.isRequired,
         location: PropTypes.object.isRequired,
         history: PropTypes.object.isRequired
+        
     };
 
     handleChange(e) {
@@ -61,22 +62,21 @@ export class Login extends Component {
             contentType: 'application/json',
             success: function (result) {
 
-                if (result.token !== undefined){
+                if (result.token){
 
                     const { usuario, token, auth} = result
 
                     localStorage.setItem('usuario', JSON.stringify(usuario));
                     localStorage.setItem('token', JSON.stringify(token));
                     localStorage.setItem('auth', JSON.stringify(auth));
-    
-                    this.props.history.push("/Produto");
-                    // window.location.replace('http://localhost:3000/Produto');
+
+                    this.props.history.push("/home");
 
                 } else {
                     alert('Login e/ou senha incorreto')
 
                 }
-            },
+            }.bind(this),
             error: function (request, status, error) {
 
                 if (request.status === 404) {
@@ -96,14 +96,14 @@ export class Login extends Component {
                     <h1>K. Modas</h1>
 
                     <div className="input-login">
-                        <label for="txtEmail">Email Address</label>
+                        <label htmlFor="txtEmail">Email Address</label>
                         <input id="txtEmail" name="email" onChange={this.handleChange} type="e-mail"></input>
 
-                        <label for="txtPassword">Password</label>
-                        <input id="txtPassword" name="senha" onChange={this.handleChange} type="password"></input>
+                        <label htmlFor="txtPassword">Password</label>
+                        <input id="txtPassword" name="senha" autoComplete="new-password" onChange={this.handleChange} type="password"></input>
 
                         <div className="chk-login">
-                            <input id="chkLogin" type="checkbox" /><label for="chkLogin">Remember me</label>
+                            <input id="chkLogin" type="checkbox" /><label htmlFor="chkLogin">Remember me</label>
 
                             <Link to="/">Forgot password?</Link>
                         </div>

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
 import './style.css';
-import DOMAIN_IMG from '../../../link_config';
+import { DOMAIN_IMG, DOMAIN_API } from '../../../link_config';
 
 export class ContentProduct extends Component {
 
-    state = { produto: []}
+    state = { produto: [] }
 
     componentDidMount() {
         this.chargeImgCarousel(5);
@@ -17,12 +17,19 @@ export class ContentProduct extends Component {
         var totalWidth = 0;
         var positions = [];
         let wdtScreen = window.screen.width;
-        let wdtImg = (wdtScreen/100)* 95 
+        let wdtImg = (wdtScreen / 100) * 95
         let paddingSld = (wdtScreen - wdtImg);
 
+<<<<<<< HEAD
         $('.slide-sprod').css({'width': wdtScreen});
         $('.slide-sprod img').css({"paddingLeft": paddingSld});
         $('.slide-sprod img').css({'width': wdtImg});
+=======
+        $('.slide-sprod').css({ 'width': wdtScreen });
+        $('.slide-sprod img').css({ "paddingLeft": paddingSld });
+        $('.slide-sprod img').css({ 'width': wdtImg });
+
+>>>>>>> 69ffb8af1a3e3ff96ddaf58fec5ad229b0977511
         $('#slides-sprod .slide-sprod').each(function (i) {
 
             // Get slider widths
@@ -40,8 +47,8 @@ export class ContentProduct extends Component {
         $('#slides-sprod').width(totalWidth);
 
         // menu item click handler
-        $('#menu-sprod ul li div').on('click', function(e, keepScroll) {
-            
+        $('#menu-sprod ul li div').on('click', function (e, keepScroll) {
+
             // remove active calls and add inactive
             $('li.product-sprod').removeClass('active').addClass('inactive');
 
@@ -68,7 +75,7 @@ export class ContentProduct extends Component {
 
         this.setState({ produto: [] });
 
-        let url = `http://192.168.1.224:3333/prod-LimitedNumber/` + itensCarousel
+        let url = `${DOMAIN_API}prod-LimitedNumber/` + itensCarousel
 
         $.ajax({
             url: url,
@@ -97,7 +104,7 @@ export class ContentProduct extends Component {
                             prod.map(produto => (
                                 <div className="slide-sprod" key={produto.cod_prod}>
                                     <img src={DOMAIN_IMG + produto.img_prod}
-                                        alt={produto.img_prod}/>
+                                        alt={produto.img_prod} />
                                 </div>
                             ))
                         }
@@ -108,16 +115,16 @@ export class ContentProduct extends Component {
                         <ul>
                             <li className="sep"></li>
                             {
-                            prod.map(produto => (
-                                <li key={produto.cod_prod} className="product-sprod">
-                                    <div key={produto.cod_prod}>
-                                        <img src={DOMAIN_IMG + produto.img_prod}
-                                            alt={produto.img_prod}
-                                            width="100%" height="100%" />
+                                prod.map(produto => (
+                                    <li key={produto.cod_prod} className="product-sprod">
+                                        <div key={produto.cod_prod}>
+                                            <img src={DOMAIN_IMG + produto.img_prod}
+                                                alt={produto.img_prod}
+                                                width="100%" height="100%" />
 
-                                    </div>
-                                </li>
-                            ))
+                                        </div>
+                                    </li>
+                                ))
                             }
                         </ul>
                     </nav>

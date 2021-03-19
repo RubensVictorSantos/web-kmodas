@@ -1,22 +1,20 @@
 import React, { Component, Fragment } from 'react';
 /** */
-import SvgAtivo from '../../../recursos/ico/check-green.svg';
-import SvgInativo from '../../../recursos/ico/check-gray.svg';
-import { DOMAIN_IMG } from '../../../link_config';
+import SvgAtivo from '../../resources/ico/check-green.svg';
+import SvgInativo from '../../resources/ico/check-gray.svg';
+import { DOMAIN_IMG } from '../../link_config';
 import ModalProd from '../modal/modalProd';
 import './style.css';
 
 export class ItemLista extends Component {
   constructor(props) {
-    super()
+    super(props)
 
     let produto = props.produto;
+    this.state = {
+      produto: produto
+    }
 
-    this.state = { produto: produto }
-
-  }
-
-  componentDidMount() {
   }
 
   toggleModal = () => {
@@ -25,15 +23,14 @@ export class ItemLista extends Component {
     });
   }
 
-
   render() {
 
     const { cod_prod, nome_prod, img_prod, preco_prod, descricao_prod, status_prod } = this.state.produto;
 
     return (
       <Fragment>
-        <ModalProd produto={this.state.produto} show={this.state.isOpen} status={'editar'} onClose={this.toggleModal}/>
-        <div className="t-row" onClick={ this.toggleModal }>
+        <ModalProd produto={this.state.produto} show={this.state.isOpen} status={'editar'} onClose={this.toggleModal} />
+        <div className="t-row" onClick={this.toggleModal}>
           <div className="t-col">
             <div className="img-list">
               <img src={DOMAIN_IMG + img_prod} alt={"Imagem " + img_prod} width="64px" height="auto" />
@@ -56,7 +53,7 @@ export class ItemLista extends Component {
               </div>
 
               <div className="t-col preco-item">
-                R${preco_prod} 
+                R${preco_prod}
 
               </div>
 
@@ -66,9 +63,9 @@ export class ItemLista extends Component {
             <img src={status_prod === 1 ? SvgAtivo : SvgInativo}
               alt={status_prod === 1 ? SvgAtivo : SvgInativo}
               width="40px" />
-             
-             {status_prod === 1 ? "Ativado" : "Desativado"}
-          
+
+            {status_prod === 1 ? "Ativado" : "Desativado"}
+
           </div>
         </div>
       </Fragment>
