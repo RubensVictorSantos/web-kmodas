@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { DOMAIN_API } from '../link_config';
 import List from '../components/lista/list';
 
-export class ContainerContent extends Component {
+export class ListProdCont extends Component {
   constructor() {
     super()
 
@@ -94,4 +94,4 @@ export class ContainerContent extends Component {
   }
 }
 
-export default ContainerContent;
+export default ListProdCont;

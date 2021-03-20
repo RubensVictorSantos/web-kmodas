@@ -1,5 +1,38 @@
 /* CSS Itens Produtos */
 
+/* LISTA DE PRODUTOS ITENS 
+----------------------------------------------*/
+
+.tbl{
+  width: 65%;
+  height: 485px;
+  overflow: auto;
+  display: grid;
+  grid-template-rows: auto;
+  margin: 0.5rem;
+  border: var(--b-row);
+}
+
+.tbl:hover ::-webkit-scrollbar-thumb{
+  background: rgba(220, 220, 220); 
+  border-radius: 10px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent; 
+  border-radius: 10px;
+}
+
+.head-tbl{
+  background-color: red;
+}
+
 .t-row{
   display: grid;
   grid-template-columns: 1fr 10fr 1fr ;
@@ -58,4 +91,29 @@
 
 .desc-item{
   color: rgb(150,150,150)
+}
+
+/* BUTTON CARREGAR ITENS
+----------------------------------------------*/
+
+.btn-carregar-itens{
+  color: white;
+  font-weight: bold;
+  background-color: rgb(50,225,100);
+  border: none;
+  padding: 10px;
+  /* margin: 5px auto; */
+  border-radius: 50px;
+  outline: none ;
+  cursor: pointer;
+}
+
+.btn-carregar-itens:hover{
+  background-color: rgb(30, 205, 80);
+
+}
+
+.btn-carregar-itens:active{
+  background-color: rgb(8, 146, 59);
+
 }

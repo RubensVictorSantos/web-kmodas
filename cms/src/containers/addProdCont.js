@@ -6,7 +6,7 @@ import SelectImgProd from "../components/content-product/contentProduct";
 import { urlImg, clearInput, editProd, insertProd } from '../components/modulos';
 import './style.css';
 
-export class ContainerAddProd extends Component {
+export class AddProdCont extends Component {
     constructor(props) {
         super();
 
@@ -149,4 +149,4 @@ export class ContainerAddProd extends Component {
     }
 }
 
-export default ContainerAddProd
+export default AddProdCont

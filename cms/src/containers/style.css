@@ -2,6 +2,7 @@
     color: white;
     font-weight: bold;
     background-color: rgb(50,225,100);
+    box-shadow: 1px 1px 10px rgb(50,225,100,0.8);
     border: none;
     border-radius: 4px;
     text-decoration: none;

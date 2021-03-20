@@ -38,7 +38,9 @@ const List = (props) => {
         return (
             <>
                 <div className="tbl">
+                    <div className="head-tbl">
 
+                    </div>
                     {
                         items.map(item => (
                             <ItemLista key={item.cod_prod} produto={item} />
