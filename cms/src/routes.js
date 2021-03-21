@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 /** */
-import { Login } from './components/login/login';
+import { FormLogin } from './components/login/formLogin';
 import HomePage from './pages/homePage';
 import ProductsPage from './pages/productsPage';
 
@@ -27,7 +27,7 @@ export class Routes extends Component {
             <BrowserRouter>
                 <Switch>
 
-                    <Route path="/" exact component={Login} />
+                    <Route path="/" exact component={FormLogin} />
 
                     <Route path="/" render={({ match: { url } }) => (
                         <Fragment>

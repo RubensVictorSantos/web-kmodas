@@ -17,7 +17,7 @@ const initialState = {
 
 export const TOKEN_KEY = "token";
 
-export class Login extends Component {
+export class FormLogin extends Component {
     constructor(props) {
         super();
 
@@ -117,4 +117,4 @@ export class Login extends Component {
     }
 }
 
-export default withRouter(Login)
+export default withRouter(FormLogin)
