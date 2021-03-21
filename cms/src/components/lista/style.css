@@ -13,19 +13,14 @@
   border: var(--b-row);
 }
 
-.tbl:hover ::-webkit-scrollbar-thumb{
-  background: rgba(220, 220, 220); 
-  border-radius: 10px;
-}
-
 /* width */
-::-webkit-scrollbar {
+.tbl::-webkit-scrollbar {
   width: 5px;
 }
  
 /* Handle */
-::-webkit-scrollbar-thumb {
-  background: transparent; 
+.tbl::-webkit-scrollbar-thumb {
+  background: rgba(220, 220, 220);  
   border-radius: 10px;
 }
 
