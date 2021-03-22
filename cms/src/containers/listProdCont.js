@@ -3,6 +3,7 @@ import $ from 'jquery';
 import { Link } from 'react-router-dom';
 /** */
 // import ItemLista from '../components/lista/itemLista';
+import imgSearch from '../resources/ico/search.svg'
 import { DOMAIN_API } from '../link_config';
 import List from '../components/lista/list';
 
@@ -64,30 +65,35 @@ export class ListProdCont extends Component {
         {/** FROMULÁRIO BUSCAR */}
 
         <form className="formBuscar" onSubmit={this.formProd} id="formBuscar">
-          <div>
-            <label>ID: </label>
-            <input className="numBuscar"
-              type="number"
-              name="txtId"
-              onChange={this.handleChange}
-            />
+          <div className="box-search">
+
+            <label htmlFor="txt-search" className="lbl-search">
+              <input className=""
+                type="text"
+                name="txt-search"
+                id="txt-search"
+                placeholder="Buscar..."
+                onChange={this.handleChange}
+                required
+              /><span/>
+            </label>
+            <button type='submit' className="btn-search" id="btnSearch">
+              <img src={imgSearch}></img>
+            </button>
+
           </div>
 
-          <input className=""
-            type="text"
-            name="txtNome"
-            onChange={this.handleChange}
-          />
-
-          <button type='submit' className="" id="btnSearch">Buscar</button>
-          {/* <button className="" onClick={this.props.onClose} type="" id="btn-novo">Novo</button> */}
-          <Link to='Products/add' id="btn-novo">Novo</Link>
+          <Link to='Products/add'>
+            <button type='submit' className="btn-new" id="btnNew">
+              Novo
+            </button>
+          </Link>
 
         </form>
 
         {/** TABELA */}
 
-        <List limits={this.state.limits}/>
+        <List limits={this.state.limits} />
 
       </div>
     )

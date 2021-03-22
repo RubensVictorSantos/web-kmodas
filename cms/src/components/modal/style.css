@@ -42,8 +42,8 @@ Close Modal---------------->*/
     align-items: center;
     flex-direction: column;
     padding: 1rem;
-    background-color: darkslategray;
-    /* background-color: white; */
+    /* background-color: darkslategray; */
+    background-color: white;
     border-radius: 5px;
 }
 
@@ -51,7 +51,7 @@ Close Modal---------------->*/
     /* width: 100%; */
     padding: 0.2rem;
     text-align: center;
-    background-color: firebrick;
+    /* background-color: firebrick; */
 }
 
 .container-modal{
