@@ -5,6 +5,7 @@
     display: flex;
     justify-content:space-between;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .btn-new{
@@ -14,7 +15,7 @@
     border-radius: 3px;
     font-size: 13.3333px;
     font-family: Arial;
-    padding: 0.72rem;
+    padding: 0.72rem 0.95rem 0.72rem 0.95rem;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -26,7 +27,7 @@ input::-webkit-inner-spin-button {
 
 .box-search{
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto auto;
 }
 
 .lbl-search{

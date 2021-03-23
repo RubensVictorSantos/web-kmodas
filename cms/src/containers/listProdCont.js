@@ -12,18 +12,13 @@ export class ListProdCont extends Component {
     super()
 
     this.handleChange = this.handleChange.bind(this);
+
   }
 
   state = {
     allProd: [],
     limits: 5,
     input: []
-  }
-
-  carregarItens = () => {
-    this.setState({
-      limits: this.state.limits + 20
-    })
   }
 
   handleChange(e) {
@@ -59,6 +54,8 @@ export class ListProdCont extends Component {
 
   render() {
 
+    
+
     return (
       <div className="content">
 
@@ -75,7 +72,7 @@ export class ListProdCont extends Component {
                 placeholder="Buscar..."
                 onChange={this.handleChange}
                 required
-              /><span/>
+              /><span />
             </label>
             <button type='submit' className="btn-search" id="btnSearch">
               <img src={imgSearch}></img>
@@ -84,9 +81,7 @@ export class ListProdCont extends Component {
           </div>
 
           <Link to='Products/add'>
-            <button type='submit' className="btn-new" id="btnNew">
-              Novo
-            </button>
+            <button type='submit' className="btn-new" id="btnNew">NOVO</button>
           </Link>
 
         </form>
@@ -95,6 +90,10 @@ export class ListProdCont extends Component {
 
         <List limits={this.state.limits} />
 
+        <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', width: '65%' }}>
+          {/* <input className="btn-carregar-itens" onClick={() => setCount(count + 20)} type='button' value='Carregar +20' /> */}
+          {/* <label style={{ position: 'absolute', right: '0', color: '#aaa', fontSize: '1rem' }}>{count} Itens</label> */}
+        </div>
       </div>
     )
   }
