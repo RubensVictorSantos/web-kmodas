@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 /** */
 import SvgAtivo from '../../resources/ico/check-green.svg';
 import SvgInativo from '../../resources/ico/check-gray.svg';
-import { DOMAIN_IMG } from '../../link_config';
 import ModalProd from '../modal/modalProd';
 import './style.css';
 
@@ -30,43 +29,42 @@ export class ItemLista extends Component {
     return (
       <Fragment>
         <ModalProd produto={this.state.produto} show={this.state.isOpen} status={'editar'} onClose={this.toggleModal} />
-        <div className="t-row" onClick={this.toggleModal}>
+        <div className="tbl-row" onClick={this.toggleModal}>
           <div className="t-col">
-            <div className="img-list">
-              <img src={DOMAIN_IMG + img_prod} alt={"Imagem " + img_prod} width="64px" height="auto" />
-
-            </div>
+            {cod_prod}
 
           </div>
+
           <div className="t-col">
-            <div className="">
-              <div className="t-col">
-                <h4>
-                  {cod_prod + " - " + nome_prod}
-                </h4>
-              </div>
-
-              <div className="t-col desc-item">
-                <p>
-                  {descricao_prod}
-                </p>
-              </div>
-
-              <div className="t-col preco-item">
-                R${preco_prod}
-
-              </div>
-
-            </div>
+            <h4>
+              {nome_prod}
+            </h4>
           </div>
+
+          <div className="t-col desc-item">
+            <p>
+              {img_prod}
+            </p>
+          </div>
+
+          <div className="t-col preco-item">
+            R${preco_prod}
+
+          </div>
+
+          <div className="t-col preco-item">
+            {descricao_prod}
+
+          </div>
+
           <div className="t-col status-item">
             <img src={status_prod === 1 ? SvgAtivo : SvgInativo}
               alt={status_prod === 1 ? SvgAtivo : SvgInativo}
               width="40px" />
 
             {status_prod === 1 ? "Ativado" : "Desativado"}
-
           </div>
+
         </div>
       </Fragment>
     );

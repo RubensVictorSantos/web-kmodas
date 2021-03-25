@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 /** */
-import { FormLogin } from './components/login/formLogin';
+import { FormLogin } from './components/forms/login/formLogin';
 import HomePage from './pages/homePage';
 import ProductsPage from './pages/productsPage';
 

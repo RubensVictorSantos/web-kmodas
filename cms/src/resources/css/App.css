@@ -23,6 +23,17 @@ input[type=text]{
   border: 1px solid #dfdfdf;
 }
 
+textarea{
+  resize: none;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
 .content{
   display: flex;
   justify-content: center;

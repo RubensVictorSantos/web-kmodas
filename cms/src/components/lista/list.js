@@ -60,8 +60,8 @@ class List extends Component {
             );
         } else {
             return (
-                <>
-                    <div className="head-tbl">
+                <div className="list-tbl">
+                    <div className="tbl-header">
                         {
                             Object.keys(i).map(item => (
                                 <div>{item}</div>
@@ -76,7 +76,7 @@ class List extends Component {
                         }
 
                     </div>
-                </>
+                </div>
             );
         }
     }

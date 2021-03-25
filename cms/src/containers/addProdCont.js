@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Fragment } from "react";
+import React, { Component, Fragment } from "react";
 /** */
 // import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT, DOMAIN_API } from '../../../link_config';
 import SelectImgProd from "../components/content-product/contentProduct";
@@ -89,8 +88,8 @@ export class AddProdCont extends Component {
                                 <div id="container-sprod">
                                     <SelectImgProd />
                                 </div>
-
-                                {/* <img id="imgprod" 
+                                {/* 
+                                <img id="imgprod" 
                                     src={img_prod === undefined || img_prod === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + img_prod} 
                                     alt={img_prod} 
                                 /> */}
@@ -138,7 +137,7 @@ export class AddProdCont extends Component {
                                         <span className="slider round"></span>
                                     </label>
 
-                                    <button id="btn-salvar">Salvar</button>
+                                    <button id="btn-salvar" className="btn-default">Salvar</button>
                                 </div>
                             </div>
                         </div>

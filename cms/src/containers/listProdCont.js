@@ -12,13 +12,15 @@ export class ListProdCont extends Component {
     super()
 
     this.handleChange = this.handleChange.bind(this);
-
+    this.handler = this.handler.bind(this)
   }
 
+  
+
   state = {
-    allProd: [],
     limits: 5,
-    input: []
+    input: [],
+    edit: false
   }
 
   handleChange(e) {
@@ -31,6 +33,12 @@ export class ListProdCont extends Component {
     input[e.target.name] = value;
 
     this.setState({ input });
+  }
+
+  handler() {
+    this.setState({
+      someVar: 'some value'
+    })
   }
 
   buscarProdId = (id) => {
@@ -75,13 +83,13 @@ export class ListProdCont extends Component {
               /><span />
             </label>
             <button type='submit' className="btn-search" id="btnSearch">
-              <img src={imgSearch}></img>
+              <img src={imgSearch} alt={imgSearch}></img>
             </button>
 
           </div>
 
-          <Link to='Products/add'>
-            <button type='submit' className="btn-new" id="btnNew">NOVO</button>
+          <Link to='products/add'>
+            <button type='submit' className="btn-default" id="btnNew">Novo</button>
           </Link>
 
         </form>

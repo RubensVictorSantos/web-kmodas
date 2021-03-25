@@ -3,8 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from "prop-types";
 import $ from 'jquery';
 /** */
-import Imglogo from '../../resources/ico/logo-kmodas.png'
-import { DOMAIN_API } from '../../link_config';
+import Imglogo from '../../../resources/ico/logo-kmodas.png'
+import { DOMAIN_API } from '../../../link_config';
 import './style.css'
 
 //ARMAZENA OS ESTADOS INICIAIS
