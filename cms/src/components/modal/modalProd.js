@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
 /** */
 import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../link_config';
 import './style.css';
@@ -14,9 +16,13 @@ export class ModalProd extends Component {
 
     }
 
-    mudarPg(){
-        console.log(this.state.produto)
-        // localStorage.getItem(this.state.produto)
+    saveProd(){
+
+        let produto = []
+        
+        produto = this.state.produto
+
+        localStorage.setItem('produto', JSON.stringify(produto));
     }
 
     render() {
@@ -53,8 +59,12 @@ export class ModalProd extends Component {
                             </div>
                             <div className="box-btn-edit">
                                 <p>{status_prod === 0 ? 'Desativado' : 'Ativado'}</p>
-                                {/* <input type="button" onClick={this.mudarPg} value="Mudar"/> */}
-                                <Link onClick={this.mudarPg} to='Editar_Produto' className="link-edit-modal">Editar</Link>
+
+                                <Link to='products/edit'>
+                                    <button type='submit' onClick={this.saveProd()} className="btn-default" id="btnNew">
+                                        Editar
+                                    </button>
+                                </Link>
                             </div>
                         </div>
 
@@ -71,4 +81,4 @@ ModalProd.propTypes = {
     produto: PropTypes.object
 };
 
-export default ModalProd
+export default withRouter(ModalProd)

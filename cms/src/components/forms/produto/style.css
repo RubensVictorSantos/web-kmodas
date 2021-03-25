@@ -1,0 +1,162 @@
+/* CONTAINER ADICIONAR PRODUTO
+===================================================>*/
+
+.form-produto{
+    width: 75%;
+    flex-direction: column;
+    /* background-color: rgb(243, 220, 220); */
+}
+
+.box-image-modal {
+    width: 80%;
+    /* background-color: crimson; */
+    flex-direction: column;
+}
+
+/* File Modal---------------->*/
+  
+.box-image-modal input[type='file'] {
+    display: none;
+}
+  
+.box-image-modal label {
+    background-color: var(--red);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500 ;
+    margin-top: 0.5rem;
+    box-shadow: 1px 1px 10px rgb(255,0,0,0.8);
+    padding: 6px 19px;
+}
+
+/* .box-image-modal img, .slide-prod:not(img){
+    width: 200px;
+    height: 250px;
+} */
+
+.w-img{
+    max-width: 250px;
+}
+
+.box-input-modal {
+    /* flex-direction: column; */
+    display: grid;
+    width: 80%;
+    grid-template-rows: auto auto auto auto;
+    /* background-color: cadetblue; */
+    padding: 1rem;
+}
+
+.box-input-modal div{
+    /* background-color: crimson; */
+    display: grid;
+    padding: 0.5rem 0rem;
+}
+
+.box-input-modal textarea,
+.box-input-modal input {
+    /* margin: 0.5rem; */
+    height: 25px;
+    border-radius: 4px;
+    border: 1px solid #afafaf!important;
+    /* padding: 0.2em; */
+    text-align: center;
+}
+  
+.box-input-modal textarea {
+    min-height: 70px!important;
+}
+  
+.box-input-modal textarea::placeholder{
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-size: 13.3333px;
+    line-height: normal;
+    font-family: Arial;
+}
+
+/* Checkbox Modal---------------->*/
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 20px;
+}
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    outline: none ;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 2.5px;
+    bottom: 3px;
+    margin-top: 1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: var(--red);
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #ccc;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+  
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Button Modal---------------->*/
+
+.box-btn{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#btn-salvar{
+    margin-left: auto;
+}
+  
+.btn-del{
+    display: block;
+}

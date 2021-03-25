@@ -1,59 +1,84 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 /** */
 import './style.css'
 import { DOMAIN_API } from '../../link_config';
 import ItemLista from './itemLista';
+import { Component } from 'react';
 
-const List = (props) => {
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [items, setItems] = useState([]);
-    const [count, setCount] = useState('a');
+class List extends Component {
+    constructor(props) {
+        super(props)
 
-    useEffect(() => {
-        fetch(`${DOMAIN_API}/prod-LimitedNumber/${count}`)
+        this.state = {
+            error: null,
+            isLoaded: false,
+            items: [],
+            limits: props.limits
+        };
+    }
+
+    componentDidMount() {
+
+        this.carregarItems()
+
+    }
+
+    carregarItems() {
+
+        fetch(`${DOMAIN_API}/prod-LimitedNumber/${this.state.limits}`)
             .then(res => res.json())
             .then(
                 (result) => {
-                    setIsLoaded(true);
-                    setItems(result);
+                    this.setState({
+                        isLoaded: true,
+                        items: result
+                    });
                 },
                 (error) => {
-                    setIsLoaded(true);
-                    setError(error)
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
                 }
             )
-    }, [])
+    }
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-        return (
-            <div className="main-spinner">
-                <div className="spinner">
+    render() {
+        const { error, isLoaded, items } = this.state;
 
+        let i = [];
+        i = items[0]
+
+        if (error) {
+            return <div>Error: {error.message}</div>;
+        } else if (!isLoaded) {
+            return (
+                <div>
+                    <div className="spinner"></div>
+                    <h1 className="txt-loading">Loading...</h1>
                 </div>
-                <h1>Loading...</h1>
-            </div>
-        );
-    } else {
-        return (
-            <>
-                <div className="tbl">
+            );
+        } else {
+            return (
+                <div className="list-tbl">
+                    <div className="tbl-header">
+                        {
+                            Object.keys(i).map(item => (
+                                <div>{item}</div>
+                            ))
+                        }
+                    </div>
+                    <div className="tbl">
+                        {
+                            items.map(item => (
+                                <ItemLista key={item.cod_prod} produto={item} />
+                            ))
+                        }
 
-                    {
-                        items.map(item => (
-                            <ItemLista key={item.cod_prod} produto={item} />
-                        ))
-                    }
+                    </div>
                 </div>
-
-                <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', width: '65%' }}>
-                    <input className="btn-carregar-itens" onClick={() => setCount(count + 20)} type='button' value='Carregar +20' />
-                    <label style={{ position: 'absolute', right: '0', color: '#aaa', fontSize: '1rem' }}>{count} Itens</label>
-                </div>
-            </>
-        );
+            );
+        }
     }
 }
 

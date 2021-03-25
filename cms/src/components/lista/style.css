@@ -1,19 +1,63 @@
 /* CSS Itens Produtos */
 
-.t-row{
-  display: grid;
-  grid-template-columns: 1fr 10fr 1fr ;
-  padding: 0.3rem;
-  /* border: var(--b-row); */
+/* LISTA DE PRODUTOS ITENS 
+----------------------------------------------*/
+
+.list-tbl{
+  width: 70%;
 }
 
-.t-row:hover{
+.tbl-header{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  background-color: #688a8a;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.tbl-header div{
+  display: flex;
+  justify-content: center;
+  text-transform: capitalize;
+  padding: 5px;
+  font-weight: bold;
+  color: white;
+}
+
+.tbl{
+  width: 100%;
+  height: 485px;
+  overflow: auto;
+  display: grid;
+  grid-template-rows: auto;
+  border: var(--b-row);
+  border-top: none;
+}
+
+/* Width Scrollbar*/
+.tbl::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+/* Handle */
+.tbl::-webkit-scrollbar-thumb {
+  background: rgba(220, 220, 220);  
+  border-radius: 10px;
+}
+
+.tbl-row{
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, auto));
+  padding: 0.3rem;
+}
+
+.tbl-row:hover{
   border: 1px solid #e0e0e0;
   box-shadow: 3px 3px 3px #c0c0c0;
   cursor: pointer;
 }
 
-.t-row:active{
+.tbl-row:active{
   background-color: #dfdfdf;
 }
 
@@ -29,26 +73,8 @@
   flex-direction: column;
 }
 
-.img-list{
-    display: flex;
-    padding: 3px;
-    justify-content: center;
-    align-items: center;
-    background-position: center;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-.t-title{
-    display: grid;
-    grid-template-columns: 1fr 1fr 7fr 1fr 1fr 0.3fr 1fr 1fr;
-    font-weight: bold;
-    text-align: center;
-}
-
 .status-item{
   font-size: 0.8rem;
-  /* color: rgb(200,225,200); */
 }
 
 .preco-item{
@@ -60,27 +86,26 @@
   color: rgb(150,150,150)
 }
 
-.main-spinner{
-  display: Flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 5rem;
+/* BUTTON CARREGAR ITENS
+----------------------------------------------*/
+
+.btn-carregar-itens{
+  color: white;
+  font-weight: bold;
+  background-color: rgb(50,225,100);
+  border: none;
+  padding: 10px;
+  border-radius: 50px;
+  outline: none ;
+  cursor: pointer;
 }
 
-.spinner{
-  width: 70px;
-  height: 70px;
-  background-color: white;
-  /* border: 8px solid rgb(240, 240, 240); */
-  border-top: 8px solid lawngreen;
-  border-radius: 50%;
-  animation: spin 0.5s linear infinite;
+.btn-carregar-itens:hover{
+  background-color: rgb(30, 205, 80);
+
 }
 
+.btn-carregar-itens:active{
+  background-color: rgb(8, 146, 59);
 
-@keyframes spin {
-  100% { 
-    transform: rotate(360deg);
-  }
 }

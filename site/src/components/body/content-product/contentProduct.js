@@ -20,10 +20,16 @@ export class ContentProduct extends Component {
         let wdtImg = (wdtScreen / 100) * 95
         let paddingSld = (wdtScreen - wdtImg);
 
+<<<<<<< HEAD
+        $('.slide-sprod').css({'width': wdtScreen});
+        $('.slide-sprod img').css({"paddingLeft": paddingSld});
+        $('.slide-sprod img').css({'width': wdtImg});
+=======
         $('.slide-sprod').css({ 'width': wdtScreen });
         $('.slide-sprod img').css({ "paddingLeft": paddingSld });
         $('.slide-sprod img').css({ 'width': wdtImg });
 
+>>>>>>> 69ffb8af1a3e3ff96ddaf58fec5ad229b0977511
         $('#slides-sprod .slide-sprod').each(function (i) {
 
             // Get slider widths
