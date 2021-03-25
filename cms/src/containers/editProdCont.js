@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 /** */
-import './style.css';
 import FormProduct from "../components/forms/produto/formProduto";
+import './style.css';
 
 export class EditProdCont extends Component {
     constructor(props) {

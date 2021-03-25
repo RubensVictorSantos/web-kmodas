@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import { Link } from 'react-router-dom';
 /** */
-// import ItemLista from '../components/lista/itemLista';
 import imgSearch from '../resources/ico/search.svg'
 import { DOMAIN_API } from '../link_config';
 import List from '../components/lista/list';
@@ -12,10 +11,8 @@ export class ListProdCont extends Component {
     super()
 
     this.handleChange = this.handleChange.bind(this);
-    this.handler = this.handler.bind(this)
-  }
 
-  
+  }
 
   state = {
     limits: 5,
@@ -35,12 +32,6 @@ export class ListProdCont extends Component {
     this.setState({ input });
   }
 
-  handler() {
-    this.setState({
-      someVar: 'some value'
-    })
-  }
-
   buscarProdId = (id) => {
 
     const url = `${DOMAIN_API}/prodId/${id}`;
@@ -51,9 +42,6 @@ export class ListProdCont extends Component {
       dataType: 'json',
       contentType: 'application/json',
       success: (result) => {
-
-        console.log(result);
-
         return result
 
       }
@@ -61,9 +49,6 @@ export class ListProdCont extends Component {
   }
 
   render() {
-
-    
-
     return (
       <div className="content">
 
@@ -79,8 +64,9 @@ export class ListProdCont extends Component {
                 id="txt-search"
                 placeholder="Buscar..."
                 onChange={this.handleChange}
-                required
-              /><span />
+                required/>
+                <span />
+
             </label>
             <button type='submit' className="btn-search" id="btnSearch">
               <img src={imgSearch} alt={imgSearch}></img>
@@ -89,7 +75,7 @@ export class ListProdCont extends Component {
           </div>
 
           <Link to='products/add'>
-            <button type='submit' className="btn-default" id="btnNew">Novo</button>
+            <button className="btn-default" id="btnNew">Novo</button>
           </Link>
 
         </form>
