@@ -13,8 +13,8 @@ const ProductsPage = ({ match }) => (
         <main>
             <Switch>
                 <Route path={`${match.path}`} exact component={ListProdCont} />
-                <Route path={`${match.path}/add`} exact component={AddProdCont} />
-                <Route path={`${match.path}/edit`} exact component={EditProdCont} />
+                <Route path={`${match.path}/add`} component={AddProdCont} />
+                <Route path={`${match.path}/edit`} component={EditProdCont} />
                 <Redirect to={`${match.url}`} />
             </Switch>
         </main>

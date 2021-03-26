@@ -12,7 +12,9 @@ export class FormProduct extends Component {
         super(props)
 
         // Ternario se existe props.produto ele set o state.produto com o valor do props.produto
-        props.produto ? this.state = { produto: props.produto } : this.state = { produto: [] }
+        props.produto ? this.state = { produto: props.produto, editar: props.editar} : this.state = { produto: [], editar: props.editar }
+
+        console.log(this.props);
 
         this.formProd = this.formProd.bind(this);
         this.fileInput = React.createRef();

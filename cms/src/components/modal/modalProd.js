@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
 /** */
 import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../link_config';
 import './style.css';
@@ -16,10 +15,10 @@ export class ModalProd extends Component {
 
     }
 
-    saveProd(){
+    saveProd() {
 
         let produto = []
-        
+
         produto = this.state.produto
 
         localStorage.setItem('produto', JSON.stringify(produto));
@@ -29,28 +28,43 @@ export class ModalProd extends Component {
 
         var { nome_prod, img_prod, descricao_prod, preco_prod, status_prod } = this.state.produto;
 
-        if (!this.props.show) {
+        let imagem
+
+        if (img_prod === undefined || img_prod === '') {
+            imagem = DOMAIN_IMG_DEFAULT
+
+        } else {
+            imagem = DOMAIN_IMG + img_prod
+        }
+
+        // if (!this.props.show) {
+        //     return false;
+        // }
+
+        if (this.props.show) {
             return false;
         }
 
         return (
 
-            <div className="view-prod" id="view-p">
-                <span className="close" id="closed" onClick={this.props.onClose}>&times;</span>
-                <div className="modal-prod">
-                    <div className="title-modal">
+            <div className="view-prod center" id="view-p">
+                <div className="modal-prod center">
+                    <header className="modal-header">
+                        <span className="modal-close" id="closed" onClick={this.props.onClose}>&times;</span>
+                        
                         <h2>{nome_prod}</h2>
 
-                    </div>
-                    <div className="container-modal">
-                        <div className="img-modal">
-                            <img id="imgprod" src={img_prod === undefined || img_prod === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + img_prod} alt={img_prod} />
+                    </header>
+                    
+                    <div className="modal-container">
+                        <div className="modal-img center">
+                            <img id="" src={imagem} alt={img_prod} />
 
                         </div>
-                        <div className="info-prod">
-                            <div className="content-modal">
-                                <p>{descricao_prod}
-                                </p>
+
+                        <div className="modal-content center">
+                            <div className="info-prod">
+                                <p>{descricao_prod}</p>
 
                             </div>
                             <div className="cost-modal">
