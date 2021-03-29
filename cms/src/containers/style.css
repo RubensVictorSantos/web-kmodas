@@ -1,21 +1,9 @@
 /** Container Buscar */
 
-.formBuscar{
+.form-search{
     width: 70%;
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.btn-default{
-    color: white;
-    background-color: var(--red);
-    border: none;
-    border-radius: 3px;
-    font-size: 13.3333px;
-    font-family: Arial;
-    padding: 0.72rem 0.95rem;
+    justify-content:space-between!important;
+    flex-direction: row!important;
 }
 
 /* Chrome, Safari, Edge, Opera */

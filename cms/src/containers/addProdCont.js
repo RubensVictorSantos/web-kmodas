@@ -4,14 +4,10 @@ import  FormProduct from "../components/forms/produto/formProduto";
 import './style.css';
 
 export class AddProdCont extends Component {
-    constructor(props) {
-        super(props);
-
-    }
 
     render() {
         return (
-            <div className="center">
+            <div className="content">
                 <FormProduct editar={false}/>
             </div>
         )

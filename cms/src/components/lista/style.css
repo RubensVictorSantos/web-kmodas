@@ -17,7 +17,7 @@
 .tbl-header div{
   display: flex;
   justify-content: center;
-  text-transform: capitalize;
+  text-transform: uppercase;
   padding: 5px;
   font-weight: bold;
   color: white;

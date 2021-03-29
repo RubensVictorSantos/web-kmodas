@@ -12,7 +12,7 @@ export class EditProdCont extends Component {
 
     render() {
         return (
-            <div className="center">
+            <div className="content">
                 <FormProduct produto={ this.state.produto} editar={true}/>
             </div>
         )

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from "prop-types";
 /** */
-import SelectImgProd from '../../content-product/contentProduct';
 import { urlImg, clearInput, editProd, insertProd } from '../../../components/modulos';
 import './style.css'
 import { DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
@@ -13,8 +12,6 @@ export class FormProduct extends Component {
 
         // Ternario se existe props.produto ele set o state.produto com o valor do props.produto
         props.produto ? this.state = { produto: props.produto, editar: props.editar} : this.state = { produto: [], editar: props.editar }
-
-        console.log(this.props);
 
         this.formProd = this.formProd.bind(this);
         this.fileInput = React.createRef();
@@ -79,9 +76,11 @@ export class FormProduct extends Component {
 
         const { nome_prod, img_prod, descricao_prod, preco_prod, status_prod } = { ...this.state.produto }
 
+        let imagem = img_prod === undefined || img_prod === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + img_prod;
+
         return (
-            <form className="form-produto center" id="form_add_prod" onSubmit={this.formProd}>
-                <div className="box-image-modal center">
+            <form className="form-produto content" id="form_add_prod" onSubmit={this.formProd}>
+                <div className="content">
 
                     <input id="selecao-arquivo"
                         onChange={this.handleChange}
@@ -91,17 +90,12 @@ export class FormProduct extends Component {
                         ref={this.fileInput}
                     />
 
-                    <div id="container-sprod">
-                        <img className="w-img" id="imgprod"
-                            src={img_prod === undefined || img_prod === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + img_prod}
-                            alt={img_prod}
-                        />
-                    </div>
+                    <img id="imgprod" src={imagem} alt={imagem}/>
 
-                    <label tabIndex='0' htmlFor="selecao-arquivo" id="lbl-file">Selecionar Imagens</label>
+                    <label className="lbl-file" tabIndex='0' htmlFor="selecao-arquivo" id="lbl-file">Selecionar Imagens</label>
                 </div>
 
-                <div className="box-input-modal">
+                <div className="cont-form-prod">
                     <div>
                         <input type="text"
                             name="nome_prod"
@@ -134,18 +128,20 @@ export class FormProduct extends Component {
                         />
                     </div>
 
-                    <label htmlFor="chk" className="switch">
-                        <input
-                            id="chk"
-                            type="checkbox"
-                            name="status_prod"
-                            checked={status_prod || 0}
-                            onChange={this.handleChange}
-                        />
-                        <span className="slider round"></span>
-                    </label>
+                    <div>
+                        <label htmlFor="chk" className="switch">
+                            <input id="chk"
+                                type="checkbox"
+                                name="status_prod"
+                                checked={status_prod || 0}
+                                onChange={this.handleChange}
+                            />
 
-                    <button type="submit" id="btn-salvar" className="btn-default">Salvar</button>
+                            <span className="slider round"></span>
+                        </label>
+
+                        <button className="btn-default" type="submit" id="btn-salvar">Salvar</button>
+                    </div>
                 </div>
             </form>
         )

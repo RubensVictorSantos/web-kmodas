@@ -1,52 +1,33 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { Link } from 'react-router-dom';
 /** */
-import imgSearch from '../resources/ico/search.svg'
 import { DOMAIN_API } from '../link_config';
 import List from '../components/lista/list';
+import { Search } from '../components/forms/search/formSearch';
 
 export class ListProdCont extends Component {
   constructor() {
     super()
 
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
 
   }
 
   state = {
-    limits: 5,
-    input: [],
-    edit: false
+    limits: 5
   }
 
-  handleChange(e) {
+  // handleChange(e) {
 
-    const input = { ...this.state.input }
-    let value = '';
+  //   const input = { ...this.state.input }
+  //   let value = '';
 
-    value = e.target.value;
+  //   value = e.target.value;
 
-    input[e.target.name] = value;
+  //   input[e.target.name] = value;
 
-    this.setState({ input });
-  }
-
-  buscarProdId = (id) => {
-
-    const url = `${DOMAIN_API}/prodId/${id}`;
-
-    $.ajax({
-      url: url,
-      type: 'GET',
-      dataType: 'json',
-      contentType: 'application/json',
-      success: (result) => {
-        return result
-
-      }
-    })
-  }
+  //   this.setState({ input });
+  // }
 
   render() {
     return (
@@ -54,31 +35,7 @@ export class ListProdCont extends Component {
 
         {/** FROMULÁRIO BUSCAR */}
 
-        <form className="formBuscar" onSubmit={this.formProd} id="formBuscar">
-          <div className="box-search">
-
-            <label htmlFor="txt-search" className="lbl-search">
-              <input className=""
-                type="text"
-                name="txt-search"
-                id="txt-search"
-                placeholder="Buscar..."
-                onChange={this.handleChange}
-                required/>
-                <span />
-
-            </label>
-            <button type='submit' className="btn-search" id="btnSearch">
-              <img src={imgSearch} alt={imgSearch}></img>
-            </button>
-
-          </div>
-
-          <Link to='products/add'>
-            <button className="btn-default" id="btnNew">Novo</button>
-          </Link>
-
-        </form>
+        <Search/>
 
         {/** TABELA */}
 

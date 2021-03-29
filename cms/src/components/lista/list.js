@@ -5,7 +5,7 @@ import { DOMAIN_API } from '../../link_config';
 import ItemLista from './itemLista';
 import { Component } from 'react';
 
-class List extends Component {
+export class List extends Component {
     constructor(props) {
         super(props)
 
@@ -64,7 +64,7 @@ class List extends Component {
                     <div className="tbl-header">
                         {
                             Object.keys(i).map(item => (
-                                <div>{item}</div>
+                                <div key={Math.floor((Math.random() * 100) + 1)}>{item}</div>
                             ))
                         }
                     </div>

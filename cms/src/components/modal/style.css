@@ -1,5 +1,4 @@
-/* Modal
--------------------------------------------------> */
+/** Modal */
 
 .view-prod{
     width: 100vw;
@@ -12,8 +11,9 @@
     left: 0;
 }
 
-.modal-prod{
-    max-width: 70%;
+.modal{
+    min-width: 300px;
+    max-width: 50%;
     position: relative;
     justify-content: space-around!important;
     flex-direction: column;
@@ -34,26 +34,31 @@
     font-weight: bold;
 }
 
+/* Header Modal
+---------------->*/
+
 .modal-header{
     width: 100%;
     text-align: center;
-
-    border: var(--b-row);
+    text-transform: uppercase;
 }
+
+/* Container Modal
+---------------->*/
 
 .modal-container{
-    display: flex;
-
-    border: var(--b-row);
+    padding: 0rem!important;
+    flex-direction: row!important;
 }
+
+/* Imagem Modal
+---------------->*/
 
 .modal-img{
     width: 50%;
     height: auto;
     flex-direction: column;
 
-    border: var(--b-row);
-    border-color:blueviolet;
 }
 
 .modal-img img{
@@ -61,46 +66,45 @@
     height: auto; 
 }
 
+/* Content Modal 
+---------------->*/
+
 .modal-content{
     width: 50%;
     height: 100%;
     flex-direction: column;
-    justify-content: space-around!important;
-
-    border: var(--b-row);
-    border-color: blue;
+    justify-content: space-between!important;
+    padding: 0rem!important;
 }
 
-.info-prod p{
-    font-size: 1rem;
-}
-
-.info-prod{
+.modal-text{
     max-height: 250px;
-    display: flex;
     word-wrap: break-word;
     text-align: center;
     overflow-y: auto;
+    font-size: 1rem;
+
 }
 
-.cost-modal{
-    margin-left: auto;
-    font-weight: bold;
-    color: rgb(0,200,10);
+.modal-text::-webkit-scrollbar {
+    width: 5px;
 }
 
-/* Button Modal---------------->*/
+.modal-text::-webkit-scrollbar-thumb {
+    background: rgba(220, 220, 220);  
+    border-radius: 10px;
+}
 
-.box-btn-edit{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.modal-content div{
     width: 100%;
+    justify-content: space-between;
+    padding: 0rem;
+    flex-direction: row!important;
 }
 
-.box-btn-edit p{
-    font-size: 0.9rem;
-    
+.modal-content div code{
+    font-size: 0.8rem;
+
 }
 
 @media screen and (max-width:680px){}

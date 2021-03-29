@@ -37,18 +37,14 @@ export class ModalProd extends Component {
             imagem = DOMAIN_IMG + img_prod
         }
 
-        // if (!this.props.show) {
-        //     return false;
-        // }
-
-        if (this.props.show) {
+        if (!this.props.show) {
             return false;
         }
 
         return (
 
-            <div className="view-prod center" id="view-p">
-                <div className="modal-prod center">
+            <div className="view-prod content" id="view-p">
+                <div className="modal content">
                     <header className="modal-header">
                         <span className="modal-close" id="closed" onClick={this.props.onClose}>&times;</span>
                         
@@ -56,26 +52,28 @@ export class ModalProd extends Component {
 
                     </header>
                     
-                    <div className="modal-container">
-                        <div className="modal-img center">
+                    <div className="modal-container content">
+                        <div className="modal-img content">
                             <img id="" src={imagem} alt={img_prod} />
 
                         </div>
 
-                        <div className="modal-content center">
-                            <div className="info-prod">
-                                <p>{descricao_prod}</p>
+                        <div className="modal-content content">
+                            <p className="modal-text">
+                                {descricao_prod}
+                            </p>
 
-                            </div>
-                            <div className="cost-modal">
-                                <p>R${preco_prod}</p>
+                            <code className="txt-price">
+                                R${preco_prod}
+                            </code>
 
-                            </div>
-                            <div className="box-btn-edit">
-                                <p>{status_prod === 0 ? 'Desativado' : 'Ativado'}</p>
+                            <div className="content">
+                                <code>
+                                    {status_prod === 0 ? 'DESATIVADO' : 'ATIVADO'}
+                                </code>
 
                                 <Link to='products/edit'>
-                                    <button type='submit' onClick={this.saveProd()} className="btn-default" id="btnNew">
+                                    <button className="btn-default" type='submit' onClick={this.saveProd()} id="btnNew">
                                         Editar
                                     </button>
                                 </Link>
