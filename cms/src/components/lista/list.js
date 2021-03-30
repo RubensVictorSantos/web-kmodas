@@ -1,84 +1,63 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 /** */
 import './style.css'
 import { DOMAIN_API } from '../../link_config';
 import ItemLista from './itemLista';
-import { Component } from 'react';
+// import { Component } from 'react';
 
-export class List extends Component {
-    constructor(props) {
-        super(props)
+function List(props) {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [items, setItems] = useState([]);
 
-        this.state = {
-            error: null,
-            isLoaded: false,
-            items: [],
-            limits: props.limits
-        };
-    }
+    useEffect(() => {
+        let url =  props.limits.search ? `${DOMAIN_API}/prod-id/${Object.values(props.limits.texto)}`: `${DOMAIN_API}/prod-LimitedNumber/${props.limits.limit}` 
 
-    componentDidMount() {
-
-        this.carregarItems()
-
-    }
-
-    carregarItems() {
-
-        fetch(`${DOMAIN_API}/prod-LimitedNumber/${this.state.limits}`)
+        fetch(url)
             .then(res => res.json())
             .then(
                 (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        items: result
-                    });
+                    setIsLoaded(true);
+                    setItems(result);
                 },
+
                 (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
+                    setIsLoaded(true);
+                    setError(error);
                 }
             )
-    }
+    }, [props.limits])
 
-    render() {
-        const { error, isLoaded, items } = this.state;
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+        return (
+            <div>
+                <div className="spinner"></div>
+                <h2 className="txt-loading">LOADING...</h2>
+            </div>
+        )
+    } else {
 
-        let i = [];
-        i = items[0]
-
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        } else if (!isLoaded) {
-            return (
-                <div>
-                    <div className="spinner"></div>
-                    <h1 className="txt-loading">Loading...</h1>
+        return (
+            <div className="list-tbl">
+                <div className="tbl-header">
+                    {/* {
+                        items.map(item => (
+                            <div key={Math.floor((Math.random() * 100) + 1)}>{Object.keys(item)}</div>
+                        ))
+                    } */}
                 </div>
-            );
-        } else {
-            return (
-                <div className="list-tbl">
-                    <div className="tbl-header">
-                        {
-                            Object.keys(i).map(item => (
-                                <div key={Math.floor((Math.random() * 100) + 1)}>{item}</div>
-                            ))
-                        }
-                    </div>
-                    <div className="tbl">
-                        {
-                            items.map(item => (
-                                <ItemLista key={item.cod_prod} produto={item} />
-                            ))
-                        }
+                <div className="tbl">
+                    {
+                        items.map(item => (
+                            <ItemLista key={item.cod_prod} produto={item} />
+                        ))
+                    }
 
-                    </div>
                 </div>
-            );
-        }
+            </div>
+        );
     }
 }
 
