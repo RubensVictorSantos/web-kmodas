@@ -8,9 +8,9 @@ import ListProdCont from '../containers/listProdCont';
 import '../resources/css/App.css';
 
 const ProductsPage = ({ match }) => (
-    <div className="">
+    <div>
         <Navbar />
-        <main>
+        <main className="content">
             <Switch>
                 <Route path={`${match.path}`} exact component={ListProdCont} />
                 <Route path={`${match.path}/add`} component={AddProdCont} />

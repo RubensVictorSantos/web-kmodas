@@ -30,7 +30,9 @@ export class ItemLista extends Component {
       <Fragment>
         <ModalProd produto={this.state.produto} show={this.state.isOpen} status={'editar'} onClose={this.toggleModal} />
         <div className="tbl-row" onClick={this.toggleModal}>
+
           <div className="t-col">
+
             {cod_prod}
 
           </div>

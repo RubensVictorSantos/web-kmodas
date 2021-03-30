@@ -7,14 +7,12 @@ export class EditProdCont extends Component {
     constructor(props) {
         super();
 
-        this.state = {produto: JSON.parse(localStorage.getItem("produto"))}
+        this.state = { produto: JSON.parse(localStorage.getItem("produto")) }
     }
 
     render() {
         return (
-            <div className="content">
-                <FormProduct produto={ this.state.produto} editar={true}/>
-            </div>
+            <FormProduct produto={this.state.produto} editar={true} />
         )
     }
 }
