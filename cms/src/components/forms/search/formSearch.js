@@ -6,15 +6,13 @@ import imgSearch from '../../../resources/ico/search.svg';
 import { DOMAIN_API } from '../../../link_config';
 
 export class Search extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
+        this.buscarProdId = this.buscarProdId.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.state = {click : this.props.onClick}
 
-    }
-
-    state = {
-        input: [],
     }
 
     handleChange(e) {
@@ -29,32 +27,31 @@ export class Search extends Component {
         this.setState({ input });
     }
 
-    buscarProdId = (id) => {
+    buscarProdId(e){
+        e.preventDefault();
 
-        
+        console.log( this.state.click)
 
-        console.log(id)
+        // const url = `${DOMAIN_API}/prodId/${e}`;
 
-        const url = `${DOMAIN_API}/prodId/${id}`;
-
-        $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'json',
-            contentType: 'application/json',
-            success: (result) => {
+        // $.ajax({
+        //     url: url,
+        //     type: 'GET',
+        //     dataType: 'json',
+        //     contentType: 'application/json',
+        //     success: (result) => {
                 
-                alert(result)
+        //         alert(result)
 
-                return result
+        //         return result
                 
-            }
-        })
+        //     }
+        // })
     }
 
     render() {
         return (
-            <form className="form-search content" onSubmit={this.formProd} id="formBuscar">
+            <form className="form-search content" onSubmit={this.buscarProdId} id="formBuscar">
                 <div className="box-search">
 
                     <label htmlFor="txt-search" className="lbl-search">
@@ -68,14 +65,16 @@ export class Search extends Component {
                         <span />
 
                     </label>
-                    <button type='submit' className="btn-search" id="btnSearch">
-                        <img src={imgSearch} alt={imgSearch}></img>
+                    
+                    <button type='submit' onClick={() => this.props.onClick} className="btn-search" id="btnSearch">
+                    
+                    <img src={imgSearch} alt={imgSearch}></img>
                     </button>
 
                 </div>
 
                 <Link to='products/add'>
-                    <button className="btn-default" onClick={(e) => {this.buscarProdId(e)}} id="btnNew">Novo</button>
+                    <button onClick={this.state.onClick} className="btn-default" id="btnNew">Novo</button>
                 </Link>
 
             </form>

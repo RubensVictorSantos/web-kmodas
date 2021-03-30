@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 /** */
-import { DOMAIN_API } from '../link_config';
 import List from '../components/lista/list';
 import { Search } from '../components/forms/search/formSearch';
 
 export class ListProdCont extends Component {
-  constructor() {
-    super()
-
-    // this.handleChange = this.handleChange.bind(this);
+  constructor(props) {
+    super(props)
 
   }
 
@@ -17,17 +13,10 @@ export class ListProdCont extends Component {
     limits: 5
   }
 
-  // handleChange(e) {
+  mudarNumero(){
+    return this.setState( {limits : this.state.limits + this.state.limits + 1 } )
 
-  //   const input = { ...this.state.input }
-  //   let value = '';
-
-  //   value = e.target.value;
-
-  //   input[e.target.name] = value;
-
-  //   this.setState({ input });
-  // }
+  }
 
   render() {
     return (
@@ -35,7 +24,7 @@ export class ListProdCont extends Component {
 
         {/** FROMULÁRIO BUSCAR */}
 
-        <Search/>
+        <Search onClick={this.mudarNumero}/>
 
         {/** TABELA */}
 

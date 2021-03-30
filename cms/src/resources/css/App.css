@@ -158,20 +158,23 @@ input:checked + .slider:before {
 /******************************** SPINNER ********************************/
 
 .spinner{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-top: 5px solid rgb(0,200,10);
+  border-left: 5px solid rgb(0,200,10);
   border-right: 5px solid transparent!important;
+  border-bottom: 5px solid transparent!important;
+
   border-radius: 50%;
   margin: 5rem;
   margin-left: auto;
   margin-right: auto;
-  animation: spin .5s linear infinite;
+  animation: spin .3s linear infinite;
 }
 
 @keyframes spin {
 
-  0%   {border-color:rgb(0,200,10);left:0px; top:0px;}
+  0%   {border-color:rgb(0,200,10); left:0px; top:0px;}
   25%  {border-color:rgb(0,200,60); left:200px; top:0px;}
   50%  {border-color:rgb(0,200,110); left:200px; top:200px;}
   75%  {border-color:rgb(0,200,160); left:0px; top:200px;}
