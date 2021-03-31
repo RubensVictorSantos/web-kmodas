@@ -4,7 +4,7 @@ import $ from 'jquery';
 import './style.css';
 import { DOMAIN_IMG, DOMAIN_API } from '../../../link_config';
 
-export class ContentProduct extends Component {
+export class Slide extends Component {
 
     state = { produto: [] }
 
@@ -19,17 +19,10 @@ export class ContentProduct extends Component {
         let wdtScreen = window.screen.width;
         let wdtImg = (wdtScreen / 100) * 95
         let paddingSld = (wdtScreen - wdtImg);
-
-<<<<<<< HEAD
+        
         $('.slide-sprod').css({'width': wdtScreen});
         $('.slide-sprod img').css({"paddingLeft": paddingSld});
         $('.slide-sprod img').css({'width': wdtImg});
-=======
-        $('.slide-sprod').css({ 'width': wdtScreen });
-        $('.slide-sprod img').css({ "paddingLeft": paddingSld });
-        $('.slide-sprod img').css({ 'width': wdtImg });
-
->>>>>>> 69ffb8af1a3e3ff96ddaf58fec5ad229b0977511
         $('#slides-sprod .slide-sprod').each(function (i) {
 
             // Get slider widths
@@ -134,4 +127,4 @@ export class ContentProduct extends Component {
     }
 }
 
-export default ContentProduct;
+export default Slide;
