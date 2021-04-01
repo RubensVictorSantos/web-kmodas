@@ -9,7 +9,7 @@ export class Search extends Component {
     constructor(props) {
         super(props)
 
-        this.buscarProdId = this.buscarProdId.bind(this);
+        // this.buscarProdId = this.buscarProdId.bind(this);
         this.handleChange = this.handleChange.bind(this);
         // this.submitForm = this.submitForm.bind(this);
     
