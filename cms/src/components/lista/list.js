@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import './style.css'
 import { DOMAIN_API } from '../../link_config';
 import ItemLista from './itemLista';
-// import { Component } from 'react';
 
 function List(props) {
     const [error, setError] = useState(null);
@@ -11,21 +10,22 @@ function List(props) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        let url =  props.limits.search ? `${DOMAIN_API}/prod-id/${Object.values(props.limits.texto)}`: `${DOMAIN_API}/prod-LimitedNumber/${props.limits.limit}` 
-
+        let url = props.limits.search ? `${DOMAIN_API}/prod-id/${Object.values(props.limits.texto)}`: `${DOMAIN_API}/prod-LimitedNumber/${props.limits.limit}`
+        
         fetch(url)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    setItems(result);
-                },
+        .then(res => res.json())
+        .then(
+            (result) => {
+                setIsLoaded(true);
+                setItems(result);
+            },
 
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
-            )
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            }
+        )
+
     }, [props.limits])
 
     if (error) {
