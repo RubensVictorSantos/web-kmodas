@@ -1,32 +1,49 @@
 /* Cascading Style Sheets (css)*/
 
 ul, li, h1, h2, p, body {
-    padding: 0px;
-	margin: 0px;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  box-sizing: border-box;
+}
+
+div, nav, ul {
+  box-sizing: border-box;
+
+}
+
+* {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 ul, li{
-	list-style: none;
+  list-style: none;
 }
 
 :root{
-	--red: #ff1a1a;
-	--red-hover: #e60000;
-	--red-active: #b30000;
-	--rosa: rgb(255,60,110);
-	--carousel-width: 360px;
+--red: #ff1a1a;
+--red-hover: #e60000;
+--red-active: #b30000;
+--rosa: rgb(255,60,110);
+--carousel-width: 360px;
 }
 
-body * {
-	font-family:arial;
-	box-sizing: border-box;
-	-webkit-user-select: none;
-}
-
-/* ##### CSS FOR DESKTOP #####  */
+/* CSS FOR DESKTOP
+---------------------------->*/
 
 @media screen and (min-width:1000px){
 
+  
 	/* .container-header{
 		width: 100%;
 		position: relative;
@@ -213,11 +230,13 @@ body * {
 
 }
 
-/* ##### CSS FOR TABLET ######  */
+
+/* CSS FOR TABLET
+---------------------------->*/
 
 @media only screen and (max-width: 999px) and (min-width: 681px){
 
-	/* .container-header{
+  	/* .container-header{
 		width: 100%;
 		position: relative;
 		background-color: #000;
@@ -391,14 +410,15 @@ body * {
         height: 150px;
         background-color: black;
     } */
+
 }
 
-/* ##### CSS FOR MOBILE ######  */
+/* CSS FOR MOBILE 
+---------------------------->*/
 
 @media screen and (max-width:680px){
 
-
-	/* .container-header{
+  	/* .container-header{
 		width: 100%;
 		height: auto;
 		position: relative;
@@ -539,7 +559,7 @@ body * {
 
 	/** Carousel */
 	
-	.wrap {
+	/* .wrap {
 		position: relative	;
 		width: var(--carousel-width);
 		height: 300px;
@@ -569,9 +589,9 @@ body * {
 		flex-direction: column;
 		justify-content: center;
 		background-position: 'center';
-		/* filter: blur(30px); */
+		filter: blur(30px);
 
-	}
+	} */
 	
 	
 	/* .slide#b1 { background: #556270; }
@@ -581,7 +601,7 @@ body * {
 	.slide#b5 { background: #C44D33; } */
 	
 
-	#prev, #next {
+	/* #prev, #next {
 	cursor: pointer;
 	width: 20px;
 	height: 20px;
@@ -612,35 +632,7 @@ body * {
 
 	.transition {
 	transition: .5s;
-	}
-
-	/* ********************* Conteúdo ********************* */
-
-    .content-body{
-        width: 100%;
-		height: auto;
-		box-sizing: border-box;
-        overflow: hidden;
-    }
-
-    .container-cards{
-        width: inherit;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-around;
-		align-items: center ;
-		padding: 0.5em;
-    }
-	
-	.title-section{
-		width:100%;
-		text-align:center;
-		color:#fff;
-		font-size: 2rem;
-		padding: 0.2rem;
-		background-color:#003566;
-		display: none;	
-	}
+	} */
 
 	/* ********************* Card ********************* */
 

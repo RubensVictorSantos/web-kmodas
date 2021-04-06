@@ -2,9 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import $ from 'jquery';
 /** */
-import logo from '../../../recursos/ico/logo.svg';
+import logo from '../../../resources/img/logo-ladybirds.png';
 import './style.css';
-import imgUser from '../../../recursos/ico/user.svg';
+import imgUser from '../../../resources/img/user.svg';
 
 export class Navbar extends Component {
 
@@ -29,49 +29,50 @@ export class Navbar extends Component {
         return (
             <Fragment>
                 <nav className="navbar">
-                    <ul>
-                        <li>
-                            <ul className="menu">
-                                <li className="item">
-                                    <button className="btn-menu btn-nav" id="btn-menu"></button>
-                                    
-                                </li>
-                                <li className="item">
-                                    <Link to="/">
-                                        <img className="img" src={logo} alt={'Logo K. Modas'} />
-                                    </Link>                                    
-                                </li>
-                                <li className="item">
-                                    <ul className="sub-menu menu-close" id="sub-menu">
-                                        <li className="sub-item">
-                                            <div className="view-user">
-                                                <div className="img-user">
-                                                    <img className="img" src={imgUser} alt={'Imagem ' + imgUser}/>
+                    <div>
+                        {/************************* MENU *************************/}
 
-                                                </div>
+                        <ul className="sub-menu menu-close" id="sub-menu">
+                            <li className="sub-item">
+                                <div className="view-user">
+                                    <div className="img-user">
+                                        <img className="img" src={imgUser} alt={'Imagem ' + imgUser} />
 
-                                                <div>
-                                                    <label>Olá, visitante!</label>
-                                                </div>
-                                            </div>
-                                            <span className="close" id="close">&times;&nbsp;&nbsp;</span>
-                                        </li>
-                                        <li className="sub-item">HOME</li>
-                                        <li className="sub-item">PRODUTOS</li>
-                                        <li className="sub-item">GALERIAS</li>
-                                        <li className="sub-item">CONTATOS</li>
-                                    </ul>
-                                
-                                </li>
-                                <li className="item">
-                                    <button className="btn-cart btn-nav" id="btn-cart"></button>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="container-search">
-                            <input type="search" placeholder="O que você procura?"/>
-                        </li>
-                    </ul>
+                                    </div>
+
+                                    <div>
+                                        <label>Olá, visitante!</label>
+                                    </div>
+                                </div>
+                                <span className="close" id="close">&times;&nbsp;&nbsp;</span>
+                            </li>
+                            <li className="sub-item">HOME</li>
+                            <li className="sub-item">PRODUTOS</li>
+                            <li className="sub-item">GALERIAS</li>
+                            <li className="sub-item">CONTATOS</li>
+                        </ul>
+
+                        {/************************* LOGO *************************/}
+
+                        <div>
+                            <span className="btn-menu btn-nav" id="btn-menu" />
+
+                            <Link to="/home">
+                                <img className="nav-logo" src={logo} alt="Logo K. Modas" />
+                            </Link>
+
+                            <span className="btn-cart btn-nav" id="btn-cart" />
+
+                        </div>
+
+
+                        {/************************* SEARCH *************************/}
+
+                        <div className="container-search">
+                            <input type="search" placeholder="O que você procura?" />
+                        </div>
+
+                    </div>
                 </nav>
             </Fragment>
         )

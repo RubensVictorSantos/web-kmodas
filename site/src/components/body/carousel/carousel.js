@@ -29,10 +29,10 @@ export class Carousel extends Component {
 
             setTimeout(() => {
                 if (direction === 1) {
-                    $('.slide:first').before($('.slide:last'));
+                    $('.carousel-slide:first').before($('.carousel-slide:last'));
 
                 } else if (direction === -1) {
-                    $('.slide:last').after($('.slide:first'));
+                    $('.carousel-slide:last').after($('.carousel-slide:first'));
 
                 }
 
@@ -80,18 +80,18 @@ export class Carousel extends Component {
                     <div id="carousel">
                         {
                             this.state.produto.map(produto => (
-                                <div key={produto.cod_prod} className="slide" id={`slide-` + produto.cod_prod}>
-                                    <div>
+                                <div key={produto.cod_prod} className="carousel-slide" id={`slide-` + produto.cod_prod}>
                                         <img src={DOMAIN_IMG + produto.img_prod} 
-                                        alt={produto.img_prod} className='img-c' />
-                                    </div>
+                                             alt={produto.img_prod} className='carousel-img' />
                                 </div>
                             ))
                         }
                     </div>
                 </div>
-                <span id="prev"></span>
-                <span id="next"></span>
+                <div>
+                    <span id="prev"></span>
+                    <span id="next"></span>
+                </div>
             </div>
         )
     }
