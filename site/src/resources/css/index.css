@@ -15,7 +15,7 @@ body {
   box-sizing: border-box;
 }
 
-div, nav, ul {
+div, nav, ul, span {
   box-sizing: border-box;
 
 }

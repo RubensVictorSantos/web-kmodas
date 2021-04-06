@@ -34,7 +34,7 @@ export class HomeCont extends Component {
         return (
             <div className="content-body">
                 {/* <div> */}
-                    {/* <Carousel itensCarousel={5} /> */}
+                <Carousel itensCarousel={5} />
                 {/* </div> */}
                 {/* <section className="container-cards">
                     {

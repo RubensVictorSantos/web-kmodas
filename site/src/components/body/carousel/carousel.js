@@ -39,9 +39,10 @@ export class Carousel extends Component {
                 carousel.removeClass('transition')
                 carousel.css('transform', 'translateX(0px)');
 
+
+                
             }, 700);
         }
-
         setInterval(() => {
             shiftSlide(-1);
 
@@ -89,8 +90,8 @@ export class Carousel extends Component {
                     </div>
                 </div>
                 <div>
-                    <span id="prev"></span>
-                    <span id="next"></span>
+                    <span id="prev">{`<`}</span>
+                    <span id="next">{`>`}</span>
                 </div>
             </div>
         )
