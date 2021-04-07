@@ -2,9 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import $ from 'jquery';
 /** */
-import logo from '../../../resources/img/logo-ladybirds.png';
+import logo from '../../resources/img/logo-ladybirds.png';
+import imgUser from '../../resources/img/user.svg';
 import './style.css';
-import imgUser from '../../../resources/img/user.svg';
 
 export class Navbar extends Component {
 
@@ -15,13 +15,13 @@ export class Navbar extends Component {
     openMenu = () => {
         /** Abrir Menu Mobile*/
         $('.btn-menu').on('click', () => {
-            $("#sub-menu").removeClass("menu-close");
-            $("#sub-menu").addClass("menu-open")
+            $("#menu").removeClass("menu-close");
+            $("#menu").addClass("menu-open")
         });
 
         $('#close').on('click', () => {
-            $("#sub-menu").removeClass("menu-open");
-            $("#sub-menu").addClass("menu-close");
+            $("#menu").removeClass("menu-open");
+            $("#menu").addClass("menu-close");
         });
     }
 
@@ -29,14 +29,17 @@ export class Navbar extends Component {
         return (
             <Fragment>
                 <nav className="navbar">
-                    <div>
                         {/************************* MENU *************************/}
 
-                        <ul className="sub-menu menu-close" id="sub-menu">
-                            <li className="sub-item">
+                        <ul className="menu menu-close" id="menu">
+                            <span className="close" id="close">&times;&nbsp;&nbsp;</span>
+                            
+                            <li className="item">
                                 <div className="view-user">
                                     <div className="img-user">
-                                        <img className="img" src={imgUser} alt={'Imagem ' + imgUser} />
+                                        <img className="img" 
+                                        src={imgUser} 
+                                        alt={'Imagem ' + imgUser} />
 
                                     </div>
 
@@ -44,35 +47,33 @@ export class Navbar extends Component {
                                         <label>Olá, visitante!</label>
                                     </div>
                                 </div>
-                                <span className="close" id="close">&times;&nbsp;&nbsp;</span>
                             </li>
-                            <li className="sub-item">HOME</li>
-                            <li className="sub-item">PRODUTOS</li>
-                            <li className="sub-item">GALERIAS</li>
-                            <li className="sub-item">CONTATOS</li>
+                            <li className="item">HOME</li>
+                            <li className="item">PRODUTOS</li>
+                            <li className="item">GALERIAS</li>
+                            <li className="item">CONTATOS</li>
+
                         </ul>
 
                         {/************************* LOGO *************************/}
 
                         <div>
-                            <span className="btn-menu btn-nav" id="btn-menu" />
+                            <input type='button' className="btn-menu " id="btn-menu" />
 
                             <Link to="/home">
-                                <img className="nav-logo" src={logo} alt="Logo K. Modas" />
+                                <p className="nav-logo">Site</p>
+                                {/* <img className="nav-logo" src={logo} alt="Logo K. Modas" /> */}
                             </Link>
 
-                            <span className="btn-cart btn-nav" id="btn-cart" />
+                            <input type='button' className="btn-cart " id="btn-cart" />
 
                         </div>
-
 
                         {/************************* SEARCH *************************/}
 
                         <div className="container-search">
                             <input type="search" placeholder="O que você procura?" />
                         </div>
-
-                    </div>
                 </nav>
             </Fragment>
         )

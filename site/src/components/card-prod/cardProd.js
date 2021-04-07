@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 /** */
 import './style.css'
-import { DOMAIN_IMG } from '../../../link_config'
+import { DOMAIN_IMG } from '../../link_config'
 
 export class CardProd extends Component {
 

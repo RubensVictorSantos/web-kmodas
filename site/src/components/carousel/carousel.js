@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
 import './style.css'
-import { DOMAIN_IMG, DOMAIN_API } from '../../../link_config';
+import { DOMAIN_IMG, DOMAIN_API } from '../../link_config';
 
 export class Carousel extends Component {
 
@@ -15,6 +15,12 @@ export class Carousel extends Component {
 
     }
 
+    winSize(){
+        var carousel = $('#carousel');
+
+        return console.log(carousel)
+    }
+
     mountCarousel() {
         var carousel = $('#carousel');
 
@@ -23,9 +29,23 @@ export class Carousel extends Component {
         $('#next').on('click', () => { shiftSlide(-1) })
         $('#prev').on('click', () => { shiftSlide(1) })
 
+
+        carousel.css('width', $('.window').width() * this.props.itensCarousel + 'px');
+        carousel.css('left', '-' + $('.window').width())
+
+
+        document.body.onresize = () => {
+
+            carousel.css('width', $('.window').width() * this.props.itensCarousel + 'px');
+            carousel.css('left', '-' + $('.window').width())
+
+            console.log(carousel.width())
+        
+        };
+
         function shiftSlide(direction) {
             carousel.addClass('transition')
-                .css('transform', 'translateX(' + (direction * 360) + 'px)');
+                .css('transform', 'translateX(' + (direction * 'left', '-' + $('.window').width()) + 'px)');
 
             setTimeout(() => {
                 if (direction === 1) {
@@ -39,13 +59,17 @@ export class Carousel extends Component {
                 carousel.removeClass('transition')
                 carousel.css('transform', 'translateX(0px)');
 
+
+
             }, 700);
+
         }
 
         setInterval(() => {
             shiftSlide(-1);
 
-        }, 10000);
+        }, 10000);  
+
 
     }
 
@@ -75,20 +99,21 @@ export class Carousel extends Component {
     render() {
 
         return (
-            <div className="wrap">
+            <div className="wrap center">
                 <div className="window">
                     <div id="carousel">
                         {
                             this.state.produto.map(produto => (
                                 <div key={produto.cod_prod} className="carousel-slide" id={`slide-` + produto.cod_prod}>
-                                        <img src={DOMAIN_IMG + produto.img_prod} 
-                                             alt={produto.img_prod} className='carousel-img' />
+                                    <img className='carousel-img' 
+                                        src={DOMAIN_IMG + produto.img_prod}
+                                        alt={produto.img_prod} />
                                 </div>
                             ))
                         }
                     </div>
                 </div>
-                <div>
+                <div className="center">
                     <span id="prev"></span>
                     <span id="next"></span>
                 </div>

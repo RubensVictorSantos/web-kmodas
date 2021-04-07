@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
 import './style.css';
-import { DOMAIN_IMG, DOMAIN_API } from '../../../link_config';
+import { DOMAIN_IMG, DOMAIN_API } from '../../link_config';
 
 export class Slide extends Component {
 
@@ -19,18 +19,11 @@ export class Slide extends Component {
         let wdtScreen = window.screen.width;
         let wdtImg = (wdtScreen / 100) * 95
         let paddingSld = (wdtScreen - wdtImg);
-<<<<<<< HEAD:site/src/components/body/content-product/contentProduct.js
-
-        $('.slide-sprod').css({'width': wdtScreen});
-        $('.slide-sprod img').css({"paddingLeft": paddingSld});
-        $('.slide-sprod img').css({'width': wdtImg});
-
-=======
         
         $('.slide-sprod').css({'width': wdtScreen});
         $('.slide-sprod img').css({"paddingLeft": paddingSld});
         $('.slide-sprod img').css({'width': wdtImg});
->>>>>>> cf876442f2d8146c85e113c79348c6adf7ce8afb:site/src/components/body/slide/slide.js
+
         $('#slides-sprod .slide-sprod').each(function (i) {
 
             // Get slider widths
