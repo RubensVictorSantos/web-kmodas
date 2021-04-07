@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
 import './style.css';
-import { DOMAIN_IMG, DOMAIN_API } from '../../../link_config';
+import { DOMAIN_IMG, DOMAIN_API } from '../../link_config';
 
 export class Slide extends Component {
 
@@ -23,6 +23,8 @@ export class Slide extends Component {
         $('.slide-sprod').css({'width': wdtScreen});
         $('.slide-sprod img').css({"paddingLeft": paddingSld});
         $('.slide-sprod img').css({'width': wdtImg});
+
+        
         $('#slides-sprod .slide-sprod').each(function (i) {
 
             // Get slider widths

@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import $ from 'jquery';
 /** */
-import logo from '../../../resources/img/logo-ladybirds.png';
-import imgUser from '../../../resources/img/user.svg';
+import logo from '../../resources/img/logo-ladybirds.png';
+import imgUser from '../../resources/img/user.svg';
 import './style.css';
 
 export class Navbar extends Component {

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import $ from 'jquery'
 /** */
-import Carousel from "../components/body/carousel/carousel";
-import CardProd from "../components/body/card-prod/cardProd";
+import Carousel from "../components/carousel/carousel";
+import CardProd from "../components/card-prod/cardProd";
 import { DOMAIN_API } from "../link_config";
 import './style.css';
+import { Fragment } from "react";
 
 export class HomeCont extends Component {
     state = { allProd: [] }
@@ -32,10 +33,8 @@ export class HomeCont extends Component {
 
     render() {
         return (
-            <div className="content-body">
-                {/* <div> */}
+            <Fragment>
                 <Carousel itensCarousel={5} />
-                {/* </div> */}
                 {/* <section className="container-cards">
                     {
                         this.state.allProd.map(produto => (
@@ -43,7 +42,7 @@ export class HomeCont extends Component {
                         ))
                     }
                 </section> */}
-            </div>
+            </Fragment>
         )
     }
 }

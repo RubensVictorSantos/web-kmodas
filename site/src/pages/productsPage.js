@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 /** */
-import Navbar from '../components/head/navbar/navbar';
-import ContentFooter from '../components/footer/container-footer/contentFooter';
+import Navbar from '../components/navbar/navbar';
+import ContentFooter from '../components/footer/contentFooter';
 import '../resources/css/index.css';
 
 const ProductsPage = ({ match }) => (

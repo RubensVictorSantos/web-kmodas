@@ -264,7 +264,7 @@
         background-color:rgba(0,0,0,0.5);
         position: fixed;
         overflow: auto;
-        z-index: 1;
+        z-index: 2;
     }
 
     .menu-close {
@@ -291,15 +291,15 @@
     }
 
     .btn-menu{
-        background-image: url("../../../resources/img/menu-round.svg");
+        background-image: url("../../resources/img/menu-round.svg");
     }
 
     .btn-user{
-        background-image: url("../../../resources/img/user.svg");
+        background-image: url("../../resources/img/user.svg");
     }
 
     .btn-cart{
-        background-image: url("../../../resources/img/cart-round.svg");
+        background-image: url("../../resources/img/cart-round.svg");
     }
  
     .view-user{

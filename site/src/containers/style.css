@@ -1,10 +1,8 @@
-    .content-body{
-        width: 100%;
-		height: auto;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-    }
+@media screen and (min-width:1000px){}
+
+@media only screen and (max-width: 999px) and (min-width: 681px){}
+
+@media screen and (max-width:680px){
 
     .container-cards{
         width: inherit;
@@ -13,14 +11,6 @@
 		justify-content: space-around;
 		align-items: center ;
 		padding: 0.5em;
+		box-sizing: border-box;
     }
-	
-	.title-section{
-		width:100%;
-		text-align:center;
-		color:#fff;
-		font-size: 2rem;
-		padding: 0.2rem;
-		background-color:#003566;
-		display: none;	
-	}
+}
