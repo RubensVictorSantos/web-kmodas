@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment} from "react";
+import { Link } from "react-router-dom";
 import $ from 'jquery'
 /** */
 import Carousel from "../components/carousel/carousel";
-// import CardProd from "../components/card-prod/cardProd";
+import CardSimple from "../components/card/cardSimple";
 import { DOMAIN_API } from "../link_config";
 import './style.css';
-import { Fragment } from "react";
 
 export class HomeCont extends Component {
     state = { allProd: [] }
@@ -32,16 +32,25 @@ export class HomeCont extends Component {
     }
 
     render() {
+
+        console.log(this.state.allProd)
         return (
             <Fragment>
                 <Carousel itensCarousel={5} />
-                {/* <section className="container-cards">
+                <section className="container-cards content">
                     {
                         this.state.allProd.map(produto => (
-                            <CardProd key={produto.cod_prod} produto={produto} />
+                            <Link to='/produto' className="card-closed" id="card-prod">
+                                <CardSimple key={produto.cod_prod}
+                                    title={produto.nome_prod}
+                                    image={produto.img_prod}
+                                    price={produto.preco_prod}
+                                />
+                                
+                            </Link>
                         ))
                     }
-                </section> */}
+                </section>
             </Fragment>
         )
     }

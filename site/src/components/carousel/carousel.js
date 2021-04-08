@@ -7,12 +7,11 @@ import { DOMAIN_IMG, DOMAIN_API } from '../../link_config';
 export class Carousel extends Component {
 
     state = {
-        produto: []
+        produto: [],
     }
 
     componentDidMount() {
         this.mountCarousel();
-
     }
 
     mountCarousel() {
@@ -23,44 +22,48 @@ export class Carousel extends Component {
         $('#next').on('click', () => { shiftSlide(-1) })
         $('#prev').on('click', () => { shiftSlide(1) })
 
-
-        carousel.css('width', $('.window').width() * this.props.itensCarousel + 'px');
-        carousel.css('left', '-' + $('.window').width())
-
-
         $(window).on('resize', () => {
 
             let widWindow = $('.window').width();
             let widCarousel = widWindow * this.props.itensCarousel;
 
             carousel.css('width', widCarousel + 'px');
-            carousel.css('left', '-' + widWindow + 'px');
 
         })
 
+        carousel.css('width', ($('.window').width() * this.props.itensCarousel) + 'px');
+
         function shiftSlide(direction) {
-            carousel.addClass('transition')
-                .css('transform', 'translateX(' + (direction * 'left', '-' + $('.window').width()) + 'px)');
+            if (carousel.hasClass('transition')) return;
 
-            setTimeout(() => {
-                if (direction === 1) {
-                    $('.carousel-slide:first').before($('.carousel-slide:last'));
+            if (direction === -1) {
+                carousel.addClass('transition')
+                    .css('transform', 'translateX(' + (direction * $('.window').width()) + 'px)');
 
-                } else if (direction === -1) {
+                setTimeout(() => {
                     $('.carousel-slide:last').after($('.carousel-slide:first'));
 
-                }
+                    carousel.removeClass('transition')
+                    carousel.css('transform', 'translateX(0px)');
 
-                carousel.removeClass('transition')
-                carousel.css('transform', 'translateX(0px)');
+                }, 700);
 
-            }, 700);
+            } else if (direction === 1) {
+
+                setTimeout(() => {
+                    $('.carousel-slide:first').before($('.carousel-slide:last'));
+
+                    carousel.removeClass('transition')
+                    carousel.css('transform', 'translateX(0px)');
+                }, 0.5);
+
+            }
         }
 
         setInterval(() => {
             shiftSlide(-1);
 
-        }, 10000);  
+        }, 10000);
 
 
     }
@@ -97,7 +100,7 @@ export class Carousel extends Component {
                         {
                             this.state.produto.map(produto => (
                                 <div key={produto.cod_prod} className="carousel-slide" id={`slide-` + produto.cod_prod}>
-                                    <img className='carousel-img' 
+                                    <img className='carousel-img'
                                         src={DOMAIN_IMG + produto.img_prod}
                                         alt={produto.img_prod} />
                                 </div>

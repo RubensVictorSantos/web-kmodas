@@ -8,6 +8,13 @@
 	--carousel-width: 360px;
 }
 
+* {
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+	box-sizing: border-box;
+}
+
 body {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -20,17 +27,6 @@ body {
 ul, li, h1, h2, p, body {
 	padding: 0;
 	margin: 0;
-}
-
-div, nav, ul, span, body {
-  box-sizing: border-box;
-
-}
-
-* {
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
 }
 
 ul, li{

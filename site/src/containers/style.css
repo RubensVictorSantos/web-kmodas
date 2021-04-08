@@ -5,12 +5,9 @@
 @media screen and (max-width:680px){
 
     .container-cards{
-        width: inherit;
-		display: flex;
+		height: auto;
 		flex-wrap: wrap;
 		justify-content: space-around;
-		align-items: center ;
-		padding: 0.5em;
-		box-sizing: border-box;
+		flex-direction: row;
     }
 }

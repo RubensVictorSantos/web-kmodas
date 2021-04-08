@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
 /** */
-import './style.css'
-import { DOMAIN_IMG } from '../../link_config'
+import './style.css';
+import { DOMAIN_IMG } from '../../link_config';
 
-export class CardProd extends Component {
-
-    componentDidMount() {
-
+export class CardSimple extends Component {
+    constructor(props){
+        super(props)
     }
 
     render() {
         return (
-            <Link to='/produto' className="card-closed" id="card-prod">
+            <Fragment>
                 <picture className="box-img-card">
-                    <img src={
-                        DOMAIN_IMG + this.props.produto.img_prod
-                    } alt={DOMAIN_IMG + this.props.produto.img_prod} id="img-prod" className="img-prod">
-
-                    </img>
-                    <div className="ico-heart">
+                    <img className="img-prod" src={DOMAIN_IMG + this.props.image} 
+                        alt={DOMAIN_IMG + this.props.image} id="img-prod"/>
+                    {/* <div className="ico-heart">
                         <svg version="1.1" viewBox="0 0 100 100">
                             <path style={{ fill: 'rgba(255,50,100,0.3)', stroke: 'rgba(255,0,0,0.9)', strokeLinejoin: 'round', strokeWidth: 0 }}
                                 d=" M 70 50  
@@ -28,16 +23,16 @@ export class CardProd extends Component {
 
                         </svg>
 
-                    </div>
+                    </div> */}
                 </picture>
                 <div className="title-card">
                     <p>
-                        {this.props.produto.nome_prod}
+                        {this.props.title}
                     </p>
                 </div>
                 <div className="box-price" id="box-price">
                     <p>
-                        R${this.props.produto.preco_prod}
+                        R${this.props.price}
                     </p>
                 </div>
                 <div className="view-card">
@@ -48,9 +43,9 @@ export class CardProd extends Component {
                         <p>COMPRAR </p>
                     </button>
                 </div>
-            </Link >
+            </Fragment>
         )
     }
 }
 
-export default CardProd;
+export default CardSimple;

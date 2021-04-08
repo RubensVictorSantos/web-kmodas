@@ -61,8 +61,7 @@ export class Navbar extends Component {
                             <input type='button' className="btn-menu " id="btn-menu" />
 
                             <Link to="/home">
-                                <p className="nav-logo">Site</p>
-                                {/* <img className="nav-logo" src={logo} alt="Logo K. Modas" /> */}
+                                <img className="nav-logo" src={logo} alt="Logo K. Modas" />
                             </Link>
 
                             <input type='button' className="btn-cart " id="btn-cart" />

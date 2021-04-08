@@ -21,10 +21,8 @@
 	}
 	
 	#carousel {
-		/* width: 10000px; */
 		position: relative;
 		top: 0; 
-		/* left: -360px; */
 	}
 	
 	.carousel-slide{
