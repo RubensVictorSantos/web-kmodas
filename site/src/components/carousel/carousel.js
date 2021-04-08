@@ -15,12 +15,6 @@ export class Carousel extends Component {
 
     }
 
-    winSize(){
-        var carousel = $('#carousel');
-
-        return console.log(carousel)
-    }
-
     mountCarousel() {
         var carousel = $('#carousel');
 
@@ -34,14 +28,15 @@ export class Carousel extends Component {
         carousel.css('left', '-' + $('.window').width())
 
 
-        document.body.onresize = () => {
+        $(window).on('resize', () => {
 
-            carousel.css('width', $('.window').width() * this.props.itensCarousel + 'px');
-            carousel.css('left', '-' + $('.window').width())
+            let widWindow = $('.window').width();
+            let widCarousel = widWindow * this.props.itensCarousel;
 
-            console.log(carousel.width())
-        
-        };
+            carousel.css('width', widCarousel + 'px');
+            carousel.css('left', '-' + widWindow + 'px');
+
+        })
 
         function shiftSlide(direction) {
             carousel.addClass('transition')
@@ -59,10 +54,7 @@ export class Carousel extends Component {
                 carousel.removeClass('transition')
                 carousel.css('transform', 'translateX(0px)');
 
-
-
             }, 700);
-
         }
 
         setInterval(() => {

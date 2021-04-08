@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import $ from 'jquery'
 /** */
 import Carousel from "../components/carousel/carousel";
-import CardProd from "../components/card-prod/cardProd";
+// import CardProd from "../components/card-prod/cardProd";
 import { DOMAIN_API } from "../link_config";
 import './style.css';
 import { Fragment } from "react";
