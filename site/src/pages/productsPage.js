@@ -4,16 +4,14 @@ import { Redirect, Route, Switch } from 'react-router';
 import Navbar from '../components/navbar/navbar';
 import ContentFooter from '../components/footer/contentFooter';
 import '../resources/css/index.css';
+import ProductsCont from '../containers/productsCont';
 
 const ProductsPage = ({ match }) => (
     <div>
         <Navbar />
         <main>
             <Switch>
-                <div>Products</div>
-                {/* <Route path={`${match.path}`} exact component={ListProdCont} />
-                <Route path={`${match.path}/add`} component={AddProdCont} />
-                <Route path={`${match.path}/edit`} component={EditProdCont} /> */}
+                <Route path={`${match.path}`} exact component={ProductsCont} />
                 <Redirect to={`${match.url}`} />
             </Switch>
         </main>

@@ -1,11 +1,5 @@
 @media screen and (max-width: 680px){
 
-    #container-sprod {
-        width: 100vw;
-        box-sizing: border-box;
-        position: relative;
-    }
-
     #slider-sprod {
         width: 100%;
         overflow: hidden;
@@ -26,6 +20,8 @@
     .slide-sprod img{
         height: auto;
     }
+
+    /***** MENU SLIDE ******/
 
     #menu-sprod {
         height: 60px;
