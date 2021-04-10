@@ -11,8 +11,8 @@ const ProductsPage = ({ match }) => (
         <main>
             <Switch>
                 <div>Products</div>
-                {/* <Route path={`${match.path}`} exact component={ListProdCont} />
-                <Route path={`${match.path}/add`} component={AddProdCont} />
+                {/* <Route path={`${match.path}`} exact component={ListProdCont} /> */}
+                {/* <Route path={`${match.path}/add`} component={AddProdCont} />
                 <Route path={`${match.path}/edit`} component={EditProdCont} /> */}
                 <Redirect to={`${match.url}`} />
             </Switch>
