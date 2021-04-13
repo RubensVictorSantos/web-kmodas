@@ -36,8 +36,13 @@ export class ProductsCont extends Component {
     }
 
     render() {
+        
+        let produto = this.state.produto.map( prod => prod)
+
+        // console.log(produto);
+
         return (
-            <Slide produto={this.state.produto}/>
+            <Slide produto={produto}/>
         )
     }
 }
