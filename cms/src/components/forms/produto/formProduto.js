@@ -38,7 +38,7 @@ export class FormProduct extends Component {
         } else if (input.type === 'checkbox') {
             value = input.checked;
 
-        } else if (input.name === 'preco_prod') {
+        } else if (input.name === 'preco') {
             value = input.value.replace(/[A-z]/, '');
 
         } else {
@@ -74,9 +74,9 @@ export class FormProduct extends Component {
 
     render() {
 
-        const { nome_prod, img_prod, descricao_prod, preco_prod, status_prod } = { ...this.state.produto }
+        const { nome, imagem, descricao, preco, status } = { ...this.state.produto }
 
-        let imagem = img_prod === undefined || img_prod === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + img_prod;
+        let img = imagem === undefined || imagem === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + imagem;
 
         return (
             <form className="form-produto content" id="form_add_prod" onSubmit={this.formProd}>
@@ -84,13 +84,13 @@ export class FormProduct extends Component {
 
                     <input id="selecao-arquivo"
                         onChange={this.handleChange}
-                        name="img_prod"
+                        name="imagem"
                         type="file"
                         accept="image/png, image/jpeg"
                         ref={this.fileInput}
                     />
 
-                    <img id="imgprod" src={imagem} alt={imagem}/>
+                    <img id="imgprod" src={img} alt={img}/>
 
                     <label className="lbl-file" tabIndex='0' htmlFor="selecao-arquivo" id="lbl-file">Selecionar Imagens</label>
                 </div>
@@ -98,8 +98,8 @@ export class FormProduct extends Component {
                 <div className="cont-form-prod">
                     <div>
                         <input type="text"
-                            name="nome_prod"
-                            value={nome_prod || ''}
+                            name="nome"
+                            value={nome || ''}
                             onChange={this.handleChange}
                             placeholder="Nome do Produto"
                             id="txtnome"
@@ -109,8 +109,8 @@ export class FormProduct extends Component {
 
                     <div>
                         <textarea
-                            value={descricao_prod}
-                            name="descricao_prod"
+                            value={descricao}
+                            name="descricao"
                             placeholder="Descrição do Produto"
                             maxLength="400"
                             onChange={this.handleChange}
@@ -120,8 +120,8 @@ export class FormProduct extends Component {
 
                     <div>
                         <input type="text"
-                            name="preco_prod"
-                            value={preco_prod || ''}
+                            name="preco"
+                            value={preco || ''}
                             onChange={this.handleChange}
                             placeholder="Preço do Produto"
                             id="txtpreco"
@@ -132,8 +132,8 @@ export class FormProduct extends Component {
                         <label htmlFor="chk" className="switch">
                             <input id="chk"
                                 type="checkbox"
-                                name="status_prod"
-                                checked={status_prod || 0}
+                                name="status"
+                                checked={status || 0}
                                 onChange={this.handleChange}
                             />
 

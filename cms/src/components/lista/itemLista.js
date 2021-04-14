@@ -24,7 +24,7 @@ export class ItemLista extends Component {
 
   render() {
 
-    const { cod_prod, nome_prod, img_prod, preco_prod, descricao_prod, status_prod } = this.state.produto;
+    const { cod_produto, nome, imagem, preco, descricao, status } = this.state.produto;
 
     return (
       <Fragment>
@@ -33,38 +33,38 @@ export class ItemLista extends Component {
 
           <div className="t-col">
 
-            {cod_prod}
+            {cod_produto}
 
           </div>
 
           <div className="t-col">
             <h4>
-              {nome_prod}
+              {nome}
             </h4>
           </div>
 
           <div className="t-col desc-item">
             <p>
-              {img_prod}
+              {imagem}
             </p>
           </div>
 
           <div className="t-col preco-item">
-            R${preco_prod}
+            R${preco}
 
           </div>
 
           <div className="t-col preco-item">
-            {descricao_prod}
+            {descricao}
 
           </div>
 
           <div className="t-col status-item">
-            <img src={status_prod === 1 ? SvgAtivo : SvgInativo}
-              alt={status_prod === 1 ? SvgAtivo : SvgInativo}
+            <img src={status === 1 ? SvgAtivo : SvgInativo}
+              alt={status === 1 ? SvgAtivo : SvgInativo}
               width="40px" />
 
-            {status_prod === 1 ? "Ativado" : "Desativado"}
+            {status === 1 ? "Ativado" : "Desativado"}
           </div>
 
         </div>

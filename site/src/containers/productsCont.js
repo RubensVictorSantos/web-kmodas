@@ -1,4 +1,5 @@
 import React, { Component, Fragment} from "react";
+import { Link } from "react-router-dom";
 import $ from 'jquery';
 /** */
 import './style.css';
@@ -41,12 +42,34 @@ export class ProductsCont extends Component {
 
         return (
             <Fragment>
+                <h3> NOME DO PRODUTO</h3>
                 <div>
                     <Slide produto={produto}/>
 
                 </div>
                 <div>
-
+                    <div>
+                        Modelo: Masculino
+                    </div>
+                    <div>
+                        Cor: Preta
+                    </div>
+                    <div>Tamanho: P M G GG XG G2 G3</div>
+                    <div>
+                        <button> COMPRAR </button>
+                    </div>
+                    <div>Informações sobre pagamento com boleto</div>
+                    <div>Informações sobre o produto<br/>
+                        Composição....<br/>
+                        Sobre a estampa....
+                    </div>
+                    <Link to='/video'>Assista a um vídeo sobre o produto</Link>
+                </div>
+                <div>
+                    Tags
+                </div>
+                <div>
+                    Slide Com outros produtos
                 </div>
             </Fragment>
         )

@@ -10,7 +10,8 @@ function List(props) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        let url = props.limits.search ? `${DOMAIN_API}/prod-id/${Object.values(props.limits.texto)}`: `${DOMAIN_API}/prod-LimitedNumber/${props.limits.limit}`
+        let url = props.limits.search ? `${DOMAIN_API}/prod-id/${Object.values(props.limits.texto)}`: 
+        `${DOMAIN_API}/prod-LimitedNumber/${props.limits.limit}`
         
         fetch(url)
         .then(res => res.json())
@@ -51,7 +52,7 @@ function List(props) {
                 <div className="tbl">
                     {
                         items.map(item => (
-                            <ItemLista key={item.cod_prod} produto={item} />
+                            <ItemLista key={item.cod_produto} produto={item} />
                         ))
                     }
 

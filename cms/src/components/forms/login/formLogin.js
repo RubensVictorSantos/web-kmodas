@@ -64,9 +64,9 @@ export class FormLogin extends Component {
 
                 if (result.token){
 
-                    const { usuario, token, auth} = result
+                    const { user, token, auth} = result
 
-                    localStorage.setItem('usuario', JSON.stringify(usuario));
+                    localStorage.setItem('user', JSON.stringify(user));
                     localStorage.setItem('token', JSON.stringify(token));
                     localStorage.setItem('auth', JSON.stringify(auth));
 

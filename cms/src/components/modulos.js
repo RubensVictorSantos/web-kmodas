@@ -69,7 +69,7 @@ export const deleteProd = (id) => {
     $.ajax({
         url: url,
         type: "delete",
-        data: { "cod_prod": id },
+        data: { "cod_produto": id },
         header: "x-access-token",
         dataType: "json",
         contentType: "application/json",

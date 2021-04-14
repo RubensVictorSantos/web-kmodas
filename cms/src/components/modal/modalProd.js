@@ -17,24 +17,22 @@ export class ModalProd extends Component {
 
     saveProd() {
 
-        let produto = []
-
-        produto = this.state.produto
+        let produto = this.state.produto
 
         localStorage.setItem('produto', JSON.stringify(produto));
     }
 
     render() {
 
-        var { nome_prod, img_prod, descricao_prod, preco_prod, status_prod } = this.state.produto;
+        var { nome, imagem, descricao, preco, status } = this.state.produto;
 
-        let imagem
+        let path
 
-        if (img_prod === undefined || img_prod === '') {
-            imagem = DOMAIN_IMG_DEFAULT
+        if (imagem === undefined || imagem === '') {
+            path = DOMAIN_IMG_DEFAULT
 
         } else {
-            imagem = DOMAIN_IMG + img_prod
+            path = DOMAIN_IMG + imagem
         }
 
         if (!this.props.show) {
@@ -48,28 +46,28 @@ export class ModalProd extends Component {
                     <header className="modal-header">
                         <span className="modal-close" id="closed" onClick={this.props.onClose}>&times;</span>
                         
-                        <h2>{nome_prod}</h2>
+                        <h2>{nome}</h2>
 
                     </header>
                     
                     <div className="modal-container content">
                         <div className="modal-img content">
-                            <img id="" src={imagem} alt={img_prod} />
+                            <img id="" src={path} alt={imagem} />
 
                         </div>
 
                         <div className="modal-content content">
                             <p className="modal-text">
-                                {descricao_prod}
+                                {descricao}
                             </p>
 
                             <code className="txt-price">
-                                R${preco_prod}
+                                R${preco}
                             </code>
 
                             <div className="content">
                                 <code>
-                                    {status_prod === 0 ? 'DESATIVADO' : 'ATIVADO'}
+                                    {status === 0 ? 'DESATIVADO' : 'ATIVADO'}
                                 </code>
 
                                 <Link to='products/edit'>
