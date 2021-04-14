@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from 'react-router';
 /** */
 import Navbar from '../components/navbar/navbar';
 import ContentFooter from '../components/footer/contentFooter';
-import { HomeCont } from '../containers/HomeCont';
+import { HomeCont } from '../containers/homeCont';
 import '../resources/css/index.css';
 
 const HomePage = ({ match }) => (

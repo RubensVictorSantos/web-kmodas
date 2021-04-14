@@ -1,4 +1,4 @@
-import React, { Component} from "react";
+import React, { Component, Fragment} from "react";
 import $ from 'jquery';
 /** */
 import './style.css';
@@ -39,10 +39,16 @@ export class ProductsCont extends Component {
         
         let produto = this.state.produto.map( prod => prod)
 
-        // console.log(produto);
-
         return (
-            <Slide produto={produto}/>
+            <Fragment>
+                <div>
+                    <Slide produto={produto}/>
+
+                </div>
+                <div>
+
+                </div>
+            </Fragment>
         )
     }
 }

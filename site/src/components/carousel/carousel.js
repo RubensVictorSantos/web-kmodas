@@ -32,7 +32,7 @@ export class Carousel extends Component {
 
         carousel.css('width', ($('.window').width() * this.props.itensCarousel) + 'px');
 
-        if(this.props.auto){
+        if(this.props.autoScroll){
             setInterval(() => {
                 this.shiftSlide(-1);
     

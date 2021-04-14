@@ -38,7 +38,7 @@ export class HomeCont extends Component {
 
         return (
             <Fragment>
-                <Carousel itensCarousel={5} auto={true}/>
+                <Carousel itensCarousel={5} autoScroll={true}/>
                 <section className="container-cards content">
                     {
                         allProd.map(produto => (
