@@ -5,16 +5,29 @@ import SvgInativo from '../../resources/ico/check-gray.svg';
 import ModalProd from '../modal/modalProd';
 import './style.css';
 
-export class ItemLista extends Component {
-  constructor(props) {
-    super(props)
+const Item = (props) => {
 
-    let produto = props.produto;
-    this.state = {
-      produto: produto
-    }
+  if (props.item === 'Ativado') {
 
+    return (
+      <div className='tbl-col center'>
+        <img src={SvgAtivo} alt={SvgAtivo} />
+      </div>)
+
+  } else if (props.item === 'Desativado') {
+
+    return (
+      <div className='tbl-col center'>
+        <img src={SvgInativo} alt={SvgInativo} />
+      </div>)
   }
+
+  return (<div className='tbl-col center'>{props.item}</div>)
+}
+
+export class ItemLista extends Component {
+
+  state = { isOpen: false }
 
   toggleModal = () => {
     this.setState({
@@ -23,50 +36,23 @@ export class ItemLista extends Component {
   }
 
   render() {
-
-    const { cod_produto, nome, imagem, preco, descricao, status } = this.state.produto;
+    let items = { ...this.props.items }
 
     return (
       <Fragment>
-        <ModalProd produto={this.state.produto} show={this.state.isOpen} status={'editar'} onClose={this.toggleModal} />
+        <ModalProd
+          title={items.nome}
+          image={items.imagem}
+          content={
+            [items.descricao, items.preco, items.status]
+          }
+          show={this.state.isOpen}
+          onClose={this.toggleModal}/>
+
         <div className="tbl-row" onClick={this.toggleModal}>
-
-          <div className="t-col">
-
-            {cod_produto}
-
-          </div>
-
-          <div className="t-col">
-            <h4>
-              {nome}
-            </h4>
-          </div>
-
-          <div className="t-col desc-item">
-            <p>
-              {imagem}
-            </p>
-          </div>
-
-          <div className="t-col preco-item">
-            R${preco}
-
-          </div>
-
-          <div className="t-col preco-item">
-            {descricao}
-
-          </div>
-
-          <div className="t-col status-item">
-            <img src={status === 1 ? SvgAtivo : SvgInativo}
-              alt={status === 1 ? SvgAtivo : SvgInativo}
-              width="40px" />
-
-            {status === 1 ? "Ativado" : "Desativado"}
-          </div>
-
+          
+          {Object.values(items).map(item => (<Item item={item} />))}
+        
         </div>
       </Fragment>
     );

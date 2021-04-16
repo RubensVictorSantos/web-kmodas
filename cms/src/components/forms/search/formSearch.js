@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-// import $ from "jquery";
 /** */
 import imgSearch from '../../../resources/ico/search.svg';
-// import { DOMAIN_API } from '../../../link_config';
 
 export class Search extends Component {
     constructor(props) {
@@ -37,6 +35,7 @@ export class Search extends Component {
                 <div className="box-search">
 
                     <label className="lbl-search" htmlFor="txt-search" >
+                        
                         <input type="text"
                             name="txt-search"
                             id="txt-search"

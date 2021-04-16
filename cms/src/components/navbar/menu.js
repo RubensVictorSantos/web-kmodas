@@ -32,6 +32,9 @@ export class Navbar extends Component {
     }
 
     render() {
+
+        let user = JSON.parse(localStorage.getItem('user'));
+
         return (
             <nav className="navbar">
                 <div className="container-nav">
@@ -47,8 +50,8 @@ export class Navbar extends Component {
                     </ul>
 
                     <div className="field-login">
-                        <img className='ico-user' src={UserImg} alt={'Imagem ' + UserImg}></img>
-                        Rubens Victor 
+                        <img className='ico-user' src={UserImg} alt={'Imagem ' + UserImg}/>
+                            <p> {user.nome} </p>
                         <button type='submit' onClick={this.logOut}></button>    
                     </div>
                 </div>
