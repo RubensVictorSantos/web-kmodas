@@ -43,10 +43,10 @@ export class HomeCont extends Component {
                     {
                         allProd.map(produto => (
                             <Link to='/products' key={produto.cod_prod} className="card-closed" id="card-prod">
-                                <CardSimple key={produto.cod_prod}
-                                    title={produto.nome_prod}
-                                    image={produto.img_prod}
-                                    price={produto.preco_prod}
+                                <CardSimple key={produto.cod_produto}
+                                    title={produto.nome}
+                                    image={produto.imagem}
+                                    price={produto.preco}
                                 />
                                 
                             </Link>

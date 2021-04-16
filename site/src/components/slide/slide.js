@@ -62,9 +62,9 @@ export class Slide extends Component {
                 <div id="slides">
                     {
                         prod.map(produto => (
-                            <div className="slide center" key={produto.cod_prod}>
-                                <img src={DOMAIN_IMG + produto.img_prod}
-                                    alt={produto.img_prod} />
+                            <div className="slide center" key={produto.cod_produto}>
+                                <img src={DOMAIN_IMG + produto.imagem}
+                                    alt={produto.imagem} />
                             </div>
                         ))
                     }
@@ -78,9 +78,9 @@ export class Slide extends Component {
                     <li className="sep"></li>
                     {
                         prod.map(produto => (
-                            <li key={produto.cod_prod} className="slide-menu-item center">
-                                    <img src={DOMAIN_IMG + produto.img_prod}
-                                        alt={produto.img_prod}/>
+                            <li key={produto.cod_prod}uto className="slide-menu-item center">
+                                    <img src={DOMAIN_IMG + produto.imagem}
+                                        alt={produto.imagem}/>
 
                             </li>
                         ))
