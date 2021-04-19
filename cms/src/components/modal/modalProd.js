@@ -1,18 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 /** */
 import './style.css';
 
 export class ModalProd extends Component {
-
-    // saveProd() {
-
-    //     let produto = this.state.produto
-
-    //     localStorage.setItem('produto', JSON.stringify(produto));
-    // }
 
     render() {
 
@@ -27,7 +19,7 @@ export class ModalProd extends Component {
                     <header className="modal-header">
                         <span className="modal-close" id="closed" onClick={this.props.onClose}>&times;</span>
                         
-                        <h2>{this.props.title}</h2>
+                        <h3>{this.props.title}</h3>
 
                     </header>
                     

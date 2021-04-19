@@ -110,7 +110,7 @@ export class FormLogin extends Component {
 
                         <button type="submit">Entrar</button>
                     </div>
-                    <input type="text" name="email" value="..." autocomplete="username email" style={{display: 'none'}}></input>
+                    <input type="text" name="email" value="..." autoComplete="username email" style={{display: 'none'}}></input>
                 </form>
             </div>
         )

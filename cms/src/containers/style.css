@@ -50,3 +50,30 @@ input::-webkit-inner-spin-button {
     border: none;
 }
 
+/*
+TABELA PRODUTO----------------------------->*/
+
+.tb-produto{
+    width: 75%;
+    height: 65vh;
+    /* background-color: paleturquoise; */
+    /* position: relative; */
+    overflow: auto;
+}
+
+/* Width Scrollbar*/
+.tb-produto::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+   
+  /* Handle */
+  .tb-produto::-webkit-scrollbar-thumb {
+    background: rgba(220, 220, 220);  
+    border-radius: 10px;
+  }
+  
+  .tb-produto::-webkit-scrollbar-thumb:hover {
+    background: rgba(150, 150, 150);  
+  }
+

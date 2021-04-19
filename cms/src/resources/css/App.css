@@ -5,7 +5,7 @@
   --red-active: #b30000;
 }
 
-div{
+div, table, thead, tbody{
   box-sizing: border-box;
 }
 
@@ -153,54 +153,4 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-}
-
-/******************************** SPINNER ********************************/
-
-.spinner{
-  width: 40px;
-  height: 40px;
-  border: 5px solid rgb(0,200,10);
-  border-bottom-color: transparent!important;
-  border-right-color: transparent!important;
-  border-radius: 50%;
-  margin: 5rem auto;
-  animation: spin .5s linear infinite;
-}
-
-@keyframes spin {
-
-  0%   {border-color:rgb(0,200,10); left:0px; top:0px;}
-  25%  {border-color:rgb(0,200,60); left:200px; top:0px;}
-  50%  {border-color:rgb(0,200,110); left:200px; top:200px;}
-  75%  {border-color:rgb(0,200,160); left:0px; top:200px;}
-  100% {border-color:rgb(0,200,210); left:0px; top:0px; transform: rotate(360deg);}
-}
-
-.txt-loading{
-  animation: load 2s linear infinite;
-}
-
-@keyframes load {
-  0%   {color:rgb(0,200,0);}
-  5%   {color:rgb(0,200,20);}   
-  10%  {color:rgb(0,200,40);}
-  15%  {color:rgb(0,200,60);}
-  20%  {color:rgb(0,200,80);}
-  25%  {color:rgb(0,200,100);}
-  30%  {color:rgb(0,200,120);}
-  35%  {color:rgb(0,200,140);}   
-  40%  {color:rgb(0,200,160);}
-  45%  {color:rgb(0,200,180);}
-  50%  {color:rgb(0,200,200);}
-  55%  {color:rgb(0,200,180);}   
-  60%  {color:rgb(0,200,160);}
-  65%  {color:rgb(0,200,140);}
-  70%  {color:rgb(0,200,120);}
-  75%  {color:rgb(0,200,100);}
-  80%  {color:rgb(0,200,80);}
-  85%  {color:rgb(0,200,60);}   
-  90%  {color:rgb(0,200,40);}
-  95%  {color:rgb(0,200,20);}
-  100% {color:rgb(0,200,10);}
 }

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 // import $ from 'jquery';
 /** */
 import { DOMAIN_API } from '../link_config';
-import List from '../components/lista/list';
 import { Search } from '../components/forms/search/formSearch';
 import { Fragment } from 'react';
+import Table from '../components/table/table';
 
 export class ListProdCont extends Component {
   constructor(props) {
@@ -51,9 +51,11 @@ export class ListProdCont extends Component {
 
         {/** TABELA */}
 
-        <List url={url} />
-
-        <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', width: '65%' }}>
+        {/* <div className='tb-produto'> */}
+          <Table url={url} />
+        {/* </div> */}
+        
+        <div className="content">
           <input className="btn-carregar-itens" onClick={() => this.changeState(false)} type='button' value='Carregar +20' />
           <label style={{ position: 'absolute', right: '0', color: '#888', fontSize: '1rem' }}>{this.state.limits}</label>
         </div>

@@ -13,6 +13,7 @@ export function urlImg(input, idimg) {
             img.src = e.target.result;
 
         };
+
         reader.readAsDataURL(input.files[0]);
 
         return input.files[0].name;
@@ -34,7 +35,7 @@ export const editProd = (produto) => {
         header: "x-access-token",
         dataType: "json",
         contentType: "application/json",
-        success(result){
+        success(result) {
             console.log(result)
         }
 
@@ -110,4 +111,8 @@ export const clearInput = (produto) => {
 
     return produto
 }
+
+export function autoKey() {
+    return '_' + Math.random().toString(36).substr(2, 9);
+};
 

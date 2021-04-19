@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import ImgNotFound from '../../resources/ico/image-not-found.png'
 import './style.css'
 import { DOMAIN_IMG } from '../../link_config';
-import ItemLista from './itemLista';
+import TableItem from './tableItem';
+import Spinner from '../spinner/Spinner'
+import { autoKey } from '../modulos';
 
-function List(props) {
+function Table(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -34,35 +36,38 @@ function List(props) {
         
     } else if (!isLoaded) {
         return (
-            <div>
-                <div className="spinner"></div>
-                <h2 className="txt-loading">LOADING...</h2>
-            </div>
+            <Spinner text={'Loading...'}/>
         )
     } else {
 
         return (
-            <div className="list-tbl">
+            <div className="tb">
 
                 {/* TITULO TABELA */}
 
-                <div className="tbl-header">
-                    {
-                        items.length >= 1 ? Object.keys(items[0]).map(title =>
-                            
-                            <div key={Math.floor((Math.random() * 100) + 1)}>
-                                {title}
-                            </div>
+                <div className="tb-head">
+                        {
+                            items.length >= 1 ? Object.keys(items[0]).map(title =>
+                                <div key={autoKey()}>
+                                    {title}
+                                </div>
 
-                        ) : Object.keys(items).map(i =>
-                            <div key={Math.floor((Math.random() * 100) + 1)}>{i}</div>
-                        )
-                    }
+                            ) : Object.keys(items).map(title =>
+                                <div key={autoKey()}>
+                                    {title}
+                                </div>
+                            )
+                        }
                 </div>
 
-                <div className="tbl">
+                {/* CORPO TABELA */}
+
+                <div className="tb-body">
                     {
+                        
                         items.length >= 1 ? items.map(item => {
+
+                            let cod = item.cod_produto
 
                             if (item.status === 1) {
                                 item.status = 'Ativado'
@@ -81,16 +86,15 @@ function List(props) {
                                 }
                             }
 
-                            return (<ItemLista key={item.cod_produto} items={item} />)
+                            return (<TableItem key={cod} items={item}/>)
 
-                        }) : <ItemLista key={items.cod_produto} items={items} />
+                        }) : <TableItem key={items.cod_produto} items={items} />
                     }
 
                 </div>
             </div>
         );
-
     }
 }
 
-export default List
+export default Table

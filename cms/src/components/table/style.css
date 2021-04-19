@@ -1,77 +1,90 @@
 /* CSS Itens Produtos */
 
-/* LISTA DE PRODUTOS ITENS 
+/* TABELA DE PRODUTOS ITENS 
 ----------------------------------------------*/
 
-.list-tbl{
-  width: 70%;
-}
-
-.tbl-header{
+.tb {
+  width: 75%;
+  height: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  background-color: #688a8a;
-  border-radius: 4px 4px 0px 0px;
+  grid-template-rows: 50px repeat(auto-fit, minmax(30px, auto));
+  overflow: hidden;
 }
 
-.tbl-header div{
+.tb-head {
+  display: grid;
+  background-color: #688a8a;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 190px));
+  grid-template-rows: repeat(auto-fit, minmax(5px, 50px));
+}
+
+.tb-head div {
   display: flex;
   justify-content: center;
+  align-items: center;
   text-transform: uppercase;
   padding: 5px;
   font-weight: bold;
   color: white;
+
 }
 
-.tbl{
+.tb-body {
   display: grid;
-  width: 100%;
   max-height: 65vh;
   overflow: auto;
-  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
   border: var(--b-row);
   border-color: #688a8a8a!important;
   border-top: none!important;
 }
 
 /* Width Scrollbar*/
-.tbl::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+.tb-body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
  
 /* Handle */
-.tbl::-webkit-scrollbar-thumb {
+.tb-body::-webkit-scrollbar-thumb {
   background: rgba(220, 220, 220);  
   border-radius: 10px;
 }
 
-.tbl-row{
-  width: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, auto));
-  border-bottom: var(--b-row);
-  border-color: #688a8a60;
+.tb-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150);  
 }
 
-.tbl-row:hover{
+.tb-row {  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 190px));
+  grid-template-rows: repeat(auto-fit, minmax(15px, 50px));
+  border-bottom: var(--b-row);
+  border-color: #688a8a60!important;
+  padding: .5rem 0;
+}
+
+.tb-row:hover{
   box-shadow: 3px 3px 4px #688a8a8a;
   cursor: pointer;
 }
 
-.tbl-row:active{
+.tb-row:active{
   background-color: #dfdfdf;
 }
 
-.tbl-col{
+.tb-col{
+  text-align: center;
+  white-space: nowrap;
   overflow: hidden;
-  
+  text-overflow: ellipsis;
+  /* border-left: 1px solid black; */
 }
 
-.tbl-col img{
+.tb-col img{
   width: 40px;
   height: auto;
 }
+
 
 /* BUTTON CARREGAR ITENS
 ----------------------------------------------*/
