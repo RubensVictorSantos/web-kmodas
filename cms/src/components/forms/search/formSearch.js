@@ -31,7 +31,7 @@ export class Search extends Component {
     render() {
         return (
 
-            <div className="form-search content" id="formBuscar">
+            <div className="form-search container" id="formBuscar">
                 <div className="box-search">
 
                     <label className="lbl-search" htmlFor="txt-search" >

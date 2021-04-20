@@ -14,8 +14,8 @@ export class ModalProd extends Component {
 
         return (
 
-            <div className="view-prod content" id="view-p">
-                <div className="modal content">
+            <div className="view-prod container" id="view-p">
+                <div className="modal container">
                     <header className="modal-header">
                         <span className="modal-close" id="closed" onClick={this.props.onClose}>&times;</span>
                         
@@ -23,13 +23,13 @@ export class ModalProd extends Component {
 
                     </header>
                     
-                    <div className="modal-container content">
-                        <div className="modal-img content">
+                    <div className="modal-container container">
+                        <div className="modal-img container">
                             <img src={this.props.image} alt={this.props.image} />
 
                         </div>
 
-                        <div className="modal-content content">
+                        <div className="modal-content container">
                             <p className="modal-text">
                                 {this.props.content[0]}
                             </p>
@@ -38,7 +38,7 @@ export class ModalProd extends Component {
                                 {this.props.content[1]}
                             </code>
 
-                            <div className="content">
+                            <div className="container">
                                 <code>
                                     {this.props.content[2]}
                                 </code>

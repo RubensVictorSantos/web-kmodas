@@ -55,7 +55,7 @@ export class ListProdCont extends Component {
           <Table url={url} />
         {/* </div> */}
         
-        <div className="content">
+        <div className="container">
           <input className="btn-carregar-itens" onClick={() => this.changeState(false)} type='button' value='Carregar +20' />
           <label style={{ position: 'absolute', right: '0', color: '#888', fontSize: '1rem' }}>{this.state.limits}</label>
         </div>

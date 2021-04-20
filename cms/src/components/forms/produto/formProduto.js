@@ -79,8 +79,8 @@ export class FormProduct extends Component {
         let img = imagem === undefined || imagem === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + imagem;
 
         return (
-            <form className="form-produto content" id="form_add_prod" onSubmit={this.formProd}>
-                <div className="content">
+            <form className="form-produto container" id="form_add_prod" onSubmit={this.formProd}>
+                <div className="container">
 
                     <input id="selecao-arquivo"
                         onChange={this.handleChange}

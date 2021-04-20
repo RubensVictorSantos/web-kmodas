@@ -10,7 +10,7 @@ import '../resources/css/App.css';
 const ProductsPage = ({ match }) => (
     <div>
         <Navbar />
-        <main className="content">
+        <main className="container">
             <Switch>
                 <Route path={`${match.path}`} exact component={ListProdCont} />
                 <Route path={`${match.path}/add`} component={AddProdCont} />

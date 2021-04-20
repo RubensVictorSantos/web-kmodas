@@ -19,8 +19,8 @@ function Table(props) {
             .then(res => res.json())
             .then(
                 (result) => {
+                    result.length ? setItems(result) : setItems([result])
                     setIsLoaded(true);
-                    setItems(result);
                 },
 
                 (error) => {
@@ -31,64 +31,60 @@ function Table(props) {
 
     }, [props])
 
+    const filterItems = (item) => {
+
+        console.log(item.imagem);
+
+        if (item.status === 1) {
+            item.status = 'Ativado'
+
+        } else if (item.status === 0) {
+            item.status = 'Desativado'
+
+        } else if (item.imagem === []) {
+            item.imagem = ImgNotFound
+
+        } else {
+            item.imagem = `${DOMAIN_IMG + item.imagem}`
+
+        }
+
+        return item
+    }
+
     if (error) {
         return <div>Error: {error.message}</div>
-        
+
     } else if (!isLoaded) {
         return (
-            <Spinner text={'Loading...'}/>
+            <Spinner text={'Loading...'} />
         )
     } else {
 
+        let item = items.map(item => item).filter(item => item = filterItems(item))
+        let head = Object.keys(items[0])
+
         return (
+
             <div className="tb">
 
                 {/* TITULO TABELA */}
 
                 <div className="tb-head">
-                        {
-                            items.length >= 1 ? Object.keys(items[0]).map(title =>
-                                <div key={autoKey()}>
-                                    {title}
-                                </div>
-
-                            ) : Object.keys(items).map(title =>
-                                <div key={autoKey()}>
-                                    {title}
-                                </div>
-                            )
-                        }
+                    {
+                        head.map(title =>
+                            <div key={autoKey()}>{title}</div>
+                        )
+                    }
                 </div>
 
                 {/* CORPO TABELA */}
 
                 <div className="tb-body">
                     {
-                        
-                        items.length >= 1 ? items.map(item => {
-
-                            let cod = item.cod_produto
-
-                            if (item.status === 1) {
-                                item.status = 'Ativado'
-
-                            } else if (item.status === 0) {
-                                item.status = 'Desativado'
-
-                            } else if (item.imagem) {
-
-                                if (item.imagem === []) {
-                                    item.imagem = ImgNotFound
-
-                                } else {
-                                    item.imagem = DOMAIN_IMG + item.imagem
-
-                                }
-                            }
-
-                            return (<TableItem key={cod} items={item}/>)
-
-                        }) : <TableItem key={items.cod_produto} items={items} />
+                        item.map(item => 
+                                <TableItem key={item.cod_produto} items={item} />
+                            )
                     }
 
                 </div>

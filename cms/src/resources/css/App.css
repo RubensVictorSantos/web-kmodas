@@ -33,7 +33,7 @@ textarea{
   align-items: center;
 }
 
-.content{
+.container{
   display: flex;
   justify-content: center;
   align-items: center;
