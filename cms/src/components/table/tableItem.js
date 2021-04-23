@@ -8,6 +8,8 @@ import { autoKey } from '../modulos';
 
 const Item = (props) => {
 
+  console.log(props.item);
+
   if (props.item === 'Ativado') {
 
     return (

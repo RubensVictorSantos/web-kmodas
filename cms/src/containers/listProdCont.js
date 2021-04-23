@@ -51,9 +51,7 @@ export class ListProdCont extends Component {
 
         {/** TABELA */}
 
-        {/* <div className='tb-produto'> */}
-          <Table url={url} />
-        {/* </div> */}
+        <Table url={url} />
         
         <div className="container">
           <input className="btn-carregar-itens" onClick={() => this.changeState(false)} type='button' value='Carregar +20' />

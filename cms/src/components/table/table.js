@@ -1,39 +1,60 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 /** */
-import ImgNotFound from '../../resources/ico/image-not-found.png'
 import './style.css'
 import { DOMAIN_IMG } from '../../link_config';
 import TableItem from './tableItem';
 import Spinner from '../spinner/Spinner'
 import { autoKey } from '../modulos';
 
-function Table(props) {
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [items, setItems] = useState([]);
+class Table extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            error: null,
+            isLoaded: false,
+            items: [],
+            url: props.url
+        };
+    }
 
-    useEffect(() => {
-        let url = props.url
+    componentDidMount() {
+        this.carregarItems()
+    }
+
+    carregarItems() {
+
+        let url = this.state.url
 
         fetch(url)
             .then(res => res.json())
             .then(
                 (result) => {
-                    result.length ? setItems(result) : setItems([result])
-                    setIsLoaded(true);
-                },
 
+                    let items
+
+                    result.length ? items = result : items = [result]
+
+                    this.setState({
+                        isLoaded: true,
+                        items: items
+                    });
+                },
                 (error) => {
-                    setIsLoaded(true);
-                    setError(error);
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
                 }
             )
+    }
 
-    }, [props])
+    filterItems(item) {
 
-    const filterItems = (item) => {
+        let url = `${DOMAIN_IMG + item.imagem}`
 
-        console.log(item.imagem);
+        item.imagem = ''
+
+        item.imagem = url
 
         if (item.status === 1) {
             item.status = 'Ativado'
@@ -41,55 +62,58 @@ function Table(props) {
         } else if (item.status === 0) {
             item.status = 'Desativado'
 
-        } else if (item.imagem === []) {
-            item.imagem = ImgNotFound
-
-        } else {
-            item.imagem = `${DOMAIN_IMG + item.imagem}`
-
-        }
+        } 
 
         return item
     }
 
-    if (error) {
-        return <div>Error: {error.message}</div>
+    render() {
+        const { error, isLoaded, items } = this.state;
 
-    } else if (!isLoaded) {
-        return (
-            <Spinner text={'Loading...'} />
-        )
-    } else {
+        if (error) {
+            return <div>Error: {error.message}</div>;
 
-        let item = items.map(item => item).filter(item => item = filterItems(item))
-        let head = Object.keys(items[0])
+        } else if (!isLoaded) {
+            return <Spinner text={'Loading...'} />
+        
+        } else {
+            let item = []
+            item = items.filter(item => { 
+                
+                return item = this.filterItems(item)
+                
+                }
+            )
 
-        return (
+            let head = Object.keys(items[0])
 
-            <div className="tb">
+            return (
 
-                {/* TITULO TABELA */}
+                <div className="tb">
 
-                <div className="tb-head">
-                    {
-                        head.map(title =>
-                            <div key={autoKey()}>{title}</div>
-                        )
-                    }
-                </div>
+                    {/* TITULO TABELA */}
 
-                {/* CORPO TABELA */}
+                    <div className="tb-head">
+                        {
+                            head.map(title =>
+                                <div key={autoKey()}>{title}</div>
+                            )
+                        }
+                    </div>
 
-                <div className="tb-body">
-                    {
-                        item.map(item => 
+                    {/* CORPO TABELA */}
+
+                    <div className="tb-body">
+                        {
+                            item.map(item =>
                                 <TableItem key={item.cod_produto} items={item} />
                             )
-                    }
+                        }
 
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 }
 
