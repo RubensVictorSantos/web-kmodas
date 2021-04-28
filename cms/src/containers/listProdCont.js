@@ -11,10 +11,10 @@ export class ListProdCont extends Component {
     super(props)
 
     this.state = {
-      limits: 5,
+      limit: 5,
       search: false,
       texto: [],
-      url: `${DOMAIN_API}/prod-LimitedNumber/5`
+      url: `${DOMAIN_API}/prod-LimitedNumber/15`
     }
 
     this.changeState = this.changeState.bind(this);
@@ -22,25 +22,29 @@ export class ListProdCont extends Component {
 
   changeState(search, texto = []) {
 
-    let url
+    let { url, limit } = this.state
 
-    if(search){
+    if (search) {
       url = `${DOMAIN_API}/prod-id/${Object.values(texto)}`
 
-    }else{
-      url = `${DOMAIN_API}/prod-LimitedNumber/${this.state.limits + 20}`
+    } else {
+
+      limit += 20
+
+      url = `${DOMAIN_API}/prod-LimitedNumber/${limit}`
 
     }
-    
-    this.setState(
-      { 
-        url: url
-      })
+
+    this.setState({ 
+      url: url, 
+      limit : limit 
+    })
+
   }
 
   render() {
 
-    let url = this.state.url
+    let { url, limit } = this.state
 
     return (
 
@@ -51,11 +55,14 @@ export class ListProdCont extends Component {
 
         {/** TABELA */}
 
-        <Table url={url} />
-        
+        <div className="tb-produto">
+          <Table url={url} />
+
+        </div>
+
         <div className="container">
-          <input className="btn-carregar-itens" onClick={() => this.changeState(false)} type='button' value='Carregar +20' />
-          <label style={{ position: 'absolute', right: '0', color: '#888', fontSize: '1rem' }}>{this.state.limits}</label>
+          <input className="btn-carregar-itens " onClick={() => this.changeState(false)} type='button' value='Carregar +20' />
+          <label style={{ position: 'absolute', right: '0', color: '#888', fontSize: '1rem' }}>Total {limit}</label>
         </div>
       </Fragment>
     )

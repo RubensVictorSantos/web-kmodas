@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 /** */
 import './style.css'
-import { DOMAIN_IMG } from '../../link_config';
 import TableItem from './tableItem';
 import Spinner from '../spinner/Spinner'
 import { autoKey } from '../modulos';
 
-class Table extends React.Component {
+export class Table extends Component {
     constructor(props) {
         super(props);
+
+        let url = this.props.url
+
         this.state = {
             error: null,
             isLoaded: false,
             items: [],
-            url: props.url
+            url: url
         };
     }
 
@@ -23,7 +25,7 @@ class Table extends React.Component {
 
     carregarItems() {
 
-        let url = this.state.url
+        let url = this.props.url
 
         fetch(url)
             .then(res => res.json())
@@ -48,25 +50,6 @@ class Table extends React.Component {
             )
     }
 
-    filterItems(item) {
-
-        let url = `${DOMAIN_IMG + item.imagem}`
-
-        item.imagem = ''
-
-        item.imagem = url
-
-        if (item.status === 1) {
-            item.status = 'Ativado'
-
-        } else if (item.status === 0) {
-            item.status = 'Desativado'
-
-        } 
-
-        return item
-    }
-
     render() {
         const { error, isLoaded, items } = this.state;
 
@@ -75,44 +58,42 @@ class Table extends React.Component {
 
         } else if (!isLoaded) {
             return <Spinner text={'Loading...'} />
-        
+
         } else {
-            let item = []
-            item = items.filter(item => { 
-                
-                return item = this.filterItems(item)
-                
-                }
-            )
+
+            let item = items
 
             let head = Object.keys(items[0])
 
             return (
 
-                <div className="tb">
+                <table className="tb">
 
                     {/* TITULO TABELA */}
 
-                    <div className="tb-head">
-                        {
-                            head.map(title =>
-                                <div key={autoKey()}>{title}</div>
-                            )
-                        }
-                    </div>
+                    <thead className="tb-head">
+                        <tr>
+                            <th colSpan="2"></th>
+                            {
+                                head.map(title =>
+                                    <th key={autoKey()}>{title}</th>
+                                )
+                            }
+                        </tr>
+                    </thead>
 
                     {/* CORPO TABELA */}
 
-                    <div className="tb-body">
+                    <tbody className="tb-body">
                         {
                             item.map(item =>
                                 <TableItem key={item.cod_produto} items={item} />
                             )
                         }
-
-                    </div>
-                </div>
+                    </tbody>
+                </table>
             );
+
         }
     }
 }

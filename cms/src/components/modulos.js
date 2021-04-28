@@ -10,6 +10,7 @@ export function urlImg(input, idimg) {
         let reader = new FileReader();
 
         reader.onload = function (e) {
+
             img.src = e.target.result;
 
         };

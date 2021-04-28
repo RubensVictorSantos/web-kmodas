@@ -4,60 +4,23 @@
 ----------------------------------------------*/
 
 .tb {
-  width: 75%;
-  height: auto;
-  display: grid;
-  grid-template-rows: 50px repeat(auto-fit, minmax(30px, auto));
-  overflow: hidden;
+  min-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0px;
 }
 
 .tb-head {
-  display: grid;
   background-color: #688a8a;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 190px));
-  grid-template-rows: repeat(auto-fit, minmax(5px, 50px));
 }
 
-.tb-head div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.tb-head th {
   text-transform: uppercase;
   padding: 5px;
   font-weight: bold;
   color: white;
-
-}
-
-.tb-body {
-  display: grid;
-  max-height: 65vh;
-  overflow: auto;
-  border: var(--b-row);
-  border-color: #688a8a8a!important;
-  border-top: none!important;
-}
-
-/* Width Scrollbar*/
-.tb-body::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
- 
-/* Handle */
-.tb-body::-webkit-scrollbar-thumb {
-  background: rgba(220, 220, 220);  
-  border-radius: 10px;
-}
-
-.tb-body::-webkit-scrollbar-thumb:hover {
-  background: rgba(150, 150, 150);  
 }
 
 .tb-row {  
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 190px));
-  grid-template-rows: repeat(auto-fit, minmax(15px, 50px));
   border-bottom: var(--b-row);
   border-color: #688a8a60!important;
   padding: .5rem 0;
@@ -69,22 +32,21 @@
 }
 
 .tb-row:active{
-  background-color: #dfdfdf;
+  background-color: #688a8a29;
 }
 
 .tb-col{
+  max-width: 300px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  /* border-left: 1px solid black; */
 }
 
 .tb-col img{
   width: 40px;
   height: auto;
 }
-
 
 /* BUTTON CARREGAR ITENS
 ----------------------------------------------*/

@@ -10,8 +10,10 @@ export class FormProduct extends Component {
     constructor(props) {
         super(props)
 
+        let produto = localStorage.produto ? JSON.parse(localStorage.produto): []
+
         // Ternario se existe props.produto ele set o state.produto com o valor do props.produto
-        props.produto ? this.state = { produto: props.produto, editar: props.editar} : this.state = { produto: [], editar: props.editar }
+        produto ? this.state = { produto: produto, editar: props.editar} : this.state = { produto: [], editar: props.editar }
 
         this.formProd = this.formProd.bind(this);
         this.fileInput = React.createRef();
@@ -30,6 +32,7 @@ export class FormProduct extends Component {
 
         const produto = { ...this.state.produto }
         const input = e.target
+
         let value = '';
 
         if (input.type === 'file') {
@@ -59,6 +62,8 @@ export class FormProduct extends Component {
         if (this.props.editar) {
             editProd(produto);
 
+            localStorage.removeItem('produto')
+
         } else {
             insertProd(produto);
 
@@ -74,13 +79,16 @@ export class FormProduct extends Component {
 
     render() {
 
-        const { nome, imagem, descricao, preco, status } = { ...this.state.produto }
-
-        let img = imagem === undefined || imagem === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + imagem;
+        let produto = this.state.produto
+        
+        let { nome, imagem, descricao, preco, status } = { ...produto }
+        
+        imagem = imagem === undefined || imagem === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + imagem;
 
         return (
             <form className="form-produto container" id="form_add_prod" onSubmit={this.formProd}>
-                <div className="container">
+                <fieldset className="container">
+                    <legend>Imagem Produto</legend>
 
                     <input id="selecao-arquivo"
                         onChange={this.handleChange}
@@ -89,13 +97,13 @@ export class FormProduct extends Component {
                         accept="image/png, image/jpeg"
                         ref={this.fileInput}
                     />
-
-                    <img id="imgprod" src={img} alt={img}/>
+                        <img id="imgprod" src={imagem} alt={imagem}/>
 
                     <label className="lbl-file" tabIndex='0' htmlFor="selecao-arquivo" id="lbl-file">Selecionar Imagens</label>
-                </div>
+                </fieldset>
 
-                <div className="cont-form-prod">
+                <fieldset className="cont-form-prod" >
+                    <legend>Formulario Produto</legend>
                     <div>
                         <input type="text"
                             name="nome"
@@ -142,7 +150,7 @@ export class FormProduct extends Component {
 
                         <button className="btn-default" type="submit" id="btn-salvar">Salvar</button>
                     </div>
-                </div>
+                </fieldset>
             </form>
         )
     }

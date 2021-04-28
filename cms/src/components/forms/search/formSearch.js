@@ -7,9 +7,7 @@ export class Search extends Component {
     constructor(props) {
         super(props)
 
-        // this.buscarProdId = this.buscarProdId.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        // this.submitForm = this.submitForm.bind(this);
     
         this.state = {
             txtSearch: [],
@@ -19,13 +17,13 @@ export class Search extends Component {
 
     handleChange(e) {
 
-
         const txtSearch = { ...this.state.txtSearch }
         let value = e.target.value;
 
         txtSearch[e.target.name] = value;
 
-        this.setState({ txtSearch: txtSearch });
+        this.state.changeState(true, txtSearch)
+
     }
 
     render() {
@@ -48,8 +46,7 @@ export class Search extends Component {
                     </label>
 
                     {/** BOTÃO PESQUISAR PRODUTO*/}
-
-                    <button onClick={() => this.state.changeState(true, this.state.txtSearch)} type='submit' className="btn-search" id="btnSearch">
+                    <button type='submit' className="btn-search btn-default" id="btnSearch">
                         <img src={imgSearch} alt={imgSearch}></img>
                     </button>
 
@@ -58,7 +55,7 @@ export class Search extends Component {
                 {/** BOTÃO NOVO PRODUTO*/}
 
                 <Link to='products/add'>
-                    <button className="btn-default" id="btnNew">
+                    <button onClick={() => localStorage.removeItem('produto')} className="btn-default" id="btnNew">
                         Novo
                     </button>
                 </Link>

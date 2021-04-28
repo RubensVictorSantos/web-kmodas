@@ -1,8 +1,21 @@
 /* CONTAINER ADICIONAR PRODUTO
 ===================================================>*/
 
+fieldset {
+    width: 50%;
+    /* background-color: #eeeeee; */
+    border: 1px solid #eeeeee;
+}
+  
+legend {
+    /* background-color: gray; */
+    color: #aaa;
+    padding: 5px 10px;
+}
+
 .form-produto{
     width: 75%;
+    /* background-color: coral; */
 }
 
 .form-produto img{
@@ -10,7 +23,6 @@
 }
 
 .cont-form-prod {
-    width: 80%;
     flex-direction: column;
     display: grid;
     grid-template-rows: repeat(auto-fit, minmax(20px, 1fr));

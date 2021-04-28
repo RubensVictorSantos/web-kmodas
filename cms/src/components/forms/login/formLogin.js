@@ -94,6 +94,7 @@ export class FormLogin extends Component {
                 <form onSubmit={this.enviaFormulario} className="box-login">
                     <img src={Imglogo} alt={'Imagem ' + Imglogo} className="img-login"></img>
                     <h1>K. Modas</h1>
+                    <input type="text" name="name" ng-hide="true" defaultValue="..." autoComplete="username" style={{display: 'none'}}></input>
 
                     <div className="input-login">
                         <label htmlFor="txtEmail">Email Address</label>
@@ -110,7 +111,6 @@ export class FormLogin extends Component {
 
                         <button type="submit">Entrar</button>
                     </div>
-                    <input type="text" name="email" value="..." autoComplete="username email" style={{display: 'none'}}></input>
                 </form>
             </div>
         )

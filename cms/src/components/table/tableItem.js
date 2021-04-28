@@ -2,30 +2,29 @@ import React, { Component, Fragment } from 'react';
 /** */
 import SvgAtivo from '../../resources/ico/check-green.svg';
 import SvgInativo from '../../resources/ico/check-gray.svg';
+import imgSearch from '../../resources/ico/search-black.svg';
 import ModalProd from '../modal/modalProd';
-import './style.css';
 import { autoKey } from '../modulos';
+import './style.css';
 
 const Item = (props) => {
 
-  console.log(props.item);
-
-  if (props.item === 'Ativado') {
+  if (props.item === 1) {
 
     return (
-      <div className='tb-col'>
+      <td className='tb-col'>
         <img src={SvgAtivo} alt={SvgAtivo} />
-      </div>)
+      </td>)
 
-  } else if (props.item === 'Desativado') {
+  } else if (props.item === 0) {
 
     return (
-      <div className='tb-col'>
+      <td className='tb-col'>
         <img src={SvgInativo} alt={SvgInativo} />
-      </div>)
+      </td>)
   }
 
-  return (<div className='tb-col'>{props.item}</div>)
+  return (<td className='tb-col'>{props.item}</td>)
 }
 
 export class TableItem extends Component {
@@ -43,23 +42,31 @@ export class TableItem extends Component {
 
     return (
       <Fragment>
+        <tr className="tb-row">
+          
+          <td>
+          </td>
 
-        <ModalProd
-          title={items.nome}
-          image={items.imagem}
-          content={
-            [items.descricao, items.preco, items.status]
-          }
-          show={this.state.isOpen}
-          onClose={this.toggleModal} />
+          <td onClick={this.toggleModal}>
 
-        <div className="tb-row" onClick={this.toggleModal}>
+            <img src={imgSearch} alt={imgSearch}></img> 
 
+            <ModalProd
+              title={items.nome}
+              image={items.imagem}
+              content={
+                [items.descricao, items.preco, items.status]
+              }
+              item={items}
+              show={this.state.isOpen}
+              onClose={this.toggleModal} />
+          </td>
+            
           {Object.values(items).map(item => {
             return <Item key={autoKey()} item={item} />
           })}
 
-        </div>
+        </tr>
       </Fragment>
     );
   }
