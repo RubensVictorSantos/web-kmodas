@@ -4,14 +4,19 @@ import './style.css';
 import { DOMAIN_IMG } from '../../link_config';
 
 export class CardSimple extends Component {
-    
+
     render() {
+
+        let { image, title, price } = { ...this.props };
+
         return (
             <Fragment>
-                <picture className="box-img-card">
-                    <img className="img-prod" src={DOMAIN_IMG + this.props.image} 
-                        alt={DOMAIN_IMG + this.props.image} id="img-prod"/>
-                    {/* <div className="ico-heart">
+                <div className="card">
+                    <picture className="card-container-image center">
+                        <img className="card-image" 
+                            src={DOMAIN_IMG + image}
+                            alt={image} id="card-image" />
+                        {/* <div className="ico-heart">
                         <svg version="1.1" viewBox="0 0 100 100">
                             <path style={{ fill: 'rgba(255,50,100,0.3)', stroke: 'rgba(255,0,0,0.9)', strokeLinejoin: 'round', strokeWidth: 0 }}
                                 d=" M 70 50  
@@ -21,24 +26,25 @@ export class CardSimple extends Component {
                         </svg>
 
                     </div> */}
-                </picture>
-                <div className="title-card">
-                    <p>
-                        {this.props.title}
-                    </p>
-                </div>
-                <div className="box-price" id="box-price">
-                    <p>
-                        R${this.props.price}
-                    </p>
-                </div>
-                <div className="view-card">
-                    <h3>
-                    </h3>
-                    <button className="add-cart">
-                        <img src="ico/ico-cart-round.svg" alt={"Imagem cart"} className="ico-cart" />
-                        <p>COMPRAR </p>
-                    </button>
+                    </picture>
+                    <div className="card-title center">
+                        <p>
+                            {title}
+                        </p>
+                    </div>
+                    <div className="box-price" id="box-price">
+                        <p>
+                            R${price}
+                        </p>
+                    </div>
+                    <div className="view-card">
+                        <h3>
+                        </h3>
+                        <button className="add-cart">
+                            <img src="ico/ico-cart-round.svg" alt={"Imagem cart"} className="ico-cart" />
+                            <p>COMPRAR </p>
+                        </button>
+                    </div>
                 </div>
             </Fragment>
         )

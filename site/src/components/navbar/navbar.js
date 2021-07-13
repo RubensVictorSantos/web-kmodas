@@ -1,82 +1,86 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom'
-import $ from 'jquery';
+import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
 /** */
 import logo from '../../resources/img/logo-ladybirds.png';
 import imgUser from '../../resources/img/user.svg';
+import imgSearch from '../../resources/img/search-black.svg';
 import './style.css';
 
-export class Navbar extends Component {
+const Navbar = () => {
 
-    componentDidMount() {
-        this.openMenu()
-    }
+    const [open, setOpen] = useState(true);
 
-    openMenu = () => {
-        /** Abrir Menu Mobile*/
-        $('.btn-menu').on('click', () => {
-            $("#menu").removeClass("menu-close");
-            $("#menu").addClass("menu-open")
-        });
+    const removeClass = (open) => (open ? 'menu-close' : 'menu-open');
 
-        $('#close').on('click', () => {
-            $("#menu").removeClass("menu-open");
-            $("#menu").addClass("menu-close");
-        });
-    }
+    return (
+        <Fragment>
+            <nav className="navbar">
 
-    render() {
-        return (
-            <Fragment>
-                <nav className="navbar">
-                        {/************************* MENU *************************/}
+                {/************************* LOGO *************************/}
 
-                        <ul className="menu menu-close" id="menu">
-                            <span className="close" id="close">&times;&nbsp;&nbsp;</span>
-                            
-                            <li className="item">
-                                <div className="view-user">
-                                    <div className="img-user">
-                                        <img className="img" 
-                                        src={imgUser} 
-                                        alt={'Imagem ' + imgUser} />
+                <div>
+                    <input onClick={() => setOpen(false)} type='button' className="btn-menu " id="btn-menu" />
 
-                                    </div>
+                    <Link to="/home">
+                        <img className="nav-logo" src={logo} alt="Logo K. Modas" />
+                    </Link>
 
-                                    <div>
-                                        <label>Olá, visitante!</label>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="item">HOME</li>
-                            <li className="item">PRODUTOS</li>
-                            <li className="item">GALERIAS</li>
-                            <li className="item">CONTATOS</li>
+                    <input type='button' className="btn-cart " id="btn-cart" />
 
-                        </ul>
+                </div>
 
-                        {/************************* LOGO *************************/}
+                {/************************* SEARCH *************************/}
 
-                        <div>
-                            <input type='button' className="btn-menu " id="btn-menu" />
+                <div className="container-search">
+                    <div>
+                        {/** BOTÃO PESQUISAR PRODUTO*/}
 
-                            <Link to="/home">
-                                <img className="nav-logo" src={logo} alt="Logo K. Modas" />
-                            </Link>
+                        <button type='submit' className="center btn-search" id="btnSearch">
+                            <img src={imgSearch} alt={imgSearch}></img>
+                        </button>
 
-                            <input type='button' className="btn-cart " id="btn-cart" />
+                        <label className="lbl-search" htmlFor="txt-search" >
 
+                            <input type="text"
+                                name="txt-search"
+                                id="txt-search"
+                                placeholder="O que você procura?"
+                                required /><span className="center" />
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+                {/************************* MENU *************************/}
+
+                <ul className={`menu ${removeClass(open)}`} id="menu">
+                    <span onClick={() => setOpen(true)} className="close" id="close">&times;&nbsp;&nbsp;</span>
+
+                    <li className="item">
+                        <div className="view-user">
+                            <div className="img-user">
+                                <img className="img"
+                                    src={imgUser}
+                                    alt={'Imagem ' + imgUser} />
+
+                            </div>
+
+                            <div>
+                                <label>Olá, visitante!</label>
+                            </div>
                         </div>
+                    </li>
+                    <li className="item">HOME</li>
+                    <li className="item">PRODUTOS</li>
+                    <li className="item">GALERIAS</li>
+                    <li className="item">CONTATOS</li>
 
-                        {/************************* SEARCH *************************/}
-
-                        <div className="container-search">
-                            <input type="search" placeholder="O que você procura?" />
-                        </div>
-                </nav>
-            </Fragment>
-        )
-    }
+                </ul>
+            </nav>
+        </Fragment>
+    )
 }
 
 export default Navbar;

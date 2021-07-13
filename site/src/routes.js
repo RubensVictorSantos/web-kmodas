@@ -12,7 +12,7 @@ export class Routes extends Component {
                     <Route path="/" render={({ match: { url } }) => (
                         <Fragment>
                             <Route path={`${url}home`} component={HomePage} />
-                            <Route path={`${url}products`} component={ProductsPage} />
+                            <Route path={`${url}products/:id`} component={ProductsPage} />
                         </Fragment>
                     )} />
                 </Switch>

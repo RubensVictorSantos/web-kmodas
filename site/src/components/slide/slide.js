@@ -1,93 +1,94 @@
-import React, { Component } from 'react';
-import $ from 'jquery';
+import React, { useEffect, useState } from 'react';
 /** */
 import './style.css';
 import { DOMAIN_IMG } from '../../link_config';
 
-export class Slide extends Component {
+export default function Slide(props) {
 
-    state = { 
-        produto: [], 
-        positions: []
-    }
+    const [widSlides, setWidSlides] = useState(0);
+    const [styleSlides, setStyleSlides] = useState([]);
+    const produto = props.produto;
+    let positions = [];
 
-    componentDidUpdate(){
-        this.slideWidth();
+    useEffect(() => {
+        setWidSlides(window.innerWidth * produto.length);
 
-    }
+    }, [produto])
 
-    slideWidth() {
+    // Menu item click handler
+    function menuHandler(e){
 
-        let totalWidth = 0;
-        let positions = [];
-        let items = this.props.produto
+        let li = e.target.parentElement,
+            list = document.querySelectorAll('.slide-menu-item'),
+            position = 0,
+            index = 0;
 
-        for(let i in items){
+        for (let i = 0; i < list.length; i++) {
 
-            positions[i] = totalWidth
+            list[i].classList.remove('active');
+            list[i].classList.add('inactive');
 
-            totalWidth = totalWidth + window.screen.width;
-
+            positions[i] = position
+            position = position + window.innerWidth;
         }
 
-        // set width
-        $('#slides').width(totalWidth);
+        li.classList.add('active');
+        li.classList.remove('inactive');
 
-        // menu item click handler
-        $('#slide-menu li img').on('click', function (e) {
+        index = prevAll(li);
 
-            // remove active calls and add inactive
-            $('li.slide-menu-item').removeClass('active').addClass('inactive');
-            // Add active class to the partent
-            $(this).parent().addClass('active').removeClass('inactive');
-            var pos = $(this).parent().prevAll('.slide-menu-item').length;
-            $('#slides').stop().animate({ marginLeft: -positions[pos] + 'px' }, 450);
-            // Prevent default
-            e.preventDefault();
-        });
-
-        // Make first image active.
-        $('.slide-menu-item')
-            .first()
-            .addClass('active')
-            .siblings()
-            .addClass('inactive');
+        setStyleSlides([
+            `${-positions[index]}px`,
+            '0.5s'
+        ])
     }
 
-    render() {
-        let prod = this.props.produto;
+    function prevAll(e) {
 
-        return (
-            <div id="slider">
-                <div id="slides">
-                    {
-                        prod.map(produto => (
-                            <div className="slide center" key={produto.cod_produto}>
-                                <img src={DOMAIN_IMG + produto.imagem}
-                                    alt={produto.imagem} />
-                            </div>
-                        ))
-                    }
+        const prevElements = [];
+        let prevElement = e.parentNode.firstElementChild;
 
-                </div>
+        while (prevElement !== e) {
+            prevElements.push(prevElement)
+            prevElement = prevElement.nextElementSibling
+        }
 
-                {/* 
-                Slide menu ----------------------------------->*/}
+        return prevElements.length - 1;
+    }
 
-                <ul id="slide-menu">
-                    <li className="sep"></li>
-                    {
-                        prod.map(produto => (
-                            <li key={produto.cod_prod}uto className="slide-menu-item center">
-                                    <img src={DOMAIN_IMG + produto.imagem}
-                                        alt={produto.imagem}/>
+    const [marginLeft, transition] = styleSlides;
 
-                            </li>
-                        ))
-                    }
-                </ul>
+    return (
+        <div id="slider">
+            <div id="slides" style={{ 
+                    width: widSlides, 
+                    marginLeft: marginLeft, 
+                    transition: transition }}>
+                {
+                    // produtos.map(produto => (
+                        <div className="slide center" key={produto.cod_produto}>
+                            <img src={DOMAIN_IMG + produto.imagem}
+                                alt={produto.imagem} />
+                        </div>
+                    // ))
+                }
+
             </div>
-        )
-    }
+
+            <ul id="slide-menu">
+                <li className="sep"></li>
+                {
+                    // produtos.map(produto => (
+                        <li key={produto.cod_produto} className="slide-menu-item center">
+                            <img src={DOMAIN_IMG + produto.imagem}
+                                alt={produto.imagem}
+                                onClick={e => menuHandler(e)}
+                            />
+
+                        </li>
+                    // ))
+                }
+            </ul>
+        </div>
+    )
 }
-export default Slide;

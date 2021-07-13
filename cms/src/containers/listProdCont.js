@@ -14,7 +14,7 @@ export class ListProdCont extends Component {
       limit: 5,
       search: false,
       texto: [],
-      url: `${DOMAIN_API}/prod-LimitedNumber/15`
+      url: `${DOMAIN_API}/products/sort=cod_produto&limit=15`
     }
 
     this.changeState = this.changeState.bind(this);
@@ -25,13 +25,13 @@ export class ListProdCont extends Component {
     let { url, limit } = this.state
 
     if (search) {
-      url = `${DOMAIN_API}/prod-id/${Object.values(texto)}`
+      url = `${DOMAIN_API}/products/id=${Object.values(texto)}`
 
     } else {
 
       limit += 20
 
-      url = `${DOMAIN_API}/prod-LimitedNumber/${limit}`
+      url = `${DOMAIN_API}/products/sort=cod_produto&limit=${limit}`
 
     }
 

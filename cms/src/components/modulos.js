@@ -27,7 +27,7 @@ export function urlImg(input, idimg) {
 
 export const editProd = (produto) => {
 
-    const url = `${DOMAIN_API}/prod-Update`;
+    const url = `${DOMAIN_API}/products`;
 
     $.ajax({
         url: url,
@@ -45,7 +45,7 @@ export const editProd = (produto) => {
 
 export const insertProd = (produto) => {
 
-    const url = "http://127.1.1.0:3333/prod-Add";
+    const url = `${DOMAIN_API}/products`;
 
     $.ajax({
         url: url,
@@ -66,7 +66,7 @@ export const insertProd = (produto) => {
 
 export const deleteProd = (id) => {
 
-    const url = "http://127.1.1.0:3333/prod-Del";
+    const url = `${DOMAIN_API}/products`;
 
     $.ajax({
         url: url,

@@ -1,56 +1,59 @@
-import React, { Component, Fragment} from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
-import $ from 'jquery'
 /** */
-import Carousel from "../components/carousel/carousel";
+// import Carousel from "../components/carousel/carousel";
+import CarouselTeste from "../components/carousel/carousel";
 import CardSimple from "../components/card/cardSimple";
 import { DOMAIN_API } from "../link_config";
 import './style.css';
 
 export class HomeCont extends Component {
-    state = { allProd: [] }
+    state = { produtos: [], size: 5 }
 
     componentDidMount() {
 
-        const url = `${DOMAIN_API}prod-LimitedNumberOn/${5}`;
+        const url = `${DOMAIN_API}products/status=1/limit=${5}`;
 
-        $.ajax({
-            url: url,
-            type: 'get',
-            dataType: 'json',
-            contentType: 'application/json',
-            success: (result) => {
-                this.setState({ allProd: result });
-
-            },
-            error: (status, error) => {
-
-                console.log(status, error);
-
-            }
-        })
-
+        fetch(url)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        produtos: result,
+                        size: result.length
+                    }); 
+                },
+                (error) => {
+                    console.log(error);
+                }
+            )
     }
 
     render() {
 
-        let allProd = this.state.allProd;
+        let { produtos, size } = this.state;
 
         return (
             <Fragment>
-                <Carousel itensCarousel={5} autoScroll={true}/>
-                <section className="container-cards content">
+                {/* <Carousel size={size} scroll={true} /> */}
+                <CarouselTeste size={size} scroll={true} />
+
+                <section className="container-cards container">
                     {
-                        allProd.map(produto => (
-                            <Link to='/products' key={produto.cod_prod} className="card-closed" id="card-prod">
-                                <CardSimple key={produto.cod_produto}
-                                    title={produto.nome}
-                                    image={produto.imagem}
-                                    price={produto.preco}
-                                />
-                                
-                            </Link>
-                        ))
+                        produtos.map(produto => {
+
+                            return (
+
+                                <Link to={`/products/${produto.cod_produto}`} key={produto.cod_produto} className="card-closed" id="card-prod">
+                                    <CardSimple key={produto.cod_produto}
+                                        title={produto.nome}
+                                        image={produto.imagem}
+                                        price={produto.preco}
+                                    />
+
+                                </Link>
+                            )
+                        })
                     }
                 </section>
             </Fragment>

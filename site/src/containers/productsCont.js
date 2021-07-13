@@ -1,4 +1,4 @@
-import React, { Component, Fragment} from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import $ from 'jquery';
 /** */
@@ -7,17 +7,20 @@ import Slide from "../components/slide/slide";
 import { DOMAIN_API } from "../link_config";
 
 export class ProductsCont extends Component {
-    state = {produto: []}
+    state = { produto: [] }
 
-    componentDidMount(){
-        this.chargeImgCarousel(5);    
+    componentDidMount() {
+        this.chargeImgCarousel();
+
     }
 
-    chargeImgCarousel(itensCarousel) {
+    chargeImgCarousel() {
+
+        let id = this.getURLParameters('products', window.location.href)
 
         this.setState({ produto: [] });
 
-        let url = `${DOMAIN_API}prod-LimitedNumber/` + itensCarousel
+        let url = `${DOMAIN_API}products/id=${id}`
 
         $.ajax({
             url: url,
@@ -36,31 +39,62 @@ export class ProductsCont extends Component {
         });
     }
 
-    render() {
+    getURLParameters(param, url) {
+        // eslint-disable-next-line
+        param = param.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regexS = "[\\/]" + param + "/([^&#]*)";
+        var regex = new RegExp(regexS);
+        var results;
+
+        //se url não for informada, assume a url corrente da página
+        if (typeof url == "undefined"){
+            results = regex.exec(window.location.href);
         
-        let produto = this.state.produto.map( prod => prod)
+        } 
+        else {
+            results = regex.exec(url);
+        }
+
+        if (results == null) {
+            return console.log('Results: null');;
+        }
+        else {
+
+            let id = decodeURI(results[1]) 
+
+            //Tratar dos caracteres e espaço.
+            return id;
+        }
+    }
+
+    render() {
+
+        let produto = this.state.produto
 
         return (
             <Fragment>
-                <h3> NOME DO PRODUTO</h3>
+                <h3>{produto.nome}</h3>
                 <div>
-                    <Slide produto={produto}/>
+                    <Slide produto={produto} />
 
                 </div>
                 <div>
                     <div>
-                        Modelo: Masculino
+                        Modelo: {produto.modelo}
                     </div>
                     <div>
-                        Cor: Preta
+                        Cor: {produto.cor}
                     </div>
-                    <div>Tamanho: P M G GG XG G2 G3</div>
+                    <div>
+                        Tamanho: {produto.tamanho}
+                        {/* Tamanho: P M G GG XG G2 G3 */}
+                    </div>
                     <div>
                         <button> COMPRAR </button>
                     </div>
                     <div>Informações sobre pagamento com boleto</div>
-                    <div>Informações sobre o produto<br/>
-                        Composição....<br/>
+                    <div>Informações sobre o produto<br />
+                        Composição....<br />
                         Sobre a estampa....
                     </div>
                     <Link to='/video'>Assista a um vídeo sobre o produto</Link>

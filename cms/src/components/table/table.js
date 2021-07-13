@@ -25,6 +25,8 @@ export class Table extends Component {
 
     carregarItems() {
 
+        console.log('Test');
+
         let url = this.props.url
 
         fetch(url)

@@ -33,18 +33,30 @@ ul, li{
   list-style: none;
 }
 
+a:link {
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
 .center{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.content{
+.container{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	padding: 1rem;
+}
+
+button {
+	border: none;
 }
 
 /* CSS FOR DESKTOP

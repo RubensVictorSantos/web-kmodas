@@ -1,123 +1,119 @@
-import React, { Component } from 'react';
-import $ from 'jquery';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 /** */
 import './style.css'
 import { DOMAIN_IMG, DOMAIN_API } from '../../link_config';
 
-export class Carousel extends Component {
-    constructor(props) {
-        super()
+export default function CarouselTeste(props) {
 
-        this.state = { produto: [] }
-        this.shiftSlide = this.shiftSlide.bind(this);
-    }
+    const [produto, setProduto] = useState([]),
+        [widWindow, setWidWindow] = useState(0),
+        [widCarousel, setWidCarousel] = useState(0),
+        [styleCarousel, setStyleCarousel] = useState(['', 'translateX(0px)']);
 
-    componentDidMount() {
-        this.mountCarousel();
-    }
+    const carousel = document.getElementById("carousel");
 
-    mountCarousel() {
-        var carousel = $('#carousel');
+    let { size, scroll } = props
 
-        this.chargeImgCarousel(this.props.itensCarousel);
+    const shiftSlide = (direction) => {
 
-        $(window).on('resize', () => {
-
-            let widWindow = $('.window').width();
-            let widCarousel = widWindow * this.props.itensCarousel;
-
-            carousel.css('width', widCarousel + 'px');
-
-        })
-
-        carousel.css('width', ($('.window').width() * this.props.itensCarousel) + 'px');
-
-        if(this.props.autoScroll){
-            setInterval(() => {
-                this.shiftSlide(-1);
-    
-            }, 10000);
+        if (carousel === null) {
+            return
         }
-    }
 
-
-
-    shiftSlide(direction) {
-
-        let carousel = $('#carousel');
-
-        if (carousel.hasClass('transition')) return;
+        if (styleCarousel[0] === '0.5s') {
+            return
+        }
 
         if (direction === -1) {
-            carousel.addClass('transition')
-                .css('transform', 'translateX(' + (direction * $('.window').width()) + 'px)');
+
+            setStyleCarousel(['0.5s', 'translateX(' + direction * widWindow + 'px)']);
 
             setTimeout(() => {
-                $('.carousel-slide:last').after($('.carousel-slide:first'));
 
-                carousel.removeClass('transition')
-                carousel.css('transform', 'translateX(0px)');
+                carousel.lastChild.after(carousel.firstChild);
+                setStyleCarousel(['', 'translateX(0px)'])
 
             }, 700);
 
-        } else if (direction === 1) {
+        }
+
+        if (direction === 1) {
+
+            // setStyleCarousel(['0.5s', `translateX(${direction * widWindow}px)`]);
+            carousel.firstChild.before(carousel.lastChild)
 
             setTimeout(() => {
-                $('.carousel-slide:first').before($('.carousel-slide:last'));
+                setStyleCarousel(['', 'translateX(0px)']);
 
-                carousel.removeClass('transition')
-                carousel.css('transform', 'translateX(0px)');
-            }, 0.5);
+            }, 700);
         }
     }
+    
+    useEffect(() => {
 
-    chargeImgCarousel(itensCarousel) {
+        setWidCarousel(window.innerWidth * size);
 
-        this.setState({ produto: [] });
+        fetch(`${DOMAIN_API}products/status=1/limit=${size}`)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setProduto(result);
+                },
+                (error) => {
+                    console.log('Erro ao carregar carousel');
+                }
+            )
 
-        let url = `${DOMAIN_API}prod-LimitedNumber/` + itensCarousel
+    }, [size, scroll])
 
-        $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'json',
-            contentType: 'application/json',
-            success: (result) => {
-                this.setState({ produto: result });
+    useEffect(() => {
+        // Automatizando o slide
+        const id = setInterval(() => shiftSlide(-1), 10000);
+        return () => clearInterval(id); // Limpando o setInterval 
+    });
 
-            },
-            error: (status, error) => {
+    useLayoutEffect(() => {
 
-                console.log(status, error);
+        const handleResize = () => {
+            setWidWindow(window.innerWidth);
+            setWidCarousel(window.innerWidth * size);
 
-            }
-        });
-    }
+        }
 
-    render() {
+        window.addEventListener("resize", handleResize);
 
-        return (
-            <div className="wrap center">
-                <div className="window">
-                    <div id="carousel">
-                        {
-                            this.state.produto.map(produto => (
-                                <div key={produto.cod_prod} className="carousel-slide" id={`slide-` + produto.cod_prod}>
-                                    <img className='carousel-img'
-                                        src={DOMAIN_IMG + produto.imagem}
-                                        alt={produto.imagem} />
-                                </div>
-                            ))
-                        }
-                    </div>
-                </div>
-                <div className="center">
-                    <span onClick={() => this.shiftSlide(1)} id="prev"></span>
-                    <span onClick={() => this.shiftSlide(-1)} id="next"></span>
+        handleResize();
+
+        return () => window.removeEventListener("resize", handleResize);
+    })
+
+    const [transition, transform] = styleCarousel;
+
+    return (
+        <div className="wrap center">
+            <div className="window">
+                <div id="carousel" style={{
+                    transition: transition,
+                    transform: transform,
+                    width: widCarousel
+                }}>
+
+                    {
+                        produto.map(produto => (
+                            <div key={produto.cod_produto} className="carousel-slide" id={`slide-` + produto.cod_produto}>
+                                <img className='carousel-img'
+                                    src={DOMAIN_IMG + produto.imagem}
+                                    alt={produto.imagem} />
+                            </div>
+                        ))
+                    }
+
                 </div>
             </div>
-        )
-    }
+            <div className="center">
+                <span onClick={() => shiftSlide(1)} id="prev"></span>
+                <span onClick={() => shiftSlide(-1)} id="next"></span>
+            </div>
+        </div>
+    );
 }
-
-export default Carousel
