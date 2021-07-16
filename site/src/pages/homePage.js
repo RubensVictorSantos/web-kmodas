@@ -15,7 +15,7 @@ const HomePage = ({ match }) => (
                 <Redirect to={`${match.url}`} />
             </Switch>
         </main>
-        <ContentFooter />
+        {/* <ContentFooter /> */}
     </div>
 )
 

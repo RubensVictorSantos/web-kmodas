@@ -13,7 +13,7 @@ export class CardSimple extends Component {
             <Fragment>
                 <div className="card">
                     <picture className="card-container-image center">
-                        <img className="card-image" 
+                        <img className="card-image"
                             src={DOMAIN_IMG + image}
                             alt={image} id="card-image" />
                         {/* <div className="ico-heart">

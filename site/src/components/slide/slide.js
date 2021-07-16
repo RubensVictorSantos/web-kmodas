@@ -1,22 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 /** */
 import './style.css';
 import { DOMAIN_IMG } from '../../link_config';
+import { Fragment } from 'react';
 
 export default function Slide(props) {
 
     const [widSlides, setWidSlides] = useState(0);
+    const [widSlider, setWidSlider] = useState(0);
     const [styleSlides, setStyleSlides] = useState([]);
-    const produto = props.produto;
+    const produto = props.produto.length ? props.produto : [props.produto];
+    
     let positions = [];
 
     useEffect(() => {
-        setWidSlides(window.innerWidth * produto.length);
+
+        let widSlider = document.getElementById("slider").clientWidth;
+
+        setWidSlider(widSlider);
+
+        setWidSlides(widSlider * produto.length);
 
     }, [produto])
 
+    useLayoutEffect(() => {
+
+        let widSlider = document.getElementById("slider").clientWidth;
+
+        setWidSlider(widSlider)
+
+        setWidSlides(widSlider * produto.length);
+    })
+
     // Menu item click handler
-    function menuHandler(e){
+    function menuHandler(e) {
 
         let li = e.target.parentElement,
             list = document.querySelectorAll('.slide-menu-item'),
@@ -29,7 +46,7 @@ export default function Slide(props) {
             list[i].classList.add('inactive');
 
             positions[i] = position
-            position = position + window.innerWidth;
+            position = position + widSlider;
         }
 
         li.classList.add('active');
@@ -39,8 +56,8 @@ export default function Slide(props) {
 
         setStyleSlides([
             `${-positions[index]}px`,
-            '0.5s'
-        ])
+            '0.5s',
+        ]);
     }
 
     function prevAll(e) {
@@ -59,26 +76,12 @@ export default function Slide(props) {
     const [marginLeft, transition] = styleSlides;
 
     return (
-        <div id="slider">
-            <div id="slides" style={{ 
-                    width: widSlides, 
-                    marginLeft: marginLeft, 
-                    transition: transition }}>
-                {
-                    // produtos.map(produto => (
-                        <div className="slide center" key={produto.cod_produto}>
-                            <img src={DOMAIN_IMG + produto.imagem}
-                                alt={produto.imagem} />
-                        </div>
-                    // ))
-                }
-
-            </div>
-
+        <Fragment>
             <ul id="slide-menu">
                 <li className="sep"></li>
+
                 {
-                    // produtos.map(produto => (
+                    produto.map(produto => (
                         <li key={produto.cod_produto} className="slide-menu-item center">
                             <img src={DOMAIN_IMG + produto.imagem}
                                 alt={produto.imagem}
@@ -86,9 +89,30 @@ export default function Slide(props) {
                             />
 
                         </li>
-                    // ))
+
+                    ))
                 }
+
             </ul>
-        </div>
+            <div id="slider">
+                <div id="slides" style={{
+                    width: widSlides,
+                    marginLeft: marginLeft,
+                    transition: transition
+                }}>
+                    {
+                        produto.map(produto => (
+                            <div key={produto.cod_produto} className="slide center">
+                                <img src={DOMAIN_IMG + produto.imagem}
+                                    alt={produto.imagem} />
+                            </div>
+                        ))
+                    }
+
+                </div>
+
+            </div>
+        </Fragment>
+
     )
 }

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import logo from '../../resources/img/logo-ladybirds.png';
 import imgUser from '../../resources/img/user.svg';
 import imgSearch from '../../resources/img/search-black.svg';
+import imgSearchWhite from '../../resources/img/search-white.svg';
+
 import './style.css';
 
 const Navbar = () => {
@@ -19,37 +21,40 @@ const Navbar = () => {
                 {/************************* LOGO *************************/}
 
                 <div>
-                    <input onClick={() => setOpen(false)} type='button' className="btn-menu " id="btn-menu" />
+
+                    <input className="btn-menu " type='button' id="btn-menu"
+                        onClick={() => setOpen(false)} />
 
                     <Link to="/home">
                         <img className="nav-logo" src={logo} alt="Logo K. Modas" />
                     </Link>
 
-                    <input type='button' className="btn-cart " id="btn-cart" />
+                    {/************************* SEARCH *************************/}
 
-                </div>
+                    <div className="container-search">
+                        <div>
+                            {/** BOTÃO PESQUISAR PRODUTO*/}
 
-                {/************************* SEARCH *************************/}
+                            <button type='submit' className="center btn-search" id="btnSearch">
+                                {/* <img src={imgSearchWhite} alt={imgSearchWhite}></img> */}
+                            </button>
 
-                <div className="container-search">
-                    <div>
-                        {/** BOTÃO PESQUISAR PRODUTO*/}
+                            <label className="lbl-search" htmlFor="txt-search" >
 
-                        <button type='submit' className="center btn-search" id="btnSearch">
-                            <img src={imgSearch} alt={imgSearch}></img>
-                        </button>
+                                <input type="text"
+                                    name="txt-search"
+                                    id="txt-search"
+                                    placeholder="O que você procura?"
+                                    required /><span className="center" />
 
-                        <label className="lbl-search" htmlFor="txt-search" >
+                            </label>
 
-                            <input type="text"
-                                name="txt-search"
-                                id="txt-search"
-                                placeholder="O que você procura?"
-                                required /><span className="center" />
-
-                        </label>
+                        </div>
 
                     </div>
+
+                    <input type='button' className="btn-cart " id="btn-cart" />
+
 
                 </div>
 
@@ -72,7 +77,6 @@ const Navbar = () => {
                             </div>
                         </div>
                     </li>
-                    <li className="item">HOME</li>
                     <li className="item">PRODUTOS</li>
                     <li className="item">GALERIAS</li>
                     <li className="item">CONTATOS</li>

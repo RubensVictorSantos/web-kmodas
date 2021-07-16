@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
+import $ from 'jquery';
 /** */
 import './style.css'
 import { DOMAIN_IMG, DOMAIN_API } from '../../link_config';
@@ -12,46 +13,11 @@ export default function CarouselTeste(props) {
 
     const carousel = document.getElementById("carousel");
 
-    let { size, scroll } = props
+    let { size, scroll } = props;
 
-    const shiftSlide = (direction) => {
-
-        if (carousel === null) {
-            return
-        }
-
-        if (styleCarousel[0] === '0.5s') {
-            return
-        }
-
-        if (direction === -1) {
-
-            setStyleCarousel(['0.5s', 'translateX(' + direction * widWindow + 'px)']);
-
-            setTimeout(() => {
-
-                carousel.lastChild.after(carousel.firstChild);
-                setStyleCarousel(['', 'translateX(0px)'])
-
-            }, 700);
-
-        }
-
-        if (direction === 1) {
-
-            // setStyleCarousel(['0.5s', `translateX(${direction * widWindow}px)`]);
-            carousel.firstChild.before(carousel.lastChild)
-
-            setTimeout(() => {
-                setStyleCarousel(['', 'translateX(0px)']);
-
-            }, 700);
-        }
-    }
-    
     useEffect(() => {
 
-        setWidCarousel(window.innerWidth * size);
+        setWidCarousel(((window.innerWidth * 80) / 100) * size);
 
         fetch(`${DOMAIN_API}products/status=1/limit=${size}`)
             .then(res => res.json())
@@ -76,7 +42,8 @@ export default function CarouselTeste(props) {
 
         const handleResize = () => {
             setWidWindow(window.innerWidth);
-            setWidCarousel(window.innerWidth * size);
+            setWidCarousel(((window.innerWidth * 80) / 100) * size);
+
 
         }
 
@@ -87,7 +54,39 @@ export default function CarouselTeste(props) {
         return () => window.removeEventListener("resize", handleResize);
     })
 
+    const shiftSlide = (direction) => {
+
+        if (carousel === null) { return }
+
+        if (styleCarousel[0] === '0.5s') { return }
+
+        if (direction === -1) {
+
+            setStyleCarousel(['0.5s', 'translateX(' + direction * ((widWindow * 80) / 100) + 'px)']);
+
+            setTimeout(() => {
+
+                carousel.lastChild.after(carousel.firstChild);
+                setStyleCarousel(['', 'translateX(0px)'])
+
+            }, 700);
+
+        }
+
+        if (direction === 1) {
+
+            carousel.firstChild.before(carousel.lastChild)
+
+            setTimeout(() => {
+                setStyleCarousel(['', 'translateX(0px)']);
+
+            }, 700);
+        }
+    }
+
     const [transition, transform] = styleCarousel;
+
+    console.log(carousel);
 
     return (
         <div className="wrap center">
@@ -96,7 +95,10 @@ export default function CarouselTeste(props) {
                     transition: transition,
                     transform: transform,
                     width: widCarousel
-                }}>
+                }}
+
+                // onMouseDown={e => mouseDown(e)}
+                >
 
                     {
                         produto.map(produto => (
@@ -110,10 +112,10 @@ export default function CarouselTeste(props) {
 
                 </div>
             </div>
-            <div className="center">
-                <span onClick={() => shiftSlide(1)} id="prev"></span>
-                <span onClick={() => shiftSlide(-1)} id="next"></span>
-            </div>
+            {/* <div className="center"> */}
+                <div onClick={() => shiftSlide(1)} id="prev"></div>
+                <div onClick={() => shiftSlide(-1)} id="next"></div>
+            {/* </div> */}
         </div>
     );
 }

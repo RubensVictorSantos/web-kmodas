@@ -1,69 +1,129 @@
 	/** CAROUSEL */
 
-@media screen and (min-width: 1000px){}
-    
-@media only screen and (max-width: 999px) and (min-width: 681px){}
-    
-@media screen and (max-width: 680px){
+	@media screen and (min-width: 1000px) {
+		.wrap {
+			width: 80%;
+			height: auto;
+			display: grid!important;
+			position: relative;
+			z-index: 1;
+			margin: 0 auto;
+		}
+		.window {
+			width: 100%;
+			overflow: hidden;
+			position: relative;
+		}
+		#carousel {
+			position: relative;
+			top: 0;
+		}
+		.carousel-slide {
+			width: 80vw;
+			height: auto;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			cursor: pointer;
+			float: left;
+			background-position: center;
+		}
+		.carousel-img {
+			width: 100%;
+			height: auto;
+			position: relative;
+		}
+		.transition {
+			transition: 0.5s;
+		}
+		/******************** PREV AND NEXT ********************/
+		#prev, #next {
+			opacity: 0;
+		}
+		#prev, #next {
+			color: #ffffff9a;
+			text-align: center;
+			text-shadow: 1px 1px 10px #555555aa;
+			font-weight: bold;
+			font-size: 6rem;
+			padding: 2rem;
+			position: absolute;
+			cursor: pointer;
+		}
+		#prev {
+			left: 20px;
+		}
+		#next {
+			right: 20px;
+		}
+		#prev::after {
+			content: '\2039';
+		}
+		#next::after {
+			content: '\203A';
+		}
+		.wrap:hover #prev, .wrap:hover #next {
+			opacity: 1;
+		}
+		#prev:hover, #next:hover {
+			color: #ffffffaa;
+		}
+		#prev:active, #next:active {
+			color: #ffffff7a;
+		}
+	}
 
-	.wrap {
-		width: 100vw;
-		height: auto;
-		display: grid!important;
-		position: relative;
-		z-index: 1;
-	}
-	
-	.window {
-		width: 100vw;
-		overflow: hidden;
-		position: relative;
-	}
-	
-	#carousel {
-		position: relative;
-		top: 0; 
-	}
-	
-	.carousel-slide{
-		width: 100vw;
-		height: auto;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		cursor: pointer;
-		float: left;
-		background-position: center;
+	@media only screen and (max-width: 999px) and (min-width: 681px) {}
 
+	@media screen and (max-width: 680px) {
+		.wrap {
+			width: 100vw;
+			height: auto;
+			display: grid!important;
+			position: relative;
+			z-index: 1;
+		}
+		.window {
+			width: 100vw;
+			overflow: hidden;
+			position: relative;
+		}
+		#carousel {
+			position: relative;
+			top: 0;
+		}
+		.carousel-slide {
+			width: 100vw;
+			height: auto;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			cursor: pointer;
+			float: left;
+			background-position: center;
+		}
+		.carousel-img {
+			width: 100%;
+			height: auto;
+			position: relative;
+		}
+		.transition {
+			transition: 0.5s;
+		}
+		/******************** PREV AND NEXT ********************/
+		#prev, #next {
+			width: 20px;
+			height: 20px;
+			cursor: pointer;
+			border-radius: 50px;
+			border: 1px solid rgb(130, 130, 130, 0.1);
+			background-color: rgba(130, 130, 130, 0.3);
+			margin: 5px;
+		}
+		#prev:hover, #next:hover {
+			background-color: rgb(130, 130, 130, 0.4);
+		}
+		#prev:active, #next:active {
+			background-color: rgb(130, 130, 130, 0.5);
+		}
 	}
-
-	.carousel-img{
-		width: 100%;
-		height: auto;
-		position: relative;
-	}
-
-	.transition {
-		transition: 0.5s;
-    }
-
-	/******************** PREV AND NEXT ********************/
-
-	#prev, #next {
-		width: 20px;
-		height: 20px;
-		cursor: pointer;
-		border-radius: 50px;
-		border: 1px solid rgb(130,130,130,0.1);
-		background-color: rgba(130,130,130,0.3);
-		margin: 5px;
-	}
-
-	#prev:hover, #next:hover{
-		background-color: rgb(130,130,130,0.4);
-	}
-	
-	#prev:active, #next:active{
-		background-color: rgb(130,130,130,0.5);
-	}
-}
