@@ -1,5 +1,46 @@
 @media screen and (min-width:1000px) {
-	.container-info-prod {
+	.chk-sexo-produto input[type='radio'] {
+		display: none;
+	}
+	.chk-sexo-produto input[type='radio']+label {
+		
+		color: #333;
+		background-color: #eee;
+		font-weight: bold;
+		border-radius: 3px;
+		padding: 0.3rem;
+		margin: 1rem;
+	}
+	.chk-sexo-produto input:checked+label {
+		background-color: red;
+		color: white;
+	}
+	/* Tamanho do Produto  */
+	.chk-tamanho-produto input[type='radio'] {
+		display: none;
+	}
+	.chk-tamanho-produto input[type='radio']+label {
+		color: #333;
+		background-color: #eee;
+		font-weight: bold;
+		border-radius: 3px;
+		padding: 0.3rem;
+		margin: 1rem;
+	}
+	.chk-tamanho-produto input:checked+label {
+		background-color: red;
+		color: white;
+	}
+	.container-info-produto button{
+		color: #eee;
+		margin: 1vw;
+		padding: 0.5vw;
+		background-color: red;
+		font-weight: bold;
+		border-radius: 3px;
+		font-size: 1.5rem;
+	}
+	.container-produto {
 		width: 80vw;
 		display: flex;
 		justify-content: space-around;
@@ -9,9 +50,7 @@
 	.container-slide-prod {
 		width: 50%;
 		display: flex;
-		/* background-color: bisque; */
 	}
-
 	.container-cards {
 		width: 80vw;
 		height: auto;
@@ -19,7 +58,7 @@
 		justify-content: space-around;
 		flex-direction: row;
 		padding-top: 5vw;
-		/* margin: 0 auto; */
+		margin: 0 auto;
 	}
 }
 

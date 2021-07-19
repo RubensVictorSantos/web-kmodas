@@ -9,7 +9,7 @@ export default function Slide(props) {
     const [widSlides, setWidSlides] = useState(0);
     const [widSlider, setWidSlider] = useState(0);
     const [styleSlides, setStyleSlides] = useState([]);
-    const produto = props.produto.length ? props.produto : [props.produto];
+    const imagens = props.imagens.length ? props.imagens : [props.imagens];
     
     let positions = [];
 
@@ -19,9 +19,9 @@ export default function Slide(props) {
 
         setWidSlider(widSlider);
 
-        setWidSlides(widSlider * produto.length);
+        setWidSlides(widSlider * imagens.length);
 
-    }, [produto])
+    }, [imagens])
 
     useLayoutEffect(() => {
 
@@ -29,7 +29,7 @@ export default function Slide(props) {
 
         setWidSlider(widSlider)
 
-        setWidSlides(widSlider * produto.length);
+        setWidSlides(widSlider * imagens.length);
     })
 
     // Menu item click handler
@@ -81,10 +81,10 @@ export default function Slide(props) {
                 <li className="sep"></li>
 
                 {
-                    produto.map(produto => (
-                        <li key={produto.cod_produto} className="slide-menu-item center">
-                            <img src={DOMAIN_IMG + produto.imagem}
-                                alt={produto.imagem}
+                    imagens.map(imagem => (
+                        <li key={imagem.cod_produto} className="slide-menu-item center">
+                            <img src={DOMAIN_IMG + imagem.imagem}
+                                alt={imagem.imagem}
                                 onClick={e => menuHandler(e)}
                             />
 
@@ -101,10 +101,10 @@ export default function Slide(props) {
                     transition: transition
                 }}>
                     {
-                        produto.map(produto => (
-                            <div key={produto.cod_produto} className="slide center">
-                                <img src={DOMAIN_IMG + produto.imagem}
-                                    alt={produto.imagem} />
+                        imagens.map(imagem => (
+                            <div key={imagem.cod_produto} className="slide center">
+                                <img src={DOMAIN_IMG + imagem.imagem}
+                                    alt={imagem.imagem} />
                             </div>
                         ))
                     }
