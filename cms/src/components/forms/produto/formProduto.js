@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from "prop-types";
 /** */
-import { urlImg, clearInput, editProd, insertProd, putFile } from '../../../components/modulos';
+import { urlImg, clearInput, editProd, insertProd, putFile, postData } from '../../../components/modulos';
 import './style.css'
 import { DOMAIN_API, DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
 
@@ -16,6 +16,7 @@ export class FormProduct extends Component {
         this.state = {
             produto: produto,
             editar: props.editar,
+            codProduto: 0,
             disabledForm: { disabled: true }
         }
 
@@ -72,7 +73,8 @@ export class FormProduct extends Component {
             localStorage.removeItem('produto');
 
         } else {
-            insertProd(produto);
+            const url = `${DOMAIN_API}/products`;
+            postData(url,produto).then(data => this.setState({ codProduto: data }))
 
         }
 
@@ -89,7 +91,7 @@ export class FormProduct extends Component {
 
         dataForm.append('image', produto.imagem);
 
-        const res = fetch("http://127.1.1.0:3333/products/image/18", {
+        const res = fetch(`http://127.1.1.0:3333/products/image/${this.state.codProduto.cod_produto}`, {
             method: 'PUT',
             body: dataForm,
         });

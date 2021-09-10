@@ -69,18 +69,19 @@
 .left-menu {
     width: 10%;
     height: 93.6vh;
-    /* background-color: #688a8a; */
     background-color: #202F31;
-    position:relative;
+    position: relative;
     display: flex;
     flex-direction: column;
     float: left;
     margin: 0;
+    padding: 0;
 }
 
 .left-menu * {
     padding: 0.2rem;
     text-decoration: none;
+    font-size: 1em;
     list-style: none;
     color: white;
 }
@@ -89,10 +90,15 @@
     color: white;
 }
 
-.left-menu li a:after{
+.left-menu li:hover {
+    background-color: #303F42;
+}
+
+
+/* .left-menu li a:after{
     content:'\203A';
 }
 
 .left-menu li a:active :after{
     content:'^';
-}
+} */
