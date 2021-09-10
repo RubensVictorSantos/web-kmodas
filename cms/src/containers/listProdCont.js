@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-// import $ from 'jquery';
 /** */
 import { DOMAIN_API } from '../link_config';
 import { Search } from '../components/forms/search/formSearch';
 import { Fragment } from 'react';
 import Table from '../components/table/table';
+import Spinner from '../components/spinner/Spinner';
 
 export class ListProdCont extends Component {
   constructor(props) {
@@ -14,10 +14,20 @@ export class ListProdCont extends Component {
       limit: 5,
       search: false,
       texto: [],
-      url: `${DOMAIN_API}/products/sort=cod_produto&limit=15`
+      url: `${DOMAIN_API}/products/sort=cod_produto&limit=15`,
+      products: [],
+      error: null,
+      isLoaded: false,
     }
 
     this.changeState = this.changeState.bind(this);
+  }
+
+  componentDidMount() {
+
+    let url = this.state.url
+
+    this.loadList(url)
   }
 
   changeState(search, texto = []) {
@@ -35,37 +45,66 @@ export class ListProdCont extends Component {
 
     }
 
-    this.setState({ 
-      url: url, 
-      limit : limit 
+    this.setState({
+      url: url,
+      limit: limit
     })
 
   }
 
+  loadList(url = '') {
+
+    fetch(url)
+      .then(res => res.json())
+      .then(
+        (result) => {
+
+          this.setState({
+            isLoaded: true,
+            products: result
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
   render() {
 
-    let { url, limit } = this.state
+    let { limit, products, error, isLoaded } = this.state
 
-    return (
+    if (error) {
+      return <div>Error: {error.message}</div>;
 
-      <Fragment>
-        {/** FROMULÁRIO BUSCAR */}
+    } else if (!isLoaded) {
+      return <Spinner text={'Loading...'} />
 
-        <Search changeState={this.changeState} />
+    } else {
 
-        {/** TABELA */}
 
-        <div className="tb-produto">
-          <Table url={url} />
+      return (
 
-        </div>
+        <Fragment>
+          {/** FORMULÁRIO BUSCAR */}
+          <Search changeState={this.changeState} />
 
-        <div className="container">
-          <input className="btn-carregar-itens " onClick={() => this.changeState(false)} type='button' value='Carregar +20' />
-          <label style={{ position: 'absolute', right: '0', color: '#888', fontSize: '1rem' }}>Total {limit}</label>
-        </div>
-      </Fragment>
-    )
+          {/** TABELA */}
+          <div className="tb-produto">
+            <Table items={products} />
+
+          </div>
+
+          <div className="container">
+            <input className="btn-carregar-itens " onClick={() => this.changeState(false)} type='button' value='Carregar +20' />
+            <label style={{ position: 'absolute', right: '0', color: '#888', fontSize: '1rem' }}>Total {limit}</label>
+          </div>
+        </Fragment>
+      )
+    }
   }
 }
 

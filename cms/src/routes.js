@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 /** */
 import { FormLogin } from './components/forms/login/formLogin';
+import LeftMenu from './components/navbar/leftMenu';
+import TopMainNavbar from './components/navbar/topMainNavbar';
 import HomePage from './pages/homePage';
 import ProductsPage from './pages/productsPage';
 
@@ -31,9 +33,12 @@ export class Routes extends Component {
 
                     <Route path="/" render={({ match: { url } }) => (
                         <Fragment>
-                            <PrivateRoute path={`${url}home`} component={HomePage} />
-                            <PrivateRoute path={`${url}products`} component={ProductsPage} />
-
+                            <div style={{ position: 'relative' }}>
+                                <TopMainNavbar />
+                                <LeftMenu />
+                                <PrivateRoute path={`${url}home`} component={HomePage} />
+                                <PrivateRoute path={`${url}products`} component={ProductsPage} />
+                            </div>
                         </Fragment>
                     )}
                     />

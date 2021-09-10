@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 /** */
 import imgSearch from '../../../resources/ico/search.svg';
+import './style.css'
 
 export class Search extends Component {
     constructor(props) {
         super(props)
 
         this.handleChange = this.handleChange.bind(this);
-    
+
         this.state = {
             txtSearch: [],
             changeState: this.props.changeState
@@ -30,17 +31,10 @@ export class Search extends Component {
         return (
 
             <div className="form-search container" id="formBuscar">
-                <div className="box-search">
+                <div className="content-search">
 
                     <label className="lbl-search" htmlFor="txt-search" >
-                        
-                        <input type="text"
-                            name="txt-search"
-                            id="txt-search"
-                            placeholder="Buscar..."
-                            onChange={this.handleChange}
-                            required />
-
+                        <input type="text" name="txt-search" id="txt-search" placeholder="Buscar..." onChange={this.handleChange} required />
                         <span />
 
                     </label>
@@ -53,10 +47,9 @@ export class Search extends Component {
                 </div>
 
                 {/** BOTÃO NOVO PRODUTO*/}
-
                 <Link to='products/add'>
                     <button onClick={() => localStorage.removeItem('produto')} className="btn-default" id="btnNew">
-                        Novo
+                        &#x2b; Adicionar produto
                     </button>
                 </Link>
 

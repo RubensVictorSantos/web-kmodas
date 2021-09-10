@@ -1,62 +1,8 @@
-/** Container Buscar */
-
-.form-search{
-    width: 70%;
-    justify-content:space-between!important;
-    flex-direction: row!important;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.box-search{
-    display: grid;
-    grid-template-columns: auto auto;
-}
-
-.lbl-search{
-    border: var(--b-row);
-    border-right: none!important;
-    border-radius: 3px 0 0 3px;
-    padding: 0.5rem;
-}
-
-.lbl-search input{
-    border: none!important;
-    text-align: center;
-    outline: none;
-}
-
-.lbl-search input:invalid ~ span:after {
-    content: 'X';
-    color: #dadada;
-    font-weight: bold;
-}
-
-.lbl-search input:valid ~ span:after {
-    content: '✓';
-    color: #dadada;
-    font-weight: bold;
-}
-
-/*
-BOTÃO PADRÃO----------------------------->*/
-
-.btn-search{
-    border-radius: 0 3px 3px 0!important;
-    padding: 0px 10px!important;
-}
-
-/*
-TABELA PRODUTO----------------------------->*/
+/*TABELA PRODUTO----------------------------->*/
 
 .tb-produto{
-    width: 85%;
-    max-height: 65vh;   
+    width: 95%;
+    max-height: 75vh;   
     position: relative;
     overflow: auto;
     border: var(--b-row);

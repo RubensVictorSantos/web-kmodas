@@ -1,103 +1,94 @@
-import React, { Component } from 'react';
+import React, { useMemo, useState } from 'react';
 /** */
 import './style.css'
 import TableItem from './tableItem';
-import Spinner from '../spinner/Spinner'
 import { autoKey } from '../modulos';
 
-export class Table extends Component {
-    constructor(props) {
-        super(props);
+export function Table(props) {
 
-        let url = this.props.url
+    const useSortableData = (items, config = null) => {
+        const [sortConfig, setSortConfig] = useState(config)
 
-        this.state = {
-            error: null,
-            isLoaded: false,
-            items: [],
-            url: url
+        const sortedItems = useMemo(() => {
+            let sortableItems = [...items];
+            if (sortConfig !== null) {
+                sortableItems.sort((a, b) => {
+                    if (a[sortConfig.key] < b[sortConfig.key]) {
+                        return sortConfig.direction === 'ascending' ? -1 : 1;
+                    }
+                    if (a[sortConfig.key] > b[sortConfig.key]) {
+                        return sortConfig.direction === 'ascending' ? 1 : -1;
+                    }
+                    return 0;
+                });
+            }
+            return sortableItems;
+        }, [items, sortConfig]);
+
+        const requestSort = (key) => {
+            let direction = 'ascending';
+            if (
+                sortConfig &&
+                sortConfig.key === key &&
+                sortConfig.direction === 'ascending'
+            ) {
+                direction = 'descending';
+            }
+            setSortConfig({ key, direction });
         };
-    }
 
-    componentDidMount() {
-        this.carregarItems()
-    }
+        return { items: sortedItems, requestSort, sortConfig };
+    };
 
-    carregarItems() {
+    let tbhead = Object.keys(props.items[0])
 
-        console.log('Test');
+    const { items, requestSort, sortConfig } = useSortableData(props.items);
 
-        let url = this.props.url
-
-        fetch(url)
-            .then(res => res.json())
-            .then(
-                (result) => {
-
-                    let items
-
-                    result.length ? items = result : items = [result]
-
-                    this.setState({
-                        isLoaded: true,
-                        items: items
-                    });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
-    }
-
-    render() {
-        const { error, isLoaded, items } = this.state;
-
-        if (error) {
-            return <div>Error: {error.message}</div>;
-
-        } else if (!isLoaded) {
-            return <Spinner text={'Loading...'} />
-
-        } else {
-
-            let item = items
-
-            let head = Object.keys(items[0])
-
-            return (
-
-                <table className="tb">
-
-                    {/* TITULO TABELA */}
-
-                    <thead className="tb-head">
-                        <tr>
-                            <th colSpan="2"></th>
-                            {
-                                head.map(title =>
-                                    <th key={autoKey()}>{title}</th>
-                                )
-                            }
-                        </tr>
-                    </thead>
-
-                    {/* CORPO TABELA */}
-
-                    <tbody className="tb-body">
-                        {
-                            item.map(item =>
-                                <TableItem key={item.cod_produto} items={item} />
-                            )
-                        }
-                    </tbody>
-                </table>
-            );
-
+    const getDataDirectionFor = (name) => {
+        if (!sortConfig) {
+            return;
         }
-    }
+        return sortConfig.key === name ? sortConfig.direction : undefined;
+    };
+
+    return (
+
+        <table className="tb">
+
+            {/* TITULO TABELA */}
+
+            <thead className="tb-head">
+                <tr>
+                    <th colSpan="2"></th>
+                    {
+                        tbhead.map(title =>
+
+                            <th key={autoKey()}>
+                                <button 
+                                    className="btn-tb-head"
+                                    type="button"
+                                    onClick={() => requestSort(title)}
+                                    data-direction={getDataDirectionFor(`${title}`)}
+                                >
+                                    {title}
+                                </button><span/>
+                            </th>
+                        )
+                    }
+                </tr>
+            </thead>
+
+            {/* CORPO TABELA */}
+
+            <tbody className="tb-body">
+                {
+                    items.map(item =>
+                        <TableItem key={item.cod_produto} items={item} />
+                    )
+                }
+            </tbody>
+        </table>
+    );
 }
 
 export default Table

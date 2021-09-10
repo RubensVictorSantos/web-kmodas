@@ -1,5 +1,4 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import $ from 'jquery';
 /** */
 import './style.css'
 import { DOMAIN_IMG, DOMAIN_API } from '../../link_config';
@@ -86,8 +85,6 @@ export default function CarouselTeste(props) {
 
     const [transition, transform] = styleCarousel;
 
-    console.log(carousel);
-
     return (
         <div className="wrap center">
             <div className="window">
@@ -113,8 +110,8 @@ export default function CarouselTeste(props) {
                 </div>
             </div>
             {/* <div className="center"> */}
-                <div onClick={() => shiftSlide(1)} id="prev"></div>
-                <div onClick={() => shiftSlide(-1)} id="next"></div>
+            <div onClick={() => shiftSlide(1)} id="prev"></div>
+            <div onClick={() => shiftSlide(-1)} id="next"></div>
             {/* </div> */}
         </div>
     );

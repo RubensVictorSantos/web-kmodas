@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 /** */
 import logo from '../../resources/img/logo-ladybirds.png';
 import imgUser from '../../resources/img/user.svg';
-import imgSearch from '../../resources/img/search-black.svg';
-import imgSearchWhite from '../../resources/img/search-white.svg';
+// import imgSearch from '../../resources/img/search-black.svg';
+// import imgSearchWhite from '../../resources/img/search-white.svg';
 
 import './style.css';
 

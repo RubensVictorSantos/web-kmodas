@@ -17,12 +17,34 @@ export function urlImg(input, idimg) {
 
         reader.readAsDataURL(input.files[0]);
 
-        return input.files[0].name;
+        return input.files[0];
 
     } else {
         img.src = input.files[0].name || DOMAIN_IMG_DEFAULT;
 
     }
+}
+
+export async function postData(url = '', data = {}) {
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    return res.json();
+}
+
+export async function putFile(url = '', data = {}) {
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    return res.json();
 }
 
 export const editProd = (produto) => {

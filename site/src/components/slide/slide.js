@@ -30,7 +30,7 @@ export default function Slide(props) {
         setWidSlider(widSlider)
 
         setWidSlides(widSlider * imagens.length);
-    })
+    }, [imagens])
 
     // Menu item click handler
     function menuHandler(e) {

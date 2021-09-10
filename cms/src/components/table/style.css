@@ -13,37 +13,46 @@
   background-color: #688a8a;
 }
 
-.tb-head th {
+.btn-tb-head{
+  background-color: #688a8a;
+  border: none;
   text-transform: uppercase;
   padding: 5px;
   font-weight: bold;
   color: white;
 }
 
-.tb-row {  
+/* .btn-tb-head::after{
+  content: '\2228';
+  padding: 0.5rem;
+  font-weight: bold;
+  color: white;
+} */
+
+.tb-row {
   border-bottom: var(--b-row);
   border-color: #688a8a60!important;
   padding: .5rem 0;
 }
 
-.tb-row:hover{
+.tb-row:hover {
   box-shadow: 3px 3px 4px #688a8a8a;
   cursor: pointer;
 }
 
-.tb-row:active{
+.tb-row:active {
   background-color: #688a8a29;
 }
 
-.tb-col{
+.tb-col {
   max-width: 300px;
-  text-align: center;
+  /* text-align: center; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.tb-col img{
+.tb-col img {
   width: 40px;
   height: auto;
 }
@@ -51,23 +60,21 @@
 /* BUTTON CARREGAR ITENS
 ----------------------------------------------*/
 
-.btn-carregar-itens{
+.btn-carregar-itens {
   color: white;
   font-weight: bold;
   background-color: #688a8a;
   border: none;
   padding: 10px;
   border-radius: 50px;
-  outline: none ;
+  outline: none;
   cursor: pointer;
 }
 
-.btn-carregar-itens:hover{
+.btn-carregar-itens:hover {
   background-color: #526d6d;
-
 }
 
-.btn-carregar-itens:active{
+.btn-carregar-itens:active {
   background-color: #688a8a;
-
 }

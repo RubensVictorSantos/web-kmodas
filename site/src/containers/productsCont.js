@@ -104,9 +104,6 @@ export class ProductsCont extends Component {
             return <div>Loading...</div>;
         } else {
 
-
-            let modelos = []
-
             return (
                 <Fragment>
                     <div className='container-produto center'>

@@ -24,7 +24,9 @@ const Item = (props) => {
       </td>)
   }
 
-  return (<td className='tb-col'>{props.item}</td>)
+  // return (<td className='tb-col'>{props.item.charAt(0).toUpperCase() }</td>)
+  return (<td className='tb-col'>{props.item   }</td>)
+
 }
 
 export class TableItem extends Component {
