@@ -2,35 +2,30 @@ import React, { Component, Fragment } from 'react';
 /** */
 import SvgAtivo from '../../resources/ico/check-green.svg';
 import SvgInativo from '../../resources/ico/check-gray.svg';
+import icoDel from '../../resources/ico/Delete-Bin-Trash-PNG-Clipart.svg';
 import imgSearch from '../../resources/ico/search-black.svg';
 import ModalProd from '../modal/modalProd';
-import { autoKey } from '../modulos';
 import './style.css';
 
 const Item = (props) => {
 
-  if (props.item === 1) {
+  const key = props.item[0],
+    value = props.item[1];
 
-    return (
-      <td className='tb-col'>
-        <img src={SvgAtivo} alt={SvgAtivo} />
-      </td>)
+  if (key === 'status') {
+    if (value > 0) {
+      return (<img src={SvgAtivo} alt={SvgAtivo} />)
 
-  } else if (props.item === 0) {
+    } else {
+      return (<img src={SvgInativo} alt={SvgInativo} />)
 
-    return (
-      <td className='tb-col'>
-        <img src={SvgInativo} alt={SvgInativo} />
-      </td>)
+    }
   }
-
-  // return (<td className='tb-col'>{props.item.charAt(0).toUpperCase() }</td>)
-  return (<td className='tb-col'>{props.item   }</td>)
+  return value
 
 }
 
 export class TableItem extends Component {
-
   state = { isOpen: false }
 
   toggleModal = () => {
@@ -41,32 +36,39 @@ export class TableItem extends Component {
 
   render() {
     let items = { ...this.props.items }
+    let keyList = [];
 
     return (
       <Fragment>
         <tr className="tb-row">
-          
           <td>
+            <img className="view-item-btn" align="middle" src={icoDel} alt={icoDel} width="20px"></img>
           </td>
 
-          <td onClick={this.toggleModal}>
-
-            <img src={imgSearch} alt={imgSearch}></img> 
-
+          <td>
             <ModalProd
               title={items.nome}
               image={items.imagem}
-              content={
-                [items.descricao, items.preco, items.status]
-              }
-              item={items}
+              content={[items.descricao, items.preco, items.status]}
+              item={this.props.items}
               show={this.state.isOpen}
               onClose={this.toggleModal} />
+
+            <img className="view-item-btn" align="middle" src={imgSearch} alt={imgSearch} onClick={this.toggleModal}></img>
+
           </td>
-            
-          {Object.values(items).map(item => {
-            return <Item key={autoKey()} item={item} />
-          })}
+
+          {
+
+            Object.entries(items).map(item => {
+              keyList.push(keyList.length + 1);
+
+              return (
+                <td key={keyList.length} className='tb-col'>
+                  <Item key={keyList.length} item={item} />
+                </td>)
+            })
+          }
 
         </tr>
       </Fragment>

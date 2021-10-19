@@ -24,10 +24,9 @@ export class ListProdCont extends Component {
   }
 
   componentDidMount() {
-
     let url = this.state.url
-
-    this.loadList(url)
+    this.loadList(url);
+    
   }
 
   changeState(search, texto = []) {
@@ -42,6 +41,8 @@ export class ListProdCont extends Component {
       limit += 20
 
       url = `${DOMAIN_API}/products/sort=cod_produto&limit=${limit}`
+
+      this.loadList(url)
 
     }
 
@@ -98,9 +99,9 @@ export class ListProdCont extends Component {
 
           </div>
 
-          <div className="container">
+          <div className="container" style={{width: '95%', flexDirection: 'row', justifyContent: 'space-between'}}>
             <input className="btn-carregar-itens " onClick={() => this.changeState(false)} type='button' value='Carregar +20' />
-            <label style={{ position: 'absolute', right: '0', color: '#888', fontSize: '1rem' }}>Total {limit}</label>
+            <label style={{ color: '#888', fontSize: '1rem' }}>Total {limit}</label>
           </div>
         </Fragment>
       )

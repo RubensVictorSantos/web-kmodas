@@ -62,16 +62,15 @@ export function Table(props) {
                     <th colSpan="2"></th>
                     {
                         tbhead.map(title =>
-
                             <th key={autoKey()}>
-                                <button 
+                                <button
                                     className="btn-tb-head"
                                     type="button"
                                     onClick={() => requestSort(title)}
                                     data-direction={getDataDirectionFor(`${title}`)}
                                 >
                                     {title}
-                                </button><span/>
+                                </button><span />
                             </th>
                         )
                     }
@@ -82,8 +81,12 @@ export function Table(props) {
 
             <tbody className="tb-body">
                 {
-                    items.map(item =>
-                        <TableItem key={item.cod_produto} items={item} />
+                    items.map(item => {
+
+                        return (
+                            <TableItem key={item.cod_produto} items={item}/>
+                        )
+                    }
                     )
                 }
             </tbody>

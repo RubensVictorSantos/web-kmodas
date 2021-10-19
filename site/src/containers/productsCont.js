@@ -2,11 +2,11 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 /** */
 import './style.css';
-import Slide from "../components/slide/slide";
+import SlideSideBar from "../components/slide/slideSideBar/slideSideBar";
+import Spinner from "../components/spinner/Spinner";
 import { DOMAIN_API } from "../link_config";
 
 export class ProductsCont extends Component {
-    // this.handleChange = this.handleChange.bind(this);
     state = {
         produto: [],
         error: null,
@@ -14,9 +14,7 @@ export class ProductsCont extends Component {
     }
 
     componentDidMount() {
-
-        let id = this.getURLParameters('products', window.location.href);
-
+        let id = this.props.match.params.id
         let url = `${DOMAIN_API}products/id=${id}`
         // let url = `${DOMAIN_API}products/status=1/limit=5`
 
@@ -36,63 +34,6 @@ export class ProductsCont extends Component {
                     });
                 }
             )
-
-    }
-
-    getURLParameters(param, url) {
-        // eslint-disable-next-line
-        param = param.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-        var regexS = "[\\/]" + param + "/([^&#]*)";
-        var regex = new RegExp(regexS);
-        var results;
-
-        //se url não for informada, assume a url corrente da página
-        if (typeof url == "undefined") {
-            results = regex.exec(window.location.href);
-
-        }
-        else {
-            results = regex.exec(url);
-        }
-
-        if (results == null) {
-            return console.log('Results: null');;
-        }
-        else {
-
-            let id = decodeURI(results[1])
-
-            //Tratar dos caracteres e espaço.
-            return id;
-        }
-    }
-
-    handleChange(e) {
-
-        console.log(e)
-
-        // const produto = { ...this.state.produto }
-        // const input = e.target
-
-        // let value = '';
-
-        // if (input.type === 'file') {
-        //     value = urlImg(input, 'imgprod');
-
-        // } else if (input.type === 'checkbox') {
-        //     value = input.checked;
-
-        // } else if (input.name === 'preco') {
-        //     value = input.value.replace(/[A-z]/, '');
-
-        // } else {
-        //     value = input.value;
-
-        // }
-
-        // produto[input.name] = value;
-
-        // this.setState({ produto });
     }
 
     render() {
@@ -101,15 +42,15 @@ export class ProductsCont extends Component {
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <div>
+                <Spinner text="Loading..." />
+            </div>;
         } else {
-
             return (
                 <Fragment>
                     <div className='container-produto center'>
-                        <div className='container-slide-prod'>
-                            <Slide imagens={produto} />
-
+                        <div className='container-slide-product'>
+                            <SlideSideBar imagens={produto} />
                         </div>
                         <div className='container-info-produto'>
                             <h1>{produto.nome}</h1>
@@ -141,10 +82,9 @@ export class ProductsCont extends Component {
                             <div>
                                 <h5>Tamanho</h5>
 
-                                <div className="chk-tamanho-produto">
+                                <div className="rdo-product-size center">
                                     <input type="radio" name="sort" value="popularity" id="p" />
                                     <label htmlFor="p">
-                                        {/* <span>{produto.tamanho}</span> */}
                                         <span>P</span>
                                     </label>
 
@@ -175,18 +115,30 @@ export class ProductsCont extends Component {
                                     </label>
 
                                 </div>
-
-                                {/* Tamanho: P M G GG XG G2 G3 */}
                             </div>
                             <div>
                                 <button> COMPRAR </button>
                             </div>
-                            <div>Informações sobre pagamento com boleto</div>
-                            <div>Informações sobre o produto<br />
+                            {
+                                // Informações sobre pagamento com boleto
+                            }
+                            <hr />
+                            <div>
+                                <p> 3% off no boleto ou 2x sem juros no cartão<br />
+                                    Frete grátis nas compras acima de R$250,00.
+                                    Norte e Nordeste R$ 480,00.
+                                </p>
+                            </div>
+                            <hr />
+
+                            {
+                                // Informações sobre o produto
+                            }
+                            <div>{produto.descricao}<br />
                                 Composição....<br />
                                 Sobre a estampa....
                             </div>
-                            <Link to='/video'>Assista a um vídeo sobre o produto</Link>
+                            <Link to='/video'>Assista a um vídeo sobre o produto&#8811;</Link>
                         </div>
                     </div>
                     <div>

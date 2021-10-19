@@ -17,9 +17,6 @@
     max-width: 50%;
     position: relative;
     justify-content: space-around!important;
-    /* backdrop-filter: blur(5px);
-    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.2);
-    background-color: transparent; */
     flex-direction: column;
     background-color: white;
     border-radius: 5px;

@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 /** */
-// import Carousel from "../components/carousel/carousel";
-import Carousel from "../components/carousel/carousel";
+// import Carousel from "../components/carousel/carouselSimple/carousel";
 import CardSimple from "../components/card/cardSimple";
+import Spinner from "../components/spinner/Spinner";
+import SlideSimple from "../components/slide/slideSimple/slideSimple";
 import { DOMAIN_API } from "../link_config";
 import './style.css';
 
@@ -16,7 +17,6 @@ export class HomeCont extends Component {
     }
 
     componentDidMount() {
-
         const url = `${DOMAIN_API}products/status=1/limit=${5}`;
 
         fetch(url)
@@ -40,33 +40,40 @@ export class HomeCont extends Component {
 
     render() {
 
-        let { produtos, size, error, isLoaded } = this.state;
-
+        let { produtos, error, isLoaded } = this.state;
+        // let size = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <Spinner text="Loading..." />;
         } else {
             return (
                 <Fragment>
-                    <Carousel size={size} scroll={true} />
 
-                    <section className="container-cards container">
+                    <section className="section-slide-home">
+                        <SlideSimple imagens={produtos} />
+                    </section>
+
+                    {/* <section className="container">
+                        <div className="section-title center">
+                            <h3>Lançamentos</h3><Link to={'/home'}>Ver todas&#8811;</Link>
+                        </div>
+                        <Carousel size={size} scroll={true} />
+                    </section> */}
+
+                    <section className="section-cards-home container">
+                        <div className="section-title center">
+                            <h3>Camisetas</h3><Link to={'/home'}>Ver todas&#8811;</Link>
+                        </div>
                         {
-                            produtos.map(produto => {
-
-                                return (
-
-                                    <Link to={`/products/${produto.cod_produto}`} key={produto.cod_produto} className="card-closed" id="card-prod">
-                                        <CardSimple key={produto.cod_produto}
-                                            title={produto.nome}
-                                            image={produto.imagem}
-                                            price={produto.preco}
-                                        />
-
-                                    </Link>
-                                )
-                            })
+                            produtos.map(produto =>
+                                <CardSimple key={produto.cod_produto}
+                                    title={produto.nome}
+                                    image={produto.imagem}
+                                    price={produto.preco}
+                                    path={`/products/${produto.cod_produto}`}
+                                />
+                            )
                         }
                     </section>
                 </Fragment>

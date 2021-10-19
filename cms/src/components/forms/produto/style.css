@@ -1,5 +1,4 @@
-/* CONTAINER ADICIONAR PRODUTO
-===================================================>*/
+/* CONTAINER ADICIONAR PRODUTO */
 
 .main-form-produto {
     width: 75%;
@@ -58,14 +57,25 @@
     grid-column: 11 / span 2;
 }
 
-.fdt-prod {
-    display: flex;
-    flex-direction: column;
-}
-
 .main-form-produto textarea {
     min-height: 70px;
     border-radius: 3px;
+}
+
+.image-form-container {
+    display: flex!important;
+    justify-content: space-around!important;
+    height: auto;
+    flex-wrap: wrap;
+    flex-direction: row!important;
+}
+
+/* .image-form-container div {
+
+} */
+
+.image-form-container img {
+    width: 230px;
 }
 
 .btn-next {

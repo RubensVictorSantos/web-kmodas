@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from "prop-types";
 /** */
-import { urlImg, clearInput, editProd, insertProd, putFile, postData } from '../../../components/modulos';
+import { urlImg, clearInput, editProd, postData } from '../../../components/modulos';
 import './style.css'
 import { DOMAIN_API, DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
 
@@ -16,10 +16,9 @@ export class FormProduct extends Component {
         this.state = {
             produto: produto,
             editar: props.editar,
-            codProduto: 0,
-            disabledForm: { disabled: true }
+            disabledForm: { disabled: true },
+            editImage: false
         }
-
 
         this.formProd = this.formProd.bind(this);
         this.addImage = this.addImage.bind(this);
@@ -35,15 +34,21 @@ export class FormProduct extends Component {
 
     };
 
-    handleChange(e) {
+    componentDidMount() {
+        if (this.props.editar) {
+            this.setState({ disabledForm: { disabled: false } })
+        }
 
+    }
+
+    handleChange(e) {
         const produto = { ...this.state.produto }
         const input = e.target
-
         let value = '';
 
         if (input.type === 'file') {
             value = urlImg(input, 'imgprod');
+            this.setState({ editImage: true })
 
         } else if (input.type === 'checkbox') {
             value = input.checked;
@@ -55,47 +60,44 @@ export class FormProduct extends Component {
             value = input.value;
 
         }
-
         produto[input.name] = value;
-
         this.setState({ produto });
 
     }
 
     formProd(e) {
-        e.preventDefault();
-
+        e.preventDefault()
         let produto = { ...this.state.produto }
 
         if (this.props.editar) {
             editProd(produto);
-
             localStorage.removeItem('produto');
 
         } else {
             const url = `${DOMAIN_API}/products`;
-            postData(url,produto).then(data => this.setState({ codProduto: data }))
+            postData(url, produto)
+                .then(data => this.setState({ produto: data }));
 
         }
-
         this.setState({ disabledForm: { disabled: false } });
 
     }
 
     addImage(e) {
-
         e.preventDefault();
-
         let produto = { ...this.state.produto }
         const dataForm = new FormData();
 
-        dataForm.append('image', produto.imagem);
+        if (this.state.editImage) {
+            dataForm.append('image', produto.imagem);
 
-        const res = fetch(`http://127.1.1.0:3333/products/image/${this.state.codProduto.cod_produto}`, {
-            method: 'PUT',
-            body: dataForm,
-        });
+            fetch(`${DOMAIN_API}/products/image/${produto.cod_produto}`, {
+                method: 'PUT',
+                body: dataForm,
 
+            });
+
+        }
         produto = clearInput(produto);
         this.setState({ produto });
         this.props.history.push("/products");
@@ -103,19 +105,15 @@ export class FormProduct extends Component {
     }
 
     render() {
-
         let produto = this.state.produto
-
         let disabledForm = this.state.disabledForm
-
         let { nome, imagem, descricao, preco, status } = { ...produto }
 
-        imagem = imagem === undefined || imagem === '' ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + imagem;
+        imagem = imagem === null || imagem === '' || imagem === undefined ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + imagem;
 
         return (
             <div className="main-form-produto">
                 <form>
-
                     <fieldset className="cont-form-prod" >
                         <legend>Formulario Produto</legend>
 
@@ -131,7 +129,7 @@ export class FormProduct extends Component {
 
                         <div className="box-form col-modelo">
                             <label>MODELO: </label>
-                            <select value={this.state.value} onChange={this.handleChange}>
+                            <select value="" onChange={this.handleChange}>
                                 <option value="masc">MASC</option>
                                 <option value="femi">FEM</option>
                             </select>
@@ -139,7 +137,7 @@ export class FormProduct extends Component {
 
                         <div className="box-form col-tamanho">
                             <label>TAMANHO:</label>
-                            <select value={this.state.value} onChange={this.handleChange}>
+                            <select value="" onChange={this.handleChange}>
                                 <option value="P">P</option>
                                 <option value="M">M</option>
                                 <option value="G">G</option>
@@ -165,7 +163,6 @@ export class FormProduct extends Component {
                         <div className="box-form col-preco">
                             <label>PREÇO:</label>
                             <input type="text"
-                                style={this.state.invalidInput}
                                 name="preco"
                                 value={preco || ''}
                                 onChange={this.handleChange}
@@ -194,10 +191,10 @@ export class FormProduct extends Component {
                         </div>
                     </fieldset>
 
-                    <fieldset className="fdt-prod container" {...disabledForm} >
+                    <fieldset className="image-form-container" {...disabledForm} >
                         <legend>Imagem Produto</legend>
 
-                        <div>
+                        <div className="container">
                             <input id="selecao-arquivo"
                                 onChange={this.handleChange}
                                 name="imagem"
@@ -210,13 +207,28 @@ export class FormProduct extends Component {
 
                             <label className="lbl-file" tabIndex='0' htmlFor="selecao-arquivo" id="lbl-file">Selecionar Imagens</label>
                         </div>
+                        
+                        {/* <div className="container">
+                            <input id="selecao-arquivo"
+                                onChange={this.handleChange}
+                                name="imagem"
+                                type="file"
+                                accept="image/png, image/jpeg"
+                                ref={this.fileInput}
+                            />
 
+                            <img id="imgprod" src={imagem} alt={imagem} />
+
+                            <label className="lbl-file" tabIndex='0' htmlFor="selecao-arquivo" id="lbl-file">Selecionar Imagens</label>
+                        </div> */}
+                        
                     </fieldset>
 
                     <button className="btn-default"
                         id="btn-salvar"
                         onClick={this.addImage}>
-                        Salvar
+                        {/* Salvar */}
+                        Adicionar imagem
                     </button>
 
                 </form>

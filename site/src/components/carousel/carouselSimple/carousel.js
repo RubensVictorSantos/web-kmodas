@@ -1,14 +1,15 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 /** */
+import '../../card/style.css'
 import './style.css'
-import { DOMAIN_IMG, DOMAIN_API } from '../../link_config';
+import { DOMAIN_IMG, DOMAIN_API } from '../../../link_config';
 
-export default function CarouselTeste(props) {
-
+export default function Carousel(props) {
     const [produto, setProduto] = useState([]),
-        [widWindow, setWidWindow] = useState(0),
-        [widCarousel, setWidCarousel] = useState(0),
-        [styleCarousel, setStyleCarousel] = useState(['', 'translateX(0px)']);
+        [widthWindow, setWidthWindow] = useState(0),
+        [widthCarousel, setWidthCarousel] = useState(0),
+        [styleCarousel, setStyleCarousel] = useState(['', 'translateX(0px)']),
+        [porcentagem, setPorcentagem] = useState(0);
 
     const carousel = document.getElementById("carousel");
 
@@ -16,7 +17,10 @@ export default function CarouselTeste(props) {
 
     useEffect(() => {
 
-        setWidCarousel(((window.innerWidth * 80) / 100) * size);
+        let porcentagemWrap = (document.querySelector('.wrap').clientWidth * 100) / window.innerWidth;
+        setPorcentagem(porcentagemWrap);
+
+        setWidthCarousel(((window.innerWidth * porcentagem) / 100) * size);
 
         fetch(`${DOMAIN_API}products/status=1/limit=${size}`)
             .then(res => res.json())
@@ -29,7 +33,8 @@ export default function CarouselTeste(props) {
                 }
             )
 
-    }, [size, scroll])
+
+    }, [size, scroll, porcentagem])
 
     useEffect(() => {
         // Automatizando o slide
@@ -39,19 +44,20 @@ export default function CarouselTeste(props) {
 
     useLayoutEffect(() => {
 
-        const handleResize = () => {
-            setWidWindow(window.innerWidth);
-            setWidCarousel(((window.innerWidth * 80) / 100) * size);
+        let porcentagemWrap = (document.querySelector('.wrap').clientWidth * 100) / window.innerWidth;
+        setPorcentagem(porcentagemWrap);
 
+        const handleResize = (porcentagem) => {
+            setWidthWindow(window.innerWidth);
+            setWidthCarousel(((window.innerWidth * porcentagem) / 100) * size);
 
         }
-
         window.addEventListener("resize", handleResize);
 
-        handleResize();
+        handleResize(porcentagem);
 
         return () => window.removeEventListener("resize", handleResize);
-    })
+    }, [porcentagem, size])
 
     const shiftSlide = (direction) => {
 
@@ -61,7 +67,7 @@ export default function CarouselTeste(props) {
 
         if (direction === -1) {
 
-            setStyleCarousel(['0.5s', 'translateX(' + direction * ((widWindow * 80) / 100) + 'px)']);
+            setStyleCarousel(['0.5s', 'translateX(' + direction * ((widthWindow * porcentagem) / 100) + 'px)']);
 
             setTimeout(() => {
 
@@ -73,8 +79,7 @@ export default function CarouselTeste(props) {
         }
 
         if (direction === 1) {
-
-            carousel.firstChild.before(carousel.lastChild)
+            carousel.firstChild.before(carousel.lastChild);
 
             setTimeout(() => {
                 setStyleCarousel(['', 'translateX(0px)']);
@@ -86,33 +91,28 @@ export default function CarouselTeste(props) {
     const [transition, transform] = styleCarousel;
 
     return (
-        <div className="wrap center">
+        <div className="wrap center" id="wrap_carousel">
             <div className="window">
                 <div id="carousel" style={{
                     transition: transition,
                     transform: transform,
-                    width: widCarousel
-                }}
-
-                // onMouseDown={e => mouseDown(e)}
-                >
-
+                    width: widthCarousel
+                }}>
                     {
                         produto.map(produto => (
-                            <div key={produto.cod_produto} className="carousel-slide" id={`slide-` + produto.cod_produto}>
+                            <div key={produto.cod_produto} className="carousel-slide">
                                 <img className='carousel-img'
                                     src={DOMAIN_IMG + produto.imagem}
                                     alt={produto.imagem} />
                             </div>
                         ))
                     }
-
                 </div>
             </div>
-            {/* <div className="center"> */}
+
             <div onClick={() => shiftSlide(1)} id="prev"></div>
             <div onClick={() => shiftSlide(-1)} id="next"></div>
-            {/* </div> */}
+
         </div>
     );
 }

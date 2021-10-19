@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 /** */
 import './style.css';
 import { DOMAIN_IMG } from '../../link_config';
@@ -7,11 +8,12 @@ export class CardSimple extends Component {
 
     render() {
 
-        let { image, title, price } = { ...this.props };
+        let { image, title, price, path } = { ...this.props };
 
         return (
-            <Fragment>
-                <div className="card">
+            <div className="card">
+                <Link to={path} className="card-closed" id="card-prod">
+
                     <picture className="card-container-image center">
                         <img className="card-image"
                             src={DOMAIN_IMG + image}
@@ -45,8 +47,8 @@ export class CardSimple extends Component {
                             <p>COMPRAR </p>
                         </button>
                     </div>
-                </div>
-            </Fragment>
+                </Link>
+            </div>
         )
     }
 }

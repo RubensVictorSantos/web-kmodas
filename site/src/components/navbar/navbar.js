@@ -1,85 +1,94 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 /** */
-import logo from '../../resources/img/logo-ladybirds.png';
+import imgLogo from '../../resources/img/logo-ladybirds.png';
 import imgUser from '../../resources/img/user.svg';
-// import imgSearch from '../../resources/img/search-black.svg';
-// import imgSearchWhite from '../../resources/img/search-white.svg';
-
+import imgSearchWhiteR from '../../resources/img/search-white-right.svg';
+import imgCart from '../../resources/img/cart-round.svg';
 import './style.css';
 
+const FieldSearch = (props) => {
+    return (
+        <div className={`nav-field-search ${props.style}`} >
+            <button type='submit'></button>
+
+            <input type="text"
+                name="txt-search"
+                id="txt-search"
+                placeholder="O que você procura?"
+                required />
+            <label htmlFor="txt-search" ></label>
+
+        </div>
+    )
+
+}
+
 const Navbar = () => {
+    const [classSidebar, setClassSidebar] = useState('closed-sidebar'),
+        [classFieldSearch, setClassFieldSearch] = useState("nav-field-search-closed")
 
-    const [open, setOpen] = useState(true);
+    const openSidebar = () => {
+        if (classSidebar === 'closed-sidebar') {
+            setClassSidebar("")
 
-    const removeClass = (open) => (open ? 'menu-close' : 'menu-open');
+        } else {
+            setClassSidebar("closed-sidebar")
+
+        }
+    }
+    const openFieldSearch = () => {
+        if (classFieldSearch === 'nav-field-search-closed') {
+            setClassFieldSearch("nav-field-search")
+
+        } else {
+            setClassFieldSearch("nav-field-search-closed")
+
+        }
+    }
 
     return (
         <Fragment>
             <nav className="navbar">
-
-                {/************************* LOGO *************************/}
-
                 <div>
+                    <button className="nav-btn-menu nav-btn-default" onClick={() => openSidebar()}>&#9776;</button>
 
-                    <input className="btn-menu " type='button' id="btn-menu"
-                        onClick={() => setOpen(false)} />
-
+                    {/** Logo */}
                     <Link to="/home">
-                        <img className="nav-logo" src={logo} alt="Logo K. Modas" />
+                        <img className="nav-logo" src={imgLogo} alt="Logo K. Modas" />
                     </Link>
+                    <img className="nav-img-search nav-btn-default"
+                        onClick={() => openFieldSearch()}
+                        src={imgSearchWhiteR}
+                        alt={imgSearchWhiteR}
+                        role="button"
+                        tabIndex="0" />
+                    <button className="nav-btn-cart nav-btn-default">
+                        <img src={imgCart} alt={imgCart} />
+                    </button>
 
-                    {/************************* SEARCH *************************/}
-
-                    <div className="container-search">
-                        <div>
-                            {/** BOTÃO PESQUISAR PRODUTO*/}
-
-                            <button type='submit' className="center btn-search" id="btnSearch">
-                                {/* <img src={imgSearchWhite} alt={imgSearchWhite}></img> */}
-                            </button>
-
-                            <label className="lbl-search" htmlFor="txt-search" >
-
-                                <input type="text"
-                                    name="txt-search"
-                                    id="txt-search"
-                                    placeholder="O que você procura?"
-                                    required /><span className="center" />
-
-                            </label>
-
-                        </div>
-
-                    </div>
-
-                    <input type='button' className="btn-cart " id="btn-cart" />
-
+                    {/** Field Search */}
+                    <FieldSearch style={classFieldSearch} />
 
                 </div>
 
-                {/************************* MENU *************************/}
-
-                <ul className={`menu ${removeClass(open)}`} id="menu">
-                    <span onClick={() => setOpen(true)} className="close" id="close">&times;&nbsp;&nbsp;</span>
-
-                    <li className="item">
-                        <div className="view-user">
-                            <div className="img-user">
-                                <img className="img"
-                                    src={imgUser}
-                                    alt={'Imagem ' + imgUser} />
-
-                            </div>
-
-                            <div>
-                                <label>Olá, visitante!</label>
-                            </div>
+                {/** Sidebar */}
+                <ul className={`sidebar ${classSidebar}`} >
+                    <li className="sidebar-item">
+                        <img className="sidebar-avatar" src={imgUser} alt={'Imagem ' + imgUser} />
+                        <div>
+                            <label>Olá, visitante!</label>
+                            <Link to=''>Login &#10095;</Link>
                         </div>
+                        <span onClick={() => openSidebar()} >&times;</span>
                     </li>
-                    <li className="item">PRODUTOS</li>
-                    <li className="item">GALERIAS</li>
-                    <li className="item">CONTATOS</li>
+                    <li className="sidebar-item">TODOS OS PRODUTOS</li>
+                    <li className="sidebar-item">MASCULINO</li>
+                    <li className="sidebar-item">FEMININO</li>
+                    <li className="sidebar-item">ACESSÓRIOS</li>
+                    <li className="sidebar-item">COLEÇÕES</li>
+                    <li className="sidebar-item">GALERIA</li>
+                    <li className="sidebar-item">CONTATO</li>
 
                 </ul>
             </nav>
