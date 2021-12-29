@@ -6,6 +6,7 @@ import icoDel from '../../resources/ico/Delete-Bin-Trash-PNG-Clipart.svg';
 import imgSearch from '../../resources/ico/search-black.svg';
 import ModalProd from '../modal/modalProd';
 import './style.css';
+import { DOMAIN_API } from '../../link_config';
 
 const Item = (props) => {
 
@@ -34,27 +35,41 @@ export class TableItem extends Component {
     });
   }
 
+  deleteItem(key) {
+    const url = `${DOMAIN_API}/products/id=${key}`
+
+    fetch(url, {
+      method: 'DELETE',
+    })
+      .then(res => res.json())
+      .then(res => console.log(res))
+  }
+
+
   render() {
     let items = { ...this.props.items }
+    let id = this.props.items.cod_produto;
     let keyList = [];
 
     return (
       <Fragment>
         <tr className="tb-row">
           <td>
-            <img className="view-item-btn" align="middle" src={icoDel} alt={icoDel} width="20px"></img>
+            <button className="item-default-btn" onClick={() => this.deleteItem(id)}>
+              <img className="" align="middle" src={icoDel} alt={icoDel} width="20px"></img>
+            </button>
           </td>
 
           <td>
             <ModalProd
+              id={items.cod_produto}
               title={items.nome}
               image={items.imagem}
               content={[items.descricao, items.preco, items.status]}
-              item={this.props.items}
               show={this.state.isOpen}
               onClose={this.toggleModal} />
 
-            <img className="view-item-btn" align="middle" src={imgSearch} alt={imgSearch} onClick={this.toggleModal}></img>
+            <img className="item-default-btn" align="middle" src={imgSearch} alt={imgSearch} onClick={this.toggleModal}></img>
 
           </td>
 

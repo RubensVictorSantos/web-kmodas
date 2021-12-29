@@ -39,22 +39,24 @@
   box-shadow: 3px 3px 4px #688a8a8a;
 }
 
-.view-item-btn {
+.item-default-btn {
   background-position: center;
   border: 1px solid #537e7e34;
   border-radius: 3px;
   padding: .1rem;
   margin: .1rem;
   cursor: pointer;
+  background-color: transparent;
+
 }
 
-.view-item-btn:active {
+.item-default-btn:active {
   background-color: #537e7e34;
 }
 
 .tb-col {
   max-width: 300px;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -65,8 +67,7 @@
   height: auto;
 }
 
-/* BUTTON CARREGAR ITENS
-----------------------------------------------*/
+/* BUTTON CARREGAR ITENS*/
 
 .btn-carregar-itens {
   color: white;

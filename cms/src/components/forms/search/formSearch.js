@@ -49,7 +49,7 @@ export class Search extends Component {
                 {/** BOTÃO NOVO PRODUTO*/}
                 <Link to='products/add'>
                     <button onClick={() => localStorage.removeItem('produto')} className="btn-default" id="btnNew">
-                        &#x2b; Adicionar produto
+                        &#43; ADICIONAR
                     </button>
                 </Link>
 

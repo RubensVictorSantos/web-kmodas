@@ -16,27 +16,18 @@
 		color: orangered;
 	}
 	.section-cards-home {
+		width: 85vw;
 		height: auto;
 		flex-wrap: wrap;
 		justify-content: space-around;
 		align-items: flex-start;
 		justify-items: center;
 		flex-direction: row;
-
+		border-radius: 3px;
+		margin: 0 auto;
 	}
 	.section-slide-home {
 		width: 75vw;
-		margin: 0 auto;
-	}
-	.section-cards-home {
-		width: 75vw;
-		height: auto;
-		flex-wrap: wrap;
-		justify-content: space-around;
-		align-items: flex-start;
-		justify-items: center;
-		flex-direction: row;
-		padding-top: 5vw;
 		margin: 0 auto;
 	}
 	/** Product page */

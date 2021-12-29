@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 /** */
-import './style.css'
 import NavLogo from '../../resources/ico/logo-kmodas.png'
 import UserImg from '../../resources/ico/user-circle-fill.png'
 import { DOMAIN_API } from '../../link_config.js'
+import './style.css'
 
 export class TopMainNavbar extends Component {
 
@@ -31,14 +31,12 @@ export class TopMainNavbar extends Component {
                         K. Modas
                     </Link>
 
-                    {/* <ul>
+                    <ul>
                         <li><Link to='/products'>Produtos</Link></li>
-                        <li><Link to='/category'>Categorias</Link></li>
-                        <li><Link to='/subcategory'>Subcategorias</Link></li>
                         <li><Link to='/user_level'>Níveis de usuários</Link></li>
                         <li><Link to='/dashboard'>Dashboard</Link></li>
 
-                    </ul> */}
+                    </ul>
 
                     <div className="field-login center">
                         <img className='ico-user' src={UserImg} alt={'Imagem ' + UserImg} />

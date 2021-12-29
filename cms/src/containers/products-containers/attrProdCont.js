@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Fragment } from "react";
+import React, { Component, Fragment } from "react";
 /** */
 import './style.css';
 

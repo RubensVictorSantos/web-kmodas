@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 /** */
-// import Carousel from "../components/carousel/carouselSimple/carousel";
+//import Carousel from "../components/carousel/carouselSimple/carousel";
 import CardSimple from "../components/card/cardSimple";
 import Spinner from "../components/spinner/Spinner";
 import SlideSimple from "../components/slide/slideSimple/slideSimple";
@@ -17,7 +17,7 @@ export class HomeCont extends Component {
     }
 
     componentDidMount() {
-        const url = `${DOMAIN_API}products/status=1/limit=${5}`;
+        const url = `${DOMAIN_API}products/status=1/limit=${50}`;
 
         fetch(url)
             .then(res => res.json())
@@ -41,7 +41,7 @@ export class HomeCont extends Component {
     render() {
 
         let { produtos, error, isLoaded } = this.state;
-        // let size = this.state;
+        //let size = 10;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
@@ -54,12 +54,12 @@ export class HomeCont extends Component {
                         <SlideSimple imagens={produtos} />
                     </section>
 
-                    {/* <section className="container">
+                    <section className="container">
                         <div className="section-title center">
                             <h3>Lançamentos</h3><Link to={'/home'}>Ver todas&#8811;</Link>
                         </div>
-                        <Carousel size={size} scroll={true} />
-                    </section> */}
+                        {/* <Carousel size={size} scroll={true} /> */}
+                    </section>
 
                     <section className="section-cards-home container">
                         <div className="section-title center">

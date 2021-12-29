@@ -60,22 +60,18 @@ textarea {
 
 .btn-default {
   color: white;
+  text-transform: uppercase;
+  font-size: .9rem;
+  font-family: Arial;
   background-color: var(--red);
+  padding: .7rem .7rem;
   border: none;
   border-radius: 3px;
-  font-size: 13.3333px;
-  font-family: Arial;
-  padding: 0.72rem 0.95rem;
 }
 
 .btn-default:disabled {
   color: #555;
   background-color: #CCC;
-  border: none;
-  border-radius: 3px;
-  font-size: 13.3333px;
-  font-family: Arial;
-  padding: 0.72rem 0.95rem;
 }
 
 .btn-default:active {

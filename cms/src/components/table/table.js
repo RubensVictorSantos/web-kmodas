@@ -40,8 +40,6 @@ export function Table(props) {
         return { items: sortedItems, requestSort, sortConfig };
     };
 
-    let tbhead = Object.keys(props.items[0])
-
     const { items, requestSort, sortConfig } = useSortableData(props.items);
 
     const getDataDirectionFor = (name) => {
@@ -50,6 +48,12 @@ export function Table(props) {
         }
         return sortConfig.key === name ? sortConfig.direction : undefined;
     };
+
+    if(!props.items.length){
+        return(<div>Não foi possivel carregar a lista de produtos</div>);
+    }
+
+    let tbhead = Object.keys(props.items[0]);
 
     return (
 

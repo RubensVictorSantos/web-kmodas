@@ -1,44 +1,86 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes from "prop-types";
 /** */
-import { urlImg, clearInput, editProd, postData } from '../../../components/modulos';
-import './style.css'
 import { DOMAIN_API, DOMAIN_IMG, DOMAIN_IMG_DEFAULT } from '../../../link_config';
+import { clearInput, editProd, postData } from '../../../components/modulos';
+import './style.css'
+
+function readURL(input, idimage) {
+
+    let image = document.getElementById(idimage);
+
+    if (input.files && input.files[0]) {
+        let reader = new FileReader();
+
+        reader.onload = function (e) {
+            image.src = e.target.result;
+            
+        };
+
+        console.log(input.files[0].type);
+
+        // console.log(input.files);
+
+        reader.readAsDataURL(input.files[0]);
+        // reader.readAsText(input.files);
+
+    }
+}
+
+function CardImgForm(props) {
+    return (
+        <div className="container">
+
+            <input id="selecao-arquivo"
+                onChange={props.handleChange}
+                name="imagem"
+                type="file"
+                accept="image/png, image/jpeg"
+                ref={props.fileInput}
+            />
+
+            <img id="imgprod" src={props.imagem} alt={props.imagem} />
+
+            <label className="lbl-file" 
+                tabIndex='0' 
+                htmlFor="selecao-arquivo" 
+                id="lbl-file">Selecionar Imagens</label>
+        </div>
+    )
+}
 
 export class FormProduct extends Component {
     constructor(props) {
         super(props)
 
-        let produto = localStorage.produto ? JSON.parse(localStorage.produto) : []
-
-        // Ternario se existe props.produto ele set o state.produto com o valor do props.produto
         this.state = {
-            produto: produto,
-            editar: props.editar,
-            disabledForm: { disabled: true },
+            produto: [],
+            disabledForm: { disabled: false },
             editImage: false
         }
 
         this.formProd = this.formProd.bind(this);
         this.addImage = this.addImage.bind(this);
-        this.fileInput = React.createRef();
         this.handleChange = this.handleChange.bind(this);
+        this.fileInput = React.createRef();
     }
 
-    //PROPRIEDADES DO WITH ROUTER
-    static propTypes = {
-        match: PropTypes.object.isRequired,
-        location: PropTypes.object.isRequired,
-        history: PropTypes.object.isRequired
-
-    };
-
     componentDidMount() {
-        if (this.props.editar) {
+        if (this.props.id) {
+            let id = this.props.id,
+                url = `${DOMAIN_API}/products/id=${id}`;
+
+            fetch(url)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        this.setState({
+                            produto: result
+                        })
+                    }
+                )
             this.setState({ disabledForm: { disabled: false } })
         }
-
     }
 
     handleChange(e) {
@@ -47,7 +89,10 @@ export class FormProduct extends Component {
         let value = '';
 
         if (input.type === 'file') {
-            value = urlImg(input, 'imgprod');
+            readURL(input, 'imgprod');
+
+            value = document.getElementById('imgprod').src;
+            
             this.setState({ editImage: true })
 
         } else if (input.type === 'checkbox') {
@@ -61,6 +106,7 @@ export class FormProduct extends Component {
 
         }
         produto[input.name] = value;
+
         this.setState({ produto });
 
     }
@@ -69,7 +115,7 @@ export class FormProduct extends Component {
         e.preventDefault()
         let produto = { ...this.state.produto }
 
-        if (this.props.editar) {
+        if (this.props.id) {
             editProd(produto);
             localStorage.removeItem('produto');
 
@@ -89,6 +135,9 @@ export class FormProduct extends Component {
         const dataForm = new FormData();
 
         if (this.state.editImage) {
+
+            console.log(produto.imagem);
+
             dataForm.append('image', produto.imagem);
 
             fetch(`${DOMAIN_API}/products/image/${produto.cod_produto}`, {
@@ -105,11 +154,12 @@ export class FormProduct extends Component {
     }
 
     render() {
-        let produto = this.state.produto
         let disabledForm = this.state.disabledForm
-        let { nome, imagem, descricao, preco, status } = { ...produto }
+        let { nome, imagem, descricao, preco, status } = { ...this.state.produto }
 
         imagem = imagem === null || imagem === '' || imagem === undefined ? DOMAIN_IMG_DEFAULT : DOMAIN_IMG + imagem;
+
+        console.log([imagem]);
 
         return (
             <div className="main-form-produto">
@@ -193,35 +243,10 @@ export class FormProduct extends Component {
 
                     <fieldset className="image-form-container" {...disabledForm} >
                         <legend>Imagem Produto</legend>
-
-                        <div className="container">
-                            <input id="selecao-arquivo"
-                                onChange={this.handleChange}
-                                name="imagem"
-                                type="file"
-                                accept="image/png, image/jpeg"
-                                ref={this.fileInput}
-                            />
-
-                            <img id="imgprod" src={imagem} alt={imagem} />
-
-                            <label className="lbl-file" tabIndex='0' htmlFor="selecao-arquivo" id="lbl-file">Selecionar Imagens</label>
-                        </div>
-                        
-                        {/* <div className="container">
-                            <input id="selecao-arquivo"
-                                onChange={this.handleChange}
-                                name="imagem"
-                                type="file"
-                                accept="image/png, image/jpeg"
-                                ref={this.fileInput}
-                            />
-
-                            <img id="imgprod" src={imagem} alt={imagem} />
-
-                            <label className="lbl-file" tabIndex='0' htmlFor="selecao-arquivo" id="lbl-file">Selecionar Imagens</label>
-                        </div> */}
-                        
+                        <CardImgForm handleChange={this.handleChange} 
+                            fileInput={this.fileInput} 
+                            imagem={imagem}/>
+                        <p>*Selecione até três imagens</p>
                     </fieldset>
 
                     <button className="btn-default"
@@ -237,4 +262,4 @@ export class FormProduct extends Component {
     }
 }
 
-export default withRouter(FormProduct)
+export default withRouter(FormProduct)  

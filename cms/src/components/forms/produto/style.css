@@ -2,10 +2,20 @@
 
 .main-form-produto {
     width: 75%;
+    /* background-color: #f44336; */
 }
 
 .main-form-produto form {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.main-form-produto>form>button {
+    margin: 1rem;
 }
 
 .main-form-produto img {
@@ -70,9 +80,11 @@
     flex-direction: row!important;
 }
 
-/* .image-form-container div {
-
-} */
+.image-form-container>p {
+    color: #888;
+    font-size: 0.8rem;
+    width: 100%;
+}
 
 .image-form-container img {
     width: 230px;

@@ -6,20 +6,11 @@ import './style.css';
 import { DOMAIN_IMG } from '../../link_config';
 
 export class ModalProd extends Component {
-    salvarLocal() {
-
-        let item = JSON.stringify(this.props.item)
-
-        localStorage.setItem('produto', item)
-    }
-
     render() {
 
-        const { title, image, content } = { ...this.props }
+        const { id, title, image, content } = { ...this.props }
 
-        if (!this.props.show) {
-            return false;
-        }
+        if (!this.props.show) return false
 
         return (
 
@@ -52,15 +43,8 @@ export class ModalProd extends Component {
                                     {content[2]}
                                 </code>
 
-                                <Link to={`products/edit/${title}`}>
-                                    <button 
-                                        className="btn-default" 
-                                        type='submit' 
-                                        onClick={() => this.salvarLocal()} 
-                                        id="btnNew">
-
-                                        Editar
-                                    </button>
+                                <Link to={`products/edit/${id}`} className="btn-default" id="btnNew">
+                                    Editar
                                 </Link>
                             </div>
                         </div>

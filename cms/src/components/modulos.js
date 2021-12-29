@@ -2,22 +2,20 @@ import $ from 'jquery';
 /** */
 import { DOMAIN_IMG_DEFAULT, DOMAIN_API } from '../link_config';
 
-export function urlImg(input, idimg) {
+export function urlImg(input, idimage) {
 
-    let img = document.getElementById(idimg);
+    let image = document.getElementById(idimage);
 
     if (input.files && input.files[0]) {
         let reader = new FileReader();
 
         reader.onload = function (e) {
-            img.src = e.target.result;
-
+            image.src = e.target.result;
+            
         };
-        reader.readAsDataURL(input.files[0]);
-        return input.files[0];
 
-    } else {
-        img.src = input.files[0].name || DOMAIN_IMG_DEFAULT;
+        reader.readAsDataURL(input.files[0]);
+        // reader.readAsText(input.files);
 
     }
 }
