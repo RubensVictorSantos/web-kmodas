@@ -1,0 +1,89 @@
+/* CSS Itens Produtos */
+
+/* TABELA DE PRODUTOS ITENS 
+----------------------------------------------*/
+
+.tb {
+  min-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+.tb-head {
+  background-color: #688a8a;
+}
+
+.btn-tb-head {
+  background-color: #688a8a;
+  border: none;
+  text-transform: uppercase;
+  padding: 5px;
+  font-weight: bold;
+  color: white;
+}
+
+/* .btn-tb-head::after{
+  content: '\2228';
+  padding: 0.5rem;
+  font-weight: bold;
+  color: white;
+} */
+
+.tb-row {
+  border-bottom: 1px #dede solid;
+  position: relative;
+  padding: .5rem 0;
+}
+
+.tb-row:hover {
+  box-shadow: 3px 3px 4px #688a8a8a;
+}
+
+.item-default-btn {
+  background-position: center;
+  border: 1px solid #537e7e34;
+  border-radius: 3px;
+  padding: .1rem;
+  margin: .1rem;
+  cursor: pointer;
+  background-color: transparent;
+
+}
+
+.item-default-btn:active {
+  background-color: #537e7e34;
+}
+
+.tb-col {
+  max-width: 300px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tb-col img {
+  width: 40px;
+  height: auto;
+}
+
+/* BUTTON CARREGAR ITENS*/
+
+.btn-carregar-itens {
+  color: white;
+  font-weight: bold;
+  background-color: #688a8a;
+  border: none;
+  padding: 10px;
+  border-radius: 50px;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-carregar-itens:hover {
+  background-color: #526d6d;
+}
+
+.btn-carregar-itens:active {
+  background-color: #688a8a;
+}

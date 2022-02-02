@@ -1,17 +1,18 @@
 /** Modal */
 
-.view-prod{
+.view-prod {
     width: 100vw;
     height: 100vh;
     flex-direction: column;
     position: fixed;
+    backdrop-filter: blur(1px);
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
     bottom: 0;
     left: 0;
 }
 
-.modal{
+.modal {
     min-width: 300px;
     max-width: 50%;
     position: relative;
@@ -24,7 +25,7 @@
 /* Close Modal
 ---------------->*/
 
-.modal-close{
+.modal-close {
     position: absolute;
     right: 1rem;
     top: 0;
@@ -37,7 +38,7 @@
 /* Header Modal
 ---------------->*/
 
-.modal-header{
+.modal-header {
     width: 100%;
     text-align: center;
     text-transform: uppercase;
@@ -46,7 +47,7 @@
 /* Container Modal
 ---------------->*/
 
-.modal-container{
+.modal-container {
     padding: 0rem!important;
     flex-direction: row!important;
 }
@@ -54,22 +55,21 @@
 /* Imagem Modal
 ---------------->*/
 
-.modal-img{
+.modal-img {
     width: 50%;
     height: auto;
     flex-direction: column;
-
 }
 
-.modal-img img{
-    max-width: 100%; 
-    height: auto; 
+.modal-img img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Content Modal 
 ---------------->*/
 
-.modal-content{
+.modal-content {
     width: 50%;
     height: 100%;
     flex-direction: column;
@@ -77,13 +77,12 @@
     padding: 0rem!important;
 }
 
-.modal-text{
+.modal-text {
     max-height: 250px;
     word-wrap: break-word;
     text-align: center;
     overflow-y: auto;
     font-size: 1rem;
-
 }
 
 .modal-text::-webkit-scrollbar {
@@ -91,20 +90,19 @@
 }
 
 .modal-text::-webkit-scrollbar-thumb {
-    background: rgba(220, 220, 220);  
+    background: rgba(220, 220, 220);
     border-radius: 10px;
 }
 
-.modal-content div{
+.modal-content div {
     width: 100%;
     justify-content: space-between;
     padding: 0rem;
     flex-direction: row!important;
 }
 
-.modal-content div code{
+.modal-content div code {
     font-size: 0.8rem;
-
 }
 
-@media screen and (max-width:680px){}
+@media screen and (max-width:680px) {}

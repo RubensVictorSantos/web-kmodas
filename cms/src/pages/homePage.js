@@ -1,18 +1,15 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import Navbar from '../components/navbar/menu';
+/** */
+import ContentHomeCont from '../containers/home-containers/contentHomeCont';
 
 const HomePage = ({ match }) => (
-
-    <div className="">
-        <Navbar />
-        <main>
-            <Switch>
-                <Route path={`${match.path}`} exact component={ () => (<h1>Home Page</h1>)} />
-                <Redirect to={`${match.url}`} />
-            </Switch>
-        </main>
-    </div>
+    <main className="container">
+        <Switch>
+            <Route path={`${match.path}`} exact component={ContentHomeCont} />
+            <Redirect to={`${match.url}`} />
+        </Switch>
+    </main>
 )
 
 export default HomePage

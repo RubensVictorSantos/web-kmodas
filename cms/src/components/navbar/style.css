@@ -1,69 +1,263 @@
-.navbar{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    box-shadow: 1px 1px 5px 1px rgba( 100, 100, 100, 0.2);
+@media screen and (min-width:1000px) {
+    .top-main-navbar {
+        width: 100%;
+        box-shadow: 1px 1px 5px 1px rgba(100, 100, 100, .2);
+        background-color: white;
+        position: sticky;
+        z-index: 1;
+        top: 0;
+    }
+
+    .container-top-main-navbar {
+        width: 75%;
+    }
+
+    .link-logo {
+        text-decoration: none;
+        font-style: italic;
+        color: black;
+    }
+
+    .field-login {
+        margin-left: auto;
+        color: rgb(100, 100, 100);
+    }
+
+    .ico-logo {
+        width: 32px;
+        margin-right: 0.5rem;
+    }
+
+    .container-top-main-navbar ul {
+        display: flex;
+    }
+
+    .container-top-main-navbar ul * {
+        padding: 0.2rem;
+        text-decoration: none;
+        list-style: none;
+        color: rgb(100, 100, 100);
+    }
+
+    .container-top-main-navbar ul li{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .container-top-main-navbar ul li:active {
+        color: red;
+    }
+
+    .container-top-main-navbar ul li a:hover {
+        border-bottom: 2px solid red;
+    }
+
+    /* .container-top-main-navbar ul li a:visited {
+        border-bottom: 2px solid red;
+    } */
+
+    .ico-user {
+        width: 35px;
+        margin-right: 0.1rem;
+    }
+
+    .field-login button {
+        width: 20px;
+        height: 20px;
+        border: none;
+        background-color: transparent;
+        background-position: center;
+        background-size: cover;
+        background-image: url('../../resources/ico/logout1.svg');
+        margin-left: 1rem;
+    }
+
+    /************************* Left Menu *************************/
+    .lf-menu {
+        /* width: 10%; */
+        height: 100%;
+        background-color: #202F31;
+        display: flex;
+        flex-direction: column;
+        float: left;
+        margin: 0;
+        padding: 0;
+        /* position:relative ; */
+        top:0px;
+        bottom:0px;
+    }
+
+    .lf-menu * {
+        padding: 0.2rem;
+        text-decoration: none;
+        font-size: 1em;
+        list-style: none;
+        color: white;
+    }
+
+    .lf-menu>li{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .lf-menu li:active {
+        color: white;
+    }
+
+    .lf-menu li:hover {
+        background-color: #303F42;
+    }
+
+    /* .left-menu li a:after{
+        content:'\203A';
+    }
+    
+    .left-menu li a:active :after{
+        content:'^';
+    } */
 }
 
-.container-nav{
-    width: 75%;
-    display: flex;
-    align-items: center;
+@media only screen and (max-width: 999px) and (min-width: 681px) {
+    .top-main-navbar {
+        width: 100%;
+        box-shadow: 1px 1px 5px 1px rgba(100, 100, 100, 0.2);
+        background-color: white;
+        position: sticky;
+        z-index: 1;
+        top: 0;
+    }
+
+    .container-top-main-navbar {
+        width: 90%;
+    }
+
+    .link-logo {
+        text-decoration: none;
+        white-space: nowrap;
+        font-style: italic;
+        color: black;
+    }
+
+    .field-login {
+        margin-left: auto;
+        color: rgb(100, 100, 100);
+    }
+
+    .ico-logo {
+        width: 32px;
+        margin-right: .5rem;
+    }
+
+    .container-top-main-navbar ul {
+        display: flex;
+    }
+
+    .container-top-main-navbar ul * {
+        padding: .2rem 0;
+        margin: 0 .2rem;
+        text-decoration: none;
+        list-style: none;
+        color: rgb(100, 100, 100);
+    }
+
+    .container-top-main-navbar ul li {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .container-top-main-navbar ul li:active {
+        color: red;
+        /* font-weight: bold; */
+    }
+
+    .container-top-main-navbar ul li a:hover {
+        /* color: black; */
+        border-bottom: 2px solid red;
+    }
+
+    .ico-user {
+        width: 35px;
+        margin-right: 0.1rem;
+    }
+
+    .field-login button {
+        width: 20px;
+        height: 20px;
+        border: none;
+        background-color: transparent;
+        background-position: center;
+        background-size: cover;
+        background-image: url('../../resources/ico/logout1.svg');
+        margin-left: 1rem;
+    }
+
+    /************************* Left Menu *************************/
+    .lf-menu {
+        width: 100%;
+        background-color: #202F31;
+        position: sticky;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+        font-size: 0.9em;
+
+    }
+
+    .lf-menu * {
+        text-decoration: none;
+        list-style: none;
+        font-weight: 500;
+        color: white;
+    }
+
+    .item-lf-menu {
+        padding: .3rem;
+        margin: .3rem;
+        text-align: center;
+    }
+
+    .lf-menu li:active {
+        color: white;
+    }
+
+    .lf-menu li a:hover {
+        border-bottom: 2px solid white;
+    }
+
+    .lf-menu li:active {
+        color: white;
+    }
+
+    /* .lf-menu .item-lf-menu:hover {
+        background-color: #303F42;
+    }
+
+    .lf-menu .item-lf-menu:hover .lf-submenu {
+        display: block;
+        position: absolute;
+    } */
+
+    /* .left-menu li a:after{
+        content:'\203A';
+    }
+    
+    .left-menu li a:active :after{
+        content:'^';
+    } */
+
+    .lf-submenu {
+        background-color: #202F31;
+        display: none;
+        border-radius: 5px;
+        padding: 0.1rem;
+    }
+
+    .lf-submenu li {
+        width: 100%
+    }
 }
 
-.link-logo{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-style: italic;
-    color: black;
-}
-
-.field-login{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    color: rgb(100,100,100);
-}
-
-.ico-logo{
-    width: 32px;
-    margin-right: 0.5rem;
-}
-
-nav ul{
-    display: flex;
-}
-
-nav ul *{
-    padding: 0.2rem;
-    text-decoration: none;
-    list-style: none;
-    color: rgb(100,100,100); 
-}
-
-nav ul li:active{
-    color: red;
-    /* font-weight: bold; */
-}
-
-nav ul li a:hover{
-    /* color: black; */
-    border-bottom: 2px solid red;
-}
-
-.ico-user{
-    width: 35px;
-    margin-right: 0.1rem;
-}
-
-.field-login button{
-    width: 20px;
-    height: 20px;
-    background-color: transparent;
-    border: none;
-    background-position: center;
-    background-size: cover;
-    background-image: url('../../resources/ico/logout1.svg');
-}
+@media screen and (max-width:680px) {}

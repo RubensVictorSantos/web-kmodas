@@ -1,34 +1,25 @@
-.container-login{
+.login-container {
     width: 100vw;
     height: 100vh;
-    /* background-color: var(--red); */
     background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.box-login{
+.login-form {
     width: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: white;
     box-shadow: 1px 1px 10px 6px rgba(50, 50, 50, 0.1);
     flex-direction: column;
     padding: 0.9rem;
     border-radius: 5px;
-
-
 }
 
-.box-login img{
+.login-form img {
     width: 128px;
     height: auto;
     margin-top: 2rem;
 }
 
-.box-login h1{
+.login-form h1 {
     margin: 0;
     padding: 0;
     color: var(--red);
@@ -36,41 +27,51 @@
     font-style: italic;
 }
 
-.input-login{
+.login-input {
     width: 100%;
     display: grid;
     justify-content: center;
-    grid-template-columns: 85% ;
+    grid-template-columns: 85%;
     padding: 1rem;
 }
 
-.input-login label{
+.login-input label {
     font-size: 0.9rem;
     color: #777;
 }
 
-.input-login input[type='password'],
-.input-login input[type='e-mail'], 
-.input-login input[type='text']{
+.login-input input[type='password'], .login-input input[type='email'], .login-input input[type='text'] {
     padding: 0.3rem;
     margin-bottom: 0.5rem;
     border-width: 0px 0px 0.1rem 0px;
     border-color: #ccc;
 }
 
-.chk-login{
+/* .login-input input:invalid ~ span:after {
+    content: 'X';
+    color: #dadada;
+    font-weight: bold;
+}
+
+.login-input input:valid ~ span:after {
+    content: '✓';
+    color: #dadada;
+    font-weight: bold;
+} */
+
+.login-chk {
     width: 100%;
     margin-bottom: 1rem;
     font-size: 0.7rem;
 }
 
-.chk-login a{
+.login-chk a {
     color: var(--red);
     text-decoration: none;
     margin-left: 50px;
 }
 
-.input-login button{
+.login-input button {
     background-color: var(--red);
     border: none;
     border-radius: 5px;

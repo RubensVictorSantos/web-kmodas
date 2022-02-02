@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from "prop-types";
-import $ from 'jquery';
 /** */
 import Imglogo from '../../../resources/ico/logo-kmodas.png'
 import { DOMAIN_API } from '../../../link_config';
 import './style.css'
-
-//ARMAZENA OS ESTADOS INICIAIS
-const initialState = {
-    user: {
-        email: '',
-        senha: '',
-    },
-}
+import { postData } from '../../modulos';
 
 export const TOKEN_KEY = "token";
 
@@ -25,15 +17,21 @@ export class FormLogin extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    //STATE ESTÁ RECEBENDO OS ESTADOS INICIAIS
-    state = { ...initialState }
+    state = {
+        user: {
+            email: '',
+            senha: '',
+        },
+        error: null,
+        status: null
+    }
 
     //PROPRIEDADES DO WITH ROUTER
     static propTypes = {
         match: PropTypes.object.isRequired,
         location: PropTypes.object.isRequired,
         history: PropTypes.object.isRequired
-        
+
     };
 
     handleChange(e) {
@@ -46,63 +44,53 @@ export class FormLogin extends Component {
         this.setState({ user });
     }
 
-    async enviaFormulario(e) {
+    enviaFormulario(e) {
 
         e.preventDefault();
 
-        const url = `${ DOMAIN_API }/login`
+        const url = `${DOMAIN_API}/login`
         const { email, senha } = { ...this.state.user }
 
-        $.ajax({
-            url: url,
-            type: 'post',
-            data: JSON.stringify({ "email": email, "senha": senha }),
-            header: 'x-access-token',
-            dataType: 'json',
-            contentType: 'application/json',
-            success: function (result) {
+        postData(url, { email: email, senha: senha })
+            .then(data => {
 
-                if (result.token){
+                if (data.token) {
 
-                    const { usuario, token, auth} = result
+                    const { user, token, auth } = data
 
-                    localStorage.setItem('usuario', JSON.stringify(usuario));
+                    localStorage.setItem('user', JSON.stringify(user));
                     localStorage.setItem('token', JSON.stringify(token));
                     localStorage.setItem('auth', JSON.stringify(auth));
-
+                    
                     this.props.history.push("/home");
 
                 } else {
-                    alert('Login e/ou senha incorreto')
+                    window.alert('Usuário e/ou senha invalido(s)')
 
                 }
-            }.bind(this),
-            error: function (request, status, error) {
-
-                if (request.status === 404) {
-                    alert("Usuário invalido!");
-
-                }
-            }
-        });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
-
     render() {
-        return (
-            <div className="container-login">
-                <form onSubmit={this.enviaFormulario} className="box-login">
-                    <img src={Imglogo} alt={'Imagem ' + Imglogo} className="img-login"></img>
-                    <h1>K. Modas</h1>
 
-                    <div className="input-login">
+        return (
+            <div className="login-container center">
+                <form onSubmit={this.enviaFormulario} className="login-form center">
+                    <img src={Imglogo} alt={'Imagem ' + Imglogo} className="login-img"></img>
+                    <h1>K. Modas</h1>
+                    <input type="text" name="name" ng-hide="true" defaultValue="..." autoComplete="username" style={{ display: 'none' }}></input>
+
+                    <div className="login-input">
                         <label htmlFor="txtEmail">Email Address</label>
-                        <input id="txtEmail" name="email" onChange={this.handleChange} type="e-mail"></input>
+                        <input id="txtEmail" name="email" onChange={this.handleChange} type="email" autoComplete="email"></input><span></span>
 
                         <label htmlFor="txtPassword">Password</label>
-                        <input id="txtPassword" name="senha" autoComplete="new-password" onChange={this.handleChange} type="password"></input>
+                        <input id="txtPassword" name="senha" autoComplete="new-password" onChange={this.handleChange} type="password"></input><span></span>
 
-                        <div className="chk-login">
+                        <div className="login-chk">
                             <input id="chkLogin" type="checkbox" /><label htmlFor="chkLogin">Remember me</label>
 
                             <Link to="/">Forgot password?</Link>
@@ -110,7 +98,6 @@ export class FormLogin extends Component {
 
                         <button type="submit">Entrar</button>
                     </div>
-
                 </form>
             </div>
         )

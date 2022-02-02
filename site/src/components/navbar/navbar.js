@@ -1,82 +1,99 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom'
-import $ from 'jquery';
+import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
 /** */
-import logo from '../../resources/img/logo-ladybirds.png';
+import imgLogo from '../../resources/img/logo-ladybirds.png';
 import imgUser from '../../resources/img/user.svg';
+import imgSearchWhiteR from '../../resources/img/search-white-right.svg';
+import imgCart from '../../resources/img/cart-round.svg';
 import './style.css';
 
-export class Navbar extends Component {
+const FieldSearch = (props) => {
+    return (
+        <div className={`nav-field-search ${props.style}`} >
+            <button type='submit'></button>
 
-    componentDidMount() {
-        this.openMenu()
+            <input type="text"
+                name="txt-search"
+                id="txt-search"
+                placeholder="O que você procura?"
+                required />
+            <label htmlFor="txt-search" ></label>
+
+        </div>
+    )
+
+}
+
+const Navbar = () => {
+    const [classSidebar, setClassSidebar] = useState('closed-sidebar'),
+        [classFieldSearch, setClassFieldSearch] = useState("nav-field-search-closed")
+
+    const openSidebar = () => {
+        if (classSidebar === 'closed-sidebar') {
+            setClassSidebar("")
+
+        } else {
+            setClassSidebar("closed-sidebar")
+
+        }
+    }
+    const openFieldSearch = () => {
+        if (classFieldSearch === 'nav-field-search-closed') {
+            setClassFieldSearch("nav-field-search")
+
+        } else {
+            setClassFieldSearch("nav-field-search-closed")
+
+        }
     }
 
-    openMenu = () => {
-        /** Abrir Menu Mobile*/
-        $('.btn-menu').on('click', () => {
-            $("#menu").removeClass("menu-close");
-            $("#menu").addClass("menu-open")
-        });
+    return (
+        <Fragment>
+            <nav className="navbar">
+                <div>
+                    <button className="nav-btn-menu nav-btn-default" onClick={() => openSidebar()}>&#9776;</button>
 
-        $('#close').on('click', () => {
-            $("#menu").removeClass("menu-open");
-            $("#menu").addClass("menu-close");
-        });
-    }
+                    {/** Logo */}
+                    <Link to="/home">
+                        <img className="nav-logo" src={imgLogo} alt="Logo K. Modas" />
+                    </Link>
+                    <img className="nav-img-search nav-btn-default"
+                        onClick={() => openFieldSearch()}
+                        src={imgSearchWhiteR}
+                        alt={imgSearchWhiteR}
+                        role="button"
+                        tabIndex="0" />
+                    <button className="nav-btn-cart nav-btn-default">
+                        <img src={imgCart} alt={imgCart} />
+                    </button>
 
-    render() {
-        return (
-            <Fragment>
-                <nav className="navbar">
-                        {/************************* MENU *************************/}
+                    {/** Field Search */}
+                    <FieldSearch style={classFieldSearch} />
 
-                        <ul className="menu menu-close" id="menu">
-                            <span className="close" id="close">&times;&nbsp;&nbsp;</span>
-                            
-                            <li className="item">
-                                <div className="view-user">
-                                    <div className="img-user">
-                                        <img className="img" 
-                                        src={imgUser} 
-                                        alt={'Imagem ' + imgUser} />
+                </div>
 
-                                    </div>
-
-                                    <div>
-                                        <label>Olá, visitante!</label>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="item">HOME</li>
-                            <li className="item">PRODUTOS</li>
-                            <li className="item">GALERIAS</li>
-                            <li className="item">CONTATOS</li>
-
-                        </ul>
-
-                        {/************************* LOGO *************************/}
-
+                {/** Sidebar */}
+                <ul className={`sidebar ${classSidebar}`} >
+                    <li className="sidebar-item">
+                        <img className="sidebar-avatar" src={imgUser} alt={'Imagem ' + imgUser} />
                         <div>
-                            <input type='button' className="btn-menu " id="btn-menu" />
-
-                            <Link to="/home">
-                                <img className="nav-logo" src={logo} alt="Logo K. Modas" />
-                            </Link>
-
-                            <input type='button' className="btn-cart " id="btn-cart" />
-
+                            <label>Olá, visitante!</label>
+                            <Link to=''>Login &#10095;</Link>
                         </div>
+                        <span onClick={() => openSidebar()} >&times;</span>
+                    </li>
+                    <li className="sidebar-item">TODOS OS PRODUTOS</li>
+                    <li className="sidebar-item">MASCULINO</li>
+                    <li className="sidebar-item">FEMININO</li>
+                    <li className="sidebar-item">ACESSÓRIOS</li>
+                    <li className="sidebar-item">COLEÇÕES</li>
+                    <li className="sidebar-item">GALERIA</li>
+                    <li className="sidebar-item">CONTATO</li>
 
-                        {/************************* SEARCH *************************/}
-
-                        <div className="container-search">
-                            <input type="search" placeholder="O que você procura?" />
-                        </div>
-                </nav>
-            </Fragment>
-        )
-    }
+                </ul>
+            </nav>
+        </Fragment>
+    )
 }
 
 export default Navbar;

@@ -2,30 +2,49 @@ import $ from 'jquery';
 /** */
 import { DOMAIN_IMG_DEFAULT, DOMAIN_API } from '../link_config';
 
-export function urlImg(input, idimg) {
+export function urlImg(input, idimage) {
 
-    let img = document.getElementById(idimg);
+    let image = document.getElementById(idimage);
 
     if (input.files && input.files[0]) {
         let reader = new FileReader();
 
         reader.onload = function (e) {
-            img.src = e.target.result;
-
+            image.src = e.target.result;
+            
         };
+
         reader.readAsDataURL(input.files[0]);
-
-        return input.files[0].name;
-
-    } else {
-        img.src = input.files[0].name || DOMAIN_IMG_DEFAULT;
+        // reader.readAsText(input.files);
 
     }
 }
 
+export async function postData(url = '', data = {}) {
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    return res.json();
+}
+
+export async function putFile(url = '', data = {}) {
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    return res.json();
+}
+
 export const editProd = (produto) => {
 
-    const url = `${DOMAIN_API}/prod-Update`;
+    const url = `${DOMAIN_API}/products`;
 
     $.ajax({
         url: url,
@@ -34,7 +53,7 @@ export const editProd = (produto) => {
         header: "x-access-token",
         dataType: "json",
         contentType: "application/json",
-        success(result){
+        success(result) {
             console.log(result)
         }
 
@@ -43,7 +62,7 @@ export const editProd = (produto) => {
 
 export const insertProd = (produto) => {
 
-    const url = "http://127.1.1.0:3333/prod-Add";
+    const url = `${DOMAIN_API}/products`;
 
     $.ajax({
         url: url,
@@ -64,12 +83,12 @@ export const insertProd = (produto) => {
 
 export const deleteProd = (id) => {
 
-    const url = "http://127.1.1.0:3333/prod-Del";
+    const url = `${DOMAIN_API}/products`;
 
     $.ajax({
         url: url,
         type: "delete",
-        data: { "cod_prod": id },
+        data: { "cod_produto": id },
         header: "x-access-token",
         dataType: "json",
         contentType: "application/json",
@@ -110,4 +129,8 @@ export const clearInput = (produto) => {
 
     return produto
 }
+
+export function autoKey() {
+    return '_' + Math.random().toString(36).substr(2, 9);
+};
 

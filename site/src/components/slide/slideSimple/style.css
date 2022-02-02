@@ -1,0 +1,158 @@
+/** CSS for desktop */
+
+@media screen and (min-width:1000px) {
+    #slider-simple {
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        /* background-color: #000; */
+    }
+    #slides-simple {
+        display: flex;
+        overflow: hidden;
+        box-sizing: unset;
+        /* background-color: #00f; */
+    }
+    .slide-simple>img {
+        width: 100%;
+        height: auto;
+    }
+    /** Menu slide */
+    #slide-menu-simple {
+        display: flex;
+        margin: .5rem 0px;
+        justify-content: center;
+    }
+    #slide-menu-simple li {
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+    .slide-menu-item-simple>input {
+        width: .8rem;
+        height: .8rem;
+        padding: 5px;
+        margin: 0.5rem;
+        background-color: rgba(150, 150, 150, 0.6);
+        border-radius: 50px;
+        cursor: pointer;
+        border: none;
+    }
+    #slide-menu-simple>li.active>input {
+        background-color: rgba(50, 50, 50, 0.6);
+    }
+    #slide-menu-simple .sep {
+        width: 1px;
+        margin-right: -2px;
+    }
+}
+
+/** CSS for tablet */
+
+@media only screen and (max-width: 999px) and (min-width: 681px) {
+    #slider-simple {
+        width: 100%;
+        margin: 0px auto;
+        overflow: hidden;
+    }
+    #slides-simple {
+        display: flex;
+        overflow: hidden;
+        box-sizing: unset;
+    }
+    .slide-simple>img {
+        width: 100%;
+        height: auto;
+    }
+    /** Menu */
+    #slide-menu-simple {
+        display: flex;
+        margin: .5rem 0px;
+        justify-content: center;
+    }
+    #slide-menu-simple li {
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+    .slide-menu-item-simple>input {
+        width: .8rem;
+        height: .8rem;
+        padding: 5px;
+        margin: 0.5rem;
+        background-color: rgba(150, 150, 150, 0.6);
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+    }
+    #slide-menu-simple>li.active>input {
+        background-color: rgba(50, 50, 50, 0.6);
+    }
+    #slide-menu-simple .sep {
+        width: 1px;
+        margin-right: -2px;
+    }
+}
+
+/** CSS for mobile */
+
+@media screen and (max-width: 680px) {
+    #slider-simple {
+        width: 100%;
+        /* margin-top: 1rem; */
+        overflow: hidden;
+    }
+    #slides-simple {
+        display: flex;
+        overflow: hidden;
+        box-sizing: unset;
+    }
+    .slide-simple>img {
+        width: 100%;
+        height: auto;
+    }
+    /** Menu */
+    #slide-menu-simple {
+        display: flex;
+        margin: .5rem 0px;
+        justify-content: center;
+    }
+    #slide-menu-simple li {
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+    .slide-menu-item-simple>input {
+        width: .8rem;
+        height: .8rem;
+        padding: 5px;
+        margin: 0.5rem;
+        background-color: rgba(150, 150, 150, 0.6);
+        border-radius: 50px;
+        border: none;
+    }
+    #slide-menu-simple>li.active>input {
+        background-color: rgba(50, 50, 50, 0.6);
+        cursor: pointer;
+    }
+    #slide-menu-simple .sep {
+        width: 1px;
+        margin-right: -2px;
+    }
+    .slide-banner {
+        position: absolute;
+        z-index: 2;
+        margin: 10rem 20px 0px 35px;
+        /* background-color: rgba(224, 122, 19, 0.5); */
+    }
+    .slide-banner>p {
+        font-size: 2rem;
+        font-style: italic;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        color: red;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-shadow: 2px 0 0 #0ff, -2px 0 0 #f0f, 0 2px 0 #ff0, 0 -2px 0 #f00, 1px 1px #00f, -1px -1px 0 #0f0, 1px -1px 0 #000, -1px 1px 0 #fff;
+    }
+}
