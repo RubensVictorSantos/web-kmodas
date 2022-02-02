@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 /** */
-//import Carousel from "../components/carousel/carouselSimple/carousel";
-import CardSimple from "../components/card/cardSimple";
+// import CardSimple from "../components/card/cardSimple";
 import Spinner from "../components/spinner/Spinner";
 import SlideSimple from "../components/slide/slideSimple/slideSimple";
 import { DOMAIN_API } from "../link_config";
 import './style.css';
+import SlideCard from "../components/slide/slideCard/slideCard";
 
 export class HomeCont extends Component {
     state = {
@@ -17,7 +17,7 @@ export class HomeCont extends Component {
     }
 
     componentDidMount() {
-        const url = `${DOMAIN_API}products/status=1/limit=${50}`;
+        const url = `${DOMAIN_API}products/status=1/limit=${10}`;
 
         fetch(url)
             .then(res => res.json())
@@ -54,26 +54,26 @@ export class HomeCont extends Component {
                         <SlideSimple imagens={produtos} />
                     </section>
 
-                    <section className="container">
+                    {/* <section className="container">
                         <div className="section-title center">
                             <h3>Lançamentos</h3><Link to={'/home'}>Ver todas&#8811;</Link>
                         </div>
-                        {/* <Carousel size={size} scroll={true} /> */}
-                    </section>
+                    </section> */}
 
                     <section className="section-cards-home container">
                         <div className="section-title center">
                             <h3>Camisetas</h3><Link to={'/home'}>Ver todas&#8811;</Link>
                         </div>
-                        {
-                            produtos.map(produto =>
-                                <CardSimple key={produto.cod_produto}
-                                    title={produto.nome}
-                                    image={produto.imagem}
-                                    price={produto.preco}
-                                    path={`/products/${produto.cod_produto}`}
-                                />
-                            )
+                        <SlideCard cards={produtos} />
+                        {   
+                            // produtos.map((produto, index) =>
+                            //     <CardSimple key={index}
+                            //         title={produto.nome}
+                            //         image={produto.imagem}
+                            //         price={produto.preco}
+                            //         path={`/products/${produto.cod_produto}`}
+                            //     />
+                            // )
                         }
                     </section>
                 </Fragment>

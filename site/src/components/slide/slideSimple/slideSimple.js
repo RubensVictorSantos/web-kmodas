@@ -18,7 +18,7 @@ export default function SlideSimple(props) {
 
             setWidSlides(widthSlider.clientWidth * imagens.length);
             setWidSlider(widthSlider.clientWidth);
-            // console.log(positions);  
+
         }
         window.addEventListener("resize", handleResize);
         handleResize();
@@ -45,8 +45,8 @@ export default function SlideSimple(props) {
 
     // Menu item click handler
     function menuHandler(e) {
-            let list = document.querySelectorAll('.slide-menu-item-simple');
-            let position = 0,
+        let list = document.querySelectorAll('.slide-menu-item-simple');
+        let position = 0,
             index = 0;
 
         handlerClassActive(e)
@@ -59,9 +59,6 @@ export default function SlideSimple(props) {
         }
 
         index = prevAll(e.target.parentElement);
-
-        // console.log(e.target.parentElement);
-        // console.log(index);
 
         setStyleSlides([
             `${-positions[index]}px`,
@@ -79,16 +76,12 @@ export default function SlideSimple(props) {
             prevElements.push(prevElement)
             prevElement = prevElement.nextElementSibling
 
-            console.log(prevElement);
-
         }
 
         return prevElements.length - 1;
     }
 
     const [marginLeft, transition] = styleSlides;
-
-    // console.log(widSlides);
 
     return (
         <Fragment>
@@ -110,8 +103,20 @@ export default function SlideSimple(props) {
                         ))
                     }
                 </div>
+                <ul id="slide-menu-simple">
+                    <li className="sep"></li>
+                    {
+                        imagens.map(imagem => (
+                            <li key={imagem.cod_produto} className="slide-menu-item-simple center">
+                                <input type="button"
+                                    onClick={e => menuHandler(e)}
+                                />
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
-            <ul id="slide-menu-simple">
+            {/* <ul id="slide-menu-simple">
                 <li className="sep"></li>
                 {
                     imagens.map(imagem => (
@@ -122,7 +127,7 @@ export default function SlideSimple(props) {
                         </li>
                     ))
                 }
-            </ul>
+            </ul> */}
         </Fragment>
     )
 }

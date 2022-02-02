@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 /** */
 import { DOMAIN_API } from '../../link_config';
-import { Search } from '../../components/forms/search/formSearch';
+import Search from '../../components/forms/search/formSearch';
 import Table from '../../components/table/table';
 import Spinner from '../../components/spinner/Spinner';
 import './style.css';
@@ -25,6 +25,7 @@ const PaginationLink = (props) => {
       //   return window.alert("Não existe mais páginas anteriores");
       // }
       offset = offset - limit
+
     }
 
     props.params.changeState(offset);
@@ -101,8 +102,12 @@ export class ListProdCont extends Component {
   //   })
   // }
 
-  changeState(offset) {
-    this.setState({ offset: offset })
+  changeState(offset, textSearch) {
+
+    console.log(textSearch);
+
+    if (offset > 0)
+      this.setState({ offset: offset });
   }
 
   loadList(offset = this.state.offset) {
@@ -112,14 +117,16 @@ export class ListProdCont extends Component {
     this.setState({ url: url });
 
     fetch(url)
-      .then(this.errorHandler)
+      .then((res) => this.errorHandler(res))
       .then(
         (result) => {
+
+          console.log(result);
+
           this.setState({
             isLoaded: true,
             items: result.rows,
-            count: result.count,
-            message: result.message
+            count: result.count
           })
         })
       .catch((error) => {
