@@ -29,16 +29,17 @@ export class HomeCont extends Component {
 
             }
         })
+
     }
 
     render() {
         return (
             <Fragment>
-                <Carousel itensCarousel={5} />
+                <Carousel itensCarousel={5} auto={true} />
                 <section className="container-cards content">
                     {
                         this.state.allProd.map(produto => (
-                            <Link to='/produto' key={produto.cod_prod} className="card-closed" id="card-prod">
+                            <Link to='/products' key={produto.cod_prod} className="card-closed" id="card-prod">
                                 <CardSimple key={produto.cod_prod}
                                     title={produto.nome_prod}
                                     image={produto.img_prod}

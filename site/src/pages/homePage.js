@@ -9,12 +9,12 @@ import '../resources/css/index.css';
 const HomePage = ({ match }) => (
     <div>
         <Navbar />
-            <main>
-                <Switch>
-                    <Route path={`${match.path}`} exact component={HomeCont} />
-                    <Redirect to={`${match.url}`} />
-                </Switch>
-            </main>
+        <main>
+            <Switch>
+                <Route path={`${match.path}`} exact component={HomeCont} />
+                <Redirect to={`${match.url}`} />
+            </Switch>
+        </main>
         <ContentFooter />
     </div>
 )

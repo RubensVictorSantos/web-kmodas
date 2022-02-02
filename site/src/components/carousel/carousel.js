@@ -5,9 +5,11 @@ import './style.css'
 import { DOMAIN_IMG, DOMAIN_API } from '../../link_config';
 
 export class Carousel extends Component {
+    constructor(props) {
+        super()
 
-    state = {
-        produto: [],
+        this.state = { produto: [] }
+        this.shiftSlide = this.shiftSlide.bind(this);
     }
 
     componentDidMount() {
@@ -18,9 +20,6 @@ export class Carousel extends Component {
         var carousel = $('#carousel');
 
         this.chargeImgCarousel(this.props.itensCarousel);
-
-        $('#next').on('click', () => { shiftSlide(-1) })
-        $('#prev').on('click', () => { shiftSlide(1) })
 
         $(window).on('resize', () => {
 
@@ -33,39 +32,41 @@ export class Carousel extends Component {
 
         carousel.css('width', ($('.window').width() * this.props.itensCarousel) + 'px');
 
-        function shiftSlide(direction) {
-            if (carousel.hasClass('transition')) return;
-
-            if (direction === -1) {
-                carousel.addClass('transition')
-                    .css('transform', 'translateX(' + (direction * $('.window').width()) + 'px)');
-
-                setTimeout(() => {
-                    $('.carousel-slide:last').after($('.carousel-slide:first'));
-
-                    carousel.removeClass('transition')
-                    carousel.css('transform', 'translateX(0px)');
-
-                }, 700);
-
-            } else if (direction === 1) {
-
-                setTimeout(() => {
-                    $('.carousel-slide:first').before($('.carousel-slide:last'));
-
-                    carousel.removeClass('transition')
-                    carousel.css('transform', 'translateX(0px)');
-                }, 0.5);
-
-            }
+        if(this.props.auto){
+            setInterval(() => {
+                this.shiftSlide(-1);
+    
+            }, 10000);
         }
+    }
 
-        setInterval(() => {
-            shiftSlide(-1);
+    shiftSlide(direction) {
 
-        }, 10000);
+        let carousel = $('#carousel');
 
+        if (carousel.hasClass('transition')) return;
 
+        if (direction === -1) {
+            carousel.addClass('transition')
+                .css('transform', 'translateX(' + (direction * $('.window').width()) + 'px)');
+
+            setTimeout(() => {
+                $('.carousel-slide:last').after($('.carousel-slide:first'));
+
+                carousel.removeClass('transition')
+                carousel.css('transform', 'translateX(0px)');
+
+            }, 700);
+
+        } else if (direction === 1) {
+
+            setTimeout(() => {
+                $('.carousel-slide:first').before($('.carousel-slide:last'));
+
+                carousel.removeClass('transition')
+                carousel.css('transform', 'translateX(0px)');
+            }, 0.5);
+        }
     }
 
     chargeImgCarousel(itensCarousel) {
@@ -109,8 +110,8 @@ export class Carousel extends Component {
                     </div>
                 </div>
                 <div className="center">
-                    <span id="prev"></span>
-                    <span id="next"></span>
+                    <span onClick={() => this.shiftSlide(1)} id="prev"></span>
+                    <span onClick={() => this.shiftSlide(-1)} id="next"></span>
                 </div>
             </div>
         )

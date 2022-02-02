@@ -2,27 +2,37 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 /** */
 import './style.css';
-import { DOMAIN_IMG, DOMAIN_API } from '../../link_config';
+import { DOMAIN_IMG } from '../../link_config';
 
 export class Slide extends Component {
+    constructor(props){
+        super(props)
 
-    state = { produto: [] }
+        this.slideWidth = this.slideWidth.bind(this)
+
+        console.log(props)
+        this.state = { produto : this.props.produto }
+    }
+
 
     componentDidMount() {
-        this.chargeImgCarousel(5);
+        this.slideWidth();
 
     }
 
     slideWidth() {
+
+        console.log(this.props.produto);
+
         var totalWidth = 0;
         var positions = [];
         let wdtScreen = window.screen.width;
         let wdtImg = (wdtScreen / 100) * 95
         let paddingSld = (wdtScreen - wdtImg);
-        
-        $('.slide-sprod').css({'width': wdtScreen});
-        $('.slide-sprod img').css({"paddingLeft": paddingSld});
-        $('.slide-sprod img').css({'width': wdtImg});
+
+        $('.slide-sprod').css({ 'width': wdtScreen });
+        $('.slide-sprod img').css({ "paddingLeft": paddingSld });
+        $('.slide-sprod img').css({ 'width': wdtImg });
 
         $('#slides-sprod .slide-sprod').each(function (i) {
 
@@ -65,64 +75,41 @@ export class Slide extends Component {
             .addClass('inactive');
     }
 
-    chargeImgCarousel(itensCarousel) {
-
-        this.setState({ produto: [] });
-
-        let url = `${DOMAIN_API}prod-LimitedNumber/` + itensCarousel
-
-        $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'json',
-            contentType: 'application/json',
-            success: (result) => {
-                this.setState({ produto: result });
-                this.slideWidth()
-            },
-            error: (status, error) => {
-
-                console.log(status, error);
-
-            }
-        });
-    }
-
     render() {
-        let prod = this.state.produto
+
+        // let prod = this.props.produto
         return (
-            <div id="container-sprod">
-                <div id="slider-sprod">
-                    <div id="slides-sprod">
-                        {
-                            prod.map(produto => (
-                                <div className="slide-sprod" key={produto.cod_prod}>
-                                    <img src={DOMAIN_IMG + produto.img_prod}
-                                        alt={produto.img_prod} />
-                                </div>
-                            ))
-                        }
+            <div id="slider-sprod">
+                <div id="slides-sprod">
+                    
+                    {/* {
+                        prod.map(produto => (
+                            <div className="slide-sprod" key={produto.cod_prod}>
+                                <img src={DOMAIN_IMG + produto.img_prod}
+                                    alt={produto.img_prod} />
+                            </div>
+                        ))
+                    } */}
 
-                    </div>
-
-                    <nav id="menu-sprod">
-                        <ul>
-                            <li className="sep"></li>
-                            {
-                                prod.map(produto => (
-                                    <li key={produto.cod_prod} className="product-sprod">
-                                        <div key={produto.cod_prod}>
-                                            <img src={DOMAIN_IMG + produto.img_prod}
-                                                alt={produto.img_prod}
-                                                width="100%" height="100%" />
-
-                                        </div>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </nav>
                 </div>
+
+                <nav id="menu-sprod">
+                    <ul>
+                        <li className="sep"></li>
+                        {/* {
+                            prod.map(produto => (
+                                <li key={produto.cod_prod} className="product-sprod">
+                                    <div key={produto.cod_prod}>
+                                        <img src={DOMAIN_IMG + produto.img_prod}
+                                            alt={produto.img_prod}
+                                            width="100%" height="100%" />
+
+                                    </div>
+                                </li>
+                            ))
+                        } */}
+                    </ul>
+                </nav>
             </div>
         )
     }
