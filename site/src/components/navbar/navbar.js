@@ -21,7 +21,6 @@ const FieldSearch = (props) => {
 
         </div>
     )
-
 }
 
 const Navbar = () => {
@@ -30,10 +29,10 @@ const Navbar = () => {
 
     const openSidebar = () => {
         if (classSidebar === 'closed-sidebar') {
-            setClassSidebar("")
+            setClassSidebar("");
 
         } else {
-            setClassSidebar("closed-sidebar")
+            setClassSidebar("closed-sidebar");
 
         }
     }

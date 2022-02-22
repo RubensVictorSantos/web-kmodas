@@ -41,31 +41,30 @@ export class TableItem extends Component {
     fetch(url, {
       method: 'DELETE',
     })
-      .then(res => res.json())
-      .then(res => console.log(res))
+      .then(res => res.json());
   }
 
-
   render() {
-    let items = { ...this.props.items }
-    let id = this.props.items.cod_produto;
-    let keyList = [];
+    let item = this.props.item;
+    let count = 0;
 
     return (
       <Fragment>
         <tr className="tb-row">
           <td>
-            <button className="item-default-btn" onClick={() => this.deleteItem(id)}>
-              <img className="" align="middle" src={icoDel} alt={icoDel} width="20px"></img>
+            <button className="item-default-btn"
+              onClick={() => this.deleteItem(item.cod_produto)}>
+              <img align="middle" src={icoDel} alt={icoDel} width="20px"></img>
+
             </button>
           </td>
 
           <td>
             <ModalProd
-              id={items.cod_produto}
-              title={items.nome}
-              image={items.imagem}
-              content={[items.descricao, items.preco, items.status]}
+              id={item.cod_produto}
+              title={item.nome}
+              image={item.imagem}
+              content={[item.descricao, item.preco, item.status]}
               show={this.state.isOpen}
               onClose={this.toggleModal} />
 
@@ -74,17 +73,13 @@ export class TableItem extends Component {
           </td>
 
           {
-
-            Object.entries(items).map(item => {
-              keyList.push(keyList.length + 1);
-
-              return (
-                <td key={keyList.length} className='tb-col'>
-                  <Item key={keyList.length} item={item} />
-                </td>)
-            })
+            Object.entries(item).map((item, index) => {
+              return(
+              <td key={index} className='tb-col'>
+                <Item key={index} item={item} />
+              </td>)}
+            )
           }
-
         </tr>
       </Fragment>
     );

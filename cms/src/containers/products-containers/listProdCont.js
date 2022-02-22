@@ -2,10 +2,11 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 /** */
 import { DOMAIN_API } from '../../link_config';
-import { Search } from '../../components/forms/search/formSearch';
+import Search from '../../components/forms/search/formSearch';
 import Table from '../../components/table/table';
 import Spinner from '../../components/spinner/Spinner';
 import './style.css';
+import BtnPrevPage from '../../components/buttons/btnPrevPage';
 
 const PaginationLink = (props) => {
 
@@ -25,6 +26,7 @@ const PaginationLink = (props) => {
       //   return window.alert("Não existe mais páginas anteriores");
       // }
       offset = offset - limit
+
     }
 
     props.params.changeState(offset);
@@ -53,7 +55,7 @@ export class ListProdCont extends Component {
     super(props)
 
     this.state = {
-      limit: 10,
+      limit: 11,
       offset: 0,
       search: false,
       texto: [],
@@ -71,12 +73,12 @@ export class ListProdCont extends Component {
 
   componentDidMount() {
     this.loadList();
+
   }
 
   errorHandler(res) {
-    if (res.ok) return res.json();
-    throw new Error('Something went wrong.');
-
+    if (res.ok) return res.json(); 
+    throw new Error(res.error.message);
   }
   // changeState(search, texto = []) {
 
@@ -101,25 +103,23 @@ export class ListProdCont extends Component {
   //   })
   // }
 
-  changeState(offset) {
-    this.setState({ offset: offset })
+  changeState(offset, textSearch) {
+
+    if (offset > 0)
+      this.setState({ offset: offset });
   }
 
   loadList(offset = this.state.offset) {
-
     let url = `${DOMAIN_API}/products/limit=${this.state.limit}/offset=${offset}`;
-
     this.setState({ url: url });
 
     fetch(url)
-      .then(this.errorHandler)
-      .then(
-        (result) => {
+      .then(res => this.errorHandler(res))
+      .then((result) => {
           this.setState({
             isLoaded: true,
             items: result.rows,
-            count: result.count,
-            message: result.message
+            count: result.count
           })
         })
       .catch((error) => {
@@ -131,8 +131,7 @@ export class ListProdCont extends Component {
   }
 
   render() {
-
-    let { count, limit, items, offset, error, isLoaded } = this.state
+    let { count, limit, items, offset, error, isLoaded } = this.state;
 
     if (error) {
       return (
@@ -161,6 +160,9 @@ export class ListProdCont extends Component {
 
         <Fragment>
           {/** FORMULÁRIO BUSCAR */}
+
+          <BtnPrevPage {...this.props} />
+
           <Search changeState={this.changeState} />
 
           {/** TABELA */}
@@ -170,7 +172,7 @@ export class ListProdCont extends Component {
           </div>
 
           {/** RODAPÉ */}
-          <div className="list-footer container">
+          <footer className="list-footer container">
             {/* <input className="btn-carregar-itens " onClick={() => this.changeState(false)} type='button' value='Carregar +20' /> */}
             <div></div>
             <PaginationLink params={{
@@ -181,7 +183,7 @@ export class ListProdCont extends Component {
               changeState: this.changeState
             }} />
             <label>Total {count}</label>
-          </div>
+          </footer>
         </Fragment>
       )
     }

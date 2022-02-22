@@ -1,34 +1,33 @@
 /** CSS for desktop */
 
 @media screen and (min-width:1000px) {
-    #slider-simple {
+    #slider-card {
         width: 100%;
         margin: 0 auto;
         overflow: hidden;
         /* background-color: #000; */
     }
-    #slides-simple {
+    #slides-card {
         display: flex;
         overflow: hidden;
         box-sizing: unset;
-        /* background-color: #00f; */
     }
-    .slide-simple>img {
+    .slide-card>img {
         width: 100%;
         height: auto;
     }
     /** Menu slide */
-    #slide-menu-simple {
+    #slide-menu-card {
         display: flex;
         margin: .5rem 0px;
         justify-content: center;
     }
-    #slide-menu-simple li {
+    #slide-menu-card li {
         justify-content: center;
         justify-items: center;
         align-items: center;
     }
-    .slide-menu-item-simple>input {
+    .slide-menu-item-card>input {
         width: .8rem;
         height: .8rem;
         padding: 5px;
@@ -38,10 +37,10 @@
         cursor: pointer;
         border: none;
     }
-    #slide-menu-simple>li.active>input {
+    #slide-menu-card>li.active>input {
         background-color: rgba(50, 50, 50, 0.6);
     }
-    #slide-menu-simple .sep {
+    #slide-menu-card .sep {
         width: 1px;
         margin-right: -2px;
     }
@@ -50,32 +49,34 @@
 /** CSS for tablet */
 
 @media only screen and (max-width: 999px) and (min-width: 681px) {
-    #slider-simple {
+    #slider-card {
         width: 100%;
         margin: 0px auto;
         overflow: hidden;
     }
-    #slides-simple {
+    #slides-card {
         display: flex;
         overflow: hidden;
         box-sizing: unset;
     }
-    .slide-simple>img {
+    .slide-card>img {
         width: 100%;
         height: auto;
     }
     /** Menu */
-    #slide-menu-simple {
+    #slide-menu-card {
         display: flex;
+        flex-wrap: wrap;
         margin: .5rem 0px;
         justify-content: center;
+        
     }
-    #slide-menu-simple li {
+    #slide-menu-card li {
         justify-content: center;
         justify-items: center;
         align-items: center;
     }
-    .slide-menu-item-simple>input {
+    .slide-menu-item-card>input {
         width: .8rem;
         height: .8rem;
         padding: 5px;
@@ -85,10 +86,10 @@
         border: none;
         cursor: pointer;
     }
-    #slide-menu-simple>li.active>input {
+    #slide-menu-card>li.active>input {
         background-color: rgba(50, 50, 50, 0.6);
     }
-    #slide-menu-simple .sep {
+    #slide-menu-card .sep {
         width: 1px;
         margin-right: -2px;
     }
@@ -97,46 +98,45 @@
 /** CSS for mobile */
 
 @media screen and (max-width: 680px) {
-    #slider-simple {
+    #slider-card {
         width: 100%;
         /* margin-top: 1rem; */
         overflow: hidden;
     }
-    #slides-simple {
+    #slides-card {
         display: flex;
         overflow: hidden;
         box-sizing: unset;
     }
-    .slide-simple>img {
+    .slide-card>img {
         width: 100%;
         height: auto;
     }
     /** Menu */
-    #slide-menu-simple {
+    #slide-menu-card {
         display: flex;
-        flex-wrap: wrap;
         margin: .5rem 0px;
         justify-content: center;
     }
-    #slide-menu-simple li {
+    #slide-menu-card li {
         justify-content: center;
         justify-items: center;
         align-items: center;
     }
-    .slide-menu-item-simple>input {
+    .slide-menu-item-card>input {
         width: .8rem;
         height: .8rem;
         padding: 5px;
-        margin: 0.5rem;
+        margin: .5rem;
         background-color: rgba(150, 150, 150, 0.6);
         border-radius: 50px;
         border: none;
     }
-    #slide-menu-simple>li.active>input {
+    #slide-menu-card>li.active>input {
         background-color: rgba(50, 50, 50, 0.6);
         cursor: pointer;
     }
-    #slide-menu-simple .sep {
+    #slide-menu-card .sep {
         width: 1px;
         margin-right: -2px;
     }

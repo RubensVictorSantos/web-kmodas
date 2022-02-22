@@ -81,28 +81,6 @@ export const insertProd = (produto) => {
     })
 }
 
-export const deleteProd = (id) => {
-
-    const url = `${DOMAIN_API}/products`;
-
-    $.ajax({
-        url: url,
-        type: "delete",
-        data: { "cod_produto": id },
-        header: "x-access-token",
-        dataType: "json",
-        contentType: "application/json",
-        error: (status) => {
-
-            console.log(' Erro ao deletar produto ');
-            console.log(status);
-            console.error(status);
-
-        }
-    })
-
-}
-
 /** FUNÇÃO PARA LIMPAR CAMPOS */
 
 export const clearInput = (produto) => {
@@ -129,8 +107,4 @@ export const clearInput = (produto) => {
 
     return produto
 }
-
-export function autoKey() {
-    return '_' + Math.random().toString(36).substr(2, 9);
-};
 
