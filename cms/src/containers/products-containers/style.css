@@ -1,14 +1,14 @@
 /*TABELA PRODUTO----------------------------->*/
 
 .tb-produto {
-    width: 95%;
+    width: 90%;
     max-height: 68.7vh;
     position: relative;
     overflow: auto;
-    border: var(--b-row);
-    border-left: none;
-    border-right: none;
-    border-color: #688a8a8a !important;
+    /* border: var(--b-row); */
+    /* border-left: none; */
+    /* border-right: none; */
+    /* border-color: #688a8a8a !important; */
 }
 
 /* Width Scrollbar*/
@@ -32,7 +32,7 @@
 
 /*RODAPÉ*/
 .list-footer {
-    width: 95%;
+    width: 90%;
     flex-direction: row !important;
     justify-content: space-between !important;
 }
@@ -57,7 +57,7 @@ ul.pagination li a {
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-    transition: background-color .3s;
+    transition: .3s;
     border: 1px solid #ddd;
 }
 

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 /** */
-// import CardSimple from "../components/card/cardSimple";
+import CardSimple from "../components/card/cardSimple";
 import Spinner from "../components/spinner/Spinner";
 import SlideSimple from "../components/slide/slideSimple/slideSimple";
 import { DOMAIN_API } from "../link_config";
@@ -66,14 +66,14 @@ export class HomeCont extends Component {
                         </div>
                         <SlideCard cards={produtos} />
                         {   
-                            // produtos.map((produto, index) =>
-                            //     <CardSimple key={index}
-                            //         title={produto.nome}
-                            //         image={produto.imagem}
-                            //         price={produto.preco}
-                            //         path={`/products/${produto.cod_produto}`}
-                            //     />
-                            // )
+                            produtos.map((produto, index) =>
+                                <CardSimple key={index}
+                                    title={produto.nome}
+                                    image={produto.imagem}
+                                    price={produto.preco}
+                                    path={`/products/${produto.cod_produto}`}
+                                />
+                            )
                         }
                     </section>
                 </Fragment>

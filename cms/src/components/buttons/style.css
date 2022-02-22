@@ -1,0 +1,16 @@
+.btn-prev-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    border: none;
+    margin: 0;
+    background-color: transparent;
+    color: #202F31;
+    text-align: center;
+    font-size: 4rem;
+    position:fixed;
+    top: 50px;
+    left: 30px;
+    cursor: pointer;
+}

@@ -8,12 +8,37 @@
 .home-main-content h1 {
     width: 100%;
     text-align: center;
+    color: #202F31;
 }
 
-.home-main-content>a>div {
+.home-main-content>div {
     width: 15rem;
     height: 15rem;
+    display: flex;
+    flex-direction: column;
     margin: 2rem .7rem;
     border-radius: .2rem;
-    box-shadow: 0px 0px 10px 5px #99999990;
+    background-color: #fefefefb;
+    box-shadow: 3px 3px 10px 2px #99999990;
 }
+
+.home-main-content>div>img {
+    width: 50%;
+}
+
+.home-main-content>div a {
+    color: #202F31;
+}
+
+.home-main-content>div>nav {
+    display: none;
+}
+.home-main-content>div:hover img {
+    display: none;
+}
+.home-main-content>div:hover nav {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+

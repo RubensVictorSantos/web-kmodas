@@ -10,11 +10,11 @@
 }
 
 .tb-head {
-  background-color: #688a8a;
+  background-color: #202F31;
 }
 
 .btn-tb-head {
-  background-color: #688a8a;
+  background-color: transparent;
   border: none;
   text-transform: uppercase;
   padding: 5px;

@@ -8,7 +8,6 @@ export class AttrProdCont extends Component {
     }
 
     render() {
-
         return (
             <Fragment>
                 <h2>Atributos</h2>

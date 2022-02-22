@@ -2,55 +2,53 @@ import React, { useMemo, useState } from 'react';
 /** */
 import './style.css'
 import TableItem from './tableItem';
-import { autoKey } from '../modulos';
 
-export function Table(props) {
+const useSortableData = (items, config = null) => {
+    const [sortConfig, setSortConfig] = useState(config)
 
-    const useSortableData = (items, config = null) => {
-        const [sortConfig, setSortConfig] = useState(config)
+    const sortedItems = useMemo(() => {
+        let sortableItems = [...items];
+        if (sortConfig !== null) {
+            sortableItems.sort((a, b) => {
+                if (a[sortConfig.key] < b[sortConfig.key]) {
+                    return sortConfig.direction === 'ascending' ? -1 : 1;
+                }
+                if (a[sortConfig.key] > b[sortConfig.key]) {
+                    return sortConfig.direction === 'ascending' ? 1 : -1;
+                }
+                return 0;
+            });
+        }
+        return sortableItems;
+    }, [items, sortConfig]);
 
-        const sortedItems = useMemo(() => {
-            let sortableItems = [...items];
-            if (sortConfig !== null) {
-                sortableItems.sort((a, b) => {
-                    if (a[sortConfig.key] < b[sortConfig.key]) {
-                        return sortConfig.direction === 'ascending' ? -1 : 1;
-                    }
-                    if (a[sortConfig.key] > b[sortConfig.key]) {
-                        return sortConfig.direction === 'ascending' ? 1 : -1;
-                    }
-                    return 0;
-                });
-            }
-            return sortableItems;
-        }, [items, sortConfig]);
-
-        const requestSort = (key) => {
-            let direction = 'ascending';
-            if (
-                sortConfig &&
-                sortConfig.key === key &&
-                sortConfig.direction === 'ascending'
-            ) {
-                direction = 'descending';
-            }
-            setSortConfig({ key, direction });
-        };
-
-        return { items: sortedItems, requestSort, sortConfig };
+    const requestSort = (key) => {
+        let direction = 'ascending';
+        if (
+            sortConfig &&
+            sortConfig.key === key &&
+            sortConfig.direction === 'ascending'
+        ) {
+            direction = 'descending';
+        }
+        setSortConfig({ key, direction });
     };
 
+    return { items: sortedItems, requestSort, sortConfig };
+}
+
+const getDataDirectionFor = (name, sortConfig) => {
+    if (!sortConfig) {
+        return;
+    }
+    return sortConfig.key === name ? sortConfig.direction : undefined;
+};
+
+export const Table = (props) => {
     const { items, requestSort, sortConfig } = useSortableData(props.items);
 
-    const getDataDirectionFor = (name) => {
-        if (!sortConfig) {
-            return;
-        }
-        return sortConfig.key === name ? sortConfig.direction : undefined;
-    };
-
-    if(!props.items.length){
-        return(<div>Não foi possivel carregar a lista de produtos</div>);
+    if (!props.items.length) {
+        return (<div>Não foi possivel carregar a lista de produtos</div>);
     }
 
     let tbhead = Object.keys(props.items[0]);
@@ -65,16 +63,16 @@ export function Table(props) {
                 <tr>
                     <th colSpan="2"></th>
                     {
-                        tbhead.map(title =>
-                            <th key={autoKey()}>
+                        tbhead.map((title, index) =>
+                            <th key={index}>
                                 <button
                                     className="btn-tb-head"
                                     type="button"
                                     onClick={() => requestSort(title)}
-                                    data-direction={getDataDirectionFor(`${title}`)}
+                                    data-direction={getDataDirectionFor(`${title}`, sortConfig)}
                                 >
                                     {title}
-                                </button><span />
+                                </button>
                             </th>
                         )
                     }
@@ -85,12 +83,8 @@ export function Table(props) {
 
             <tbody className="tb-body">
                 {
-                    items.map(item => {
-
-                        return (
-                            <TableItem key={item.cod_produto} items={item}/>
-                        )
-                    }
+                    items.map((item, index) =>
+                        <TableItem key={index} item={item} />
                     )
                 }
             </tbody>

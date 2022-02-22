@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 /** */
 import './style.css';
 import { DOMAIN_IMG } from '../../link_config';
 
 const CardSimple = (props) => {
-
     let { image, title, path } = { ...props };
     let priceFormat = new Intl.NumberFormat('pt-BR', {
         currency: 'BRL',
